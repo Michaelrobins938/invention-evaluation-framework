@@ -21,11 +21,12 @@ description: Converts a captured invention record into a technology profile — 
    - Is any part of the novelty a *combination* of known elements? (Flag this as **combination-obviousness exposure**, not "combination novelty" — a combination can be completely novel while still being obvious. The operative question is derivation risk: how readily can the combination be reconstructed from prior-art components with a demonstrated motivation to combine? This is the weakest basis for an inventive-step argument absent an unexpected result.)
    - What specific technical elements are claimed as unique?
    - **Design-space position:** does the inventor appear to be exploring multiple physical implementations of the same higher-level architecture (sibling filings, alternative mechanisms)? Note where this invention sits in that exploration.
-5. **Unexpected-result gate.** Does the claimed combination produce a demonstrable unexpected technical result? (CONFIRMED PRESENT / CONFIRMED ABSENT / NOT OBSERVED / NOT IDENTIFIED / NOT EVALUATED / INFERRED / CONTESTED). If NOT IDENTIFIED, flag it as an evidence gap in the final report.
-6. **Regulatory burden.** Estimate Low/Med/High per relevant jurisdiction, with the governing body cited.
+5. **Unexpected-result gate.** Does the claimed combination produce a demonstrable unexpected technical result? (CONFIRMED PRESENT / CONFIRMED ABSENT — or not established, see Operational Audit). If the performance data proposition cannot be established, it enters the work queue: escalate through the `performance_data` schema avenues; if exhausted, record in the Operational Audit with `barrier_type: insufficient_technical_demonstration`.
+6. **Regulatory burden.** Estimate Low/Med/High per relevant jurisdiction using the `regulatory_regime` schema: governing statute/regulation (exact identifier) + why the technology falls inside/outside it. A regulatory rating without the governing regime is not a finding — it is an unestablished proposition.
 7. **Development stage.** Classify Concept → Prototype → Validation → Pilot → Commercialization; if pre-prototype, list concrete next milestones with rough timelines.
-8. **Classification seed.** Derive an initial IPC/CPC candidate set from the idea description — this feeds `conduct-patent-landscape` and `conduct-novelty-search` directly.
-9. **Mandatory output: "what I still don't understand."** This list drives later escalation decisions — don't omit it even if short.
+8. **Classification seed.** Derive an initial IPC/CPC candidate set from the idea description, each candidate with its exact code, official title, and source (official classification authority). A guessed classification is not a finding — candidates are hypotheses for the landscape search, not established classifications.
+9. **Proposition ledger.** Register every substantive proposition this skill produces (performance data, regulatory regime, classification candidates) with a `proposition_id` + `proposition_version` + schema reference, per GLOSSARY.md.
+10. **Mandatory output: "what I still don't understand."** This list drives later escalation decisions — don't omit it even if short.
 
 ## Boundary
 - No search is performed here.

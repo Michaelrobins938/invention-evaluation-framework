@@ -41,6 +41,7 @@ check "docs/INDEX.md" "$TARGET/docs/INDEX.md"
 check "docs/PIPELINE_STATE.md" "$TARGET/docs/PIPELINE_STATE.md"
 check "example submission" "$TARGET/examples/tesla-us433700/submission.md"
 check "example quickstart prompt" "$TARGET/examples/tesla-us433700/quickstart-prompt.md"
+check "example report v1.6" "$TARGET/examples/tesla-us433700/report-tesla-us433700-e2e-v16.md"
 
 for f in "$TARGET/SKILL.md" "$TARGET"/skills/skill-*/SKILL.md; do
   if [ -f "$f" ]; then

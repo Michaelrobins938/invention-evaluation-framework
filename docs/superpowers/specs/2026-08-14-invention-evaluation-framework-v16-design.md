@@ -77,6 +77,18 @@ v1.6 makes these rows **structurally impossible**: a finding row does not exist 
 - **CONFIRMED PRESENT** — directly verified in an admissible source with exact source identity, location/citation, and proposition-level support.
 - **CONFIRMED ABSENT** — specifically tested and absent within a defined, bounded evidence universe whose sufficiency requirements have been satisfied. The finding object must carry `absence_basis` (bounded_universe_definition, sufficiency_test) — the bounded universe is inseparable from the finding.
 
+**CONFIRMED ABSENT cannot be produced merely because all search avenues were exhausted.** It requires affirmative absence verification within the declared bounded universe:
+
+```text
+EXHAUSTED + no evidence found ≠ CONFIRMED ABSENT
+
+bounded universe defined
++ universe sufficiently covered
++ specific absence tested
++ absence independently verified where schema requires
+= CONFIRMED ABSENT
+```
+
 ### Work layer
 
 - **NOT_STARTED** — workflow initialization state, engine-internal, never exposed in reports. Distinguishes "search hasn't begun" from "search underway."
@@ -140,6 +152,27 @@ EVIDENCE SUFFICIENT?
 
 Steps 4 and 6 together form the **proposition-identity firewall**: the source must support the exact proposition, and the proposition must be scoped correctly. "Spray cooling was used in military electronics" does not establish "US7216695 Claim 1 was commercially deployed."
 
+### Proposition-Schema Registry
+
+All proposition schemas live in a **single authoritative registry** (`GLOSSARY.md`, section "Proposition-Schema Registry"). Skills reference schema IDs (e.g., `market_relevance_award`) rather than independently redefining their fields. **No schema may be duplicated, modified, or extended in a skill file** — schema drift between Skills 05/06/07 and the compiler is forbidden. This is what makes the required standard deterministic rather than model-judged:
+
+```yaml
+schema_id: market_relevance_award
+version: 1
+required_fields:
+  - agency
+  - award_id
+  - recipient
+  - award_date
+  - title
+  - url
+  - relevant_passage
+  - independence_lineage_id
+corroboration:
+  required: true
+  minimum_independent_sources: 2
+```
+
 ### Schema-driven required standard
 
 Every proposition type has a defined minimum evidence schema. **A finding row does not exist unless every required schema field is populated with an exact identifier.** This is the most important implementation rule in v1.6 — it makes the malformed answer structurally impossible rather than merely discouraged.
@@ -167,6 +200,7 @@ corroboration:
 ```
 
 - **Independent source** = materially independent provenance. Republished, syndicated, scraped, mirrored, press-release-derived, or citation-chain-dependent copies of the same underlying evidence count as one source. An SBIR.gov record + company press release quoting it + news article quoting the press release = **one evidence lineage**.
+- **Lineage is an auditable field, not only a rule.** Every source carries an `independence_lineage_id`; sources sharing a lineage ID count as one source for corroboration. Three documents on lineage `L-0007` = one evidence lineage; two genuinely independent sources carry `L-0007` and `L-0012`. This makes the corroboration gate mechanically testable.
 - `minimum_independent_sources` is per-schema: patent grant date may need 1 primary record; commercial adoption needs 2 independent product-identity links; historical absence needs a bounded universe + 2 independent records.
 - Single-source support yields at most `CONFIRMED PRESENT` with a single-source caveat — never `CONFIRMED ABSENT`.
 
@@ -278,7 +312,14 @@ ESCALATE → next required avenue (by priority) → search + log → EVIDENCE SU
 
 ### Hard invariants
 
-1. `EXHAUSTED` may be emitted only when every required avenue has a completed audit record or a rule-justified `BLOCKED`/`NOT_APPLICABLE` disposition.
+1. `EXHAUSTED` may be emitted only when every required avenue is in `COMPLETE`, `BLOCKED`, or `NOT_APPLICABLE`. **No required avenue may remain `REQUIRES_VERIFICATION`.** The valid terminal condition:
+   ```text
+   ALL REQUIRED AVENUES ∈ { COMPLETE, BLOCKED, NOT_APPLICABLE }
+   AND
+   NO REQUIRED AVENUE = REQUIRES_VERIFICATION
+            ↓
+   EXHAUSTED
+   ```
 2. `EXHAUSTED` never constitutes evidence and never authorizes a factual conclusion.
 3. Supplemental avenues are allowed only as explicit logged exceptions — never part of termination logic.
 4. Search completion is not evidence (`EXHAUSTED ≠ CONFIRMED ABSENT`).
@@ -321,6 +362,7 @@ finding:
       award_date: ""
       award_amount: ""
       relevant_passage: ""
+      independence_lineage_id: L-0007
       independence_lineage: "primary record"   # vs. "derived from [primary]"
   relationship:
     technology_relationship: DIRECT | RELATED | GENERAL
@@ -368,6 +410,18 @@ analytical_conclusion:
 ```
 
 Hard trace: Conclusion → Premises → Finding objects → Sources. **No orphan conclusions.** No conclusion may use a premise whose status is a work state (e.g., `EXHAUSTED`) as though it were evidence.
+
+**Provenance by layer** — factual assertions and analytical conclusions carry provenance differently:
+
+```text
+Factual assertion
+→ source_identity + locator
+
+Analytical conclusion
+→ premise_map + inference + rule_applied
+```
+
+A conclusion such as "The closest reference creates moderate obviousness exposure" points to its premise map; it does not need — and must not fake — a direct source attachment.
 
 **UNRESOLVED may not appear as a terminal analytical conclusion at all.** Three outcomes only:
 - More work needed → work layer
@@ -426,7 +480,7 @@ install.sh
 | File | v1.6 changes |
 |---|---|
 | `DIGEST.md` | Governing principle at top. Replace item 12 (evidence-state discipline) with the three-layer hierarchy + anti-collapse invariants. Replace item 13 (Negative Evidence Coverage Rule) with **Evidence Sufficiency & Search Escalation Rule**. Replace item 16 ("insufficient evidence is a valid output") with: missing evidence is a work queue. Rewrite items 9/17/23 that use INFERRED/UNRESOLVED as terminal states. Add atomic-admission and proposition-identity rules. |
-| `GLOSSARY.md` | Replace the 7-state ontology with the three layers. Add: work states, Sufficiency Gate sequence, avenue protocol (checklist, `avenue_record`, statuses, priority, `rule_id`), finding object + `source_identity` + `absence_basis`, per-proposition-type schema table, corroboration rules, `barrier_type` enum, prohibited-language list. Update dependent constructs: obviousness evidence object, motivation object, Causal Bridge Test (`bridge_status` UNRESOLVED → work state), decision matrix, multidimensional output. |
+| `GLOSSARY.md` | Replace the 7-state ontology with the three layers. Add: work states, Sufficiency Gate sequence, avenue protocol (checklist, `avenue_record`, statuses, priority, `rule_id`), finding object + `source_identity` + `absence_basis` + `independence_lineage_id`, **the Proposition-Schema Registry** (single authoritative source for all proposition schemas), corroboration rules, `barrier_type` enum, prohibited-language list. Update dependent constructs: obviousness evidence object, motivation object, Causal Bridge Test (`bridge_status` UNRESOLVED → work state), decision matrix, multidimensional output. |
 | `INDEX.md` | Dependency graph + entry points updated for the new vocabulary. |
 | `PIPELINE_STATE.md` | v1.6 change log (breaking change from v1.5). |
 | `README.md` | v1.6 description. |
@@ -497,7 +551,7 @@ Repository initialized before implementation (baseline = v1.5). The repo version
 | 2 | Mandatory search-escalation loop exercised | Every required avenue dispositioned, order preserved, audit record present | Avenue Ledger required-state check |
 | 3 | Correct state-level placement | `BLOCKED` is avenue-level; `EXHAUSTED` is proposition-level | Schema validation: fail on `proposition.work_state: BLOCKED` or `avenue.status: EXHAUSTED` |
 | 4 | No legacy evidence states | No legacy work/evidence state emitted in an active finding object (NOT OBSERVED, NOT IDENTIFIED, INFERRED, NOT EVALUATED, CONTESTED, UNRESOLVED) | Anti-pattern scan of active files |
-| 5 | Source-level provenance on every substantive assertion | Every substantive assertion (any factual statement in Established Findings, evidence summaries, source descriptions, or evidence-bearing tables that could materially affect a downstream conclusion) has `source_identity` + locator + exact-proposition support | Schema validator |
+| 5 | Source-level provenance on every substantive assertion | Every substantive assertion (any factual statement in Established Findings, evidence summaries, source descriptions, or evidence-bearing tables that could materially affect a downstream conclusion) has `source_identity` + locator + exact-proposition support. Analytical conclusions carry a premise map + inference + `rule_applied` instead of a direct source attachment | Schema validator |
 | 6 | Proposition-identity matching | IDs + versions stable across hand-offs; no schema/scope/text change without version increment | ID/version comparison across hand-off artifacts |
 | 7 | No guessed content | No INFERRED/ASSUMED/APPROXIMATE/LIKELY/PROBABLY/ESTIMATED/GENERAL KNOWLEDGE/COMMON PRACTICE in audit objects without one of: exact source support / explicit analytical inference object / escalation / exclusion | Scan of underlying audit objects (not just final report) |
 | 8 | Evidence vs. inference separated | Every analytical conclusion has a premise map; no premise is a work state | Structural premise-map validation |

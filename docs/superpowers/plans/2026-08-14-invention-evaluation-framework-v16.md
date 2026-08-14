@@ -586,30 +586,39 @@ echo "  (legacy terms in historical reports / migration docs are permitted)"
 
 echo ""
 echo "--- v1.6 root/package parity check ---"
+# root path | package path. Root holds docs at top level and skills in
+# skill-XX/ dirs; the package holds them under docs/ and skills/. The engine
+# SKILL.md is package-only (no root counterpart) and is not parity-checked.
 ROOT_DIR="$SCRIPT_DIR"
-for rel in \
-  "SKILL.md" \
-  "docs/DIGEST.md" "docs/GLOSSARY.md" "docs/INDEX.md" "docs/PIPELINE_STATE.md" \
-  "skills/skill-01-invention-evaluation-overview/SKILL.md" \
-  "skills/skill-02-gather-invention-submission/SKILL.md" \
-  "skills/skill-03-analyze-technology-fundamentals/SKILL.md" \
-  "skills/skill-04-conduct-patent-landscape/SKILL.md" \
-  "skills/skill-05-conduct-novelty-search/SKILL.md" \
-  "skills/skill-06-conduct-literature-search/SKILL.md" \
-  "skills/skill-07-analyze-market-opportunity/SKILL.md" \
-  "skills/skill-08-identify-partners/SKILL.md" \
-  "skills/skill-09-compile-report/SKILL.md"; do
-  root_file="$ROOT_DIR/$rel"
-  pkg_file="$TARGET/$rel"
+PARITY_PAIRS=(
+  "DIGEST.md|docs/DIGEST.md"
+  "GLOSSARY.md|docs/GLOSSARY.md"
+  "INDEX.md|docs/INDEX.md"
+  "PIPELINE_STATE.md|docs/PIPELINE_STATE.md"
+  "skill-01-invention-evaluation-overview/SKILL.md|skills/skill-01-invention-evaluation-overview/SKILL.md"
+  "skill-02-gather-invention-submission/SKILL.md|skills/skill-02-gather-invention-submission/SKILL.md"
+  "skill-03-analyze-technology-fundamentals/SKILL.md|skills/skill-03-analyze-technology-fundamentals/SKILL.md"
+  "skill-04-conduct-patent-landscape/SKILL.md|skills/skill-04-conduct-patent-landscape/SKILL.md"
+  "skill-05-conduct-novelty-search/SKILL.md|skills/skill-05-conduct-novelty-search/SKILL.md"
+  "skill-06-conduct-literature-search/SKILL.md|skills/skill-06-conduct-literature-search/SKILL.md"
+  "skill-07-analyze-market-opportunity/SKILL.md|skills/skill-07-analyze-market-opportunity/SKILL.md"
+  "skill-08-identify-partners/SKILL.md|skills/skill-08-identify-partners/SKILL.md"
+  "skill-09-compile-report/SKILL.md|skills/skill-09-compile-report/SKILL.md"
+)
+for pair in "${PARITY_PAIRS[@]}"; do
+  root_rel="${pair%%|*}"
+  pkg_rel="${pair##*|}"
+  root_file="$ROOT_DIR/$root_rel"
+  pkg_file="$TARGET/$pkg_rel"
   if [ -f "$root_file" ] && [ -f "$pkg_file" ]; then
     if [ "$(sha256sum "$root_file" | cut -d' ' -f1)" = "$(sha256sum "$pkg_file" | cut -d' ' -f1)" ]; then
-      echo "  [PASS] parity: $rel"
+      echo "  [PASS] parity: $root_rel ↔ $pkg_rel"
     else
-      echo "  [FAIL] parity mismatch: $rel (root ≠ package)"
+      echo "  [FAIL] parity mismatch: $root_rel ↔ $pkg_rel (root ≠ package)"
       FAIL=1
     fi
   else
-    echo "  [FAIL] parity: missing file for $rel (root=$root_file pkg=$pkg_file)"
+    echo "  [FAIL] parity: missing file for $root_rel ↔ $pkg_rel (root=$root_file pkg=$pkg_file)"
     FAIL=1
   fi
 done
@@ -1366,7 +1375,7 @@ Expected: ALL CHECKS PASSED.
 - [ ] **Step 8: Commit**
 
 ```bash
-git add Test-report-results/ invention-evaluation-engine/examples/tesla-us433700/report-tesla-us433700-e2e-v16.md
+git add Test-report-results/ invention-evaluation-engine/examples/tesla-us433700/report-tesla-us433700-e2e-v16.md verify.sh
 git commit -m "test(v1.6): Tesla US433,700 rerun — report, ledgers, validation matrix, negative-control test"
 ```
 

@@ -7,7 +7,9 @@ description: Orchestration layer for the nine-phase invention evaluation pipelin
 
 ## Core principle
 
-This pipeline is an **evidence-constrained invention reasoning engine**, not a collection of research prompts. The governing rule, enforced at every stage: **nothing downstream is allowed to promote an inference into a fact.** Every proposition carries the evidence grade it was established with (see GLOSSARY.md — Evidence → Inference → Conclusion firewall). The framework's job is to separate *what the evidence establishes* from *what the analyst wants to conclude* — and to prevent the two from merging.
+**Governing principle:** Unsupported assertions are errors. Missing evidence is a work queue, not an answer.
+
+This pipeline is an **evidence-constrained invention reasoning engine**, not a collection of research prompts. The governing rule, enforced at every stage: **nothing downstream is allowed to promote an inference into a fact, and no proposition enters the report except through the Evidence Sufficiency Gate.** Every proposition carries a stable `proposition_id` + `proposition_version` and the evidence state it was established with (see GLOSSARY.md — Epistemic Architecture). The framework's job is to separate *what the evidence establishes* from *what the analyst wants to conclude* — and to prevent the two from merging.
 
 ## When to use
 - "I have an invention — how do I evaluate it?"
@@ -25,9 +27,10 @@ This pipeline is an **evidence-constrained invention reasoning engine**, not a c
    - Hard dependencies must be satisfied before execution.
    - Soft dependencies can be bypassed with degraded capability, but note the degradation in the final report.
 3. Maintain a phase-completion checklist with explicit "blocked / needs-input" states.
-4. Route outputs to the next skill in the dependency chain. Each routed output must preserve its evidence grades — never strip or upgrade them at hand-off.
+4. Route outputs to the next skill in the dependency chain. Each routed output must preserve proposition identity: `proposition_id` + `proposition_version` + evidence state. Never strip, upgrade, or silently re-scope a proposition at hand-off; any refinement requires a version increment.
 5. If the user asks about FTO / infringement, stop and explain the distinction (see GLOSSARY.md) — do not proceed into the novelty pipeline as a substitute.
 
 ## Boundary
 - No search, no scoring, no legal or financial opinion.
+- Unestablished propositions are work-queue items, not findings. See GLOSSARY.md — Evidence Sufficiency Gate.
 - Not a substitute for docketing software or prosecution-tracking system.

@@ -7,7 +7,9 @@ description: One-skill entry point for the full nine-phase invention evaluation 
 
 ## What this is
 
-The orchestration layer of an **evidence-constrained invention reasoning engine**. This skill does not perform search or analysis itself — it routes through the nine sub-skills bundled in `skills/` and enforces the framework's governing rule at every hand-off: **nothing downstream may promote an inference into a fact.** Every proposition carries the evidence grade it was established with (see `docs/GLOSSARY.md`).
+**Governing principle:** Unsupported assertions are errors. Missing evidence is a work queue, not an answer.
+
+The orchestration layer of an **evidence-constrained invention reasoning engine**. This skill does not perform search or analysis itself — it routes through the nine sub-skills bundled in `skills/` and enforces the framework's governing rule at every hand-off: **nothing downstream may promote an inference into a fact.** Every proposition carries a stable `proposition_id` + `proposition_version` and the evidence state it was established with (see `docs/GLOSSARY.md` — Epistemic Architecture). Nothing enters the final report except through the Evidence Sufficiency Gate.
 
 ## When to use
 - "Evaluate this invention" / "run the full evaluation pipeline"
@@ -25,14 +27,14 @@ The orchestration layer of an **evidence-constrained invention reasoning engine*
 2. **Dependency order.** Execute sub-skills in dependency order per `docs/INDEX.md`, reading each `skills/skill-XX-*/SKILL.md` when its phase is reached:
    - 01 overview → 02 gather-submission → 03 technology-fundamentals → 04 patent-landscape → 05 novelty-search → 06 literature-search → 07 market-opportunity → 08 identify-partners → 09 compile-report
    - Hard dependencies must be satisfied before a phase runs; soft dependencies may be bypassed with degraded capability, noted in the final report.
-3. **Evidence-grade preservation.** At every hand-off, carry each proposition with the evidence grade it was established with (CONFIRMED PRESENT / CONFIRMED ABSENT / NOT OBSERVED / NOT IDENTIFIED / NOT EVALUATED / INFERRED / CONTESTED) plus any coverage objects. Never upgrade or strip grades.
+3. **Evidence-grade preservation.** At every hand-off, carry each proposition with its `proposition_id`, `proposition_version`, and evidence state (CONFIRMED PRESENT / CONFIRMED ABSENT) plus its avenue records. Never upgrade, strip, or re-scope a proposition at hand-off; any refinement requires a version increment. Unestablished propositions remain in the work queue with their search records.
 4. **Phase checklist.** Maintain a phase-completion checklist with explicit `blocked / needs-input` states. If a phase is blocked, say so — do not guess.
 5. **Report.** Compile the final report via `skills/skill-09-compile-report/SKILL.md`, including the reproducible query log and the "not legal advice" disclaimers.
 
 ## Reference docs (relative to this skill's folder)
 
 - `docs/DIGEST.md` — 5-minute read; the non-negotiables
-- `docs/GLOSSARY.md` — full terminology, evidence ontology, decision matrix
+- `docs/GLOSSARY.md` — full terminology, three-layer epistemic architecture, sufficiency gate, escalation protocol, schema registry
 - `docs/INDEX.md` — dependency graph, entry points, dependency types
 - `docs/PIPELINE_STATE.md` — version and validation record
 

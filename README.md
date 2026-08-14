@@ -5,7 +5,11 @@ takes an invention submission and produces a structured evaluation report —
 technology profile, patent landscape, novelty search, literature search, market
 opportunity, partner identification, and a compiled final report. Every finding
 carries an explicit evidence grade; nothing downstream may promote an inference
-into a fact.
+into a fact. v1.6 enforces an evidence-sufficiency architecture: propositions
+enter the report only through the Evidence Sufficiency Gate, searches escalate
+through deterministic avenue checklists, and unestablished propositions are
+excluded from factual findings (see
+`docs/superpowers/specs/2026-08-14-invention-evaluation-framework-v16-design.md`).
 
 Pipeline: Submission → Technology Profile → Patent Landscape → Novelty Search →
 Literature Search → Market Opportunity → Partners → Report.

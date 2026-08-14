@@ -78,7 +78,8 @@ LEGACY_ANTIPATTERNS=(
   'status: INFERRED'
   'completeness: MEDIUM'
   'Negative Evidence Coverage Rule'
-  'overall patentability'
+  'Overall patentability:'
+  '| Overall patentability |'
 )
 
 for f in "${ACTIVE_FILES[@]}"; do

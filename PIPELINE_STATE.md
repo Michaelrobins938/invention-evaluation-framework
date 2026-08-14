@@ -2,7 +2,10 @@
 
 **Version:** v1.6 (Evidence Sufficiency Architecture — three-layer epistemic model, Sufficiency Gate, Search Escalation Protocol, Proposition-Schema Registry, Operational Audit)
 **Status:** v1.6 implemented; end-to-end validation on Tesla US433,700 in progress (see Test-report-results/).
+<!-- v1.6-history -->
 **Supersedes:** v1.5 (Causal Bridge Test, mechanism/design-choice distance, Negative Evidence Coverage Rule, first-class Motivation Object, per-gate-only conclusion) — validation record retained below.
+
+<!-- /v1.6-history -->
 
 ## Skill status
 
@@ -18,6 +21,7 @@
 | 08 | identify-partners | ✅ | ✅ | ✅ |
 | 09 | compile-report | ✅ | ✅ | ✅ |
 
+<!-- v1.6-history -->
 ## v1.4 changes
 
 | Area | Change |
@@ -100,6 +104,7 @@ Re-execution of the full pipeline on Tesla US433,700 under v1.5. Deliverable: `r
 | Anti-pattern scan | Clean — banned phrases appear only as explanatory references to the v1.5 rules |
 
 **Substantive finding:** unchanged in direction from v1.4 (obviousness Moderate, UNRESOLVED; bridge UNRESOLVED) — as expected, since the v1.5 constructs refine how the finding is evidenced and reported, not what the evidence says. The v1.5 upgrade is demonstrated: the conclusion is now decomposable into orthogonal, auditable dimensions (C/D, bridge_status, motivation status, coverage) that no longer compress into a scalar.
+<!-- /v1.6-history -->
 
 ## Next action
 

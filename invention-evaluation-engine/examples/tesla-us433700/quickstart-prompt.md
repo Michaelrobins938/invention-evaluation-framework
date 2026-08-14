@@ -10,9 +10,13 @@ The invention submission is in the file `examples/tesla-us433700/submission.md`
 inside the installed `invention-evaluation-engine` skill folder. Read it, then
 run the complete nine-phase pipeline and produce the final report.
 
+Run under the v1.6 evidence-sufficiency architecture: every proposition passes
+the Evidence Sufficiency Gate; negative results are avenue records; unestablished
+propositions go to the Operational Audit.
+
 ---
 
 When the run finishes, compare the output with
-`examples/tesla-us433700/report-tesla-us433700-e2e-v15.md` (the validated
+`examples/tesla-us433700/report-tesla-us433700-e2e-v16.md` (the validated
 reference report). The pipeline performs live web searches, so the run takes
 several minutes and needs network access.

@@ -1,8 +1,11 @@
 # Pipeline State — Invention Evaluation Framework
 
-**Version:** v1.5 (Causal Bridge Test, mechanism/design-choice distance, Negative Evidence Coverage Rule, first-class Motivation Object, per-gate-only conclusion)
-**Status:** Ready for deployment — v1.5 implemented and validated end-to-end on Tesla US433,700 (report-tesla-us433700-e2e-v15.md).
-**Supersedes:** v1.4 (evidence firewall, motivation/causal-distance gates, NOT OBSERVED state, multidimensional conclusions) — validation record retained below.
+**Version:** v1.6 (Evidence Sufficiency Architecture — three-layer epistemic model, Sufficiency Gate, Search Escalation Protocol, Proposition-Schema Registry, Operational Audit)
+**Status:** v1.6 implemented; end-to-end validation on Tesla US433,700 in progress (see Test-report-results/).
+<!-- v1.6-history -->
+**Supersedes:** v1.5 (Causal Bridge Test, mechanism/design-choice distance, Negative Evidence Coverage Rule, first-class Motivation Object, per-gate-only conclusion) — validation record retained below.
+
+<!-- /v1.6-history -->
 
 ## Skill status
 
@@ -18,6 +21,7 @@
 | 08 | identify-partners | ✅ | ✅ | ✅ |
 | 09 | compile-report | ✅ | ✅ | ✅ |
 
+<!-- v1.6-history -->
 ## v1.4 changes
 
 | Area | Change |
@@ -47,6 +51,21 @@
 | **Overall patentability score removed** | Native output is the per-gate table only; no "Overall patentability" row in the default conclusion. Executive score ("Indeterminate-to-[level]") derived only on explicit request, labeled as a derived executive summary. Quality checklist gained the corresponding item. |
 | Glossary / DIGEST / INDEX | All constructs codified; non-negotiables updated (8, 9, 10, 12, 13, 19 reworked; 23 added). |
 | Skills 04, 06, 07 | Coverage object required on all negative landscape / literature / market findings. |
+
+## v1.6 changes (2026-08-14) — Evidence Sufficiency Architecture (breaking change)
+
+| Area | Change |
+|---|---|
+| Evidence ontology | Replaced the 7-state evidence ontology with the **three-layer architecture** (Evidence / Work / Analytical). Evidence layer: CONFIRMED PRESENT / CONFIRMED ABSENT only. Work layer: NOT_STARTED (internal) / SEARCHING / ESCALATING / REQUIRES VERIFICATION / BLOCKED (avenue-level) / EXHAUSTED (proposition-level). Analytical layer: evidence → inference → conclusion; inference is never evidence. |
+| Evidence Sufficiency Gate | Added as the **only admission path** for propositions into the report: schema-driven, atomic, with the proposition-identity firewall (steps 4 + 6) and schema-driven independent corroboration (independence_lineage_id). |
+| Search Escalation Protocol | Fixed per-skill avenue checklists with deterministic priority; avenue_record audit schema; EXHAUSTED as a proposition-level termination state with the invariant that every required avenue is COMPLETE / BLOCKED / NOT_APPLICABLE (none REQUIRES_VERIFICATION). |
+| Proposition-Schema Registry | Single authoritative registry of 10 schemas; skills reference schema IDs and may not duplicate or extend them. |
+| Finding object | proposition_id + proposition_version, source_identity, independence_lineage_id, absence_basis (REQUIRED for CONFIRMED ABSENT). |
+| Negative-evidence rule | Replaced the Negative Evidence Coverage Rule with the Evidence Sufficiency & Search Escalation Rule. |
+| Terminal states | Removed UNRESOLVED as a terminal analytical conclusion; removed INFERRED / NOT OBSERVED / NOT IDENTIFIED / NOT EVALUATED / CONTESTED from active semantics. |
+| Report architecture | Established Findings / Analytical Conclusions (premise maps; no orphan conclusions) / Operational Audit (barrier_type). Executive Summary ⊆ Established Findings + Analytical Conclusions. |
+| verify.sh | Legacy-terminology semantic scan + root/package parity check. |
+| Validation | Tesla US433,700 v1.6 rerun + negative-control test (see Test-report-results/). |
 
 ## v1.4 validation run (completed 2026-08-14)
 
@@ -85,6 +104,7 @@ Re-execution of the full pipeline on Tesla US433,700 under v1.5. Deliverable: `r
 | Anti-pattern scan | Clean — banned phrases appear only as explanatory references to the v1.5 rules |
 
 **Substantive finding:** unchanged in direction from v1.4 (obviousness Moderate, UNRESOLVED; bridge UNRESOLVED) — as expected, since the v1.5 constructs refine how the finding is evidenced and reported, not what the evidence says. The v1.5 upgrade is demonstrated: the conclusion is now decomposable into orthogonal, auditable dimensions (C/D, bridge_status, motivation status, coverage) that no longer compress into a scalar.
+<!-- /v1.6-history -->
 
 ## Next action
 

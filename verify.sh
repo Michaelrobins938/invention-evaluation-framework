@@ -79,15 +79,20 @@ LEGACY_ANTIPATTERNS=(
   'completeness: MEDIUM'
   'Negative Evidence Coverage Rule'
   'Overall patentability:'
-  '| Overall patentability |'
+  '\| Overall patentability \|'
 )
 
 for f in "${ACTIVE_FILES[@]}"; do
   [ -f "$f" ] || continue
-  # Skip the delimited legacy-mapping table inside GLOSSARY
+  # Migration documentation is exempt from the scan:
+  # - GLOSSARY: the delimited legacy-mapping table
+  # - PIPELINE_STATE: the historical changelog + validation-run sections
   if [[ "$f" == *GLOSSARY.md ]]; then
     awk '/<!-- v1.6-legacy-mapping -->/{skip=1} /<!-- \/v1.6-legacy-mapping -->/{skip=0; next} !skip' "$f" > /tmp/v16-glossary-scan.txt
     SCAN_FILE=/tmp/v16-glossary-scan.txt
+  elif [[ "$f" == *PIPELINE_STATE.md ]]; then
+    awk '/<!-- v1.6-history -->/{skip=1} /<!-- \/v1.6-history -->/{skip=0; next} !skip' "$f" > /tmp/v16-pipeline-scan.txt
+    SCAN_FILE=/tmp/v16-pipeline-scan.txt
   else
     SCAN_FILE="$f"
   fi

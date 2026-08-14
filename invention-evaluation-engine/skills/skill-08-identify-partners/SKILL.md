@@ -12,10 +12,13 @@ description: Compiles a prioritized list of licensing, joint-venture, or R&D-col
 - The ask is purely about competitors, with no partnership intent — use `analyze-market-opportunity`.
 
 ## Execution
+
+**Governing principle:** Unsupported assertions are errors. Missing evidence is a work queue, not an answer. A partner-fit proposition that cannot satisfy the `partner_fit` schema escalates through the avenue checklist; if exhausted, it is excluded from factual findings and recorded in the Operational Audit.
+
 1. Draw candidates from the `analyze-market-opportunity` competitive landscape, then expand to adjacent players not captured there — distributors, clinical partners, research collaborators.
-2. For each candidate, capture: organization and website; contact person and role if known; business description; relevance rationale (why *this* invention would interest *this* company specifically, not a generic fit statement); proposed partnership model (licensing, JV, R&D collaboration).
+2. For each candidate, capture the `partner_fit` schema from GLOSSARY.md: what they sell, what they buy, their technical need, and the mapping to the invention (why *this* invention would interest *this* company specifically, not a generic fit statement) — each field with source_identity. A candidate row without the sell/buy/need/mapping fields does not exist. Also capture: organization and website; contact person and role if known; proposed partnership model (licensing, JV, R&D collaboration).
 3. Prioritize High/Medium/Low fit, with the reasoning stated, not just the label.
-4. **Counterfactual-exclusivity audit.** Any statement that one partner is "the only" viable path, or that "without X there is no commercial vehicle," is a claim about the absence of alternatives — almost never evidenced. Reformulate as "the strongest identified pathway" and explicitly note that alternatives were not identified (NOT OBSERVED) rather than established not to exist. Penalize exclusivity framing unless absence of alternatives is itself evidenced.
+4. **Counterfactual-exclusivity audit.** Any statement that one partner is "the only" viable path, or that "without X there is no commercial vehicle," is a claim about the absence of alternatives — almost never evidenced. Reformulate as "the strongest identified pathway" and explicitly note that alternatives were not established (see Operational Audit) rather than established not to exist. Penalize exclusivity framing unless absence of alternatives is itself evidenced.
 
 ## Boundary
 - Research output only — no outreach, and no sharing of confidential invention detail without an NDA in place.

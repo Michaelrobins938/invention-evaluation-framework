@@ -66,10 +66,12 @@ class TestForcedStateContradiction:
     """The canonical registry must reject any downstream state override."""
 
     def test_p03003_forced_established_aborts(self):
-        """P-03-003 forced to ESTABLISHED while registry says ESCALATION_REQUIRED."""
+        """P-03-003 forced to ESTABLISHED while registry says NOT_ESTABLISHED
+        (legacy status ESCALATION_REQUIRED canonicalizes to NOT_ESTABLISHED
+        in the v1.9 lattice)."""
         ledger = _load_ledger()
         reg = PropositionRegistry(ledger)
-        assert reg.state_of("P-03-003") == "ESCALATION_REQUIRED"
+        assert reg.state_of("P-03-003") == "NOT_ESTABLISHED"
 
         report_md = _load_report().replace(
             "**P-03-003** (Quantitative performance comparison): ESCALATION_REQUIRED",
@@ -78,7 +80,7 @@ class TestForcedStateContradiction:
         errors = reg.validate_report_consistency(report_md)
         assert len(errors) > 0
         assert any("P-03-003" in str(e) for e in errors)
-        assert any("ESCALATION_REQUIRED" in str(e) for e in errors)
+        assert any("NOT_ESTABLISHED" in str(e) for e in errors)
 
     def test_p06005_forced_established_aborts(self):
         """P-06-005 forced to ESTABLISHED while registry says PARTIALLY_ESTABLISHED."""

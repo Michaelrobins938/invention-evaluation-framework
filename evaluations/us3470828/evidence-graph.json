@@ -1,0 +1,14 @@
+{
+  "propositions": [
+    {"id":"P-02-001","proposition_version":1,"state":"established","evidence_state":"CONFIRMED PRESENT","basis":"US3470828A primary record"},
+    {"id":"P-03-001","proposition_version":1,"state":"established","evidence_state":"CONFIRMED PRESENT","basis":"US3470828A abstract, description, and claims"},
+    {"id":"P-03-002","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"independent performance validation absent"},
+    {"id":"P-04-001","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"family-deduplicated landscape incomplete"},
+    {"id":"P-05-001","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"claim-level search incomplete"},
+    {"id":"P-05-002","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"motivation and expectation evidence incomplete"},
+    {"id":"P-06-001","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"cited literature not independently retrieved"},
+    {"id":"P-07-001","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"quantitative market evidence absent"},
+    {"id":"P-07-002","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"commercial adoption not established"},
+    {"id":"P-08-001","proposition_version":1,"state":"escalation_required","evidence_state":"WORK QUEUE","blocker":"organization-specific fit not verified"}
+  ]
+}

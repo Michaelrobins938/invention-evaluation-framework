@@ -1,0 +1,40 @@
+[
+  {
+    "proposition_id": "P-05-001",
+    "severity": "high",
+    "impact": [
+      "anticipation",
+      "patentability_confidence",
+      "ip_leverage"
+    ],
+    "next_action": "execute recovery policy and attach exhaustion proof",
+    "score": 100
+  },
+  {
+    "proposition_id": "P-05-002",
+    "severity": "high",
+    "impact": [
+      "ip_leverage"
+    ],
+    "next_action": "execute recovery policy and attach exhaustion proof",
+    "score": 100
+  },
+  {
+    "proposition_id": "P-07-001",
+    "severity": "medium",
+    "impact": [
+      "commercial_confidence"
+    ],
+    "next_action": "execute recovery policy and attach exhaustion proof",
+    "score": 60
+  },
+  {
+    "proposition_id": "P-08-001",
+    "severity": "medium",
+    "impact": [
+      "partner_recommendation"
+    ],
+    "next_action": "execute recovery policy and attach exhaustion proof",
+    "score": 60
+  }
+]

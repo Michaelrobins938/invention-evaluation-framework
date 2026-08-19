@@ -1,0 +1,202 @@
+{
+  "run_id": "RUN-US3470828-20260816145203",
+  "executions": [
+    {
+      "execution_id": "EX-01-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "01",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/submission-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.019680+00:00",
+      "completed_at": "2026-08-16T14:52:03.019680+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/submission-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-02-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "02",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/technology-profile-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.019852+00:00",
+      "completed_at": "2026-08-16T14:52:03.019852+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/technology-profile-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-03-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "03",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/patent-landscape-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.019989+00:00",
+      "completed_at": "2026-08-16T14:52:03.019989+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/patent-landscape-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-04-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "04",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/literature-search-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.020178+00:00",
+      "completed_at": "2026-08-16T14:52:03.020178+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/literature-search-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-05-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "05",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/novelty-search-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.020337+00:00",
+      "completed_at": "2026-08-16T14:52:03.020337+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/novelty-search-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-06-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "06",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/market-analysis-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.020481+00:00",
+      "completed_at": "2026-08-16T14:52:03.020481+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/market-analysis-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-07-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "07",
+      "action_type": "phase_artifact_ingestion",
+      "source": "local filesystem",
+      "query": "evaluations/us3470828/partner-analysis-us3470828.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.020609+00:00",
+      "completed_at": "2026-08-16T14:52:03.020609+00:00",
+      "result_count": null,
+      "result_artifact": "evaluations/us3470828/partner-analysis-us3470828.md",
+      "status": "COMPLETE",
+      "outcome": "artifact ingested; phase execution provenance remains external",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-08-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "08",
+      "action_type": "compile",
+      "source": "local filesystem",
+      "query": "evaluations/3470828/report-us3470828-v17.md",
+      "request": "",
+      "started_at": "2026-08-16T14:52:03.028657+00:00",
+      "completed_at": "2026-08-16T14:52:03.028657+00:00",
+      "result_count": null,
+      "result_artifact": null,
+      "status": "COMPLETE",
+      "outcome": "compiled",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    },
+    {
+      "execution_id": "EX-09-00001",
+      "run_id": "RUN-US3470828-20260816145203",
+      "phase_id": "09",
+      "action_type": "render",
+      "source": "local renderer",
+      "query": "evaluations/3470828/report-us3470828-v17.html",
+      "request": "",
+      "started_at": "2026-08-16T14:52:06.948590+00:00",
+      "completed_at": "2026-08-16T14:52:06.948590+00:00",
+      "result_count": null,
+      "result_artifact": null,
+      "status": "COMPLETE",
+      "outcome": "rendered",
+      "candidate_evidence": false,
+      "evidence_sufficiency": false
+    }
+  ],
+  "artifacts": [
+    {
+      "phase_id": "01",
+      "path": "evaluations/us3470828/submission-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    },
+    {
+      "phase_id": "02",
+      "path": "evaluations/us3470828/technology-profile-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    },
+    {
+      "phase_id": "03",
+      "path": "evaluations/us3470828/patent-landscape-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    },
+    {
+      "phase_id": "04",
+      "path": "evaluations/us3470828/literature-search-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    },
+    {
+      "phase_id": "05",
+      "path": "evaluations/us3470828/novelty-search-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    },
+    {
+      "phase_id": "06",
+      "path": "evaluations/us3470828/market-analysis-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    },
+    {
+      "phase_id": "07",
+      "path": "evaluations/us3470828/partner-analysis-us3470828.md",
+      "status": "INGESTED",
+      "phase_execution_status": "NOT_VERIFIED"
+    }
+  ]
+}

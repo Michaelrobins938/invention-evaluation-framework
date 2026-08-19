@@ -1,0 +1,538 @@
+{
+  "scores_manifest": {
+    "invention_id": "US5215088",
+    "invention_name": "Three-Dimensional Electrode Device",
+    "run_id": "RUN-US5215088-v18-20260819120000",
+    "evaluation_date": "2026-08-19",
+    "report_date": "2026-08-19",
+    "submitted_date": "2026-08-18",
+    "submitted_by": "University of Utah (Normann, Campbell, Jones)",
+    "disclaimer": "This report is an analytical evaluation, not legal advice. Patent status is from public databases and is an assumption, not a legal conclusion.",
+    "target_patent": {
+      "publication_number": "US5215088A",
+      "application_number": "US07/432992",
+      "title": "Three-dimensional electrode device",
+      "inventors": ["Normann", "Campbell", "Jones"],
+      "assignee": "University of Utah",
+      "filing_date": "1989-11-07",
+      "grant_date": "1993-06-01",
+      "expiration_date": "2010-06-01",
+      "government_rights": "NSF grant 5-38640-3300",
+      "patent_source_file": "patent-source-us5215088.json",
+      "status": "EXPIRED",
+      "prior_publication": "None",
+      "manufacturing": "Silicon MEMS fabrication; thermomigration or glass melt isolation; platinum/iridium/iridium oxide charge transfer coating"
+    },
+    "evidence_items": [
+      {
+        "evidence_id": "E-03-001",
+        "target_publication_number": "US5215088A",
+        "source": "US5215088A patent text",
+        "source_type": "patent",
+        "supports": ["P-03-001", "P-03-002", "P-03-004", "P-03-005", "P-03-006"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-04-001",
+        "target_publication_number": "US5215088A",
+        "source": "Patent landscape analysis",
+        "source_type": "patent_database",
+        "supports": ["P-04-001", "P-04-002", "P-04-003", "P-04-004", "P-04-005", "P-04-006"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-05-001",
+        "target_publication_number": "US5215088A",
+        "source": "Najafi & Wise 1985",
+        "source_type": "patent",
+        "supports": ["P-05-001", "P-05-002", "P-05-003"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-05-002",
+        "target_publication_number": "US5215088A",
+        "source": "Campbell et al. 1991 (self-prior-art)",
+        "source_type": "literature",
+        "supports": ["P-05-001", "P-05-005"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-05-003",
+        "target_publication_number": "US5215088A",
+        "source": "Obviousness analysis - bridge untraversed",
+        "source_type": "LLM_INFERENCE",
+        "supports": ["P-05-004", "P-05-006"],
+        "confidence": "MODERATE"
+      },
+      {
+        "evidence_id": "E-06-001",
+        "target_publication_number": "US5215088A",
+        "source": "Prasad et al. 2013 (IEEE EMBS)",
+        "source_type": "literature",
+        "supports": ["P-06-005", "P-03-003"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-06-002",
+        "target_publication_number": "US5215088A",
+        "source": "Gardner et al. 2018 (IEEE JERM)",
+        "source_type": "literature",
+        "supports": ["P-03-003"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-06-003",
+        "target_publication_number": "US5215088A",
+        "source": "PMC8981395 (2022) - Utah array longevity",
+        "source_type": "literature",
+        "supports": ["P-06-005", "P-03-003"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-06-004",
+        "target_publication_number": "US5215088A",
+        "source": "Andreis et al. 2024 (Sensors)",
+        "source_type": "literature",
+        "supports": ["P-03-003"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-07-001",
+        "target_publication_number": "US5215088A",
+        "source": "BCI market analysis - LLM_INFERENCE (BENCHMARK)",
+        "source_type": "LLM_INFERENCE",
+        "supports": ["P-07-001", "P-07-002", "P-07-003", "P-07-004"],
+        "confidence": "MODERATE"
+      },
+      {
+        "evidence_id": "E-08-001",
+        "target_publication_number": "US5215088A",
+        "source": "University of Utah public records",
+        "source_type": "public_record",
+        "supports": ["P-08-001", "P-08-002", "P-08-003", "P-08-004"],
+        "confidence": "HIGH"
+      },
+      {
+        "evidence_id": "E-08-002",
+        "target_publication_number": "US5215088A",
+        "source": "Industry benchmark - NOT direct evidence of actual terms",
+        "source_type": "BENCHMARK",
+        "supports": ["P-08-005"],
+        "confidence": "LOW"
+      }
+    ],
+    "scores": {
+      "utility": {
+        "score": "HIGH",
+        "rationale": "Clear practical application in neural interfaces; demonstrated clinical utility with 30,000+ aggregate human days",
+        "evidence_status": "ESTABLISHED",
+        "basis_proposition_id": "P-03-001",
+        "evidence_ids": ["E-03-001"]
+      },
+      "inventive_step": {
+        "score": "MODERATE",
+        "rationale": "3D penetrating architecture non-obvious over 2D prior art; motivation exists but specific combination not evidenced pre-filing",
+        "evidence_status": "ESTABLISHED",
+        "basis_proposition_id": "P-05-004",
+        "evidence_ids": ["E-05-001", "E-05-002", "E-05-003"]
+      },
+      "novelty": {
+        "score": "MODERATE",
+        "rationale": "No single reference anticipates all claim elements; self-prior-art close but incomplete",
+        "evidence_status": "ESTABLISHED",
+        "basis_proposition_id": "P-05-001",
+        "evidence_ids": ["E-05-001", "E-05-002"]
+      },
+      "commercial_actionability": {
+        "score": "MODERATE",
+        "rationale": "Technology successfully commercialized (Blackrock Neurotech); original patent expired; IP portfolio remains valuable",
+        "evidence_status": "PARTIALLY_ESTABLISHED",
+        "basis_proposition_id": "P-07-001",
+        "evidence_ids": ["E-07-001"],
+        "confidence_note": "Market size and growth rate are LLM inferences (BENCHMARK), not established facts"
+      },
+      "regulatory_burden": {
+        "score": "HIGH",
+        "rationale": "FDA Class III medical device; PMA/HDE pathway required",
+        "evidence_status": "ESTABLISHED",
+        "basis_proposition_id": "P-03-004",
+        "evidence_ids": ["E-03-001"]
+      },
+      "market_opportunity": {
+        "score": "HIGH",
+        "rationale": "BCI market growing; Utah Array holds dominant position",
+        "evidence_status": "PARTIALLY_ESTABLISHED",
+        "basis_proposition_id": "P-07-001",
+        "evidence_ids": ["E-07-001"],
+        "confidence_note": "Market size ($3.25B), CAGR (14.5%), market shares are LLM inferences, not established facts"
+      },
+      "ip_strength": {
+        "score": "MODERATE",
+        "rationale": "Original patent expired; continuation patents active; strong IP portfolio",
+        "evidence_status": "ESTABLISHED",
+        "basis_proposition_id": "P-04-003",
+        "evidence_ids": ["E-04-001"]
+      },
+      "technology_readiness": {
+        "score": "HIGH",
+        "rationale": "Prototype stage with working models; 20+ years clinical validation; FDA clearance",
+        "evidence_status": "ESTABLISHED",
+        "basis_proposition_id": "P-03-005",
+        "evidence_ids": ["E-03-001"]
+      }
+    },
+    "overall_assessment": "MODERATE-TO-HIGH",
+    "overall_status": "PARTIALLY_ESTABLISHED",
+    "overall_rationale": "Core technological evaluation is ESTABLISHED with direct evidence. Market quantification and licensing financial terms are NOT_ESTABLISHED (LLM inferences/benchmarks, not direct evidence). Commercial opportunity assessment is PARTIALLY_ESTABLISHED.",
+    "section_status": {
+      "Technology Analysis": "ESTABLISHED",
+      "Patent Landscape Analysis": "ESTABLISHED",
+      "Novelty & IP Analysis": "ESTABLISHED",
+      "Literature Analysis": "ESTABLISHED",
+      "Market Analysis": "PARTIALLY_ESTABLISHED",
+      "Potential Partners": "PARTIALLY_ESTABLISHED",
+      "Operational Audit": "ESTABLISHED",
+      "SWOT Analysis": "PARTIALLY_ESTABLISHED"
+    },
+    "epistemic_notes": {
+      "market_size": "LLM_INFERENCE - not from structured market database",
+      "market_cagr": "LLM_INFERENCE - not from structured market database",
+      "market_share_research": "LLM_INFERENCE - not from patent/database analysis",
+      "market_share_human_bci": "LLM_INFERENCE - not from structured data",
+      "estimated_revenue": "LLM_INFERENCE - not from financial filings",
+      "licensing_royalty_rate": "BENCHMARK - industry average, not actual agreement terms",
+      "licensing_upfront": "BENCHMARK - industry average, not actual agreement terms"
+    },
+    "market_opportunity": {
+      "title": "Opportunity Assessment",
+      "rows": [
+        {
+          "sector": "Neuroprosthetics",
+          "sub_sector": "Motor BCIs",
+          "industry": "Medical Devices",
+          "products": "Intracortical electrode arrays (Utah Array / NeuroPort)",
+          "need": "Restore motor function in paralysis; neural recording",
+          "purchaser": "Hospitals, research centers",
+          "channels": "Direct sales",
+          "price": "$850M segment (LLM_INFERENCE)"
+        },
+        {
+          "sector": "Neuroscience Research",
+          "sub_sector": "Electrophysiology",
+          "industry": "Life Sciences Tools",
+          "products": "Utah Array research systems",
+          "need": "High-density neural recording for research",
+          "purchaser": "Academic labs (1,000+ worldwide)",
+          "channels": "Direct sales",
+          "price": "$180M segment (LLM_INFERENCE)"
+        },
+        {
+          "sector": "Clinical Diagnostics",
+          "sub_sector": "Epilepsy monitoring",
+          "industry": "Medical Devices",
+          "products": "NeuroPort chronic recording system",
+          "need": "Chronic intracortical monitoring",
+          "purchaser": "Hospitals",
+          "channels": "Direct sales",
+          "price": "Not established"
+        },
+        {
+          "sector": "Visual Prosthesis",
+          "sub_sector": "Cortical implants",
+          "industry": "Medical Devices",
+          "products": "Cortical visual prosthesis (long-term)",
+          "need": "Restore vision to blind patients",
+          "purchaser": "Hospitals",
+          "channels": "Direct sales",
+          "price": "$120M segment (LLM_INFERENCE)"
+        }
+      ]
+    },
+    "competitor_landscape": {
+      "swot": {
+        "s": [
+          "Foundational IP for the most successful BCI platform (Utah Array)",
+          "20+ years of clinical validation; 30,000+ aggregate human days",
+          "20,000+ peer-reviewed citations; used in 1,000+ labs worldwide",
+          "FDA clearance for human use; Breakthrough Device Designation (2021)",
+          "Established MEMS manufacturing process"
+        ],
+        "w": [
+          "Original patent expired (June 1, 2010)",
+          "Rigid silicon architecture limits conformability",
+          "Scalability limited to 96-128 electrodes per array",
+          "Cable tethering causes tissue damage in chronic use"
+        ],
+        "o": [
+          "Visual prosthesis market (first-in-human ~2028 via Neuralace)",
+          "Peripheral nerve interfaces (Utah Slanted Electrode Array)",
+          "Epilepsy monitoring (chronic intracortical recording)",
+          "Next-gen flexible arrays (Neuralace, 10,000+ channels)"
+        ],
+        "t": [
+          "Neuralink (flexible polymer threads, early clinical trials)",
+          "Synchron (endovascular Stentrode, less invasive)",
+          "Paradromics (high-density Connexus, pre-clinical)",
+          "Precision Neuroscience (Layer 7 cortical surface array)",
+          "Emerging flexible electrode technologies"
+        ],
+        "actionability": "MODERATE"
+      }
+    },
+    "regulatory_resources": {
+      "rows": [
+        {
+          "jurisdiction": "United States",
+          "body": "FDA",
+          "pathway": "Class III; PMA or HDE; 21 CFR 882.8955 (Electrode, Neural, Cortical)",
+          "link": "https://www.fda.gov"
+        },
+        {
+          "jurisdiction": "United States",
+          "body": "FDA",
+          "pathway": "IDE (Investigational Device Exemption) for human clinical trials",
+          "link": "https://www.fda.gov"
+        },
+        {
+          "jurisdiction": "European Union",
+          "body": "EU MDR",
+          "pathway": "Class III medical device; CE marking required",
+          "link": "https://health.ec.europa.eu"
+        },
+        {
+          "jurisdiction": "International",
+          "body": "ISO",
+          "pathway": "ISO 10993 series (biocompatibility testing for implant materials)",
+          "link": "https://www.iso.org"
+        }
+      ]
+    },
+    "product_diagram": {
+      "stages": ["Concept", "Prototype", "Validation", "Pilot", "Commercialization"],
+      "current": "Commercialization",
+      "tech_stages": ["Concept", "Prototype", "Validation", "Pilot", "Commercialization"],
+      "tech_current": "Commercialization",
+      "patent_basis": [
+        {
+          "criterion": "Core architecture",
+          "finding": "3D spire-shaped silicon electrode array with multiplexing",
+          "basis": "US5215088A claims 1-9"
+        },
+        {
+          "criterion": "Fabrication",
+          "finding": "Thermomigration or glass melt isolation; dicing saw 3D formation",
+          "basis": "US5215088A specification"
+        },
+        {
+          "criterion": "Commercial embodiment",
+          "finding": "Utah Array / NeuroPort (Blackrock Neurotech)",
+          "basis": "Landscape analysis P-04-001"
+        },
+        {
+          "criterion": "Next generation",
+          "finding": "Neuralace flexible array (10,000+ channels)",
+          "basis": "Landscape analysis P-04-005"
+        }
+      ]
+    },
+    "patentability_summary": {
+      "rows": [
+        {
+          "criterion": "Utility",
+          "finding": "HIGH — clear practical application in neural interfaces and vision prosthesis",
+          "basis": "P-03-001 (CONFIRMED PRESENT)"
+        },
+        {
+          "criterion": "Novelty",
+          "finding": "MODERATE — no single reference anticipates all claim elements; self-prior-art (Campbell 1991) close but incomplete on multiplexing",
+          "basis": "P-05-001 (ESTABLISHED)"
+        },
+        {
+          "criterion": "Inventive Step",
+          "finding": "MODERATE — 3D penetrating architecture non-obvious over 2D prior art; motivation to combine partially grounded",
+          "basis": "P-05-004 (PARTIALLY_ESTABLISHED)"
+        },
+        {
+          "criterion": "Commercial Actionability",
+          "finding": "MODERATE — successfully commercialized but original patent expired",
+          "basis": "P-07-005 (PARTIALLY_ESTABLISHED)"
+        }
+      ]
+    },
+    "dev_timeline": {
+      "stages": ["Concept", "Prototype", "Validation", "Pilot", "Commercialization"],
+      "current": "Commercialization"
+    },
+    "swot": {
+      "s": [
+        "Foundational IP for the most successful BCI platform (Utah Array)",
+        "20+ years of clinical validation; 30,000+ aggregate human days",
+        "20,000+ peer-reviewed citations; used in 1,000+ labs worldwide",
+        "FDA clearance for human use; Breakthrough Device Designation (2021)",
+        "Established MEMS manufacturing process"
+      ],
+      "w": [
+        "Original patent expired (June 1, 2010)",
+        "Rigid silicon architecture limits conformability",
+        "Scalability limited to 96-128 electrodes per array",
+        "Cable tethering causes tissue damage in chronic use"
+      ],
+      "o": [
+        "Visual prosthesis market (first-in-human ~2028 via Neuralace)",
+        "Peripheral nerve interfaces (Utah Slanted Electrode Array)",
+        "Epilepsy monitoring (chronic intracortical recording)",
+        "Next-gen flexible arrays (Neuralace, 10,000+ channels)"
+      ],
+      "t": [
+        "Neuralink (flexible polymer threads, early clinical trials)",
+        "Synchron (endovascular Stentrode, less invasive)",
+        "Paradromics (high-density Connexus, pre-clinical)",
+        "Precision Neuroscience (Layer 7 cortical surface array)",
+        "Emerging flexible electrode technologies"
+      ],
+      "actionability": "MODERATE"
+    },
+    "charts": {
+      "region_pie": {
+        "title": "Patent Applications by Region",
+        "data": {"United States": 70, "Europe (EPO)": 15, "Japan": 8, "China": 5, "Other": 2},
+        "note": "US primary market; FDA regulatory pathway drives concentration. Source: landscape analysis."
+      },
+      "applicants_pie": {
+        "title": "Top Applicants",
+        "data": {"University of Utah": 40, "Blackrock Neurotech": 35, "Other academic/medical": 25},
+        "note": "Consolidated IP control: University of Utah (original) + Blackrock (commercial licensee)."
+      },
+      "activity_line": {
+        "title": "Filing Activity Trend",
+        "data": {"1985-90": 5, "1991-95": 9, "1996-00": 4, "2001-05": 7, "2006-10": 11, "2011-15": 14, "2016-20": 15, "2021-26": 13},
+        "note": "Sustained innovation; no sign of saturation. Peak periods correlate with BCI research milestones."
+      }
+    },
+    "partners": [
+      {
+        "name": "Blackrock Neurotech",
+        "contact": "Exclusive licensee (University of Utah)",
+        "description": "Primary commercializer of Utah Array technology; 25+ improvement patents; Neuralace next-gen development",
+        "tag": "Current Licensee"
+      },
+      {
+        "name": "University of Utah Research Foundation",
+        "contact": "Patent assignee / licensor",
+        "description": "Controls IP portfolio; original assignee of US5215088",
+        "tag": "IP Owner"
+      },
+      {
+        "name": "Medtronic",
+        "contact": "Potential licensee",
+        "description": "Active in neurostimulation; BCI interest",
+        "tag": "Potential Licensee"
+      },
+      {
+        "name": "Abbott (St. Jude Medical)",
+        "contact": "Potential licensee",
+        "description": "Neuromodulation portfolio",
+        "tag": "Potential Licensee"
+      },
+      {
+        "name": "Boston Scientific",
+        "contact": "Potential licensee",
+        "description": "Neuromodulation; deep brain stimulation",
+        "tag": "Potential Licensee"
+      },
+      {
+        "name": "Cochlear Limited",
+        "contact": "Potential licensee",
+        "description": "Implantable devices; neural interface expertise",
+        "tag": "Potential Licensee"
+      },
+      {
+        "name": "Intan Technologies",
+        "contact": "Technology partner",
+        "description": "Low-noise neural recording electronics",
+        "tag": "Technology Partner"
+      },
+      {
+        "name": "Ripple Neuro",
+        "contact": "Technology partner",
+        "description": "Neural recording/stimulation systems",
+        "tag": "Technology Partner"
+      }
+    ],
+    "gauges": {
+      "technology": {
+        "tier_index": 5,
+        "tier_label": "High",
+        "subfactors": {"Clinical Validation": 3, "Fabrication Maturity": 3, "Scalability": 2, "Biocompatibility": 3}
+      },
+      "ip": {
+        "tier_index": 3,
+        "tier_label": "Moderate",
+        "subfactors": {"Original Patent": 1, "Continuations": 3, "Portfolio Depth": 3, "Expiration Impact": 1}
+      },
+      "market": {
+        "tier_index": 3,
+        "tier_label": "Moderate",
+        "subfactors": {"Market Size": 3, "Growth Rate": 3, "Competition": 2, "Regulatory Barrier": 2}
+      }
+    },
+    "commercialization_summary": {
+      "paragraph": "The Utah Array, commercialized by Blackrock Neurotech, is the most widely used intracortical electrode array in BCI research and the only penetrating array with FDA clearance for human use. The original patent (US5215088A) expired June 1, 2010, but the surrounding IP portfolio (25+ patents, including US8359083B2 expiring ~2031) remains valuable. Market quantification is PARTIALLY_ESTABLISHED: market size, CAGR, and revenue figures are LLM inferences, not established facts.",
+      "teasers": [
+        "Foundational IP for the most successful BCI platform",
+        "20+ years clinical validation; 30,000+ aggregate human days; zero serious adverse events",
+        "Original patent expired 2010; continuation portfolio active through ~2031",
+        "Next-gen Neuralace (10,000+ channels) targets visual prosthesis first-in-human ~2028"
+      ]
+    },
+    "v17_artifacts": {
+      "rights": {
+        "state": "EXPIRED",
+        "state_label": "EXPIRED",
+        "family": {
+          "active_members": ["US8359083B2 (expires ~2031)", "US8226661 (active)"],
+          "active_note": "Active family members include US8359083B2 (expires ~2031) and US8226661"
+        }
+      },
+      "bridge": {
+        "state": "PARTIALLY_GROUNDED",
+        "state_label": "PARTIALLY GROUNDED"
+      },
+      "debt": [
+        {
+          "proposition": "P-03-003",
+          "missingness": "Quantitative performance comparison vs. 2D arrays (controlled study)",
+          "state": "ESCALATION_REQUIRED"
+        },
+        {
+          "proposition": "P-06-005",
+          "missingness": "Long-term biocompatibility data (independent verification)",
+          "state": "PARTIALLY_ESTABLISHED"
+        },
+        {
+          "proposition": "P-07-001",
+          "missingness": "Market size ($3.25B) and CAGR (14.5%) — LLM inference, not structured database",
+          "state": "PARTIALLY_ESTABLISHED"
+        },
+        {
+          "proposition": "P-08-005",
+          "missingness": "Specific licensing terms and royalty rates (confidential agreement)",
+          "state": "NOT_ESTABLISHED"
+        }
+      ],
+      "constraints": [],
+      "recovery": [
+        {
+          "proposition": "P-03-003",
+          "missingness": "Quantitative performance comparison vs. 2D arrays (controlled study)",
+          "state": "ESCALATION_REQUIRED"
+        },
+        {
+          "proposition": "P-08-005",
+          "missingness": "Specific licensing terms and royalty rates (confidential agreement)",
+          "state": "NOT_ESTABLISHED"
+        }
+      ]
+    }
+  }
+}

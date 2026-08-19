@@ -1,0 +1,1 @@
+{"coverage_gates": {"02": "technology_coverage", "03": "patent_coverage", "04": "literature_coverage", "05": "novelty_coverage", "06": "market_coverage", "07": "partner_coverage"}, "gate_status": {}, "substitutions": [], "machine_detectable": true}

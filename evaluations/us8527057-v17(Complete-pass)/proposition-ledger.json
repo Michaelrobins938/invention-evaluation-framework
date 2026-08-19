@@ -1,0 +1,100 @@
+{
+  "propositions": [
+    {
+      "id": "P-02-002",
+      "claim": "Current legal status",
+      "state": "established",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "complete",
+      "evidence_strength": "strong",
+      "confidence": "high",
+      "blockers": [],
+      "dependencies": [],
+      "downstream_effects": [
+        "legal_leverage"
+      ],
+      "evidence_sufficiency_passed": true,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-05-001",
+      "claim": "Claim 1 anticipation",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "independent_search_incomplete",
+        "continuity_review_incomplete"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "anticipation",
+        "patentability_confidence",
+        "ip_leverage"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-05-002",
+      "claim": "Obviousness bridge",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "motivation_incomplete"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "ip_leverage"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-07-001",
+      "claim": "Retinal prosthesis market size",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "specialty_market_data_missing"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "commercial_confidence"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-08-001",
+      "claim": "Partner fit",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "portfolio_diligence_required"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "partner_recommendation"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "run_id": "RUN-US7071258-20260819002033",
+  "invention_id": "US7071258",
+  "invention_name": "Nano-Scaled Graphene Plates",
+  "submitted_by": "Structured submission",
+  "submitted_date": "2026-08-19",
+  "report_date": "2026-08-19",
+  "gauges": {
+    "novelty": {
+      "score": null,
+      "basis": "P-05-001"
+    },
+    "literature": {
+      "score": null,
+      "basis": "P-06-001"
+    },
+    "market": {
+      "score": null,
+      "basis": "P-07-001"
+    },
+    "partners": {
+      "score": null,
+      "basis": "P-08-001"
+    },
+    "technology": {
+      "score": null,
+      "basis": "P-05-001"
+    },
+    "landscape": {
+      "score": null,
+      "basis": "P-05-001"
+    }
+  },
+  "v17_artifacts": "evaluations/US7071258"
+}

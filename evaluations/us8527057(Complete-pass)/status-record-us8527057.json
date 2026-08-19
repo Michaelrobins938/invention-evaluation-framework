@@ -1,0 +1,33 @@
+{
+  "patent": "US8527057B2",
+  "family": {
+    "priority": "US60675980",
+    "parent": "US7881799B2",
+    "members": [
+      {"patent": "US8527057B2", "state": "EXPIRED", "effective_lapse_date": "2025-09-03", "expiration": "2025-10-06"},
+      {"patent": "US7881799B2", "state": "ACTIVE", "expiration": "2028-03-14"},
+      {"patent": "US8473048B2", "state": "ACTIVE", "expiration": "2028-06-25"}
+    ],
+    "family_record_note": "Current Google Patents family/status record exposes these members; additional related records require family-wide normalization."
+  },
+  "status": {
+    "jurisdiction": "US",
+    "active": false,
+    "state": "EXPIRED",
+    "reason": "maintenance_fee_nonpayment",
+    "effective_lapse_date": "2025-09-03",
+    "public_record_date": "2025-10-06"
+  },
+  "assignments": [
+    {"assignee": "Vivani Medical", "date": 2022},
+    {"assignee": "Cortigent", "date": 2023}
+  ],
+  "asset_layers": [
+    "surviving_family_rights",
+    "know_how",
+    "regulatory_assets",
+    "clinical_data",
+    "historical_technology"
+  ],
+  "source": "https://patents.google.com/patent/US8527057B2/en"
+}

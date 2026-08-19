@@ -1,0 +1,1066 @@
+{
+  "patent": {
+    "patent_id": "US7153242B2",
+    "title": "Gait-locomotor apparatus",
+    "family_members": [
+      "US20030093021A1",
+      "ES2319390T3",
+      "DE60230214D1",
+      "EP1260201A1",
+      "EP1260201B1",
+      "ATE416739T1"
+    ],
+    "status": [
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      }
+    ],
+    "backward_references": [
+      "US4206558A",
+      "US4422453A",
+      "US4697808A",
+      "US5081989A",
+      "US4945616A",
+      "US5112296A",
+      "GB2260495A",
+      "US5282460A",
+      "US5476441A",
+      "US5662693A",
+      "GB2301776A",
+      "US5961541A",
+      "US5961476A",
+      "US6741911B2"
+    ],
+    "forward_references": [
+      "US7756605B2",
+      "US20040238240A1",
+      "US7559909B2",
+      "US7481742B2",
+      "US20070106190A1",
+      "US20070010378A1",
+      "US20070135265A1",
+      "US20050059908A1",
+      "US7628766B1",
+      "US8070700B2",
+      "US20100204627A1",
+      "US20050251079A1",
+      "US7393335B2",
+      "US7429253B2",
+      "US20060064047A1",
+      "US7947004B2",
+      "US20060260620A1",
+      "US20070056592A1",
+      "US8057410B2",
+      "KR100911417B1",
+      "US7942833B2",
+      "US20090270766A1",
+      "US20070066460A1",
+      "US7297090B2",
+      "US20070233279A1",
+      "US7883546B2",
+      "US20090014042A1",
+      "US8083695B2",
+      "US8002670B2",
+      "US20080026923A1",
+      "US20130245506A1",
+      "US9642763B2",
+      "US20080216644A1",
+      "US20080216645A1",
+      "US8061261B2",
+      "US8051764B2",
+      "US20080294080A1",
+      "US8171570B2",
+      "US20080287850A1",
+      "US8060945B2",
+      "US8267876B2",
+      "US20100204621A1",
+      "WO2009082249A3",
+      "US11185460B2",
+      "US11974958B2",
+      "US20110066088A1",
+      "US9180025B2",
+      "US8652218B2",
+      "US20090265018A1",
+      "US10639169B2",
+      "US8986396B2",
+      "US20110224803A1",
+      "US9289315B2",
+      "US9610208B2",
+      "US9351855B2",
+      "US20110105966A1",
+      "US8801641B2",
+      "US9011354B2",
+      "US20110166489A1",
+      "US20120165709A1",
+      "US8905955B2",
+      "US10226395B2",
+      "US20100094188A1",
+      "WO2010044087A2",
+      "US20130245512A1",
+      "US9526668B2",
+      "US8348875B2",
+      "US8096965B2",
+      "US20100132464A1",
+      "KR101132889B1",
+      "US8348868B1",
+      "US9333644B2",
+      "US9295604B2",
+      "US9801772B2",
+      "US11096854B2",
+      "US20160235616A1",
+      "WO2012052988A3",
+      "US10849816B2",
+      "US12121490B2",
+      "US20120101415A1",
+      "EP4082506A1",
+      "US20210290471A1",
+      "US20120165704A1",
+      "WO2012175211A1",
+      "US10806927B2",
+      "US8968227B2",
+      "US9295302B1",
+      "US10682249B2",
+      "US9351900B2",
+      "US10427293B2",
+      "US11464700B2",
+      "US10016290B2",
+      "US10123932B2",
+      "US20140100492A1",
+      "US9061420B2",
+      "US20140172169A1",
+      "US20140188022A1",
+      "US8894595B2",
+      "US10206844B2",
+      "CN105246450B",
+      "US20140196757A1",
+      "WO2014111921A1",
+      "CN105246450A",
+      "US10137050B2",
+      "US9993642B2",
+      "US12311169B2",
+      "US11400284B2",
+      "US9158376B2",
+      "US10843332B2",
+      "US12558774B2",
+      "US9582072B2",
+      "US10602965B2",
+      "US10234934B2",
+      "US10321873B2",
+      "US10716510B2",
+      "US10137299B2",
+      "US12076301B2",
+      "US11123312B2",
+      "US11324655B2",
+      "US10391626B2",
+      "US10278883B2",
+      "US9687409B2",
+      "US10864100B2",
+      "US11590013B1",
+      "US10231859B1",
+      "US10561568B1",
+      "US9808073B1",
+      "US10751533B2",
+      "US10773074B2",
+      "US10434030B2",
+      "US11324653B2",
+      "US10610384B2",
+      "US11786383B2",
+      "US10342725B2",
+      "US10548800B1",
+      "US20220176548A1",
+      "US11253992B2",
+      "US10195736B2",
+      "US10518404B2",
+      "US9833376B2",
+      "US20170027801A1",
+      "WO2017021965A3",
+      "US11298533B2",
+      "WO2017035512A1",
+      "EP3362024A4",
+      "US12551714B2",
+      "US11097122B2",
+      "US20210100704A1",
+      "US10912346B1",
+      "US12485030B2",
+      "US11344467B2",
+      "US10124484B1",
+      "US11612537B2",
+      "US11135120B2",
+      "US11590046B2",
+      "US11498203B2",
+      "WO2018045460A1",
+      "US12508186B2",
+      "US12251354B2",
+      "RU2638276C1",
+      "WO2018130784A1",
+      "US11426322B2",
+      "US12268878B2",
+      "US11014804B2",
+      "US12434068B2",
+      "US11691015B2",
+      "US11207014B2",
+      "US10624809B2",
+      "US20190133866A1",
+      "CN109758342A",
+      "US11992684B2",
+      "US12357828B2",
+      "US10275019B1",
+      "US11036283B2",
+      "US12478777B2",
+      "US11672982B2",
+      "US11752342B2",
+      "WO2021058918A1",
+      "FR3101463A1",
+      "US12575994B2",
+      "US12613624B2",
+      "US12415079B2",
+      "US11839766B2",
+      "WO2021160967A1",
+      "FR3106975A1",
+      "US11298287B2",
+      "US12427079B2",
+      "US11738450B2",
+      "US12208515B2",
+      "US11944581B2",
+      "US11148279B1",
+      "US11389367B2",
+      "US11918536B2",
+      "US12090069B2",
+      "US12336953B2",
+      "US11173093B1",
+      "US11752061B2"
+    ],
+    "claims": [
+      {
+        "claim_number": "1",
+        "text": "1. A gait-locomotor apparatus for support gait, stance and climb, and transitions between lie-sit-stance positions of a person with a locomotion disability, the apparatus comprising: an exoskeleton bracing system comprising jointed support arms for coupling to the trunk of the body and lower limbs of the person; propulsion means coupled to the exoskeleton bracing system, for providing relative movement between said segments to parts of the exoskeleton bracing system; a plurality of sensors for sensing tilt of the trunk and angular position of parts of exoskeleton bracing system; a control unit for receiving information from said plurality of sensors, and for identifying the relative position of parts of the exoskeleton bracing system, the tilt of the person with respect to the ground and gait phases or other phases of modes of operation, a current mode of operation being manually set by the person by an interface into the control unit, processing information in accordance with the current mode of operation and activating and controlling the propulsion system in accordance with a set of predefined movement modes or patterns; whereby the apparatus establishes a man-machine interface relation with the person with the locomotion disability, and aids the person in acquiring locomotion as desired.",
+        "limitations": [
+          "1. A gait-locomotor apparatus for support gait, stance and climb, and transitions between lie-sit-stance positions of a person with a locomotion disability, the apparatus comprising: an exoskeleton bracing system comprising jointed support arms for coupling to the trunk of the body and lower limbs of the person",
+          "propulsion means coupled to the exoskeleton bracing system, for providing relative movement between said segments to parts of the exoskeleton bracing system",
+          "a plurality of sensors for sensing tilt of the trunk and angular position of parts of exoskeleton bracing system",
+          "a control unit for receiving information from said plurality of sensors, and for identifying the relative position of parts of the exoskeleton bracing system, the tilt of the person with respect to the ground and gait phases or other phases of modes of operation, a current mode of operation being manually set by the person by an interface into the control unit, processing information in accordance with the current mode of operation and activating and controlling the propulsion system in accordance with a set of predefined movement modes or patterns",
+          "whereby the apparatus establishes a man-machine interface relation with the person with the locomotion disability, and aids the person in acquiring locomotion as desired."
+        ]
+      },
+      {
+        "claim_number": "2",
+        "text": "2. The gait-locomotor apparatus as claimed in claim 1, wherein the exoskeleton bracing system comprises a torso brace and a pelvis brace adapted to fit the trunk of the person, two thigh braces adapted to fit the thighs of the person, and two leg braces adapted to fit the legs and feet of the person.",
+        "limitations": [
+          "2. The gait-locomotor apparatus as claimed in claim 1, wherein the exoskeleton bracing system comprises a torso brace and a pelvis brace adapted to fit the trunk of the person, two thigh braces adapted to fit the thighs of the person, and two leg braces adapted to fit the legs and feet of the person."
+        ]
+      },
+      {
+        "claim_number": "3",
+        "text": "3. The gait-locomotor apparatus as claimed in claim 1, wherein stabilizing shoes are provided and are attached to the exoskeleton bracing system, said stabilizing shoes are adapted to increase the lateral stability.",
+        "limitations": [
+          "3. The gait-locomotor apparatus as claimed in claim 1, wherein stabilizing shoes are provided and are attached to the exoskeleton bracing system, said stabilizing shoes are adapted to increase the lateral stability."
+        ]
+      },
+      {
+        "claim_number": "4",
+        "text": "4. The gait-locomotor apparatus as claimed in claim 3, wherein said stabilizing shoes are adapted to maintain a side lean.",
+        "limitations": [
+          "4. The gait-locomotor apparatus as claimed in claim 3, wherein said stabilizing shoes are adapted to maintain a side lean."
+        ]
+      },
+      {
+        "claim_number": "5",
+        "text": "5. The gait-locomotor apparatus as claimed in claim 3, wherein said stabilizing shoes are provided with a rounded bottom.",
+        "limitations": [
+          "5. The gait-locomotor apparatus as claimed in claim 3, wherein said stabilizing shoes are provided with a rounded bottom."
+        ]
+      },
+      {
+        "claim_number": "6",
+        "text": "6. The gait-locomotor apparatus as claimed in claim 1, wherein said exoskeleton bracing system is provided with two side crutches adapted to provide direct support to the person.",
+        "limitations": [
+          "6. The gait-locomotor apparatus as claimed in claim 1, wherein said exoskeleton bracing system is provided with two side crutches adapted to provide direct support to the person."
+        ]
+      },
+      {
+        "claim_number": "7",
+        "text": "7. The gait-locomotor apparatus as claimed in claim 6, wherein said two side crutches are retractable so as to facilitate height adjustments.",
+        "limitations": [
+          "7. The gait-locomotor apparatus as claimed in claim 6, wherein said two side crutches are retractable so as to facilitate height adjustments."
+        ]
+      },
+      {
+        "claim_number": "8",
+        "text": "8. The gait-locomotor apparatus as claimed in claim 7, wherein at least one of said two side crutches comprises at least two members that are telescopically connected so as to adjust the length of the side crutch.",
+        "limitations": [
+          "8. The gait-locomotor apparatus as claimed in claim 7, wherein at least one of said two side crutches comprises at least two members that are telescopically connected so as to adjust the length of the side crutch."
+        ]
+      },
+      {
+        "claim_number": "9",
+        "text": "9. The gait-locomotor apparatus as claimed in claim 6, wherein each of said two side crutches is provided with a handle that facilitates grasping of the crutches.",
+        "limitations": [
+          "9. The gait-locomotor apparatus as claimed in claim 6, wherein each of said two side crutches is provided with a handle that facilitates grasping of the crutches."
+        ]
+      },
+      {
+        "claim_number": "10",
+        "text": "10. The gait-locomotor apparatus as claimed in claim 6, wherein said two side crutches are provided with a motorizes system that is adapted to actuate the side crutches and wherein said motorized system is electrically connected to said control unit.",
+        "limitations": [
+          "10. The gait-locomotor apparatus as claimed in claim 6, wherein said two side crutches are provided with a motorizes system that is adapted to actuate the side crutches and wherein said motorized system is electrically connected to said control unit."
+        ]
+      },
+      {
+        "claim_number": "11",
+        "text": "11. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system is coupled to articulations between the jointed segments of said exoskeleton bracing system.",
+        "limitations": [
+          "11. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system is coupled to articulations between the jointed segments of said exoskeleton bracing system."
+        ]
+      },
+      {
+        "claim_number": "12",
+        "text": "12. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises linear motors.",
+        "limitations": [
+          "12. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises linear motors."
+        ]
+      },
+      {
+        "claim_number": "13",
+        "text": "13. The gait-locomotor apparatus as claimed in claim 12, wherein two of the motors are adjacent to a hip of the person.",
+        "limitations": [
+          "13. The gait-locomotor apparatus as claimed in claim 12, wherein two of the motors are adjacent to a hip of the person."
+        ]
+      },
+      {
+        "claim_number": "14",
+        "text": "14. The gait-locomotor apparatus as claimed in claim 12, wherein two of the motors are adjacent to the knees of the person.",
+        "limitations": [
+          "14. The gait-locomotor apparatus as claimed in claim 12, wherein two of the motors are adjacent to the knees of the person."
+        ]
+      },
+      {
+        "claim_number": "15",
+        "text": "15. The gait-locomotor apparatus as claimed in claim 12, wherein at least one of the linear motors is provided with a stator provided with a forcer, said stator is attached to one of the jointed support arms, and wherein said forcer is coupled to a lever that is attached to an adjoining support arm.",
+        "limitations": [
+          "15. The gait-locomotor apparatus as claimed in claim 12, wherein at least one of the linear motors is provided with a stator provided with a forcer, said stator is attached to one of the jointed support arms, and wherein said forcer is coupled to a lever that is attached to an adjoining support arm."
+        ]
+      },
+      {
+        "claim_number": "16",
+        "text": "16. The gait-locomotor apparatus as claimed in claim 15, wherein said lever has a laterally protruding portion, and wherein said forcer is coupled to said portion.",
+        "limitations": [
+          "16. The gait-locomotor apparatus as claimed in claim 15, wherein said lever has a laterally protruding portion, and wherein said forcer is coupled to said portion."
+        ]
+      },
+      {
+        "claim_number": "17",
+        "text": "17. The gait-locomotor apparatus as claimed in claim 15, wherein said stator is pivotally connected to the jointed support arm.",
+        "limitations": [
+          "17. The gait-locomotor apparatus as claimed in claim 15, wherein said stator is pivotally connected to the jointed support arm."
+        ]
+      },
+      {
+        "claim_number": "18",
+        "text": "18. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises a thrust force motor having a linear motor provided with gearing ability, said linear motor is attached to one of the jointed support arms, and wherein a forcer of said linear motor is connected to a belt having two ends, said belt circles about a wheel and is further coupled to a lever attached to an adjoining articulated support arm.",
+        "limitations": [
+          "18. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises a thrust force motor having a linear motor provided with gearing ability, said linear motor is attached to one of the jointed support arms, and wherein a forcer of said linear motor is connected to a belt having two ends, said belt circles about a wheel and is further coupled to a lever attached to an adjoining articulated support arm."
+        ]
+      },
+      {
+        "claim_number": "19",
+        "text": "19. The gait-locomotor apparatus as claimed in claim 18, wherein said lever is provided with two opposite lateral protrusions, and wherein each of the two ends of said belt is connected to one of the lateral protrusions of said lever.",
+        "limitations": [
+          "19. The gait-locomotor apparatus as claimed in claim 18, wherein said lever is provided with two opposite lateral protrusions, and wherein each of the two ends of said belt is connected to one of the lateral protrusions of said lever."
+        ]
+      },
+      {
+        "claim_number": "20",
+        "text": "20. The gait-locomotor apparatus as claimed in claim 18, wherein said lever is a cogwheel attached in an articulation between jointed support arms.",
+        "limitations": [
+          "20. The gait-locomotor apparatus as claimed in claim 18, wherein said lever is a cogwheel attached in an articulation between jointed support arms."
+        ]
+      },
+      {
+        "claim_number": "21",
+        "text": "21. The gait-locomotion apparatus as claimed in claim 1, wherein said propulsion system comprises a thrust force motor in which a linear motor having gearing ability is attached to a jointed support arm between two articulations, and wherein a stator of said linear motor is provided with two adjacent wheels, said stator is provided with a first forcer coupled to a belt, said belt circles about one of the wheels and circles a cogwheel that is attached adjacent to one of the articulations, and wherein said stator is provided with a second forcer coupled to another belt that circles about the other wheel and circles another cogwheel that is attached adjacent to the other articulation.",
+        "limitations": [
+          "21. The gait-locomotion apparatus as claimed in claim 1, wherein said propulsion system comprises a thrust force motor in which a linear motor having gearing ability is attached to a jointed support arm between two articulations, and wherein a stator of said linear motor is provided with two adjacent wheels, said stator is provided with a first forcer coupled to a belt, said belt circles about one of the wheels and circles a cogwheel that is attached adjacent to one of the articulations, and wherein said stator is provided with a second forcer coupled to another belt that circles about the other wheel and circles another cogwheel that is attached adjacent to the other articulation."
+        ]
+      },
+      {
+        "claim_number": "22",
+        "text": "22. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises an air muscle actuator.",
+        "limitations": [
+          "22. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises an air muscle actuator."
+        ]
+      },
+      {
+        "claim_number": "23",
+        "text": "23. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises a rotary motor.",
+        "limitations": [
+          "23. The gait-locomotor apparatus as claimed in claim 1, wherein said propulsion system comprises a rotary motor."
+        ]
+      },
+      {
+        "claim_number": "24",
+        "text": "24. The gait-locomotor apparatus as claimed in claim 23, wherein said rotary motor is positioned in an articulation between jointed support arms of said bracing system.",
+        "limitations": [
+          "24. The gait-locomotor apparatus as claimed in claim 23, wherein said rotary motor is positioned in an articulation between jointed support arms of said bracing system."
+        ]
+      },
+      {
+        "claim_number": "25",
+        "text": "25. The gait-locomotor apparatus as claimed in claim 24, further comprising a plurality of interacting cogwheels, at least one of the cogwheels is connected by a movable belt to another wheel so as to provide relative movement between the jointed support arms.",
+        "limitations": [
+          "25. The gait-locomotor apparatus as claimed in claim 24, further comprising a plurality of interacting cogwheels, at least one of the cogwheels is connected by a movable belt to another wheel so as to provide relative movement between the jointed support arms."
+        ]
+      },
+      {
+        "claim_number": "26",
+        "text": "26. The gait-locomotor apparatus as claimed in claim 25, wherein said two interacting cogwheels are concentric.",
+        "limitations": [
+          "26. The gait-locomotor apparatus as claimed in claim 25, wherein said two interacting cogwheels are concentric."
+        ]
+      },
+      {
+        "claim_number": "27",
+        "text": "27. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors is a tilt sensor.",
+        "limitations": [
+          "27. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors is a tilt sensor."
+        ]
+      },
+      {
+        "claim_number": "28",
+        "text": "28. The gait-locomotor apparatus as claimed in claim 27, wherein a goniometer is attached to articulations between jointed support arms of said bracing system in order to measure the articulation angle.",
+        "limitations": [
+          "28. The gait-locomotor apparatus as claimed in claim 27, wherein a goniometer is attached to articulations between jointed support arms of said bracing system in order to measure the articulation angle."
+        ]
+      },
+      {
+        "claim_number": "29",
+        "text": "29. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors is an acceleration sensor.",
+        "limitations": [
+          "29. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors is an acceleration sensor."
+        ]
+      },
+      {
+        "claim_number": "30",
+        "text": "30. The gait-locomotor apparatus as claimed in claim 29, wherein at least one of the sensors is an accelerometer.",
+        "limitations": [
+          "30. The gait-locomotor apparatus as claimed in claim 29, wherein at least one of the sensors is an accelerometer."
+        ]
+      },
+      {
+        "claim_number": "31",
+        "text": "31. The gait-locomotor apparatus as claimed in claim 1, wherein said information comprises angles of articulation between jointed support arms of said bracing system.",
+        "limitations": [
+          "31. The gait-locomotor apparatus as claimed in claim 1, wherein said information comprises angles of articulation between jointed support arms of said bracing system."
+        ]
+      },
+      {
+        "claim_number": "32",
+        "text": "32. The gait-locomotor apparatus as claimed in claim 1, wherein said information comprises accelerations of body parts of the person.",
+        "limitations": [
+          "32. The gait-locomotor apparatus as claimed in claim 1, wherein said information comprises accelerations of body parts of the person."
+        ]
+      },
+      {
+        "claim_number": "33",
+        "text": "33. The gait-locomotor apparatus as claimed in claim 1, wherein said information comprises angular velocities.",
+        "limitations": [
+          "33. The gait-locomotor apparatus as claimed in claim 1, wherein said information comprises angular velocities."
+        ]
+      },
+      {
+        "claim_number": "34",
+        "text": "34. The gait-locomotor apparatus as claimed in claim 1, wherein a processor is incorporated in said control unit, said processor adapted to execute motion control algorithms.",
+        "limitations": [
+          "34. The gait-locomotor apparatus as claimed in claim 1, wherein a processor is incorporated in said control unit, said processor adapted to execute motion control algorithms."
+        ]
+      },
+      {
+        "claim_number": "35",
+        "text": "35. The gait-locomotor apparatus as claimed in claim 34, wherein said algorithms comprises commands dictating the angles between the jointed support arms and the position of the jointed support arms so as to perform predetermined modes of operation on said bracing system.",
+        "limitations": [
+          "35. The gait-locomotor apparatus as claimed in claim 34, wherein said algorithms comprises commands dictating the angles between the jointed support arms and the position of the jointed support arms so as to perform predetermined modes of operation on said bracing system."
+        ]
+      },
+      {
+        "claim_number": "36",
+        "text": "36. The gait-locomotor apparatus as claimed in claim 35, wherein said modes of operation are selected from the group consisting of standing mode, gait mode, climbing mode, descending mode, lie-sit transition mode, sit-stance transition mode, stance-gait transition mode, training mode, learning mode or a combination thereof.",
+        "limitations": [
+          "36. The gait-locomotor apparatus as claimed in claim 35, wherein said modes of operation are selected from the group consisting of standing mode, gait mode, climbing mode, descending mode, lie-sit transition mode, sit-stance transition mode, stance-gait transition mode, training mode, learning mode or a combination thereof."
+        ]
+      },
+      {
+        "claim_number": "37",
+        "text": "37. The gait-locomotor apparatus as claimed in claim 35, wherein at least one of said modes of operation is initiated by exceeding a threshold value in the angular position of at least one of the jointed support arms.",
+        "limitations": [
+          "37. The gait-locomotor apparatus as claimed in claim 35, wherein at least one of said modes of operation is initiated by exceeding a threshold value in the angular position of at least one of the jointed support arms."
+        ]
+      },
+      {
+        "claim_number": "38",
+        "text": "38. The gait-locomotor apparatus as claimed in claims 36, wherein at least one of said modes of operation is initiated by receiving a signal monitored by at least one of said sensors, said signal indicating that a threshold value has been exceeded in the tilt angle of the torso of the person.",
+        "limitations": [
+          "38. The gait-locomotor apparatus as claimed in claims 36, wherein at least one of said modes of operation is initiated by receiving a signal monitored by at least one of said sensors, said signal indicating that a threshold value has been exceeded in the tilt angle of the torso of the person."
+        ]
+      },
+      {
+        "claim_number": "39",
+        "text": "39. The gait-locomotor apparatus as claimed in claim 1, wherein said control unit is communicating with said propulsion system through power drivers.",
+        "limitations": [
+          "39. The gait-locomotor apparatus as claimed in claim 1, wherein said control unit is communicating with said propulsion system through power drivers."
+        ]
+      },
+      {
+        "claim_number": "40",
+        "text": "40. The gait-locomotor apparatus as claimed in claim 1, wherein said control unit is communicating with a man-machine interface adapted to receive commands from the person.",
+        "limitations": [
+          "40. The gait-locomotor apparatus as claimed in claim 1, wherein said control unit is communicating with a man-machine interface adapted to receive commands from the person."
+        ]
+      },
+      {
+        "claim_number": "41",
+        "text": "41. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors is communicating with said control unit through feedback interfaces.",
+        "limitations": [
+          "41. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors is communicating with said control unit through feedback interfaces."
+        ]
+      },
+      {
+        "claim_number": "42",
+        "text": "42. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises a safety unit and a built-in test unit.",
+        "limitations": [
+          "42. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises a safety unit and a built-in test unit."
+        ]
+      },
+      {
+        "claim_number": "43",
+        "text": "43. The gait-locomotor apparatus as claimed in claim 42, wherein said safety unit is communicating with said control unit.",
+        "limitations": [
+          "43. The gait-locomotor apparatus as claimed in claim 42, wherein said safety unit is communicating with said control unit."
+        ]
+      },
+      {
+        "claim_number": "44",
+        "text": "44. The gait-locomotor apparatus as claimed in claim 42, wherein said safety unit is communicating with at least one of the sensors.",
+        "limitations": [
+          "44. The gait-locomotor apparatus as claimed in claim 42, wherein said safety unit is communicating with at least one of the sensors."
+        ]
+      },
+      {
+        "claim_number": "45",
+        "text": "45. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises a power unit.",
+        "limitations": [
+          "45. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises a power unit."
+        ]
+      },
+      {
+        "claim_number": "46",
+        "text": "46. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors provides a warning signal.",
+        "limitations": [
+          "46. The gait-locomotor apparatus as claimed in claim 1, wherein at least one of the sensors provides a warning signal."
+        ]
+      },
+      {
+        "claim_number": "47",
+        "text": "47. The gait-locomotor apparatus as claimed in claim 46, wherein the warning signal indicates the power status of the gait-locomotor apparatus.",
+        "limitations": [
+          "47. The gait-locomotor apparatus as claimed in claim 46, wherein the warning signal indicates the power status of the gait-locomotor apparatus."
+        ]
+      },
+      {
+        "claim_number": "48",
+        "text": "48. The gait-locomotor apparatus as claimed in claim 46, wherein a warning signal indicates currents in said propulsion system.",
+        "limitations": [
+          "48. The gait-locomotor apparatus as claimed in claim 46, wherein a warning signal indicates currents in said propulsion system."
+        ]
+      },
+      {
+        "claim_number": "49",
+        "text": "49. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises at least one temperature sensor.",
+        "limitations": [
+          "49. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises at least one temperature sensor."
+        ]
+      },
+      {
+        "claim_number": "50",
+        "text": "50. The gait-locomotor apparatus as claimed in claim 49, wherein said gait-locomotor apparatus further comprises overheat protection.",
+        "limitations": [
+          "50. The gait-locomotor apparatus as claimed in claim 49, wherein said gait-locomotor apparatus further comprises overheat protection."
+        ]
+      },
+      {
+        "claim_number": "51",
+        "text": "51. The gait-locomotor apparatus as claimed in claim 50, wherein said temperature is monitored in said propulsion system.",
+        "limitations": [
+          "51. The gait-locomotor apparatus as claimed in claim 50, wherein said temperature is monitored in said propulsion system."
+        ]
+      },
+      {
+        "claim_number": "52",
+        "text": "52. The gait-locomotor apparatus as claimed in claim 50, wherein said temperature is monitored in said control unit.",
+        "limitations": [
+          "52. The gait-locomotor apparatus as claimed in claim 50, wherein said temperature is monitored in said control unit."
+        ]
+      },
+      {
+        "claim_number": "53",
+        "text": "53. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises functional electrical stimulation (FES) means.",
+        "limitations": [
+          "53. The gait-locomotor apparatus as claimed in claim 1, wherein said gait-locomotor apparatus further comprises functional electrical stimulation (FES) means."
+        ]
+      },
+      {
+        "claim_number": "54",
+        "text": "54. The gait-locomotor apparatus as claimed in claim 53, wherein said gait-locomotor apparatus further comprises FES electrodes, said electrodes are electrically communicating with a signal generator.",
+        "limitations": [
+          "54. The gait-locomotor apparatus as claimed in claim 53, wherein said gait-locomotor apparatus further comprises FES electrodes, said electrodes are electrically communicating with a signal generator."
+        ]
+      },
+      {
+        "claim_number": "55",
+        "text": "55. The gait-locomotor apparatus as claimed in claim 54, wherein said signal generator is communicating with said control unit.",
+        "limitations": [
+          "55. The gait-locomotor apparatus as claimed in claim 54, wherein said signal generator is communicating with said control unit."
+        ]
+      },
+      {
+        "claim_number": "56",
+        "text": "56. The gait-locomotor apparatus as claimed in claim 54, wherein said control unit further comprises commands dictating the electrical signal that is transferred by the FES electrodes.",
+        "limitations": [
+          "56. The gait-locomotor apparatus as claimed in claim 54, wherein said control unit further comprises commands dictating the electrical signal that is transferred by the FES electrodes."
+        ]
+      },
+      {
+        "claim_number": "57",
+        "text": "57. The gait-locomotor apparatus as claimed in claim 53, wherein said control unit further comprises command that activate the FES means.",
+        "limitations": [
+          "57. The gait-locomotor apparatus as claimed in claim 53, wherein said control unit further comprises command that activate the FES means."
+        ]
+      },
+      {
+        "claim_number": "58",
+        "text": "58. A gait-restoration method for facilitating gait, stance and climb, and transitions between lie-sit-stance positions of a person with a locomotion disability, the method comprising the steps of: providing a gait-locomotor apparatus comprising: an exoskeleton bracing system, comprising jointed support arms for coupling to the trunk of the body and lower limbs of the person; a propulsion system coupled to the exoskeleton bracing system for providing relative movement to parts of the exoskeleton bracing system; a plurality of sensors for sensing tilt of the trunk and angular position of parts of the exoskeleton bracing system; a control unit having an algorithm for accomplishing: receiving information from said plurality of sensors; identifying the relative position of parts of the exoskeleton bracing system; identifying tilt and gait phases; identifying a current mode of operation being manually set by the person via an interface into the control unit; processing the information in accordance with the current mode of operation; and, activating and controlling the propulsion system in accordance with a set of predefined movement modes or patterns; setting a desired operation mode; determining specific movement mode or pattern from the set of predefined movement modes or patterns, upon sensing a tilt of the person, the angle of the tilt and at least a first derivative of the tilt angle; and actuating the propulsion system in accordance with the set of predefined movement modes or patterns.",
+        "limitations": [
+          "58. A gait-restoration method for facilitating gait, stance and climb, and transitions between lie-sit-stance positions of a person with a locomotion disability, the method comprising the steps of: providing a gait-locomotor apparatus comprising:",
+          "an exoskeleton bracing system, comprising jointed support arms for coupling to the trunk of the body and lower limbs of the person",
+          "a propulsion system coupled to the exoskeleton bracing system for providing relative movement to parts of the exoskeleton bracing system",
+          "a plurality of sensors for sensing tilt of the trunk and angular position of parts of the exoskeleton bracing system; a control unit having an algorithm for accomplishing:",
+          "receiving information from said plurality of sensors",
+          "identifying the relative position of parts of the exoskeleton bracing system",
+          "identifying tilt and gait phases",
+          "identifying a current mode of operation being manually set by the person via an interface into the control unit",
+          "processing the information in accordance with the current mode of operation; and,",
+          "activating and controlling the propulsion system in accordance with a set of predefined movement modes or patterns; setting a desired operation mode",
+          "determining specific movement mode or pattern from the set of predefined movement modes or patterns, upon sensing a tilt of the person, the angle of the tilt and at least a first derivative of the tilt angle; and",
+          "actuating the propulsion system in accordance with the set of predefined movement modes or patterns."
+        ]
+      },
+      {
+        "claim_number": "59",
+        "text": "59. The method of claim 58, wherein the algorithm includes a gait algorithm comprising the following steps: detecting an upper body tilt of the person, determining the angle of the tilt and at least a first derivative of the tilt angle; computing parameters for a gait pattern, selected from the set of predefined movement modes or patterns; initialing a forward step of a first leg of the person by actuating the propulsion system; placing the foot of the first leg on the ground; straightening the knee of first leg; determining when the person reaches an upright position; if another tilt is sensed repeating the above steps replacing the operations performed by the first leg with similar operations to be preformed by the second leg.",
+        "limitations": [
+          "59. The method of claim 58, wherein the algorithm includes a gait algorithm comprising the following steps: detecting an upper body tilt of the person, determining the angle of the tilt and at least a first derivative of the tilt angle",
+          "computing parameters for a gait pattern, selected from the set of predefined movement modes or patterns",
+          "initialing a forward step of a first leg of the person by actuating the propulsion system",
+          "placing the foot of the first leg on the ground",
+          "straightening the knee of first leg",
+          "determining when the person reaches an upright position",
+          "if another tilt is sensed repeating the above steps replacing the operations performed by the first leg with similar operations to be preformed by the second leg."
+        ]
+      },
+      {
+        "claim_number": "60",
+        "text": "60. The method of claim 59 wherein a stairs-climbing algorithm is incorporated.",
+        "limitations": [
+          "60. The method of claim 59 wherein a stairs-climbing algorithm is incorporated."
+        ]
+      },
+      {
+        "claim_number": "61",
+        "text": "61. The method of claim 60, wherein the stairs-climbing algorithm is a climbing-up algorithm, comprising: detecting an upper body tilt of the person, determining the angle of the tilt and at least a first derivative of the tilt angle; computing parameters for a stairs-climbing pattern, selected from the set of predefined movement modes or patterns; initiating a forward step of a first leg of the person by actuating the propulsion system, whereby the foot of the first leg is raised; placing down the foot of the first leg; straightening the knee of first leg; determining that the person have reached an upright position; if another tilt is sensed, repeating the above steps replacing the operations performed by the first leg with similar operations to be preformed by the second leg.",
+        "limitations": [
+          "61. The method of claim 60, wherein the stairs-climbing algorithm is a climbing-up algorithm, comprising: detecting an upper body tilt of the person, determining the angle of the tilt and at least a first derivative of the tilt angle",
+          "computing parameters for a stairs-climbing pattern, selected from the set of predefined movement modes or patterns",
+          "initiating a forward step of a first leg of the person by actuating the propulsion system, whereby the foot of the first leg is raised",
+          "placing down the foot of the first leg",
+          "straightening the knee of first leg",
+          "determining that the person have reached an upright position",
+          "if another tilt is sensed, repeating the above steps replacing the operations performed by the first leg with similar operations to be preformed by the second leg."
+        ]
+      },
+      {
+        "claim_number": "62",
+        "text": "62. The method of claim 60, wherein the stairs-climbing algorithm is a climbing-down algorithm, comprising: detecting an upper body tilt of the person, determining the tilt angle and at least a first derivative of the tilt angle; computing parameters for a stairs-climbing pattern, selected from the set of predefined movement modes or patterns; initiating a forward step of a first leg of the person while maintaining a the first leg in a straightened posture, by actuating the propulsion system, whereby the foot of the first leg is raised, while simultaneously folding the knee of the second leg; placing down the foot of the first leg; determining when the person reaches an upright position; if another tilt is sensed repeating the above steps replacing the operations performed by the first leg with similar operations to be preformed by the second leg.",
+        "limitations": [
+          "62. The method of claim 60, wherein the stairs-climbing algorithm is a climbing-down algorithm, comprising: detecting an upper body tilt of the person, determining the tilt angle and at least a first derivative of the tilt angle",
+          "computing parameters for a stairs-climbing pattern, selected from the set of predefined movement modes or patterns",
+          "initiating a forward step of a first leg of the person while maintaining a the first leg in a straightened posture, by actuating the propulsion system, whereby the foot of the first leg is raised, while simultaneously folding the knee of the second leg",
+          "placing down the foot of the first leg",
+          "determining when the person reaches an upright position",
+          "if another tilt is sensed repeating the above steps replacing the operations performed by the first leg with similar operations to be preformed by the second leg."
+        ]
+      },
+      {
+        "claim_number": "63",
+        "text": "63. The method of claim 58 wherein a turn algorithm is incorporated comprising: sensing an body throwing movement in a certain turn direction; using a first leg of the person as an axis for the turn, forwarding the second leg across in the turn direction.",
+        "limitations": [
+          "63. The method of claim 58 wherein a turn algorithm is incorporated comprising: sensing an body throwing movement in a certain turn direction",
+          "using a first leg of the person as an axis for the turn, forwarding the second leg across in the turn direction."
+        ]
+      },
+      {
+        "claim_number": "64",
+        "text": "64. The method of claim 58, wherein a transition algorithm between a lie position, a sit position, and a stance position is incorporated.",
+        "limitations": [
+          "64. The method of claim 58, wherein a transition algorithm between a lie position, a sit position, and a stance position is incorporated."
+        ]
+      }
+    ]
+  },
+  "literature": [
+    {
+      "authors": [
+        "Chuah",
+        "Kim"
+      ],
+      "title": "Enabling Force Sensing During Ground Locomotion: A Bio-Inspired, Multi-Axis, Composite Force Sensor Using Discrete Pressure Mapping",
+      "venue": "IEEE Sensors Journal",
+      "date": "2014",
+      "doi_or_report_number": "10.1109/jsen.2014.2299805",
+      "url": "https://doi.org/10.1109/jsen.2014.2299805",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Strzelczyk",
+        "Tomczewski",
+        "Wrobel"
+      ],
+      "title": "The Middleware for an Exoskeleton Assisting Upper Limb Movement",
+      "venue": "Sensors",
+      "date": "2022",
+      "doi_or_report_number": "10.3390/s22082986",
+      "url": "https://doi.org/10.3390/s22082986",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Chaichaowarat",
+        "Prakthong",
+        "Thitipankul"
+      ],
+      "title": "Transformable Wheelchair\u2013Exoskeleton Hybrid Robot for Assisting Human Locomotion",
+      "venue": "Robotics",
+      "date": "2023",
+      "doi_or_report_number": "10.3390/robotics12010016",
+      "url": "https://doi.org/10.3390/robotics12010016",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Geonea",
+        "Dumitru",
+        "Copilusi",
+        "Margine",
+        "Ciurezu",
+        "Didu"
+      ],
+      "title": "New design and motion analysis of an exoskeleton robot for assisting human locomotion",
+      "venue": "2020 IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)",
+      "date": "2020",
+      "doi_or_report_number": "10.1109/aqtr49680.2020.9129951",
+      "url": "https://doi.org/10.1109/aqtr49680.2020.9129951",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "ISHIKAWA",
+        "KADONE",
+        "SUZUKI"
+      ],
+      "title": "Exoskeleton robot control for assisting voluntary locomotion based on spinal cord mapping of bioelectric signals",
+      "venue": "The Proceedings of JSME annual Conference on Robotics and Mechatronics (Robomec)",
+      "date": "2018",
+      "doi_or_report_number": "10.1299/jsmermd.2018.1a1-f08",
+      "url": "https://doi.org/10.1299/jsmermd.2018.1a1-f08",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    }
+  ],
+  "market": {
+    "proxy_type": "population",
+    "observations": [
+      {
+        "date": "2025",
+        "value": 8215424893
+      },
+      {
+        "date": "2024",
+        "value": 8140897523
+      },
+      {
+        "date": "2023",
+        "value": 8062923417
+      },
+      {
+        "date": "2022",
+        "value": 7988550201
+      },
+      {
+        "date": "2021",
+        "value": 7919567995
+      },
+      {
+        "date": "2020",
+        "value": 7853863139
+      },
+      {
+        "date": "2019",
+        "value": 7777162476
+      },
+      {
+        "date": "2018",
+        "value": 7696159728
+      },
+      {
+        "date": "2017",
+        "value": 7613788655
+      },
+      {
+        "date": "2016",
+        "value": 7528221579
+      },
+      {
+        "date": "2015",
+        "value": 7441084771
+      },
+      {
+        "date": "2014",
+        "value": 7353532223
+      },
+      {
+        "date": "2013",
+        "value": 7265404737
+      },
+      {
+        "date": "2012",
+        "value": 7176482165
+      },
+      {
+        "date": "2011",
+        "value": 7086704141
+      },
+      {
+        "date": "2010",
+        "value": 7000860073
+      },
+      {
+        "date": "2009",
+        "value": 6916168196
+      },
+      {
+        "date": "2008",
+        "value": 6830080867
+      },
+      {
+        "date": "2007",
+        "value": 6744049498
+      },
+      {
+        "date": "2006",
+        "value": 6659536021
+      },
+      {
+        "date": "2005",
+        "value": 6575410029
+      },
+      {
+        "date": "2004",
+        "value": 6492354627
+      },
+      {
+        "date": "2003",
+        "value": 6409352386
+      },
+      {
+        "date": "2002",
+        "value": 6327171255
+      },
+      {
+        "date": "2001",
+        "value": 6244739668
+      },
+      {
+        "date": "2000",
+        "value": 6161528496
+      },
+      {
+        "date": "1999",
+        "value": 6078069822
+      },
+      {
+        "date": "1998",
+        "value": 5993730786
+      },
+      {
+        "date": "1997",
+        "value": 5908180322
+      },
+      {
+        "date": "1996",
+        "value": 5822327903
+      },
+      {
+        "date": "1995",
+        "value": 5736205135
+      },
+      {
+        "date": "1994",
+        "value": 5650534421
+      },
+      {
+        "date": "1993",
+        "value": 5564459142
+      },
+      {
+        "date": "1992",
+        "value": 5476822930
+      },
+      {
+        "date": "1991",
+        "value": 5388203305
+      },
+      {
+        "date": "1990",
+        "value": 5298962018
+      },
+      {
+        "date": "1989",
+        "value": 5207378374
+      },
+      {
+        "date": "1988",
+        "value": 5116898810
+      },
+      {
+        "date": "1987",
+        "value": 5026770385
+      },
+      {
+        "date": "1986",
+        "value": 4937459951
+      },
+      {
+        "date": "1985",
+        "value": 4850494238
+      },
+      {
+        "date": "1984",
+        "value": 4765813206
+      },
+      {
+        "date": "1983",
+        "value": 4682734714
+      },
+      {
+        "date": "1982",
+        "value": 4599385851
+      },
+      {
+        "date": "1981",
+        "value": 4516792587
+      },
+      {
+        "date": "1980",
+        "value": 4437473406
+      },
+      {
+        "date": "1979",
+        "value": 4359930896
+      },
+      {
+        "date": "1978",
+        "value": 4283309396
+      },
+      {
+        "date": "1977",
+        "value": 4208840894
+      },
+      {
+        "date": "1976",
+        "value": 4135644231
+      }
+    ],
+    "market_sizing_admissible": false,
+    "reason": "population proxy is not a reconstructable market-size proposition"
+  },
+  "partners": []
+}

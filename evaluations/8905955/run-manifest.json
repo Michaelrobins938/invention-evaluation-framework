@@ -1,0 +1,32 @@
+{
+  "run_id": "RUN-US8905955B2-20260816162109",
+  "invention_id": "US8905955B2",
+  "pipeline_version": "v1.7",
+  "evaluation_dir": "evaluations/8905955",
+  "run_status": "COMPLETED_WITH_EVIDENCE_DEBT",
+  "phase_status": {
+    "submission": "COMPLETED",
+    "technology": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "landscape": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "novelty": "ESCALATION_REQUIRED",
+    "literature": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "market": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "partners": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "compile": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "render": "COMPLETED"
+  },
+  "created_at": "2026-08-16T16:21:09.431326+00:00",
+  "delivery_manifest": {
+    "run_status": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "evaluation_dir": "evaluations/8905955",
+    "artifacts": {
+      "report_markdown": "evaluations/8905955/report-us8905955b2-v17.md",
+      "report_html": "evaluations/8905955/report-us8905955b2-v17.html",
+      "report_pdf": "evaluations/8905955/report-us8905955b2-v17.pdf",
+      "run_manifest": "evaluations/8905955/run-manifest.json",
+      "execution_ledger": "evaluations/8905955/execution-ledger.json",
+      "evidence_graph": "evaluations/8905955/evidence-graph.json",
+      "proposition_ledger": "evaluations/8905955/proposition-ledger.json"
+    }
+  }
+}

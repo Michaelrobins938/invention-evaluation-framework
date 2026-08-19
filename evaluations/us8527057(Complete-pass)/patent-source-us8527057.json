@@ -1,0 +1,1874 @@
+{
+  "source": "https://patents.google.com/patent/US8527057B2/en",
+  "backward_references": [
+    {
+      "publication_number": "US5109844A",
+      "priority_date": "1990-10-11",
+      "publication_date": "1992-05-05",
+      "assignee": "Duke University",
+      "title": "Retinal microstimulation",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6400989B1",
+      "priority_date": "1997-02-21",
+      "publication_date": "2002-06-04",
+      "assignee": "Intelligent Implants Gmbh",
+      "title": "Adaptive sensory-motor encoder for visual or acoustic prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6185452B1",
+      "priority_date": "1997-02-26",
+      "publication_date": "2001-02-06",
+      "assignee": "Joseph H. Schulman",
+      "title": "Battery-powered patient implantable device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20040103906A1",
+      "priority_date": "1997-02-26",
+      "publication_date": "2004-06-03",
+      "assignee": "Schulman Joseph H.",
+      "title": "Battery-powered patient implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6458157B1",
+      "priority_date": "1997-08-04",
+      "publication_date": "2002-10-01",
+      "assignee": "Suaning Gregg Joergen",
+      "title": "Retinal stimulator",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US5935155A",
+      "priority_date": "1998-03-13",
+      "publication_date": "1999-08-10",
+      "assignee": "John Hopkins University, School Of Medicine",
+      "title": "Visual prosthesis and method of using same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20020193845A1",
+      "priority_date": "1999-03-24",
+      "publication_date": "2002-12-19",
+      "assignee": "Second Sight, Llc.",
+      "title": "Optical Communications System for an Implantable Device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6324428B1",
+      "priority_date": "1999-03-30",
+      "publication_date": "2001-11-27",
+      "assignee": "Pacesetter, Inc.",
+      "title": "Implantable medical device having an improved electronic assembly for increasing packaging density and enhancing component protection",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6847847B2",
+      "priority_date": "1999-05-07",
+      "publication_date": "2005-01-25",
+      "assignee": "Eberhard-Karls Universitat Tubingen, Universitatsklinikum",
+      "title": "Retina implant assembly and methods for manufacturing the same",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6258626B1",
+      "priority_date": "2000-07-06",
+      "publication_date": "2001-07-10",
+      "assignee": "Advanced Semiconductor Engineering, Inc.",
+      "title": "Method of making stacked chip package",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20030139808A1",
+      "priority_date": "2000-08-04",
+      "publication_date": "2003-07-24",
+      "assignee": "Mohsen Shahinpoor",
+      "title": "Surgical correction of human eye refractive errors by active composite artificial muscle implants",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2002011648A1",
+      "priority_date": "2000-08-04",
+      "publication_date": "2002-02-14",
+      "assignee": "Environmental Robots, Inc.",
+      "title": "Refractive correction by active artificial muscle implants",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6393327B1",
+      "priority_date": "2000-08-09",
+      "publication_date": "2002-05-21",
+      "assignee": "The United States Of America As Represented By The Secretary Of The Navy",
+      "title": "Microelectronic stimulator array",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20020111658A1",
+      "priority_date": "2001-02-13",
+      "publication_date": "2002-08-15",
+      "assignee": "Greenberg Robert J.",
+      "title": "Implantable retinal electrode array configuration for minimal retinal damage and method of reducing retinal stress",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20030097166A1",
+      "priority_date": "2001-11-16",
+      "publication_date": "2003-05-22",
+      "assignee": "The Regents Of The University Of California",
+      "title": "Flexible electrode array for artifical vision",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20030158588A1",
+      "priority_date": "2002-01-17",
+      "publication_date": "2003-08-21",
+      "assignee": "Rizzo Joseph F.",
+      "title": "Minimally invasive retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US6976998B2",
+      "priority_date": "2002-01-17",
+      "publication_date": "2005-12-20",
+      "assignee": "Massachusetts Institute Of Technology",
+      "title": "Minimally invasive retinal prosthesis",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20030149458A1",
+      "priority_date": "2002-02-05",
+      "publication_date": "2003-08-07",
+      "assignee": "Williamson Richard P.",
+      "title": "Retinal prosthesis with remote return electrode",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7211103B2",
+      "priority_date": "2002-04-11",
+      "publication_date": "2007-05-01",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Biocompatible bonding method and electronics package suitable for implantation",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7483750B2",
+      "priority_date": "2003-03-21",
+      "publication_date": "2009-01-27",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Transretinal implant and method of implantation",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20050222624A1",
+      "priority_date": "2004-04-06",
+      "publication_date": "2005-10-06",
+      "assignee": "Robert Greenberg",
+      "title": "Retinal prosthesis with side mounted inductive coil",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20060271189A1",
+      "priority_date": "2004-04-06",
+      "publication_date": "2006-11-30",
+      "assignee": "Robert Greenberg",
+      "title": "Retinal prosthesis with side mounted inductive coil",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2006081300A1",
+      "priority_date": "2005-01-26",
+      "publication_date": "2006-08-03",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Neural stimulation for increased persistence",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20070041164A1",
+      "priority_date": "2005-04-28",
+      "publication_date": "2007-02-22",
+      "assignee": "Greenberg Robert J",
+      "title": "Package for an implantable neural stimulation device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20060247734A1",
+      "priority_date": "2005-04-28",
+      "publication_date": "2006-11-02",
+      "assignee": "Greenberg Robert J",
+      "title": "Retinal prosthesis and method of manufacturing a retinal prosthesis",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7873419B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2011-01-18",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Retinal prosthesis and method of manufacturing a retinal prosthesis",
+      "examiner_cited": true,
+      "third_party_cited": false
+    }
+  ],
+  "forward_references": [
+    {
+      "publication_number": "US9555244B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2017-01-31",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Retinal prosthesis and method of manufacturing a retinal prosthesis",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9555244B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2017-01-31",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Retinal prosthesis and method of manufacturing a retinal prosthesis",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "KR100606307B1",
+      "priority_date": "2001-05-23",
+      "publication_date": "2006-07-28",
+      "assignee": "\uc548\ud0dc\uc601",
+      "title": "Contactless power train for human implant",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7645262B2",
+      "priority_date": "2002-04-11",
+      "publication_date": "2010-01-12",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Biocompatible bonding method and electronics package suitable for implantation",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8802183B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2014-08-12",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Communication system with enhanced partial power source and method of manufacturing same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CA2789262C",
+      "priority_date": "2005-04-28",
+      "publication_date": "2016-10-04",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Pharma-informatics system",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8836513B2",
+      "priority_date": "2006-04-28",
+      "publication_date": "2014-09-16",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Communication system incorporated in an ingestible product",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8912908B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2014-12-16",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Communication system with remote activation",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7877866B1",
+      "priority_date": "2005-10-26",
+      "publication_date": "2011-02-01",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Flexible circuit electrode array and method of manufacturing the same",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8197539B2",
+      "priority_date": "2006-05-05",
+      "publication_date": "2012-06-12",
+      "assignee": "University Of Southern California",
+      "title": "Intraocular camera for retinal prostheses",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "AU2007284422B2",
+      "priority_date": "2006-08-18",
+      "publication_date": "2011-06-02",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Package for an implantable neural stimulation device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP2063771A1",
+      "priority_date": "2007-03-09",
+      "publication_date": "2009-06-03",
+      "assignee": "Proteus Biomedical, Inc.",
+      "title": "In-body device having a deployable antenna",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2009002355A1",
+      "priority_date": "2007-06-25",
+      "publication_date": "2008-12-31",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Method for providing hermetic electrical feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9592377B2",
+      "priority_date": "2007-07-27",
+      "publication_date": "2017-03-14",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Implantable device for the brain",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20090216324A1",
+      "priority_date": "2008-02-22",
+      "publication_date": "2009-08-27",
+      "assignee": "Leigh Charles R A",
+      "title": "Malleable implantable medical device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN102176862B",
+      "priority_date": "2008-08-13",
+      "publication_date": "2014-10-22",
+      "assignee": "\u666e\u7f57\u900f\u65af\u6570\u5b57\u4fdd\u5065\u516c\u53f8",
+      "title": "Ingestible circuitry",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8135474B1",
+      "priority_date": "2008-12-05",
+      "publication_date": "2012-03-13",
+      "assignee": "Advanced Bionics, Llc",
+      "title": "Cochlear implant for an implantable cochlear stimulation system and method of assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7898074B2",
+      "priority_date": "2008-12-12",
+      "publication_date": "2011-03-01",
+      "assignee": "Helmut Eckhardt",
+      "title": "Electronic devices including flexible electrical circuits and related methods",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8442641B2",
+      "priority_date": "2010-08-06",
+      "publication_date": "2013-05-14",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis techniques",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8428740B2",
+      "priority_date": "2010-08-06",
+      "publication_date": "2013-04-23",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis techniques",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8150526B2",
+      "priority_date": "2009-02-09",
+      "publication_date": "2012-04-03",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8718784B2",
+      "priority_date": "2010-01-14",
+      "publication_date": "2014-05-06",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Penetrating electrodes for retinal stimulation",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8706243B2",
+      "priority_date": "2009-02-09",
+      "publication_date": "2014-04-22",
+      "assignee": "Rainbow Medical Ltd.",
+      "title": "Retinal prosthesis techniques",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "GB2480965B",
+      "priority_date": "2009-03-25",
+      "publication_date": "2014-10-08",
+      "assignee": "Proteus Digital Health Inc",
+      "title": "Probablistic pharmacokinetic and pharmacodynamic modeling",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2010129288A2",
+      "priority_date": "2009-04-28",
+      "publication_date": "2010-11-11",
+      "assignee": "Proteus Biomedical, Inc.",
+      "title": "Highly reliable ingestible event markers and methods for using the same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102009035972B4",
+      "priority_date": "2009-08-04",
+      "publication_date": "2011-11-17",
+      "assignee": "W.C. Heraeus Gmbh",
+      "title": "Cermet-containing lead-through for a medically implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102009035971B4",
+      "priority_date": "2009-08-04",
+      "publication_date": "2013-01-17",
+      "assignee": "Heraeus Precious Metals Gmbh & Co. Kg",
+      "title": "Electrical leadthrough for a medically implantable device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102010006690B4",
+      "priority_date": "2010-02-02",
+      "publication_date": "2013-03-28",
+      "assignee": "Heraeus Precious Metals Gmbh & Co. Kg",
+      "title": "Method for producing an electrical feedthrough, electrical feedthrough and implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102010006689B4",
+      "priority_date": "2010-02-02",
+      "publication_date": "2013-04-18",
+      "assignee": "Heraeus Precious Metals Gmbh & Co. Kg",
+      "title": "Method for producing an electrical feedthrough, electrical feedthrough and implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN102905672B",
+      "priority_date": "2010-04-07",
+      "publication_date": "2016-08-17",
+      "assignee": "\u666e\u7f57\u79cb\u65af\u6570\u5b57\u5065\u5eb7\u516c\u53f8",
+      "title": "Miniature ingestible device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP2563464B1",
+      "priority_date": "2010-04-30",
+      "publication_date": "2018-06-06",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Improved biocompatible bonding method",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9643021B2",
+      "priority_date": "2013-01-08",
+      "publication_date": "2017-05-09",
+      "assignee": "Advanced Bionics Ag",
+      "title": "Electrical feedthrough assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9174047B2",
+      "priority_date": "2010-05-12",
+      "publication_date": "2015-11-03",
+      "assignee": "Advanced Bionics Ag",
+      "title": "Electrical feedthrough assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8552311B2",
+      "priority_date": "2010-07-15",
+      "publication_date": "2013-10-08",
+      "assignee": "Advanced Bionics",
+      "title": "Electrical feedthrough assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8386047B2",
+      "priority_date": "2010-07-15",
+      "publication_date": "2013-02-26",
+      "assignee": "Advanced Bionics",
+      "title": "Implantable hermetic feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20130223028A1",
+      "priority_date": "2010-07-29",
+      "publication_date": "2013-08-29",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Hybrid housing for implantable medical device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8954156B2",
+      "priority_date": "2010-10-27",
+      "publication_date": "2015-02-10",
+      "assignee": "National Tsing Hua University",
+      "title": "Methods and apparatuses for configuring artificial retina devices",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9114004B2",
+      "priority_date": "2010-10-27",
+      "publication_date": "2015-08-25",
+      "assignee": "Iridium Medical Technology Co, Ltd.",
+      "title": "Flexible artificial retina devices",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP2642983A4",
+      "priority_date": "2010-11-22",
+      "publication_date": "2014-03-12",
+      "assignee": "Proteus Digital Health Inc",
+      "title": "Ingestible device with pharmaceutical product",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8571669B2",
+      "priority_date": "2011-02-24",
+      "publication_date": "2013-10-29",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis with efficient processing circuits",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8613135B2",
+      "priority_date": "2011-05-06",
+      "publication_date": "2013-12-24",
+      "assignee": "National Tsing Hua University",
+      "title": "Method for non-planar chip assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9155881B2",
+      "priority_date": "2011-05-06",
+      "publication_date": "2015-10-13",
+      "assignee": "Iridium Medical Technology Co, Ltd.",
+      "title": "Non-planar chip assembly",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9504177B2",
+      "priority_date": "2011-06-14",
+      "publication_date": "2016-11-22",
+      "assignee": "Lawrence Livermore National Security, Llc",
+      "title": "Hermetic electronics package with dual-sided electrical feedthrough configuration",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2015112603A1",
+      "priority_date": "2014-01-21",
+      "publication_date": "2015-07-30",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Masticable ingestible product and communication system therefor",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9756874B2",
+      "priority_date": "2011-07-11",
+      "publication_date": "2017-09-12",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Masticable ingestible product and communication system therefor",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8670829B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2014-03-11",
+      "assignee": "Medtronic, Inc.",
+      "title": "Insulator for a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8872035B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2014-10-28",
+      "assignee": "Medtronic, Inc.",
+      "title": "Hermetic feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9008779B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2015-04-14",
+      "assignee": "Medtronic, Inc.",
+      "title": "Insulator for a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9627833B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2017-04-18",
+      "assignee": "Medtronic, Inc.",
+      "title": "Electrical leads for a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8841558B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2014-09-23",
+      "assignee": "Medtronic Inc.",
+      "title": "Hermetic feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9724524B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2017-08-08",
+      "assignee": "Medtronic, Inc.",
+      "title": "Interconnection of conductor to feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8588916B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2013-11-19",
+      "assignee": "Medtronic, Inc.",
+      "title": "Feedthrough configured for interconnect",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN102283742B",
+      "priority_date": "2011-08-15",
+      "publication_date": "2013-09-11",
+      "assignee": "\u91cd\u5e86\u5927\u5b66",
+      "title": "Light stimulation based retinal prosthesis repairing device and repairing method",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "JP6119108B2",
+      "priority_date": "2012-04-10",
+      "publication_date": "2017-04-26",
+      "assignee": "\u30bb\u30a4\u30b3\u30fc\u30a8\u30d7\u30bd\u30f3\u682a\u5f0f\u4f1a\u793e",
+      "title": "Electronic device, electronic apparatus, base substrate manufacturing method, and electronic device manufacturing method",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN104487347B",
+      "priority_date": "2012-07-23",
+      "publication_date": "2017-09-01",
+      "assignee": "\u666e\u7f57\u79cb\u65af\u6570\u5b57\u5065\u5eb7\u516c\u53f8",
+      "title": "Method and system for manufacturing the tablet for including electronic device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CA2888871C",
+      "priority_date": "2012-10-18",
+      "publication_date": "2016-08-09",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Apparatus, system, and method to adaptively optimize power dissipation and broadcast power in a power source for a communication device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9651530B2",
+      "priority_date": "2013-01-14",
+      "publication_date": "2017-05-16",
+      "assignee": "Lifehealth, Llc",
+      "title": "Methods and apparatus for measuring nitric oxide in fluid",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2014120669A1",
+      "priority_date": "2013-01-29",
+      "publication_date": "2014-08-07",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Highly-swellable polymeric films and compositions comprising the same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9478959B2",
+      "priority_date": "2013-03-14",
+      "publication_date": "2016-10-25",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Laser welding a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9370417B2",
+      "priority_date": "2013-03-14",
+      "publication_date": "2016-06-21",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Foveated retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10175376B2",
+      "priority_date": "2013-03-15",
+      "publication_date": "2019-01-08",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Metal detector apparatus, system, and method",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9431801B2",
+      "priority_date": "2013-05-24",
+      "publication_date": "2016-08-30",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Method of coupling a feedthrough assembly for an implantable medical device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP3441109A1",
+      "priority_date": "2013-05-30",
+      "publication_date": "2019-02-13",
+      "assignee": "Graham H. Creasey",
+      "title": "Flexible dermal patch for a topical nerve stimulator system",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11229789B2",
+      "priority_date": "2013-05-30",
+      "publication_date": "2022-01-25",
+      "assignee": "Neurostim Oab, Inc.",
+      "title": "Neuro activator with controller",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9403023B2",
+      "priority_date": "2013-08-07",
+      "publication_date": "2016-08-02",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Method of forming feedthrough with integrated brazeless ferrule",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9796576B2",
+      "priority_date": "2013-08-30",
+      "publication_date": "2017-10-24",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Container with electronically controlled interlock",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10084880B2",
+      "priority_date": "2013-11-04",
+      "publication_date": "2018-09-25",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Social media networking based on physiologic information",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9610452B2",
+      "priority_date": "2013-12-12",
+      "publication_date": "2017-04-04",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Direct integration of feedthrough to implantable medical device housing by sintering",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9610451B2",
+      "priority_date": "2013-12-12",
+      "publication_date": "2017-04-04",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Direct integration of feedthrough to implantable medical device housing using a gold alloy",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9504841B2",
+      "priority_date": "2013-12-12",
+      "publication_date": "2016-11-29",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Direct integration of feedthrough to implantable medical device housing with ultrasonic welding",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9474902B2",
+      "priority_date": "2013-12-31",
+      "publication_date": "2016-10-25",
+      "assignee": "Nano Retina Ltd.",
+      "title": "Wearable apparatus for delivery of power to a retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9331791B2",
+      "priority_date": "2014-01-21",
+      "publication_date": "2016-05-03",
+      "assignee": "Nano Retina Ltd.",
+      "title": "Transfer of power and data",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11077301B2",
+      "priority_date": "2015-02-21",
+      "publication_date": "2021-08-03",
+      "assignee": "NeurostimOAB, Inc.",
+      "title": "Topical nerve stimulator and sensor for bladder control",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10070992B2",
+      "priority_date": "2015-04-08",
+      "publication_date": "2018-09-11",
+      "assignee": "Stmicroelectronics S.R.L.",
+      "title": "Implantable modular system for a system for electrically stimulating a biological tissue",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11051543B2",
+      "priority_date": "2015-07-21",
+      "publication_date": "2021-07-06",
+      "assignee": "Otsuka Pharmaceutical Co. Ltd.",
+      "title": "Alginate on adhesive bilayer laminate film",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN105167882B",
+      "priority_date": "2015-10-26",
+      "publication_date": "2019-01-29",
+      "assignee": "\u676d\u5dde\u6696\u82af\u8fe6\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "title": "A kind of ultrahigh resolution retina prosthese and its means of communication",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10804185B2",
+      "priority_date": "2015-12-31",
+      "publication_date": "2020-10-13",
+      "assignee": "Texas Instruments Incorporated",
+      "title": "Integrated circuit chip with a vertical connector",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11623082B2",
+      "priority_date": "2016-03-07",
+      "publication_date": "2023-04-11",
+      "assignee": "Cortigent, Inc.",
+      "title": "Flexible circuit peripheral nerve stimulator with low profile hybrid assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN109843149B",
+      "priority_date": "2016-07-22",
+      "publication_date": "2020-07-07",
+      "assignee": "\u666e\u7f57\u79cb\u65af\u6570\u5b57\u5065\u5eb7\u516c\u53f8",
+      "title": "Electromagnetic sensing and detection of ingestible event markers",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10820831B2",
+      "priority_date": "2016-10-26",
+      "publication_date": "2020-11-03",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Methods for manufacturing capsules with ingestible event markers",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN107519575A",
+      "priority_date": "2017-09-26",
+      "publication_date": "2017-12-29",
+      "assignee": "\u676d\u5dde\u6696\u82af\u8fe6\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "title": "A kind of retina prosthese",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2019094365A1",
+      "priority_date": "2017-11-07",
+      "publication_date": "2019-05-16",
+      "assignee": "Neurostim Oab, Inc.",
+      "title": "Non-invasive nerve activator with adaptive circuit",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CA3144957A1",
+      "priority_date": "2019-06-26",
+      "publication_date": "2020-12-30",
+      "assignee": "Neurostim Technologies Llc",
+      "title": "Non-invasive nerve activator with adaptive circuit",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2021126921A1",
+      "priority_date": "2019-12-16",
+      "publication_date": "2021-06-24",
+      "assignee": "Neurostim Solutions, Llc",
+      "title": "Non-invasive nerve activator with boosted charge delivery",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP4226968B1",
+      "priority_date": "2020-02-21",
+      "publication_date": "2025-04-30",
+      "assignee": "Heraeus Medical Components, LLC",
+      "title": "Ferrule for non-planar medical device housing",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP4230258B1",
+      "priority_date": "2020-02-21",
+      "publication_date": "2025-06-04",
+      "assignee": "Heraeus Medical Components, LLC",
+      "title": "Ferrule with strain relief spacer for implantable medical device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    }
+  ],
+  "forward_citing_families": [
+    {
+      "publication_number": "KR100606307B1",
+      "priority_date": "2001-05-23",
+      "publication_date": "2006-07-28",
+      "assignee": "\uc548\ud0dc\uc601",
+      "title": "Contactless power train for human implant",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7645262B2",
+      "priority_date": "2002-04-11",
+      "publication_date": "2010-01-12",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Biocompatible bonding method and electronics package suitable for implantation",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8802183B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2014-08-12",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Communication system with enhanced partial power source and method of manufacturing same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CA2789262C",
+      "priority_date": "2005-04-28",
+      "publication_date": "2016-10-04",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Pharma-informatics system",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8836513B2",
+      "priority_date": "2006-04-28",
+      "publication_date": "2014-09-16",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Communication system incorporated in an ingestible product",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8912908B2",
+      "priority_date": "2005-04-28",
+      "publication_date": "2014-12-16",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Communication system with remote activation",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7877866B1",
+      "priority_date": "2005-10-26",
+      "publication_date": "2011-02-01",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Flexible circuit electrode array and method of manufacturing the same",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8197539B2",
+      "priority_date": "2006-05-05",
+      "publication_date": "2012-06-12",
+      "assignee": "University Of Southern California",
+      "title": "Intraocular camera for retinal prostheses",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "AU2007284422B2",
+      "priority_date": "2006-08-18",
+      "publication_date": "2011-06-02",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Package for an implantable neural stimulation device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP2063771A1",
+      "priority_date": "2007-03-09",
+      "publication_date": "2009-06-03",
+      "assignee": "Proteus Biomedical, Inc.",
+      "title": "In-body device having a deployable antenna",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2009002355A1",
+      "priority_date": "2007-06-25",
+      "publication_date": "2008-12-31",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Method for providing hermetic electrical feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9592377B2",
+      "priority_date": "2007-07-27",
+      "publication_date": "2017-03-14",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Implantable device for the brain",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20090216324A1",
+      "priority_date": "2008-02-22",
+      "publication_date": "2009-08-27",
+      "assignee": "Leigh Charles R A",
+      "title": "Malleable implantable medical device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN102176862B",
+      "priority_date": "2008-08-13",
+      "publication_date": "2014-10-22",
+      "assignee": "\u666e\u7f57\u900f\u65af\u6570\u5b57\u4fdd\u5065\u516c\u53f8",
+      "title": "Ingestible circuitry",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8135474B1",
+      "priority_date": "2008-12-05",
+      "publication_date": "2012-03-13",
+      "assignee": "Advanced Bionics, Llc",
+      "title": "Cochlear implant for an implantable cochlear stimulation system and method of assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US7898074B2",
+      "priority_date": "2008-12-12",
+      "publication_date": "2011-03-01",
+      "assignee": "Helmut Eckhardt",
+      "title": "Electronic devices including flexible electrical circuits and related methods",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8442641B2",
+      "priority_date": "2010-08-06",
+      "publication_date": "2013-05-14",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis techniques",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8428740B2",
+      "priority_date": "2010-08-06",
+      "publication_date": "2013-04-23",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis techniques",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8150526B2",
+      "priority_date": "2009-02-09",
+      "publication_date": "2012-04-03",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8718784B2",
+      "priority_date": "2010-01-14",
+      "publication_date": "2014-05-06",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Penetrating electrodes for retinal stimulation",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8706243B2",
+      "priority_date": "2009-02-09",
+      "publication_date": "2014-04-22",
+      "assignee": "Rainbow Medical Ltd.",
+      "title": "Retinal prosthesis techniques",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "GB2480965B",
+      "priority_date": "2009-03-25",
+      "publication_date": "2014-10-08",
+      "assignee": "Proteus Digital Health Inc",
+      "title": "Probablistic pharmacokinetic and pharmacodynamic modeling",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2010129288A2",
+      "priority_date": "2009-04-28",
+      "publication_date": "2010-11-11",
+      "assignee": "Proteus Biomedical, Inc.",
+      "title": "Highly reliable ingestible event markers and methods for using the same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102009035972B4",
+      "priority_date": "2009-08-04",
+      "publication_date": "2011-11-17",
+      "assignee": "W.C. Heraeus Gmbh",
+      "title": "Cermet-containing lead-through for a medically implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102009035971B4",
+      "priority_date": "2009-08-04",
+      "publication_date": "2013-01-17",
+      "assignee": "Heraeus Precious Metals Gmbh & Co. Kg",
+      "title": "Electrical leadthrough for a medically implantable device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102010006690B4",
+      "priority_date": "2010-02-02",
+      "publication_date": "2013-03-28",
+      "assignee": "Heraeus Precious Metals Gmbh & Co. Kg",
+      "title": "Method for producing an electrical feedthrough, electrical feedthrough and implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "DE102010006689B4",
+      "priority_date": "2010-02-02",
+      "publication_date": "2013-04-18",
+      "assignee": "Heraeus Precious Metals Gmbh & Co. Kg",
+      "title": "Method for producing an electrical feedthrough, electrical feedthrough and implantable device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN102905672B",
+      "priority_date": "2010-04-07",
+      "publication_date": "2016-08-17",
+      "assignee": "\u666e\u7f57\u79cb\u65af\u6570\u5b57\u5065\u5eb7\u516c\u53f8",
+      "title": "Miniature ingestible device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP2563464B1",
+      "priority_date": "2010-04-30",
+      "publication_date": "2018-06-06",
+      "assignee": "Second Sight Medical Products, Inc.",
+      "title": "Improved biocompatible bonding method",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9643021B2",
+      "priority_date": "2013-01-08",
+      "publication_date": "2017-05-09",
+      "assignee": "Advanced Bionics Ag",
+      "title": "Electrical feedthrough assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9174047B2",
+      "priority_date": "2010-05-12",
+      "publication_date": "2015-11-03",
+      "assignee": "Advanced Bionics Ag",
+      "title": "Electrical feedthrough assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8552311B2",
+      "priority_date": "2010-07-15",
+      "publication_date": "2013-10-08",
+      "assignee": "Advanced Bionics",
+      "title": "Electrical feedthrough assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8386047B2",
+      "priority_date": "2010-07-15",
+      "publication_date": "2013-02-26",
+      "assignee": "Advanced Bionics",
+      "title": "Implantable hermetic feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US20130223028A1",
+      "priority_date": "2010-07-29",
+      "publication_date": "2013-08-29",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Hybrid housing for implantable medical device",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8954156B2",
+      "priority_date": "2010-10-27",
+      "publication_date": "2015-02-10",
+      "assignee": "National Tsing Hua University",
+      "title": "Methods and apparatuses for configuring artificial retina devices",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9114004B2",
+      "priority_date": "2010-10-27",
+      "publication_date": "2015-08-25",
+      "assignee": "Iridium Medical Technology Co, Ltd.",
+      "title": "Flexible artificial retina devices",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP2642983A4",
+      "priority_date": "2010-11-22",
+      "publication_date": "2014-03-12",
+      "assignee": "Proteus Digital Health Inc",
+      "title": "Ingestible device with pharmaceutical product",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8571669B2",
+      "priority_date": "2011-02-24",
+      "publication_date": "2013-10-29",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Retinal prosthesis with efficient processing circuits",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8613135B2",
+      "priority_date": "2011-05-06",
+      "publication_date": "2013-12-24",
+      "assignee": "National Tsing Hua University",
+      "title": "Method for non-planar chip assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9155881B2",
+      "priority_date": "2011-05-06",
+      "publication_date": "2015-10-13",
+      "assignee": "Iridium Medical Technology Co, Ltd.",
+      "title": "Non-planar chip assembly",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9504177B2",
+      "priority_date": "2011-06-14",
+      "publication_date": "2016-11-22",
+      "assignee": "Lawrence Livermore National Security, Llc",
+      "title": "Hermetic electronics package with dual-sided electrical feedthrough configuration",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2015112603A1",
+      "priority_date": "2014-01-21",
+      "publication_date": "2015-07-30",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Masticable ingestible product and communication system therefor",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9756874B2",
+      "priority_date": "2011-07-11",
+      "publication_date": "2017-09-12",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Masticable ingestible product and communication system therefor",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8670829B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2014-03-11",
+      "assignee": "Medtronic, Inc.",
+      "title": "Insulator for a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8872035B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2014-10-28",
+      "assignee": "Medtronic, Inc.",
+      "title": "Hermetic feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9008779B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2015-04-14",
+      "assignee": "Medtronic, Inc.",
+      "title": "Insulator for a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9627833B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2017-04-18",
+      "assignee": "Medtronic, Inc.",
+      "title": "Electrical leads for a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8841558B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2014-09-23",
+      "assignee": "Medtronic Inc.",
+      "title": "Hermetic feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9724524B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2017-08-08",
+      "assignee": "Medtronic, Inc.",
+      "title": "Interconnection of conductor to feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US8588916B2",
+      "priority_date": "2011-08-02",
+      "publication_date": "2013-11-19",
+      "assignee": "Medtronic, Inc.",
+      "title": "Feedthrough configured for interconnect",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN102283742B",
+      "priority_date": "2011-08-15",
+      "publication_date": "2013-09-11",
+      "assignee": "\u91cd\u5e86\u5927\u5b66",
+      "title": "Light stimulation based retinal prosthesis repairing device and repairing method",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "JP6119108B2",
+      "priority_date": "2012-04-10",
+      "publication_date": "2017-04-26",
+      "assignee": "\u30bb\u30a4\u30b3\u30fc\u30a8\u30d7\u30bd\u30f3\u682a\u5f0f\u4f1a\u793e",
+      "title": "Electronic device, electronic apparatus, base substrate manufacturing method, and electronic device manufacturing method",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN104487347B",
+      "priority_date": "2012-07-23",
+      "publication_date": "2017-09-01",
+      "assignee": "\u666e\u7f57\u79cb\u65af\u6570\u5b57\u5065\u5eb7\u516c\u53f8",
+      "title": "Method and system for manufacturing the tablet for including electronic device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CA2888871C",
+      "priority_date": "2012-10-18",
+      "publication_date": "2016-08-09",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Apparatus, system, and method to adaptively optimize power dissipation and broadcast power in a power source for a communication device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9651530B2",
+      "priority_date": "2013-01-14",
+      "publication_date": "2017-05-16",
+      "assignee": "Lifehealth, Llc",
+      "title": "Methods and apparatus for measuring nitric oxide in fluid",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2014120669A1",
+      "priority_date": "2013-01-29",
+      "publication_date": "2014-08-07",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Highly-swellable polymeric films and compositions comprising the same",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9478959B2",
+      "priority_date": "2013-03-14",
+      "publication_date": "2016-10-25",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Laser welding a feedthrough",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9370417B2",
+      "priority_date": "2013-03-14",
+      "publication_date": "2016-06-21",
+      "assignee": "Nano-Retina, Inc.",
+      "title": "Foveated retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10175376B2",
+      "priority_date": "2013-03-15",
+      "publication_date": "2019-01-08",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Metal detector apparatus, system, and method",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9431801B2",
+      "priority_date": "2013-05-24",
+      "publication_date": "2016-08-30",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Method of coupling a feedthrough assembly for an implantable medical device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP3441109A1",
+      "priority_date": "2013-05-30",
+      "publication_date": "2019-02-13",
+      "assignee": "Graham H. Creasey",
+      "title": "Flexible dermal patch for a topical nerve stimulator system",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11229789B2",
+      "priority_date": "2013-05-30",
+      "publication_date": "2022-01-25",
+      "assignee": "Neurostim Oab, Inc.",
+      "title": "Neuro activator with controller",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9403023B2",
+      "priority_date": "2013-08-07",
+      "publication_date": "2016-08-02",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Method of forming feedthrough with integrated brazeless ferrule",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9796576B2",
+      "priority_date": "2013-08-30",
+      "publication_date": "2017-10-24",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Container with electronically controlled interlock",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10084880B2",
+      "priority_date": "2013-11-04",
+      "publication_date": "2018-09-25",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Social media networking based on physiologic information",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9610452B2",
+      "priority_date": "2013-12-12",
+      "publication_date": "2017-04-04",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Direct integration of feedthrough to implantable medical device housing by sintering",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9610451B2",
+      "priority_date": "2013-12-12",
+      "publication_date": "2017-04-04",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Direct integration of feedthrough to implantable medical device housing using a gold alloy",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9504841B2",
+      "priority_date": "2013-12-12",
+      "publication_date": "2016-11-29",
+      "assignee": "Heraeus Deutschland GmbH & Co. KG",
+      "title": "Direct integration of feedthrough to implantable medical device housing with ultrasonic welding",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9474902B2",
+      "priority_date": "2013-12-31",
+      "publication_date": "2016-10-25",
+      "assignee": "Nano Retina Ltd.",
+      "title": "Wearable apparatus for delivery of power to a retinal prosthesis",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US9331791B2",
+      "priority_date": "2014-01-21",
+      "publication_date": "2016-05-03",
+      "assignee": "Nano Retina Ltd.",
+      "title": "Transfer of power and data",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11077301B2",
+      "priority_date": "2015-02-21",
+      "publication_date": "2021-08-03",
+      "assignee": "NeurostimOAB, Inc.",
+      "title": "Topical nerve stimulator and sensor for bladder control",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10070992B2",
+      "priority_date": "2015-04-08",
+      "publication_date": "2018-09-11",
+      "assignee": "Stmicroelectronics S.R.L.",
+      "title": "Implantable modular system for a system for electrically stimulating a biological tissue",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11051543B2",
+      "priority_date": "2015-07-21",
+      "publication_date": "2021-07-06",
+      "assignee": "Otsuka Pharmaceutical Co. Ltd.",
+      "title": "Alginate on adhesive bilayer laminate film",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN105167882B",
+      "priority_date": "2015-10-26",
+      "publication_date": "2019-01-29",
+      "assignee": "\u676d\u5dde\u6696\u82af\u8fe6\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "title": "A kind of ultrahigh resolution retina prosthese and its means of communication",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10804185B2",
+      "priority_date": "2015-12-31",
+      "publication_date": "2020-10-13",
+      "assignee": "Texas Instruments Incorporated",
+      "title": "Integrated circuit chip with a vertical connector",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US11623082B2",
+      "priority_date": "2016-03-07",
+      "publication_date": "2023-04-11",
+      "assignee": "Cortigent, Inc.",
+      "title": "Flexible circuit peripheral nerve stimulator with low profile hybrid assembly",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN109843149B",
+      "priority_date": "2016-07-22",
+      "publication_date": "2020-07-07",
+      "assignee": "\u666e\u7f57\u79cb\u65af\u6570\u5b57\u5065\u5eb7\u516c\u53f8",
+      "title": "Electromagnetic sensing and detection of ingestible event markers",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "US10820831B2",
+      "priority_date": "2016-10-26",
+      "publication_date": "2020-11-03",
+      "assignee": "Proteus Digital Health, Inc.",
+      "title": "Methods for manufacturing capsules with ingestible event markers",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CN107519575A",
+      "priority_date": "2017-09-26",
+      "publication_date": "2017-12-29",
+      "assignee": "\u676d\u5dde\u6696\u82af\u8fe6\u7535\u5b50\u79d1\u6280\u6709\u9650\u516c\u53f8",
+      "title": "A kind of retina prosthese",
+      "examiner_cited": true,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2019094365A1",
+      "priority_date": "2017-11-07",
+      "publication_date": "2019-05-16",
+      "assignee": "Neurostim Oab, Inc.",
+      "title": "Non-invasive nerve activator with adaptive circuit",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "CA3144957A1",
+      "priority_date": "2019-06-26",
+      "publication_date": "2020-12-30",
+      "assignee": "Neurostim Technologies Llc",
+      "title": "Non-invasive nerve activator with adaptive circuit",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "WO2021126921A1",
+      "priority_date": "2019-12-16",
+      "publication_date": "2021-06-24",
+      "assignee": "Neurostim Solutions, Llc",
+      "title": "Non-invasive nerve activator with boosted charge delivery",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP4226968B1",
+      "priority_date": "2020-02-21",
+      "publication_date": "2025-04-30",
+      "assignee": "Heraeus Medical Components, LLC",
+      "title": "Ferrule for non-planar medical device housing",
+      "examiner_cited": false,
+      "third_party_cited": false
+    },
+    {
+      "publication_number": "EP4230258B1",
+      "priority_date": "2020-02-21",
+      "publication_date": "2025-06-04",
+      "assignee": "Heraeus Medical Components, LLC",
+      "title": "Ferrule with strain relief spacer for implantable medical device",
+      "examiner_cited": false,
+      "third_party_cited": false
+    }
+  ],
+  "family": [
+    {
+      "publication_number": "US20070041164A1",
+      "publication_date": "2007-02-22"
+    },
+    {
+      "publication_number": "US20110118807A1",
+      "publication_date": "2011-05-19"
+    },
+    {
+      "publication_number": "WO2006118679A2",
+      "publication_date": "2006-11-09"
+    },
+    {
+      "publication_number": "AU2006241404B2",
+      "publication_date": "2011-07-07"
+    },
+    {
+      "publication_number": "US9931507B2",
+      "publication_date": "2018-04-03"
+    },
+    {
+      "publication_number": "EP1879649B1",
+      "publication_date": "2013-05-15"
+    },
+    {
+      "publication_number": "JP4958898B2",
+      "publication_date": "2012-06-20"
+    },
+    {
+      "publication_number": "US7873419B2",
+      "publication_date": "2011-01-18"
+    },
+    {
+      "publication_number": "US20160317813A1",
+      "publication_date": "2016-11-03"
+    },
+    {
+      "publication_number": "JP2008538980A",
+      "publication_date": "2008-11-13"
+    },
+    {
+      "publication_number": "EP1879649A2",
+      "publication_date": "2008-01-23"
+    },
+    {
+      "publication_number": "US20060247734A1",
+      "publication_date": "2006-11-02"
+    },
+    {
+      "publication_number": "US8473048B2",
+      "publication_date": "2013-06-25"
+    },
+    {
+      "publication_number": "US20080046021A1",
+      "publication_date": "2008-02-21"
+    },
+    {
+      "publication_number": "US20130268039A1",
+      "publication_date": "2013-10-10"
+    },
+    {
+      "publication_number": "WO2006118679A3",
+      "publication_date": "2007-03-08"
+    },
+    {
+      "publication_number": "US7881799B2",
+      "publication_date": "2011-02-01"
+    },
+    {
+      "publication_number": "US20130261717A1",
+      "publication_date": "2013-10-03"
+    },
+    {
+      "publication_number": "AU2006241404A1",
+      "publication_date": "2006-11-09"
+    },
+    {
+      "publication_number": "US8532776B2",
+      "publication_date": "2013-09-10"
+    },
+    {
+      "publication_number": "US9415221B2",
+      "publication_date": "2016-08-16"
+    },
+    {
+      "publication_number": "US9555244B2",
+      "publication_date": "2017-01-31"
+    },
+    {
+      "publication_number": "US20080065208A1",
+      "publication_date": "2008-03-13"
+    }
+  ],
+  "country_status": [],
+  "counts": {
+    "backward_references": 26,
+    "forward_references": 86,
+    "forward_citing_families": 84,
+    "family_members": 23
+  }
+}

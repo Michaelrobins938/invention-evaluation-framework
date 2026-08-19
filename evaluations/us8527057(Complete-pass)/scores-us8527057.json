@@ -1,0 +1,101 @@
+{
+  "run_id": "us8527057",
+  "invention_name": "Retinal Prosthesis and Method of Manufacturing a Retinal Prosthesis",
+  "submitted_by": "User-provided patent PDF",
+  "invention_id": "US 8,527,057",
+  "submitted_date": "2026-08-15",
+  "report_date": "2026-08-15",
+  "disclaimer": "This is a preliminary evidence-constrained evaluation based on a public patent record and selected public sources. It is not legal advice, not a patentability opinion, and not an FTO opinion.",
+  "gauges": {
+    "technology": {
+      "tier_index": 4,
+      "tier_label": "Moderate-Strong",
+      "basis": "Derived from established patent disclosure of integrated retinal stimulation, inductive coupling, hermetic packaging, and low-profile ocular mounting (P-03-001/P-03-002). Performance and clinical propositions remain unestablished (P-03-003).",
+      "subfactors": {"Development": 2, "Unique Benefits": 4, "Landscape": 3, "Regulatory Hurdles": 1}
+    },
+    "ip": {
+      "tier_index": 2,
+      "tier_label": "Limited-Moderate",
+      "basis": "Family and grant facts are established, but current enforceability, complete family status, and final anticipation/obviousness conclusions were not established in this test run (P-02-002/P-05-001/P-05-002).",
+      "subfactors": {"Development": 2, "Unique Benefits": 3, "Landscape": 2, "Regulatory Hurdles": 1}
+    },
+    "market": {
+      "tier_index": 2,
+      "tier_label": "Limited-Moderate",
+      "basis": "Clinical need and field activity are established, while quantitative market sizing, product-identity adoption, and commercialization readiness remain unestablished (P-07-001/P-07-002).",
+      "subfactors": {"Development": 1, "Unique Benefits": 3, "Landscape": 2, "Regulatory Hurdles": 1}
+    }
+  },
+  "commercialization_summary": {
+    "paragraph": "Commercial actionability is Indeterminate-to-Limited on the current evidence. The patent discloses a technically differentiated implant architecture, but quantitative market size, current product embodiment, clinical performance, commercialization readiness, and current rights-chain status require additional evidence.",
+    "teasers": [
+      "High-value technical area, but high regulatory and clinical-development burden.",
+      "Strongest identified pathways are rights-holder diligence, specialized implant packaging, and clinical/research collaboration."
+    ]
+  },
+  "tech_ladder": {
+    "stages": ["Material", "Subcomponent", "Component", "Device", "System", "Service"],
+    "current": "Device",
+    "basis": "The record discloses an integrated implantable device combining package, coil, cable, electrode array, and fixation structure."
+  },
+  "dev_ladder": {
+    "stages": ["Concept", "Proof of Concept", "Testing", "Manufacturing", "Sales"],
+    "current": "Proof of Concept",
+    "basis": "Patent-level engineering disclosure is present, but prototype, validation, production, and sales evidence are not established."
+  },
+  "semantic_map": {
+    "current": "Implantable Retinal Prosthesis",
+    "tree": [{"label":"Medical Devices","children":[{"label":"Implantable Neurostimulation","children":[{"label":"Retinal Prostheses","children":[{"label":"Low-profile hermetic package and inductive coil integration"}]}]}]}],
+    "footnotes": [
+      {"label":"USPTO CPC A61N scheme","url":"https://www.uspto.gov/web/patents/classification/cpc/html/cpc-A61N.html"},
+      {"label":"Google Patents US8527057B2","url":"https://patents.google.com/patent/US8527057B2/en"}
+    ]
+  },
+  "charts": {
+    "region_pie": {
+      "title": "Retinal-electrode patent records by jurisdiction",
+      "note": "Google Patents XHR query: A61N1/0543 AND retinal; same keyword/class query issued per jurisdiction. Counts are publication records returned, not deduplicated families.",
+      "data": {"US": 492, "WO": 318, "EP": 261, "CN": 127, "AU": 105, "JP": 100, "CA": 58}
+    },
+    "applicants_pie": {
+      "title": "Top applicants in the retinal-electrode query",
+      "note": "Google Patents XHR query: country=US; A61N1/0543 AND retinal; 492 results. Display labels shorten returned applicant names; names have not been merged across corporate variants.",
+      "data": {"Second Sight": 160, "Nidek": 42, "Pixium Vision": 32, "Cochlear": 28, "USC": 25, "Others": 205}
+    },
+    "activity_line": {
+      "title": "Retinal-electrode filing activity windows",
+      "note": "Google Patents query frequency buckets, not a deduplicated annual filing series; 2025–2026 YTD is partial through 2026-08-15 and is not a decline signal.",
+      "data": {"2016–19": 64, "2019–22": 43, "2022–25": 38, "25–26 YTD": 5}
+    },
+    "naics_dual": {
+      "title": "NAICS 334510 — employees vs establishments, 2022",
+      "note": "U.S. Census Bureau CBP 2022 downloadable file cbp22us.zip; NAICS 334510, lfo='-' (all legal forms). Employees and establishments are reported values.",
+      "left": {"2022": 92285},
+      "right": {"2022": 923}
+    },
+    "naics_bubble": {
+      "title": "NAICS 334510 establishments by employee-size bracket, 2022",
+      "note": "U.S. Census Bureau CBP 2022 downloadable file cbp22us.zip; n-fields are establishment counts and e-fields are employee counts.",
+      "points": [
+        {"label":"299", "xlabel":"<5", "y":299, "r":495},
+        {"label":"135", "xlabel":"5–9", "y":135, "r":931},
+        {"label":"102", "xlabel":"10–19", "y":102, "r":1425},
+        {"label":"120", "xlabel":"20–49", "y":120, "r":3812},
+        {"label":"87", "xlabel":"50–99", "y":87, "r":5998},
+        {"label":"83", "xlabel":"100–249", "y":83, "r":13237},
+        {"label":"50", "xlabel":"250–499", "y":50, "r":17185},
+        {"label":"29", "xlabel":"500–999", "y":29, "r":18995},
+        {"label":"18", "xlabel":"1000+", "y":18, "r":30207}
+      ]
+    },
+    "third_party": []
+  },
+  "swot": {
+    "badge_k": "Commercial Actionability",
+    "badge_v": "Indeterminate-to-Limited",
+    "s": ["Detailed integrated implant architecture (P-03-001)", "Hermetic package and low-profile arrangement are technically specific (P-03-002)", "Clear fit with retinal-prosthesis need and research field (P-07-003)"],
+    "w": ["Clinical and comparative performance not established (P-03-003)", "Quantitative market size not established (P-07-001)", "Current rights-chain and product embodiment require verification (P-02-002/P-07-002)"],
+    "o": ["Rights-holder diligence and licensing pathway (P-08-001)", "Hermetic implant packaging collaboration", "Clinical/research partnerships around implant stability and retinal stimulation"],
+    "t": ["High regulatory and clinical burden (P-03-004)", "Competing epiretinal, subretinal, photovoltaic, and cortical architectures", "FTO and current legal-status questions require separate counsel-led work"]
+  }
+}

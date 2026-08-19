@@ -1,0 +1,60 @@
+[
+  {
+    "gate": "patent_coverage",
+    "passed": false,
+    "errors": [
+      "patent_coverage: required source 'google_patents' not used (aliases: ['primary_patent_database'])",
+      "patent_coverage: required source 'espacenet' not used (aliases: ['secondary_patent_database'])",
+      "patent_coverage: 0 attempts < required 2"
+    ]
+  },
+  {
+    "gate": "literature_coverage",
+    "passed": false,
+    "errors": [
+      "literature_coverage: required source 'crossref' not used (aliases: ['doi_database'])",
+      "literature_coverage: required source 'scholarly_database' not used (aliases: ['pubmed', 'semantic_scholar'])",
+      "literature_coverage: required source 'technical_database' not used (aliases: ['engineering_database'])",
+      "literature_coverage: 0 attempts < required 2"
+    ]
+  },
+  {
+    "gate": "market_coverage",
+    "passed": false,
+    "errors": [
+      "market_coverage: required source 'public_health_source' not used (aliases: ['pubmed'])",
+      "market_coverage: required source 'industry_source' not used (aliases: ['census', 'industry_database'])",
+      "market_coverage: 0 attempts < required 2",
+      "market_coverage: required schema fields absent from all support objects: ['market_boundary', 'geography', 'time_period', 'figure', 'source', 'derivation']"
+    ]
+  },
+  {
+    "gate": "partner_coverage",
+    "passed": false,
+    "errors": [
+      "partner_coverage: required source 'assignment_source' not used (aliases: ['patent_assignment'])",
+      "partner_coverage: required source 'company_source' not used (aliases: ['company_database'])",
+      "partner_coverage: 0 attempts < required 1",
+      "partner_coverage: required schema fields absent from all support objects: ['organization', 'sells', 'buys', 'technical_need', 'invention_mapping']"
+    ]
+  },
+  {
+    "gate": "novelty_coverage",
+    "passed": false,
+    "errors": [
+      "novelty_coverage: required source 'google_patents' not used (aliases: ['primary_patent_database'])",
+      "novelty_coverage: required source 'espacenet' not used (aliases: ['secondary_patent_database'])",
+      "novelty_coverage: 0 attempts < required 2",
+      "novelty_coverage: required schema fields absent from all support objects: ['claim_element_mapping']"
+    ]
+  },
+  {
+    "gate": "technology_coverage",
+    "passed": false,
+    "errors": [
+      "technology_coverage: required source 'patent_specification' not used (aliases: ['primary_source'])",
+      "technology_coverage: 0 attempts < required 1",
+      "technology_coverage: required schema fields absent from all support objects: ['feature_to_benefit', 'domain_orientation']"
+    ]
+  }
+]

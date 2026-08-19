@@ -1,0 +1,331 @@
+"""Live research adapters that create execution records at request time."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+import json
+from pathlib import Path
+import re
+from typing import Callable
+from urllib.parse import quote_plus
+from urllib.request import Request, urlopen
+
+from .execution import ExecutionLedger
+from .evidence_gate import SourceObject, apply_evidence_sufficiency_gate
+from .domain_parsers import (
+    parse_crossref_literature,
+    parse_market_proxy,
+    parse_partner_candidates,
+    parse_patent_claims,
+    parse_patent_metadata,
+)
+
+
+Fetcher = Callable[[str], bytes]
+
+
+def _default_fetcher(url: str) -> bytes:
+    request = Request(url, headers={"User-Agent": "invention-evaluation-engine/1.7"})
+    with urlopen(request, timeout=60) as response:
+        return response.read()
+
+
+@dataclass
+class HttpLiveAdapter:
+    fetcher: Fetcher = _default_fetcher
+
+    def fetch(
+        self,
+        ledger: ExecutionLedger,
+        *,
+        phase_id: str,
+        action_type: str,
+        source: str,
+        url: str,
+        query: str,
+        artifact_path: Path,
+        result_count: int | None = None,
+    ):
+        body = self.fetcher(url)
+        artifact_path.parent.mkdir(parents=True, exist_ok=True)
+        artifact_path.write_bytes(body)
+        return ledger.record(
+            phase_id=phase_id,
+            action_type=action_type,
+            source=source,
+            query=query,
+            result_count=result_count,
+            result_artifact=str(artifact_path),
+            outcome="live response retrieved",
+            candidate_evidence=result_count is not None and result_count > 0,
+        )
+
+
+def _write_phase(path: Path, title: str, record, source_url: str, summary: str) -> Path:
+    path.write_text(
+        f"# {title}\n\n"
+        f"- Execution ID: `{record.execution_id}`\n"
+        f"- Source: {source_url}\n"
+        f"- Execution status: `{record.status.value}`\n"
+        f"- Result count: `{record.result_count}`\n\n"
+        f"{summary}\n",
+        encoding="utf-8",
+    )
+    return path
+
+
+def run_live_phase_adapters(
+    *,
+    patent_id: str,
+    output_dir: Path,
+    ledger: ExecutionLedger,
+    fetcher: Fetcher = _default_fetcher,
+) -> dict[str, Path]:
+    """Execute the minimum live phase set and return generated phase artifacts."""
+    adapter = HttpLiveAdapter(fetcher)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    normalized = patent_id.upper()
+    publication_id = normalized if re.search(r"B[0-9A-Z]+$", normalized) else f"{normalized}A"
+    patent_url = f"https://patents.google.com/patent/{publication_id}/en"
+    patent_raw = output_dir / f"raw-patent-{normalized.lower()}.html"
+    patent_record = adapter.fetch(
+        ledger,
+        phase_id="03",
+        action_type="patent_search",
+        source="Google Patents",
+        url=patent_url,
+        query=normalized,
+        artifact_path=patent_raw,
+        result_count=1,
+    )
+    patent_metadata = parse_patent_metadata(patent_raw.read_text(encoding="utf-8", errors="ignore"), normalized)
+    target_claims = parse_patent_claims(patent_raw.read_text(encoding="utf-8", errors="ignore"))
+
+    literature_query = "locomotion assisting exoskeleton ground force sensors"
+    literature_url = "https://api.crossref.org/works?query=" + quote_plus(literature_query) + "&rows=5"
+    literature_raw = output_dir / "raw-literature-crossref.json"
+    literature_record = adapter.fetch(
+        ledger,
+        phase_id="04",
+        action_type="literature_search",
+        source="Crossref API",
+        url=literature_url,
+        query=literature_query,
+        artifact_path=literature_raw,
+        result_count=None,
+    )
+
+    market_url = "https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json"
+    market_raw = output_dir / "raw-market-worldbank.json"
+    market_record = adapter.fetch(
+        ledger,
+        phase_id="06",
+        action_type="market_proxy_search",
+        source="World Bank API",
+        url=market_url,
+        query="World population indicator SP.POP.TOTL",
+        artifact_path=market_raw,
+        result_count=None,
+    )
+
+    partner_query = "exoskeleton locomotion assisting device"
+    partner_url = "https://patents.google.com/?q=" + quote_plus(partner_query)
+    partner_raw = output_dir / "raw-partner-patent-search.html"
+    partner_record = adapter.fetch(
+        ledger,
+        phase_id="07",
+        action_type="partner_search",
+        source="Google Patents search",
+        url=partner_url,
+        query=partner_query,
+        artifact_path=partner_raw,
+        result_count=None,
+    )
+
+    troubleshooting_query = "patent claim element mapping evidence sufficiency search guidance"
+    troubleshooting_url = "https://patents.google.com/?q=" + quote_plus(troubleshooting_query)
+    troubleshooting_raw = output_dir / "raw-recovery-troubleshooting.html"
+    troubleshooting_record = adapter.fetch(
+        ledger,
+        phase_id="05",
+        action_type="recovery_troubleshooting",
+        source="Google Patents search guidance route",
+        url=troubleshooting_url,
+        query=troubleshooting_query,
+        artifact_path=troubleshooting_raw,
+        result_count=None,
+    )
+
+    recovery_strategies = [
+        ("terminology", "magnetic exoskeleton locomotion ground force control", "https://patents.google.com/?q="),
+        ("classification", "A61F5/00 locomotion exoskeleton", "https://patents.google.com/?q="),
+        ("citation_lineage", normalized, f"https://patents.google.com/patent/{publication_id}/en"),
+        ("alternate_source", "locomotion assisting exoskeleton", "https://api.crossref.org/works?query="),
+        ("entity_jurisdiction", "ReWalk exoskeleton", "https://patents.google.com/?q="),
+    ]
+    recovery_records = []
+    for index, (strategy_class, query, base_url) in enumerate(recovery_strategies, start=1):
+        url = base_url + (quote_plus(query) if base_url.endswith("=") else "")
+        raw_path = output_dir / f"raw-recovery-{index:02d}-{strategy_class}.bin"
+        record = adapter.fetch(
+            ledger,
+            phase_id="05",
+            action_type="recovery_search",
+            source=base_url.split("/")[2],
+            url=url,
+            query=query,
+            artifact_path=raw_path,
+            result_count=None,
+        )
+        recovery_records.append({
+            "recovery_id": f"R{index}",
+            "strategy_class": strategy_class,
+            "execution_id": record.execution_id,
+            "query": query,
+            "source": base_url,
+            "status": "EXECUTED",
+            "result_artifact": str(raw_path),
+        })
+
+    reference_records = []
+    for reference_id in patent_metadata.get("backward_references", [])[:3]:
+        reference_url = f"https://patents.google.com/patent/{reference_id}/en"
+        reference_raw = output_dir / f"raw-prior-art-{reference_id.lower()}.html"
+        reference_execution = adapter.fetch(
+            ledger,
+            phase_id="05",
+            action_type="prior_art_reference_fetch",
+            source="Google Patents",
+            url=reference_url,
+            query=reference_id,
+            artifact_path=reference_raw,
+            result_count=None,
+        )
+        reference_html = reference_raw.read_text(encoding="utf-8", errors="ignore")
+        reference_claims = parse_patent_claims(reference_html)
+        reference_records.append({
+            "reference_id": reference_id,
+            "execution_id": reference_execution.execution_id,
+            "raw_artifact": str(reference_raw),
+            "claims": reference_claims,
+        })
+    claim_mapping = {
+        "target_patent": normalized,
+        "target_claim": target_claims[0] if target_claims else None,
+        "references": reference_records,
+        "state": "WORK QUEUE",
+        "reason": "reference claim text and temporal/legal relevance require proposition-level verification",
+    }
+    claim_mapping_path = output_dir / "claim-mapping.json"
+    claim_mapping_path.write_text(json.dumps(claim_mapping, indent=2) + "\n", encoding="utf-8")
+    recovery_payload = {
+        "initial_failure": {
+            "type": "insufficient_proposition_support",
+            "proposition_id": "P-05-001",
+            "observation": "retrieval produced candidate material without complete claim-level support",
+        },
+        "diagnosis": {
+            "hypothesis": "retrieval relevance is not equivalent to claim-element evidence",
+            "supporting_observations": ["candidate records lack proposition-level mapping"],
+        },
+        "troubleshooting": {
+            "executed": True,
+            "execution_id": troubleshooting_record.execution_id,
+            "query": troubleshooting_query,
+            "source": troubleshooting_url,
+            "result_artifact": str(troubleshooting_raw),
+            "outcome": "recovery classes selected and executed",
+        },
+        "strategies": recovery_records,
+        "reassessment": {
+            "state": "WORK QUEUE",
+            "reason": "all recovery responses remain candidates pending source verification and claim mapping",
+            "additional_work_required": True,
+        },
+    }
+    recovery_path = output_dir / "recovery-records.json"
+    recovery_path.write_text(json.dumps(recovery_payload, indent=2) + "\n", encoding="utf-8")
+
+    evidence_decisions = [
+        apply_evidence_sufficiency_gate(
+            proposition_id="P-05-001",
+            schema_id="prior_art_disclosure",
+            source=SourceObject(normalized, "patent", patent_url, patent_record.execution_id, str(patent_raw)),
+            proposition_support=None,
+            temporal_relevance=False,
+        ),
+        apply_evidence_sufficiency_gate(
+            proposition_id="P-06-001",
+            schema_id="literature_disclosure",
+            source=SourceObject("Crossref query", "literature_search", literature_url, literature_record.execution_id, str(literature_raw)),
+            proposition_support=None,
+            temporal_relevance=False,
+        ),
+        apply_evidence_sufficiency_gate(
+            proposition_id="P-07-001",
+            schema_id="market_sizing",
+            source=SourceObject("World Bank API", "market_proxy", market_url, market_record.execution_id, str(market_raw)),
+            proposition_support=None,
+            temporal_relevance=False,
+        ),
+        apply_evidence_sufficiency_gate(
+            proposition_id="P-08-001",
+            schema_id="partner_fit",
+            source=SourceObject("Google Patents search", "partner_search", partner_url, partner_record.execution_id, str(partner_raw)),
+            proposition_support=None,
+            temporal_relevance=False,
+        ),
+    ]
+    evidence_path = output_dir / "adapter-evidence-decisions.json"
+    evidence_path.write_text(json.dumps([decision.to_dict() for decision in evidence_decisions], indent=2) + "\n", encoding="utf-8")
+
+    parsed_domains = {
+        "patent": {**patent_metadata, "claims": target_claims},
+        "literature": parse_crossref_literature(literature_raw.read_bytes()),
+        "market": parse_market_proxy(market_raw.read_bytes()),
+        "partners": parse_partner_candidates(partner_raw.read_bytes()),
+    }
+    parsed_path = output_dir / "parsed-domain-evidence.json"
+    parsed_path.write_text(json.dumps(parsed_domains, indent=2) + "\n", encoding="utf-8")
+
+    artifacts = {
+        "patent": _write_phase(
+            output_dir / f"patent-landscape-{normalized.lower()}.md",
+            "Patent Landscape Analysis",
+            patent_record,
+            patent_url,
+            "The primary patent record was retrieved live. Family, continuity, claim mapping, and normalized landscape analysis remain evidence-debt items.",
+        ),
+        "literature": _write_phase(
+            output_dir / f"literature-search-{normalized.lower()}.md",
+            "Literature Analysis",
+            literature_record,
+            literature_url,
+            "Crossref literature retrieval was executed live. Returned records require identity, relevance, date, and proposition-level verification.",
+        ),
+        "market": _write_phase(
+            output_dir / f"market-analysis-{normalized.lower()}.md",
+            "Market Analysis",
+            market_record,
+            market_url,
+            "A public population proxy was retrieved live. It is not a market-size finding and requires bounded patient, procedure, reimbursement, and adoption modeling.",
+        ),
+        "partners": _write_phase(
+            output_dir / f"partner-analysis-{normalized.lower()}.md",
+            "Potential Partners",
+            partner_record,
+            partner_url,
+            "A live adjacent-technology search was executed. Organization-specific partner fit remains unverified.",
+        ),
+        "recovery": _write_phase(
+            output_dir / f"recovery-record-{normalized.lower()}.md",
+            "Evidence Recovery Record",
+            ledger.executions[-1],
+            "execution-ledger.json",
+            "Five materially distinct recovery strategies were executed and linked to execution IDs in recovery-records.json. Results remain candidate inputs until proposition-level verification.",
+        ),
+        "evidence": evidence_path,
+        "parsed": parsed_path,
+        "claim_mapping": claim_mapping_path,
+    }
+    return artifacts

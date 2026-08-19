@@ -1,0 +1,32 @@
+{
+  "invention_id": "US5215088",
+  "title": "THREE-DIMENSIONAL ELECTRODE DEVICE",
+  "inventors": [
+    "Richard A. Normann",
+    "Patrick K. Campbell",
+    "Kelly E. Jones"
+  ],
+  "assignee": "The University of Utah",
+  "filing_date": "1989-11-07",
+  "grant_date": "1993-06-01",
+  "status": "EXPIRED",
+  "application_number": "07/432,992",
+  "classifications": {
+    "ipc": "A61B 5/04",
+    "us_cl": ["128/642", "128/784"]
+  },
+  "technical_field": "Three-dimensional semiconductor electrode arrays, neural interfaces, cortical implants, vision prosthesis",
+  "source_file": "source/US5215088_extracted.txt",
+  "source_format": "pdf_extracted_text",
+  "extraction_date": "2026-08-18",
+  "disclosure_timing": {
+    "public_disclosures": [],
+    "status": "CONFIRMED_ABSENT",
+    "basis": "patent text — no other public disclosures mentioned"
+  },
+  "ip_status": {
+    "target_patent": "EXPIRED",
+    "term_expired_approx": "2009",
+    "active_family_members": "to be determined in landscape search"
+  }
+}

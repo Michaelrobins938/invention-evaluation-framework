@@ -1,0 +1,476 @@
+{
+  "patent": {
+    "patent_id": "US8905955B2",
+    "title": "Locomotion assisting device and method",
+    "family_members": [
+      "EP2349121A4",
+      "WO2010044087A3",
+      "WO2010044087A2",
+      "US20120165709A1",
+      "CA2740438C",
+      "US20130245512A1",
+      "US8348875B2",
+      "EP2349121A2",
+      "US9526668B2",
+      "US20130261513A1",
+      "US10226395B2",
+      "US20130123672A1",
+      "US20100094188A1",
+      "CA2740438A1",
+      "US8096965B2",
+      "CA2973797A1"
+    ],
+    "status": [
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      },
+      {
+        "document_id": "",
+        "state": ""
+      }
+    ],
+    "backward_references": [
+      "US5662693A",
+      "US7410471B1",
+      "US20030120183A1",
+      "US20030093021A1",
+      "US7153242B2",
+      "US20060206214A1",
+      "US20070123997A1",
+      "US20070056592A1",
+      "US20080039756A1"
+    ],
+    "forward_references": [
+      "US11464700B2",
+      "US10427293B2",
+      "US12558774B2",
+      "US10843332B2",
+      "US11324655B2",
+      "US10278883B2",
+      "US10864100B2",
+      "US10434030B2",
+      "US10561564B2",
+      "US20220176548A1",
+      "US11253992B2",
+      "US10463561B2",
+      "WO2017087016A1",
+      "US12485030B2",
+      "US11344467B2",
+      "WO2017105762A1",
+      "WO2017105547A1",
+      "US11612537B2",
+      "US11135120B2",
+      "US11590046B2",
+      "CN105751204A",
+      "KR20190005907A",
+      "KR102072323B1",
+      "US11498203B2",
+      "US12251354B2",
+      "US11014804B2",
+      "WO2018175004A1",
+      "WO2019156698A1",
+      "WO2020112196A1"
+    ],
+    "claims": [
+      {
+        "claim_number": "1",
+        "text": "1. A method of controlling an exoskeleton bracing system, the exoskeleton bracing system including a trunk support, leg braces, each leg brace including limb segment braces, motorized joints adapted to provide relative angular movement between the limb segment braces of the leg braces and between the leg braces and the trunk support, one or more ground force sensors for sensing a ground force exerted on each of the leg braces, and a controller, the method comprising: receiving a signal from a control panel unit that indicates selection of a locomotion mode; actuating the motorized joints to straighten the leg braces when the selected locomotion mode includes standing from a sitting position; and actuating the motorized joints to bend the leg braces when the selected locomotion mode includes sitting from a standing position.",
+        "limitations": [
+          "1. A method of controlling an exoskeleton bracing system, the exoskeleton bracing system including a trunk support, leg braces, each leg brace including limb segment braces, motorized joints adapted to provide relative angular movement between the limb segment braces of the leg braces and between the leg braces and the trunk support, one or more ground force sensors for sensing a ground force exerted on each of the leg braces, and a controller, the method comprising: receiving a signal from a control panel unit that indicates selection of a locomotion mode",
+          "actuating the motorized joints to straighten the leg braces when the selected locomotion mode includes standing from a sitting position; and",
+          "actuating the motorized joints to bend the leg braces when the selected locomotion mode includes sitting from a standing position."
+        ]
+      },
+      {
+        "claim_number": "2",
+        "text": "2. A method as claimed in claim 1, comprising receiving a signal from a tilt sensor.",
+        "limitations": [
+          "2. A method as claimed in claim 1, comprising receiving a signal from a tilt sensor."
+        ]
+      },
+      {
+        "claim_number": "3",
+        "text": "3. A method as claimed in claim 2, comprising halting actuation of the motorized joints when the signal that is received from the tilt sensor indicates falling.",
+        "limitations": [
+          "3. A method as claimed in claim 2, comprising halting actuation of the motorized joints when the signal that is received from the tilt sensor indicates falling."
+        ]
+      },
+      {
+        "claim_number": "4",
+        "text": "4. A method as claimed in claim 1 comprising receiving an output signal from said one or more ground force sensors.",
+        "limitations": [
+          "4. A method as claimed in claim 1 comprising receiving an output signal from said one or more ground force sensors."
+        ]
+      },
+      {
+        "claim_number": "5",
+        "text": "5. A method as claimed in claim 4 comprising halting the actuation of the motorized joints to straighten the leg braces when the output signal does not indicate an increase of the ground force as expected for standing.",
+        "limitations": [
+          "5. A method as claimed in claim 4 comprising halting the actuation of the motorized joints to straighten the leg braces when the output signal does not indicate an increase of the ground force as expected for standing."
+        ]
+      },
+      {
+        "claim_number": "6",
+        "text": "6. A method as claimed in claim 4 comprising halting the actuation of the motorized joints to bend the leg braces when the output signal does not indicate a decrease of the ground force as expected for sitting.",
+        "limitations": [
+          "6. A method as claimed in claim 4 comprising halting the actuation of the motorized joints to bend the leg braces when the output signal does not indicate a decrease of the ground force as expected for sitting."
+        ]
+      },
+      {
+        "claim_number": "7",
+        "text": "7. A method as claimed in claim 1 comprising sensing an angle of a joint of the motorized joints and halting the actuation of the motorized joints when the sensed joint angle during an interval of time deviates from an expected change in joint angle for a standing procedure.",
+        "limitations": [
+          "7. A method as claimed in claim 1 comprising sensing an angle of a joint of the motorized joints and halting the actuation of the motorized joints when the sensed joint angle during an interval of time deviates from an expected change in joint angle for a standing procedure."
+        ]
+      },
+      {
+        "claim_number": "8",
+        "text": "8. A method as claimed in claim 1 comprising sensing an angle of a joint of the motorized joints and halting the actuation of the motorized joints when the sensed joint angle during an interval of time deviates from an expected change in joint angle for a sitting procedure.",
+        "limitations": [
+          "8. A method as claimed in claim 1 comprising sensing an angle of a joint of the motorized joints and halting the actuation of the motorized joints when the sensed joint angle during an interval of time deviates from an expected change in joint angle for a sitting procedure."
+        ]
+      }
+    ]
+  },
+  "literature": [
+    {
+      "authors": [
+        "Chuah",
+        "Kim"
+      ],
+      "title": "Enabling Force Sensing During Ground Locomotion: A Bio-Inspired, Multi-Axis, Composite Force Sensor Using Discrete Pressure Mapping",
+      "venue": "IEEE Sensors Journal",
+      "date": "2014",
+      "doi_or_report_number": "10.1109/jsen.2014.2299805",
+      "url": "https://doi.org/10.1109/jsen.2014.2299805",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Strzelczyk",
+        "Tomczewski",
+        "Wrobel"
+      ],
+      "title": "The Middleware for an Exoskeleton Assisting Upper Limb Movement",
+      "venue": "Sensors",
+      "date": "2022",
+      "doi_or_report_number": "10.3390/s22082986",
+      "url": "https://doi.org/10.3390/s22082986",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Chaichaowarat",
+        "Prakthong",
+        "Thitipankul"
+      ],
+      "title": "Transformable Wheelchair\u2013Exoskeleton Hybrid Robot for Assisting Human Locomotion",
+      "venue": "Robotics",
+      "date": "2023",
+      "doi_or_report_number": "10.3390/robotics12010016",
+      "url": "https://doi.org/10.3390/robotics12010016",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Geonea",
+        "Dumitru",
+        "Copilusi",
+        "Margine",
+        "Ciurezu",
+        "Didu"
+      ],
+      "title": "New design and motion analysis of an exoskeleton robot for assisting human locomotion",
+      "venue": "2020 IEEE International Conference on Automation, Quality and Testing, Robotics (AQTR)",
+      "date": "2020",
+      "doi_or_report_number": "10.1109/aqtr49680.2020.9129951",
+      "url": "https://doi.org/10.1109/aqtr49680.2020.9129951",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "ISHIKAWA",
+        "KADONE",
+        "SUZUKI"
+      ],
+      "title": "Exoskeleton robot control for assisting voluntary locomotion based on spinal cord mapping of bioelectric signals",
+      "venue": "The Proceedings of JSME annual Conference on Robotics and Mechatronics (Robomec)",
+      "date": "2018",
+      "doi_or_report_number": "10.1299/jsmermd.2018.1a1-f08",
+      "url": "https://doi.org/10.1299/jsmermd.2018.1a1-f08",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    }
+  ],
+  "market": {
+    "proxy_type": "population",
+    "observations": [
+      {
+        "date": "2025",
+        "value": 8215424893
+      },
+      {
+        "date": "2024",
+        "value": 8140897523
+      },
+      {
+        "date": "2023",
+        "value": 8062923417
+      },
+      {
+        "date": "2022",
+        "value": 7988550201
+      },
+      {
+        "date": "2021",
+        "value": 7919567995
+      },
+      {
+        "date": "2020",
+        "value": 7853863139
+      },
+      {
+        "date": "2019",
+        "value": 7777162476
+      },
+      {
+        "date": "2018",
+        "value": 7696159728
+      },
+      {
+        "date": "2017",
+        "value": 7613788655
+      },
+      {
+        "date": "2016",
+        "value": 7528221579
+      },
+      {
+        "date": "2015",
+        "value": 7441084771
+      },
+      {
+        "date": "2014",
+        "value": 7353532223
+      },
+      {
+        "date": "2013",
+        "value": 7265404737
+      },
+      {
+        "date": "2012",
+        "value": 7176482165
+      },
+      {
+        "date": "2011",
+        "value": 7086704141
+      },
+      {
+        "date": "2010",
+        "value": 7000860073
+      },
+      {
+        "date": "2009",
+        "value": 6916168196
+      },
+      {
+        "date": "2008",
+        "value": 6830080867
+      },
+      {
+        "date": "2007",
+        "value": 6744049498
+      },
+      {
+        "date": "2006",
+        "value": 6659536021
+      },
+      {
+        "date": "2005",
+        "value": 6575410029
+      },
+      {
+        "date": "2004",
+        "value": 6492354627
+      },
+      {
+        "date": "2003",
+        "value": 6409352386
+      },
+      {
+        "date": "2002",
+        "value": 6327171255
+      },
+      {
+        "date": "2001",
+        "value": 6244739668
+      },
+      {
+        "date": "2000",
+        "value": 6161528496
+      },
+      {
+        "date": "1999",
+        "value": 6078069822
+      },
+      {
+        "date": "1998",
+        "value": 5993730786
+      },
+      {
+        "date": "1997",
+        "value": 5908180322
+      },
+      {
+        "date": "1996",
+        "value": 5822327903
+      },
+      {
+        "date": "1995",
+        "value": 5736205135
+      },
+      {
+        "date": "1994",
+        "value": 5650534421
+      },
+      {
+        "date": "1993",
+        "value": 5564459142
+      },
+      {
+        "date": "1992",
+        "value": 5476822930
+      },
+      {
+        "date": "1991",
+        "value": 5388203305
+      },
+      {
+        "date": "1990",
+        "value": 5298962018
+      },
+      {
+        "date": "1989",
+        "value": 5207378374
+      },
+      {
+        "date": "1988",
+        "value": 5116898810
+      },
+      {
+        "date": "1987",
+        "value": 5026770385
+      },
+      {
+        "date": "1986",
+        "value": 4937459951
+      },
+      {
+        "date": "1985",
+        "value": 4850494238
+      },
+      {
+        "date": "1984",
+        "value": 4765813206
+      },
+      {
+        "date": "1983",
+        "value": 4682734714
+      },
+      {
+        "date": "1982",
+        "value": 4599385851
+      },
+      {
+        "date": "1981",
+        "value": 4516792587
+      },
+      {
+        "date": "1980",
+        "value": 4437473406
+      },
+      {
+        "date": "1979",
+        "value": 4359930896
+      },
+      {
+        "date": "1978",
+        "value": 4283309396
+      },
+      {
+        "date": "1977",
+        "value": 4208840894
+      },
+      {
+        "date": "1976",
+        "value": 4135644231
+      }
+    ],
+    "market_sizing_admissible": false,
+    "reason": "population proxy is not a reconstructable market-size proposition"
+  },
+  "partners": []
+}

@@ -1,0 +1,101 @@
+{
+  "run_id": "RUN-US7149534B2-20260818",
+  "invention_name": "Peer to Peer Information Exchange for Mobile Communications Devices",
+  "submitted_by": "User-provided patent PDF",
+  "invention_id": "US 7,149,534 B2",
+  "submitted_date": "2026-08-18",
+  "report_date": "2026-08-18",
+  "disclaimer": "This is a preliminary evidence-constrained evaluation based on a public patent record and selected public sources. It is not legal advice, not a patentability opinion, and not an FTO opinion.",
+  "gauges": {
+    "technology": {
+      "tier_index": 3,
+      "tier_label": "Moderate",
+      "basis": "Derived from established patent disclosure of peer-mobile GPS assistance data sharing with hierarchical-group, trust, privacy, and scheduled-coordination machinery (P-03-001). Performance propositions remain unestablished (P-03-001).",
+      "subfactors": {"Development": 3, "Unique Benefits": 3, "Landscape": 3, "Regulatory Hurdles": 4}
+    },
+    "ip": {
+      "tier_index": 3,
+      "tier_label": "Moderate",
+      "basis": "Grant and family facts are established, but the US grant is expired (P-04-002) and final anticipation/obviousness conclusions were not established in this test run (P-05-001/P-05-002).",
+      "subfactors": {"Development": 3, "Unique Benefits": 3, "Landscape": 3, "Regulatory Hurdles": 4}
+    },
+    "market": {
+      "tier_index": 2,
+      "tier_label": "Limited-Moderate",
+      "basis": "The technology area (A-GPS/LBS) is large and mature (P-07-001), while the specific peer-mobile mechanism's adoption and commercialization readiness remain unestablished (P-07-002).",
+      "subfactors": {"Development": 2, "Unique Benefits": 2, "Landscape": 3, "Regulatory Hurdles": 4}
+    }
+  },
+  "commercialization_summary": {
+    "paragraph": "Commercial actionability is Indeterminate-to-Limited on the current evidence. The patent discloses a technically differentiated peer-mobile GPS assistance mechanism, but the US grant is expired, the dominant A-GPS path remained network-fixed-node, and the specific mechanism's adoption and commercialization readiness are not established.",
+    "teasers": [
+      "Large, mature technology area (A-GPS/LBS), but the specific peer-mobile mechanism has no established commercial embodiment.",
+      "Strongest identified pathways are R&D/standards collaboration with GNSS-assistance incumbents and forward-citing entities."
+    ]
+  },
+  "tech_ladder": {
+    "stages": ["Material", "Subcomponent", "Component", "Device", "System", "Service"],
+    "current": "Component",
+    "basis": "The record discloses a method/architecture combining GPS receivers, cellular transceivers, and peer messaging; no integrated device or system embodiment is established."
+  },
+  "dev_ladder": {
+    "stages": ["Concept", "Proof of Concept", "Testing", "Manufacturing", "Sales"],
+    "current": "Concept",
+    "basis": "Patent-level engineering disclosure is present, but prototype, validation, production, and sales evidence are not established."
+  },
+  "semantic_map": {
+    "current": "Peer-to-peer GPS assistance data exchange",
+    "tree": [{"label":"Wireless Communications","children":[{"label":"Mobile Positioning","children":[{"label":"Assisted GPS (A-GPS)","children":[{"label":"Peer-mobile GPS assistance data sharing"}]}]}]}],
+    "footnotes": [
+      {"label":"Google Patents US7149534B2","url":"https://patents.google.com/patent/US7149534B2/en"},
+      {"label":"USPTO CPC G01S19/05 scheme","url":"https://www.uspto.gov/web/patents/classification/cpc/html/cpc-G01S.html"}
+    ]
+  },
+  "charts": {
+    "region_pie": {
+      "title": "GPS-aiding-data (G01S19/05) patent records by jurisdiction",
+      "note": "Google Patents XHR query: CPC G01S19/05; same classification query issued per jurisdiction. Counts are publication records returned, not deduplicated families.",
+      "data": {"US": 2171, "WO": 814, "EP": 1685, "CN": 971, "JP": 366, "AU": 120, "CA": 105}
+    },
+    "applicants_pie": {
+      "title": "Top returned US applicants in the G01S19/05 query",
+      "note": "Google Patents XHR query: country=US; CPC G01S19/05; 2171 results. Display labels shorten returned applicant names; names have not been merged across corporate variants.",
+      "data": {"Qualcomm": 104, "Seiko Epson": 32, "Nokia": 22, "Broadcom": 20, "Samsung": 19, "Ericsson": 18, "Others": 1956}
+    },
+    "activity_line": {
+      "title": "US G01S19/05 filing-activity windows",
+      "note": "Google Patents query frequency buckets, not a deduplicated annual filing series.",
+      "data": {"2001–04": 92, "2004–07": 101, "2007–10": 150, "2010–13": 108, "2013–16": 115, "2016–19": 111, "2019–22": 121, "2022–25": 97}
+    },
+    "naics_dual": {
+      "title": "NAICS 334220 — employees vs establishments, 2022",
+      "note": "U.S. Census Bureau CBP 2022 downloadable file cbp22us.zip; NAICS 334220, lfo='-' (all legal forms). Employees and establishments are reported values.",
+      "left": {"2022": 49776},
+      "right": {"2022": 664}
+    },
+    "naics_bubble": {
+      "title": "NAICS 334220 establishments by employee-size bracket, 2022",
+      "note": "U.S. Census Bureau CBP 2022 downloadable file cbp22us.zip; n-fields are establishment counts.",
+      "points": [
+        {"label":"201", "xlabel":"<5", "y":201, "r":201},
+        {"label":"116", "xlabel":"5–9", "y":116, "r":116},
+        {"label":"95", "xlabel":"10–19", "y":95, "r":95},
+        {"label":"111", "xlabel":"20–49", "y":111, "r":111},
+        {"label":"61", "xlabel":"50–99", "y":61, "r":61},
+        {"label":"47", "xlabel":"100–249", "y":47, "r":47},
+        {"label":"16", "xlabel":"250–499", "y":16, "r":16},
+        {"label":"10", "xlabel":"500–999", "y":10, "r":10},
+        {"label":"7", "xlabel":"1000+", "y":7, "r":7}
+      ]
+    },
+    "third_party": []
+  },
+  "swot": {
+    "badge_k": "Commercial Actionability",
+    "badge_v": "Indeterminate-to-Limited",
+    "s": ["Detailed peer-mobile GPS assistance disclosure with group/trust/privacy machinery (P-03-001)", "Concept anticipates later cooperative-positioning research (P-06-002)", "Large, mature technology area (P-07-001)"],
+    "w": ["US grant expired (P-04-002)", "No performance, prototype, production, or adoption evidence (P-03-001/P-07-002)", "Dominant A-GPS path remained network-fixed-node (P-04-005)"],
+    "o": ["R&D/standards collaboration with GNSS-assistance incumbents (P-08-001)", "Relevance to cooperative positioning, V2X, device-to-device GNSS assistance", "Expired US grant concepts available for use"],
+    "t": ["Entrenched network A-GPS (SUPL/3GPP)", "Peer-mobile assistance adds trust/privacy overhead", "Family-level rights status requires separate diligence"]
+  }
+}

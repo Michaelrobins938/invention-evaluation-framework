@@ -1,0 +1,403 @@
+                                                                                                                          US007071258B1
+
+
+(12) United States Patent                                                                                (10) Patent No.:               US 7,071,258 B1
+       Jang et al.                                                                                       (45) Date of Patent:                        Jul. 4, 2006
+(54) NANO-SCALED GRAPHENE PLATES                                                                       2003/0224168 A1* 12/2003 Mack et al. ................ 428,408
+                                                                                                       2004/O127621 A1*     7/2004 Drzal et al. ................. 524/424
+(75) Inventors: Bor Z. Jang, Fargo, ND (US); Wen C.
+                Huang, Fargo, ND (US)                                                                                   OTHER PUBLICATIONS
+                                                                                                      Nichiko Kusuniko, “Epitaxial Carbon Film Self-organized
+(73) Assignee: Nanotek Instruments, Inc., Dayton,                                                     by Sublimation Decomposition of Silicon Carbide'. Appl.
+               OH (US)                                                                                Phys. Lett. Vol. 71, pp. 2620, 1997.
+                                                     - 0                                              W. Z. Li et al. “Large-Scale Synthesis of Aligned Carbon
+(*) Notice:           Subject to any disclaimer, the term of this
+                      patent is extended or adjusted under 35
+                                                                                                      Nanotubes Science, vol. 274, Dec. 6, 1996, pp. 1701-1703.
+                      U.S.C. 154(b) by 442 days.                                                      * cited by examiner
+                                                                                                      Primary Examiner Stuart L. Hendrickson
+(21) Appl. No.: 10/274,473                                                                            Assistant Examiner—Alvin T. Raetzsch
+(22) Filed:           Oct. 21, 2002                                                                   (57)                   ABSTRACT
+(51) Int.
+     COIBCl.3L/04                     (2006.01)                                                       A nano-scaled graphene plate material and a process for
+        C08K 3/04                     (2006.01)
+                                                                                                      producing this material. The
+                                                                                                                                 -
+                                                                                                                                    material comprises a sheet of
+        C22C II/It                    (2006.01)                                                       graphite plane or a multiplicity of sheets of graphite plane.
+                                                                                                      The graphite plane is composed of a two-dimensional hex
+        C04B 3.5/52                   (2006.01)                                                       agonal lattice of carbon atoms and the plate has a length and
+(52) U.S. Cl. .................. 524/496; 423/448; 423/445 B;                                         age dth parallel to the graphite A. and a E.
+             423/460, 423/447.2;977/755; 977/773;
+                                   977/783: 501/99:977/778:
+                                                     75/243                                           orthogonal to the graphite plane with at least one of the
+                                                                  s               s                   length, width, and thickness values being 100 nanometers or
+(58) Field of Classification Search ................ 423/447,                                         Smaller. The process for producing nano-scaled graphene
+                  42,460, 445, $48, 447.2, 445 B. 5024,                                               plate material comprises the steps of: a). partially or fully
+          502/416, 406; 118/72. 429/2. 217; 241. 199.5;                                               carbonizing a precursor polymer or heat-treating petroleum
+               977/755, 773,778; 524/496; 501/99: 75/243                                              or coal tar pitch to produce a polymeric carbon containing
+        See application file for complete search history.                                             micron- and/or nanometer-scaled graphite crystallites with
+                                                                                                      each crystallite comprising one sheet or a multiplicity of
+(56)                       References Cited                                                           sheets of graphite plane; b). exfoliating the graphite crys
+                U.S. PATENT DOCUMENTS                                                                 tallites in the polymeric carbon; and c). subjecting the
+                      ck                                                                              polymeric carbon containing exfoliated graphite crystallites
+       5, 186,919 A         2, 1993    Bunnell - - - - - - - - - - - - - - - - - - - - - - 423 (448   to a mechanical attrition treatment to produce the nano
+       6.479,030 B1* 11/2002 Firsich ........                                    423,447.1            scaled granhene plate material
+       6,863,943 B1* 3/2005 Wang et al. .................. 428/37                                            graphene p
+       6,872,330 B1* 3/2005 Mack et al. ............ 252/378 R
+ 2003/01293.05 A1*          7, 2003 Wu et al. .............. 427/255.28                                               5 Claims, 1 Drawing Sheet
+
+                                                           Cutting line
+
+
+
+
+                                                                              HD
+
+
+                                                                            (a)                                 (b)
+                                            y -" ting linc
+
+
+
+
+                                                                                 so                                        ls
+
+
+
+                                                                      (c)                                         (d)
+U.S. Patent                    Jul. 4, 2006         US 7,071,258 B1
+
+
+
+
+                Cutting line
+
+
+
+
+                       (c)                    (d)
+        FIG.1
+                                                    US 7,071258 B1
+                              1.                                                                    2
+        NANO-SCALED GRAPHENE PLATES                                   in the range of 600 to 900° C., and the pressure may be in
+                                                                      the range of 10 to 1000 mTorr.
+                FIELD OF THE INVENTION                                   In Summary, carbon nano-tubes are extremely expensive
+                                                                      due to the low yield and low production and purification
+   The present invention relates to a nano-scaled thin-plate rates commonly associated with all of the current carbon
+carbon material, hereinafter referred to as nano-scaled               nano-tube preparation processes. The high material costs
+graphene plate (NGP), and a process for producing the NGP have significantly hindered the widespread application of
+material.                                                             nano-tubes. A large number of researchers are making
+                                                                      attempts to develop much lower-cost processes for nano
+                       BACKGROUND                                  10 tubes. We have taken a different approach in that, instead of
+                                                                      carbon nano-tubes, we chose to develop alternative nano
+   Carbon is known to have four unique crystalline struc scaled carbon materials that exhibit comparable properties,
+tures, including diamond, graphite, fullerene and carbon but are more readily available and at much lower costs.
+nano-tubes. The carbon nano-tube refers to a tubular struc               It is envisioned that individual nano-scaled graphite
+ture grown with a single wall or multi-wall, which can be 15 planes (individual sheets of graphene plane) and clusters of
+conceptually obtained by rolling up a graphite sheet (a sheet multiple nano-scaled graphene sheets, collectively called
+of graphene plane or basal plane) or several graphite sheets “nano-sized graphene plates (NGPs), could provide unique
+to form a concentric hollow structure. A graphene plane is opportunities for Solid state Scientists to study the structures
+characterized by having a network of carbon atoms occu and properties of nano carbon materials. The structures of
+pying a two-dimensional hexagonal lattice. Carbon nano these materials may be best visualized by making a longi
+tubes have a diameter on the order of a few nanometers to             tudinal Scission on the single-wall or multi-wall of a nano
+a few hundred nanometers.                                             tube along its tube axis direction and then flattening up the
+   Carbon nano-tubes can function as either a conductor or            resulting sheet or plate (FIG. 1). Studies on the structure
+a semiconductor, depending on the rolled shape and the 25 property relationship in isolated NGPs could provide insight
+diameter of the helical tubes. Its longitudinal, hollow struc into the properties of a fullerene structure or carbon nano
+ture imparts unique mechanical, electrical, thermal and tube. Furthermore, these nano materials could potentially
+chemical properties to the material. Carbon nano-tubes are become cost-effective substitutes for carbon nano-tubes or
+believed to have great potential for use in field emission other types of nano-rods for various scientific and engineer
+devices, hydrogen fuel storage, rechargeable battery elec ing applications.
+trodes, coating ingredients, Solid lubricant, fillers for a resin, 30 Direct synthesis of the NGP material had not been pos
+and composite reinforcements.                                         sible, although the material had been conceptually con
+   Iijima was the first to report the production of carbon ceived and theoretically predicted to be capable of exhibit
+nanotubes by an arc discharge between two graphite rods. ing many novel and useful properties. The present invention
+This technique still remains to be the most commonly used 35 provides a process for producing large quantities of NGPs.
+technique for producing carbon nanotubes; however, yield The process is estimated to be highly cost-effective.
+of pure carbon nanotubes with respect to the end product is
+only about 15%. Thus, a complicated, slow and expensive                           SUMMARY OF THE INVENTION
+purification process must be carried out for particular device
+applications.                                                      40    As a preferred embodiment of the presently invented
+   Kusunoki described another conventional approach to process, NGPs can be readily produced by the following
+produce carbon nanotubes, which was published in an article procedures: (1) partially or fully carbonizing a variety of
+entitled “Epitaxial Carbon Nanotube Film Self-organized by precursor polymers, such as polyacrylonitrile (PAN) fibers
+Sublimation Decomposition of Silicon Carbide’” (Appl. and phenol-formaldehyde resin, or heat-treating petroleum
+Phys. Lett. Vol. 71, pp. 2620, 1977). Carbon nanotubes were 45 or coal tar pitch, (2) exfoliating the resulting carbon- or
+produced at high temperatures by irradiating a laser onto graphite-like structure, and (3) mechanical attrition (e.g.,
+graphite or silicon carbide. In this case, the carbon nano ball milling) of the exfoliated structure to become nano
+tubes are produced from graphite at about 1,200° C. or more scaled. The heat treatment temperature and time and the
+and from silicon carbide at about 1,600 to 1,700° C. How              mechanical attrition conditions can be varied to generate, by
+ever, this method also requires multiple stages of purifica 50 design, various NGP materials with a wide range of
+tion which increases the cost. In addition, this method has           graphene plate thickness, width and length values. The heat
+difficulties in large-device applications.                            treatment temperature typically lies in the range of 300-1,
+   Li, et al. Reported a method of producing carbon nano 000° C. for partial carbonization and 1,000–3,000° C. for
+tubes through a thermal decomposition of hydrocarbon more complete carbonization and graphitization. The pro
+series gases by chemical vapor deposition (CVD) ("Large 55 cessing ease and the wide property ranges that can be
+Scale Synthesis of Aligned Carbon Nanotubes.” Science, achieved with NGP materials make them promising candi
+Vol. 274, Dec. 6, 1996, pp. 1701–1703). This technique is dates for many important engineering applications. The
+applicable only with a gas that is unstable. Such as acetylene electronic, thermal and mechanical properties of NGP mate
+or benzene. For example, a methane (CH) gas cannot be rials are expected to be comparable to those of carbon
+used to produce carbon nanotubes by this technique.                60 nano-tubes; but NGPs will be available at much lower costs
+   A carbon nanotube layer may be grown on a substrate and in larger quantities.
+using a plasma chemical vapor deposition method at a high
+density of 10' cm or more. The substrate may be an                        BRIEF DESCRIPTION OF THE DRAWINGS
+amorphous silicon or polysilicon Substrate on which a
+catalytic metal layer is formed. In the growth of the carbon 65 FIG. 1 conceptually illustrates the configuration differ
+nanotube layer, a hydrocarbon series gas may be used as a ence between a carbon nano-tube and a nano-scaled
+plasma source gas, the temperature of the Substrate may be graphene plate.
+                                                   US 7,071258 B1
+                             3                                                                  4
+      DETAILED DESCRIPTION OF PREFERRED                          semi-conducting, or conducting with the electric conductiv
+                EMBODIMENTS                                      ity range covering approximately 12 orders of magnitude.
+                                                                 This wide scope of conductivity values can be further
+   One preferred embodiment of the present invention is a extended by doping the polymeric carbon with electron
+nano-scaled graphene plate (NGP) material that is essen 5 donors or acceptors. These characteristics uniquely qualify
+tially composed of a sheet of graphite plane or a plurality of polymeric carbons as a novel, easy-to-process class of
+sheets of graphite plane. Each graphite plane, also referred electro-active materials whose structures and physical prop
+to as a graphene plane or basal plane, comprises a two erties can be readily tailor-made.
+dimensional hexagonal structure of carbon atoms. Each               Polymeric carbons can assume an essentially amorphous
+plate has a length and a width parallel to the graphite plane 10 structure, a highly organized crystal (graphite), or a wide
+and a thickness orthogonal to the graphite plane character range of intermediate structures that are characterized in that
+ized in that at least one of the values of length, width, and various proportions and sizes of graphite crystallites and
+thickness is 100 nanometers (nm) or smaller. Preferably, all defects are dispersed in an amorphous matrix. Thus far, all
+length, width and thickness values are smaller than 100 nm. of the earlier experimental studies on polymeric carbons
+This NGP material can be produced by a process comprising 15 have been based on bulk samples that contain a blend of
+the steps of: (a) carbonization or graphitization to produce a graphite crystalline structures (crystallites) of various sizes,
+polymeric carbon, (b) exfoliation or expansion of graphite amorphous phases, and high defect populations and, hence,
+crystallites in the polymeric carbon to delaminate or separate the properties measured represent the global properties of all
+graphene planes, and (c) mechanical attrition of the exfoli the constituent phases together. No experimental work has
+ated Structure to nanometer-scaled plates.                       been reported on the properties of individual, isolated car
+   The first step involves partially carbonizing, fully carbon bon crystallites or graphene plates that are nanometer-sized
+izing, or graphitizing a precursor material Such as a polymer, presumably due to the lack of a method to directly synthe
+or a petroleum or coal tar pitch material to produce a size Such nano materials.
+polymeric carbon. The resulting polymeric carbon presum             Polyacene (CH), and two-dimensional condensed aro
+ably contains micron- and/or nanometer-scaled graphite 25 matic rings or hexagons (nano-scaled graphene sheets) can
+crystallites with each crystallite being composed of one be found inside the microstructure of a heat treated polymer
+sheet or several of sheets of graphite plane. Preferably, the such as a PAN fiber. An appreciable amount of polyacene
+polymeric carbon is pulverized, chopped, or milled to derivatives and smaller-sized graphene sheets are believed
+become Small particles or short fiber segments, with a to exist in PAN-based polymeric carbons treated at 300-1,
+dimension preferably smaller than 1 mm and, further pref 30 000° C. These species condense into wider aromatic ring
+erably smaller than 0.05 mm before the second step is structures (larger-sized graphene sheets) and thicker plates
+carried out.                                                     (more graphene sheets stacked together) with a higher HTT
+   The second step involves exfoliating the graphite crys or longer heat treatment time. These graphene plates are
+tallites in the polymeric carbon. Exfoliation typically gradually transformed into a well-developed “turbostratic
+involves a chemical treatment, intercalation, foaming, heat 35 structure' characteristic of the microstructure of a carbon
+ing and/or cooling steps. The purpose of the exfoliation fiber.
+treatment is to delaminate (at least crack open between) the        NGP materials from several classes of precursor materials
+graphene planes or to partially or fully separate graphene were prepared. For instance, the first class includes semi
+planes in a graphite crystallite.                                crystalline PAN in a fiber form. As compared to phenolic
+   The third step includes Subjecting the polymeric carbon 40 resin, the pyrolized PAN fiber has a higher tendency to
+containing exfoliated graphite crystallites to a mechanical develop small crystallites that are dispersed in a disordered
+attrition treatment to produce a nano-scaled graphene plate matrix. The second class, represented by phenol formalde
+material. Either the individual graphene planes (one-layer hyde, is a more isotropic, essentially amorphous and highly
+NGPs) or stacks of graphene planes bonded together (multi cross-linked polymer. The third class includes petroleum
+layer NGPs) are reduced to nanometer-sized (preferably 45 and coal tar pitch materials in bulk or fiber forms. The
+both length and width being smaller than 100 nm in size, precursor material composition, heat treatment temperature
+further preferably smaller than 10 nm in size). In the (HTT), and heat treatment time (Htt) are three parameters
+thickness direction (or c-axis direction normal to the that govern the length, width, thickness (number of graphene
+graphene plane), there may be a small number of graphene sheets), and chemical composition of the resulting NGP
+planes that are still bonded together through the van der 50 materials.
+Waals forces that commonly hold the basal planes together           PAN fibers were subjected to oxidation at 200–350° C.
+in a natural graphite. Preferably, there are less than 20 layers while under a tension, and then partial or complete carbon
+(further preferably less than 5 layers) of graphene planes, ization at 350–1,500° C. to obtain polymeric carbons with
+each with length and width smaller than 100 nm, that various nano-crystalline graphite structures (graphite crys
+constitute a multi-layer NGP material produced after 55 tallites). Selected samples of these polymeric carbons were
+mechanical attrition. Preferred embodiments of the present further heat-treated at a temperature in the range of 1,500–3,
+invention are further described as follows:                      000° C. to partially or fully graphitize the materials. Phenol
+   Carbonization Treatment: The preparation of organic formaldehyde resin and petroleum and coal tar pitch mate
+semiconducting materials by simple pyrolysis of polymers rials were Subjected to a similar heat treatments in a tem
+or petroleum/coal tar pitch materials has been known for 60 perature range of 500 to 2,500° C.
+approximately three decades. When polymers such as poly             Exfoliation Treatment: In general, for the purpose of
+acrylonitrile (PAN), rayon, cellulose and phenol formalde exfoliating graphene plane layers, the chemical treatment of
+hyde were heated above 300° C. in an inert atmosphere they pyrolyzed polymer or pitch materials involved subjecting
+gradually lost most of their non-carbon contents. The result particles of a wide range of sizes (or fibers shorter than mm
+ing structure is generally referred to as a polymeric carbon. 65 in length) to a chemical Solution for periods of time ranging
+Depending upon the heat treatment temperature (HTT) and from about one minute to about 48 hours. The chemical
+time, polymeric carbons can be made to be insulating,            Solution was selected from a variety of oxidizing or inter
+                                                  US 7,071258 B1
+                               5                                                              6
+calating solutions maintained at temperatures ranging from polymeric carbon particles are rinsed with an aqueous
+about room temperature to about 125° C. The polymeric Solution. The rinsing or washing of the treated particles/
+carbon particles utilized can range in size from a fine powder fibers with aqueous solution may serve several functions.
+Small enough to pass through a 325 mesh screen to a size For instance, the rinsing or leaching removes harmful mate
+Such that no dimension is greater than about one inch or 25.4 5 rials, e.g. acid, from the particles so that it can be safely
+mm. The concentrations of the various compounds or mate handled. Moreover, it may decompose or remove interca
+rials employed, e.g. HSO, HNO, KMnO, FeCL, etc. lated material. Furthermore, it can also serve as the Source
+ranged from about 0.1 normal to concentrated strengths. of the blowing or expanding agent, which is to be incorpo
+Ratios of HSO to HNO, were also varied from about 9:1 rated between layers. For example, it can serve as the Source
+to about 1:1 to prepare a range of acid mixtures. The 10 of water if water is to be utilized as the foaming, blowing or
+chemical treatment may include interlayer chemical attack expanding agent.
+and/or intercalation, followed by a heating cycle. Exfoliation     The c-axis direction expansion is brought about by acti
+may also be achieved by using a foaming or blowing agent. Vating a material Such as, for example, a suitable foaming or
+   Interlayer chemical attack of polymeric carbon particles blowing agent which has been incorporated between layers
+or short fibers is preferably achieved by subjecting the 15 of parallel graphene planes, the incorporation taking place
+particles/fibers to oxidizing conditions. Various oxidizing either during the interlayer attack treatment or thereafter.
+agents and oxidizing mixtures may be employed to achieve The incorporated foaming or blowing agent upon activation
+a controlled interlayer chemical attack. For example, there Such as by chemical interaction or by heat generates a fluid
+may be utilized nitric acid, potassium chlorate, chromic pressure, which is effective to cause c-axis direction expan
+acid, potassium permanganate, potassium chromate, potas- 20 sion of the polymeric carbon particles. Preferably, a foaming
+sium dichromate, perchloric acid and the like, or mixtures or blowing agent is utilized which when activated forms an
+Such as, for instance, concentrated nitric acid and potassium expanding gas or vapor which exerts sufficient pressure to
+chlorate, chromic acid and phosphoric acid, Sulfuric acid and cause expansion.
+nitric acid, etc, or mixtures of a strong organic acid, e.g.       A wide variety of well-known foaming and blowing
+trifluoroacetic acid and a strong oxidizing agent soluble in 25 agents can be employed. For example, there can be utilized
+the organic acid used. A wide range of oxidizing agent expanding agents such as water, Volatile liquids, e.g., liquid
+concentrations can be utilized. Oxidizing agent solutions nitrogen and the like which change their physical State
+having concentrations ranging from 0.1 normal to concen during the expansion operation. When an expanding agent of
+trated strengths may be effectively employed to bring about the above type is employed, the expansion of the treated
+interlayer attack. The acids or the like utilized with the 30 polymeric carbon particles is preferably achieved by sub
+oxidizing agents to form Suitable oxidizing media or mix jecting the treated particles to a temperature Sufficient to
+tures can also be employed in concentrations ranging from produce a gas pressure which is effective to bring about an
+about 0.1 normal to concentrated strengths.                     almost instantaneous and maximum expansion of the par
+   The treatment of polymeric carbon particles or fibers with ticles. For instance, when the expanding agent is water, the
+oxidizing agents or oxidizing mixtures such as mentioned 35 particles having water incorporated in the structure are
+above is preferably carried out at a temperature between preferably rapidly heated or subjected to a temperature
+about room temperature and about 125° C. and for periods above 100° C. so as to induce a substantially instantaneous
+of time Sufficient to produce a high degree of interlayer and full expansion of the particles. If such particles to be
+attack. The treatment time will depend upon Such factors as expanded are slowly heated to a temperature above 100°C.,
+the temperature of the oxidizing medium, grade or type of 40 substantial water will be lost by vaporization from the
+polymeric carbon treated, particle/fiber size, amount of structure resulting in a drying of the structure so that little
+expansion desired and strength of the oxidizing medium.         expansion will be achieved. Preferably, the substantially
+   The opening up or splitting apart of graphene layers can complete and full expansion of the particles is accomplished
+also be achieved by chemically treating polymeric carbon within a time of from about a fraction of a second to about
+particles/fibers with an intercalating Solution or medium, 45 10 seconds.
+hereafter referred to as intercalant, so as to insert or inter     In addition to physical expanding methods such as
+calate a suitable additive between the carbon hexagon net described above, the expanding gas can be generated in situ,
+works and thus form an addition or intercalation compound that is, between layers of carbon networks by the interaction
+of carbon. For example, the additive can be a halogen Such of suitable chemical compounds or by the use of a suitable
+as bromine or a metal halide such as ferric chloride, alumi- 50 heat sensitive additive or chemical blowing agent.
+num chloride, or the like. A halogen, particularly bromine,        As indicated previously, the polymeric carbon particles
+may be intercalated by contacting the polymeric carbon are so treated with a suitable oxidizing medium and unre
+particles with bromine vapors or with a solution of bromine strictedly expanded that there is preferably produced
+in sulfuric acid or with bromine dissolved in a suitable        expanded carbon masses having expansion ratios of at least
+organic solvent. Metal halides can be intercalated by con- 55 20 to 1 or higher. In other words, the expanded polymeric
+tacting the polymeric carbon particles with a Suitable metal carbon particles have a thickness or c-axis direction dimen
+halide solution. For example, ferric chloride can be interca sion in the graphite crystallite at least 20 times of that of the
+lated by contacting polymeric carbon particles/fibers with a un-expanded crystallite. The expanded carbon particles are
+suitable aqueous solution of ferric chloride or with a mixture unitary, laminar structure having a vermiform appearance.
+comprising ferric chloride and Sulfuric acid. Temperature, 60 The Vermiform masses are lightweight, anisotropic graphite
+times, and concentrations of reactants similar to those men      based materials.
+tioned earlier for oxidation treatments can also be employed     The intercalation treatment is further described in what
+for the above intercalation processes.                         follows: Graphite is a crystalline form of carbon comprising
+   Upon completion of the treatment directed to promoting hexagonally arranged atoms bonded in flat layered planes,
+interlayer attack, the thoroughly wetted or soggy polymeric 65 commonly referred to as basal planes or graphene planes,
+carbon particles can be subjected to conditions for bringing with van der Waal's bonds between the planes. By treating
+about the expansion thereof. Preferably, however, the treated particles of graphite, Such as natural graphite flake, with an
+                                                    US 7,071258 B1
+                                7                                                                 8
+intercalant of e.g., a solution of Sulfuric and nitric acid, the the most effective method of attrition is ball-milling. High
+crystal structure of the graphite reacts to form a compound energy planetary ball mills were found to be particularly
+of graphite and the intercalant. The treated particles of effective in producing nano-scaled graphene plates. Since,
+graphite are hereafter referred to as intercalated graphite ball milling is considered to be a mass production process,
+flake. Upon exposure to elevated temperatures the particles 5 the presently invented process is capable of producing large
+of intercalated graphite expand in dimension in an accor quantities of NGP materials cost-effectively. This is in sharp
+dion-like fashion in the c-axis direction, i.e. in the direction contrast to the production and purification processes of
+perpendicular to the basal planes of the graphite. In a similar carbon nano-tubes, which are slow and expensive.
+fashion, the presently heat-treated polymeric carbon, with or       The nano-scaled graphene plate (NGP) material produced
+without pulverization, can be subjected to intercalation and 10 by the presently invented process can be readily incorpo
+high-temperature expansion treatment to obtain a polymeric rated in a matrix material to obtain an NGP-reinforced
+carbon containing expanded graphene planes. The poly composite. The matrix material can be selected from a
+meric carbon is typically intercalated by dispersing the polymer (both thermoset and thermoplastic), organic,
+polymeric carbon particles or short fibers in a solution 15 ceramic, glass, carbon, metal, or a combination thereof. The
+containing an oxidizing agent, such as a mixture of nitric and NGP-reinforced composites exhibit desirable mechanical
+sulfuric acid. After the particles or fibers are intercalated and physical properties. In some cases (e.g., polymer
+excess solution is drained from the particles or fibers. The matrix), either the strength or the failure strain was
+quantity of intercalation solution retained on the particles or improved, with a concomitant increase in electrical and
+fibers after draining is typically between 20 and 50 parts of thermal conductivities. In other cases (e.g., ceramic matrix),
+solution by weight per 100 parts by weight of carbon (pph). the fracture toughness was improved over the corresponding
+In some cases, it reaches about 100 pph.                         un-reinforced matrix material. Typically, an NGP proportion
+   The intercalant of the present invention contains oxidizing of approximately 15 volume percent was sufficient to pro
+intercalating agents known in the art of intercalated graphi duce significantly improved properties. In many cases, an
+tes. As indicated earlier, examples include those containing 25 addition of NGPs in the amount of 1%-5% by volume was
+oxidizing agents and oxidizing mixtures, such as solutions adequate.
+containing nitric acid, potassium chlorate, chromic acid,
+potassium permanganate, potassium chromate, potassium                                     EXAMPLE 1.
+dichromate, perchloric acid, and the like, or mixtures. Such 30
+as for example, concentrated nitric acid and chlorate, chro         One hundred grams of polymeric carbon, prepared by
+mic acid and phosphoric acid, Sulfuric acid and nitric acid, oxidation of PAN fibers at 250° C. and partial carbonization
+or mixtures of a strong organic acid, e.g. trifluoroacetic acid, of the oxidized PAN at 500° C., were treated in a mixture of
+and a strong oxidizing agent soluble in the organic acid.
+                                                                 Sulfuric and nitric acids at concentrations to yield the desired
+   In a preferred embodiment of the invention, the intercal 35 intercalation
+ant is a solution of Sulfuric acid, or Sulfuric acid and                       compound. The product was water washed and
+phosphoric acid, and an oxidizing agent, i.e. nitric acid, were  dried to approximately 1% by weight water. The dried fibers
+perchloric acid, chromic acid, potassium permanganate, extremely        introduced into a furnace at 1,250° C. to effect
+iodic or periodic acids, or the like, and preferably also crystallites.rapid  The
+                                                                                  and high expansions of nano-scaled graphite
+                                                                                    exfoliated carbon sample, chopped into a
+includes an expansion aid as described below. The intercal 40 short fiber form (<1
+ant may contain metal halides such as ferric chloride, and high-energy plenary mm        ball
+                                                                                              length), was then ball-milled in a
+                                                                                                mill machine for 24 hours to
+ferric chloride mixed with Sulfuric acid, or a halogen, Such produce nano-scaled particles.
+as bromine as a solution of bromine and Sulfuric acid or
+bromine in an organic solvent.                                                            EXAMPLE 2
+   The polymeric carbon particles or fibers treated with 45
+intercalant are contacted e.g. by blending, with a reducing         Same as in Example 1, but the carbonization temperature
+organic agent selected from alcohols, Sugars, aldehydes and
+esters which are reactive with the surface film of oxidizing was 1,000° C.
+intercalating Solution at temperatures in the range of 25°C.                              EXAMPLE 3
+and 125° C. Suitable specific organic agents include the 50
+following: hexadecanol, octadecanol, 1-octanol, 2-octanol,
+decylalcohol. 1,10 decanediol, decylaldehyde, 1-propanol,           A phenol formaldehyde resin was heat treated in an inert
+1.3 propanediol, ethyleneglycol, polypropylene glycol, dex atmosphere at a HTT in the range of 350–900° C. to obtain
+trose, fructose, lactose, Sucrose, potato starch, ethylene polymeric carbon, which was ground to mm-sized particles
+glycol monostearate, diethylene glycol dibenzoate, propy 55 and then subjected to solution treatments to obtain exfoliated
+lene glycol monostearate, propylene glycol monooleate, polymeric carbons. Samples containing exfoliated graphite
+glycerol monostearate, glycerol monooleate, dimethyl oxy crystallites were then ball-milled to become nanometer
+late, diethyl oxylate, methyl formate, ethyl formate and sized powder.
+ascorbic acid. Depending upon the chemicals used in the
+exfoliation treatment, the edge of a graphene plane may 60                                EXAMPLE 4
+contain some non-carbon atoms such as hydrogen, oxygen,
+nitrogen, Sulphur, and combinations thereof.                        A coal tar pitch sample was heat treated in an inert
+   Mechanical Attrition: The exfoliated particles or short atmosphere at a HTT in the range of 350–900° C. to obtain
+fiber segments were then Submitted to a mechanical attrition polymeric carbon, which was further heat-treated at 2,500
+treatment to further separate graphene planes and reduce the 65 C. and ground to mm-sized particles and then subjected to
+sizes of particles or fibers to be nanometer-scaled. Attrition Solution treatments to obtain exfoliated polymeric carbons.
+can be achieved by pulverization, grinding, milling, etc., but Specifically, 25 grams of the polymeric carbon particles
+                                                    US 7,071258 B1
+                               9                                                                10
+were intercalated with twenty-five grams of intercalant                                    EXAMPLE     7
+consisting of 86 parts by weight of 93% sulfuric acid and 14
+parts by weight of 67% nitric acid. The particles were then          The nanometer-sized powder obtained in EXAMPLE 4
+placed in a 90° C. oven for 20 minutes. The intercalated was mixed with polymethylmethacrylate (PMMA) to obtain
+particles were then washed with water. After each washing an NGP-reinforced PMMA composite. An increase intensile
+the particles were filtered by vacuum through a Teflon failure strain from approximately 5% for the un-reinforced
+screen. After the final wash the particles were dried for 1       PMMA to approximately 18% for an NGP (5%)-PMMA
+hour in a 115°C. oven. The dried particles were then rapidly composite.
+heated to approximately 1000°C. to further promote expan             What is claimed is:
+Sion. Samples containing exfoliated graphite crystallites 10 1. A nano-scaled graphene plate material comprising at
+were then ball-milled to become nanometer-sized powder.           least a nanometer-scaled plate with said plate comprising a
+                                                                  sheet of graphite plane or a multiplicity of sheets of graphite
+                         EXAMPLE 5                                plane; said graphite plane comprising a two-dimensional
+                                                                  hexagonal lattice of carbon atoms and said plate having a
+   A petroleum pitch sample was heat treated in an inert 15 length and a width parallel to said graphite plane and a
+atmosphere at a HTT of 350° C. and extruded into a thickness orthogonal to said graphite plane characterized in
+polymeric carbon fiber, which was further heat-treated at that the length, width, and thickness values are all Smaller
+2,500° C. and ground to mm-sized particles and then sub than 10 nanometers.
+jected to solution treatments to obtain exfoliated polymeric         2. A composite material containing a matrix material and
+carbons. Specifically, 25 grams of the polymeric carbon a predetermined proportion of nano-scaled graphene plate
+particles were intercalated with twenty-five grams of inter material as a reinforcement material, said nano-scaled
+calant consisting of 86 parts by weight of 93% sulfuric acid graphene plate material comprising at least a nanometer
+and 14 parts by weight of 67% nitric acid. After mixing for scaled plate with said plate comprising a sheet of graphite
+three minutes, 1.0 grams of decanol were blended into the plane or a multiplicity of sheets of graphite plane; said
+particles. The particles were then placed in a 90° C. oven for 25 graphite plane comprising a two-dimensional hexagonal
+20 minutes. The intercalated particles were then washed lattice of carbon atoms and said plate having a length and a
+with water. After each washing the particles were filtered by width parallel to said graphite plane and a thickness orthogo
+vacuum through a Teflon screen. After the final wash the nal to said graphite plane characterized in that the length,
+particles were dried for 1 hour in a 115° C. oven. The dried width, and thickness values are all 100 nanometers or
+particles were then rapidly heated to approximately 1,000 30 Smaller.
+C. to further promote expansion. Samples containing exfo             3. The composite material as set forth in claim 2, wherein
+liated graphite crystallites were then ball-milled to become said nano-scaled graphene plate material is at a proportion of
+nanometer-sized powder.                                           no more than 15% by volume.
+                                                                     4. The composite material as set forth in claim 3, wherein
+                         EXAMPLE 6                             35 said nano-scaled graphene plate material is at a proportion of
+                                                                  no more than 5% by volume.
+   The nanometer-sized powder obtained in EXAMPLE 5                  5. The composite material as set forth in claim 2, wherein
+was mixed with epoxy resin (Epon 828 and Z curing agent said matrix material is selected from the group consisting of
+at a 4:1 ratio) to obtain a nano-scaled graphene plate (NGP) a polymer, a metal, a ceramic, a carbon, a glass, an organic
+reinforced epoxy composite. A 35% increase in three-point 40 material, or a combination thereof.
+bending strength over the un-reinforced epoxy was observed
+with a composite containing only a 5% by volume of NGPs.                                 k   k   k   k   k
+

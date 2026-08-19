@@ -1,0 +1,67 @@
+{
+  "claim_id": "US8527057-claim-1",
+  "domains": [
+    {
+      "name": "retinal_interface",
+      "limitations": [
+        "L1"
+      ]
+    },
+    {
+      "name": "mechanical_fixation",
+      "limitations": [
+        "L2"
+      ]
+    },
+    {
+      "name": "electronics_packaging",
+      "limitations": [
+        "L3"
+      ]
+    },
+    {
+      "name": "interconnect",
+      "limitations": [
+        "L4"
+      ]
+    },
+    {
+      "name": "power_architecture",
+      "limitations": [
+        "L5a",
+        "L5b",
+        "L5c",
+        "L5d"
+      ]
+    },
+    {
+      "name": "manufacturing_process",
+      "limitations": []
+    },
+    {
+      "name": "surgical_handling",
+      "limitations": []
+    }
+  ],
+  "relationships": [
+    [
+      "L2",
+      "constrains",
+      "L5b"
+    ],
+    [
+      "L3",
+      "powered_by",
+      "L5d"
+    ],
+    [
+      "L4",
+      "connects",
+      "L1"
+    ]
+  ],
+  "inventive_center_candidates": [
+    "cross-domain spatial integration",
+    "low-profile scleral geometry"
+  ]
+}

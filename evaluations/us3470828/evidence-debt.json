@@ -1,0 +1,9 @@
+[
+  {"proposition_id":"P-05-001","severity":"high","impact":["anticipation","patentability_confidence"],"next_action":"execute claim-aware recovery protocol","score":100},
+  {"proposition_id":"P-05-002","severity":"high","impact":["inventive_step_assessment"],"next_action":"recover motivation, compatibility, and expected-success evidence","score":100},
+  {"proposition_id":"P-07-002","severity":"high","impact":["commercial_readiness"],"next_action":"trace adoption and product identity","score":90},
+  {"proposition_id":"P-04-001","severity":"high","impact":["landscape_context"],"next_action":"complete family, classification, and alternate-database recovery","score":80},
+  {"proposition_id":"P-06-001","severity":"medium","impact":["non-patent_prior_art"],"next_action":"retrieve cited literature","score":70},
+  {"proposition_id":"P-07-001","severity":"medium","impact":["commercial_confidence"],"next_action":"construct bounded market and infrastructure proxies","score":60},
+  {"proposition_id":"P-08-001","severity":"medium","impact":["partner_recommendation"],"next_action":"verify organization-specific partner fit","score":60}
+]

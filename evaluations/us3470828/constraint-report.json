@@ -1,0 +1,9 @@
+{
+  "constraints": [
+    {"source":"P-05-001","target":"patentability_confidence","rule":"claim-level prior-art search incomplete","severity":"high"},
+    {"source":"P-05-002","target":"inventive_step_assessment","rule":"causal bridge and motivation incomplete","severity":"high"},
+    {"source":"P-07-001","target":"commercial_confidence","rule":"market evidence incomplete","severity":"moderate"},
+    {"source":"P-07-002","target":"commercial_readiness","rule":"adoption evidence incomplete","severity":"high"},
+    {"source":"P-08-001","target":"partner_recommendation","rule":"partner fit and rights diligence incomplete","severity":"high"}
+  ]
+}

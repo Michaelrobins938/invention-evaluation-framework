@@ -1,0 +1,501 @@
+{
+ "proposition_ledger": {
+  "P-03-001": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "3D spire-shaped silicon electrode array with multiplexing",
+   "phase": "03"
+  },
+  "P-03-002": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Combination of known elements; moderate obviousness exposure",
+   "phase": "03"
+  },
+  "P-03-003": {
+   "status": "ESCALATION_REQUIRED",
+   "version": "v1.8",
+   "claim": "Quantitative performance comparison vs. 2D arrays",
+   "phase": "03",
+   "evidence": [
+    {
+     "source": "Prasad et al. 2013 (IEEE EMBS)",
+     "finding": "Utah arrays showed <25% functional yield in chronic rat implants vs >70% for microwire and Pt/Ir arrays",
+     "metric": "Active electrode yield",
+     "value": "Utah: <25%, Microwire/Pt/Ir: >70%"
+    },
+    {
+     "source": "Gardner et al. 2018 (IEEE JERM)",
+     "finding": "Utah arrays showed 1.5-3x increase in noise and 2.25-9x increase in impedance vs in vitro measurements",
+     "metric": "Noise/Impedance increase",
+     "value": "1.5-3x noise, 2.25-9x impedance"
+    },
+    {
+     "source": "PMC5817007 (2018)",
+     "finding": "Single-unit active electrode yield decreased from 52.8±10.0% (week 1) to 13.4±5.1% (week 24) in rat motor cortex",
+     "metric": "SU yield decay",
+     "value": "52.8% → 13.4% over 24 weeks"
+    },
+    {
+     "source": "PMC8981395 (2022)",
+     "finding": "Average Utah array lifespan 622 days in NHP; ~50% exceed 40% yield at 1 year; one implant lasted 9 years in human",
+     "metric": "Array longevity",
+     "value": "622 days avg NHP, up to 9 years human"
+    },
+    {
+     "source": "Andreis et al. 2024 (Sensors)",
+     "finding": "MEA SEPs had 357% higher amplitude than µECoG; SNR similar (21.3 vs 19.4 dB)",
+     "metric": "SEP amplitude ratio",
+     "value": "357% higher for penetrating MEA"
+    }
+   ],
+   "comparison_summary": "3D penetrating arrays (Utah) provide superior single-unit recording and higher signal amplitude compared to 2D surface arrays, but show lower chronic yield (<25% vs >70%) and higher impedance increase. Average lifespan: 622 days NHP, up to 9 years human.",
+   "state": "ESCALATION_REQUIRED",
+   "escalation": {
+    "reason": "Evidence is internally contradictory: 3D arrays show superior signal (357% SEP amplitude) but inferior chronic yield (<25% vs >70%). The proposition as stated cannot be resolved to a single ESTABLISHED state without escalation.",
+    "recommended_action": "Split into signal-quality and chronic-yield sub-propositions; escalate to domain expert for trade-off adjudication."
+   }
+  },
+  "P-03-004": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "FDA Class III; PMA/HDE pathway; HIGH burden",
+   "phase": "03"
+  },
+  "P-03-005": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Prototype stage with working models",
+   "phase": "03"
+  },
+  "P-03-006": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "A61B 5/04, A61N 1/05, A61N 1/36 (initial candidates)",
+   "phase": "03"
+  },
+  "P-04-001": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "US5215088 is foundational patent for Utah Array",
+   "phase": "04"
+  },
+  "P-04-002": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Blackrock Neurotech holds dominant commercial position",
+   "phase": "04"
+  },
+  "P-04-003": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "University of Utah maintains strong IP portfolio",
+   "phase": "04"
+  },
+  "P-04-004": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Field is active with sustained innovation",
+   "phase": "04"
+  },
+  "P-04-005": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Next-gen flexible arrays (Neuralace) represent evolution",
+   "phase": "04"
+  },
+  "P-04-006": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "High barriers to entry for new competitors",
+   "phase": "04"
+  },
+  "P-05-001": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Claim 1 anticipation — NOT anticipated by any single reference",
+   "phase": "05",
+   "evidence": [
+    {
+     "source": "Najafi & Wise 1985",
+     "finding": "2D array with multiplexing; lacks 3D penetrating architecture, elongated tapered electrodes, ≥1000μm length",
+     "status": "CLOSEST_PRIOR_ART"
+    },
+    {
+     "source": "Campbell et al. 1991 (self-prior-art)",
+     "finding": "Describes same 3D device but published AFTER filing (1991 vs 1989); does not fully satisfy multiplexing limitation (describes wire bonding, not integrated multiplexing)",
+     "status": "SELF_PRIOR_ART_INCOMPLETE"
+    }
+   ],
+   "claim_element_mapping": [
+    {
+     "element": "3D electrode device",
+     "najafi_1985": "NO",
+     "us5215088": "YES",
+     "delta": "MAJOR"
+    },
+    {
+     "element": "Rigid base",
+     "najafi_1985": "YES",
+     "us5215088": "YES",
+     "delta": "NONE"
+    },
+    {
+     "element": "Elongated tapered electrodes",
+     "najafi_1985": "NO",
+     "us5215088": "YES",
+     "delta": "MAJOR"
+    },
+    {
+     "element": "Electrodes extending from base",
+     "najafi_1985": "NO",
+     "us5215088": "YES",
+     "delta": "MAJOR"
+    },
+    {
+     "element": "Electrical isolation at base",
+     "najafi_1985": "YES",
+     "us5215088": "YES",
+     "delta": "NONE"
+    },
+    {
+     "element": "≥1000μm length",
+     "najafi_1985": "NO",
+     "us5215088": "YES",
+     "delta": "MODERATE"
+    },
+    {
+     "element": "Signal connection means",
+     "najafi_1985": "YES",
+     "us5215088": "YES",
+     "delta": "NONE"
+    },
+    {
+     "element": "Multiplexing",
+     "najafi_1985": "YES",
+     "us5215088": "YES",
+     "delta": "NONE"
+    }
+   ],
+   "gate_result": "ANY=NO → NOT ANTICIPATED by Najafi 1985",
+   "final_assessment": "Claim 1 is NOT anticipated by any single reference. Self-prior-art (Campbell 1991) is close but incomplete due to post-filing date and incomplete multiplexing limitation."
+  },
+  "P-05-002": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Najafi & Wise 1985 is closest prior art (2D array)",
+   "phase": "05"
+  },
+  "P-05-003": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "3D penetrating architecture is distinguishing feature",
+   "phase": "05"
+  },
+  "P-05-004": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Obviousness — motivation exists but specific combination not evidenced pre-filing",
+   "phase": "05",
+   "evidence": [
+    {
+     "source": "Literature review (multiple sources)",
+     "finding": "Clear motivation exists to move from 2D to 3D for lower currents, better spatial resolution, and access to deeper cortical layers",
+     "status": "MOTIVATION_EXISTS"
+    },
+    {
+     "source": "Patent landscape analysis",
+     "finding": "No pre-filing evidence of specific combination: 3D spire-shaped silicon + thermomigration isolation + integrated multiplexing",
+     "status": "BRIDGE_UNTRAVERSED"
+    },
+    {
+     "source": "Mechanism displacement analysis",
+     "finding": "HIGH — moving from cortical surface (2D) to depth (3D) represents significant mechanism displacement",
+     "status": "HIGH_DISPLACEMENT"
+    }
+   ],
+   "combination_obviousness_exposure": "MODERATE",
+   "final_assessment": "Obviousness risk is limited. While motivation exists to move from 2D to 3D, the specific combination of 3D spire-shaped silicon with thermomigration isolation and integrated multiplexing was NOT evidenced pre-filing. The 3D penetrating architecture is non-obvious."
+  },
+  "P-05-005": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Self-prior-art exposure (Campbell 1991)",
+   "phase": "05"
+  },
+  "P-05-006": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Combination-obviousness exposure moderate",
+   "phase": "05"
+  },
+  "P-06-001": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "20,000+ peer-reviewed citations",
+   "phase": "06"
+  },
+  "P-06-002": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Used in 1,000+ labs worldwide",
+   "phase": "06"
+  },
+  "P-06-003": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Only penetrating electrode array with FDA clearance for human use",
+   "phase": "06"
+  },
+  "P-06-004": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "30,000+ aggregate days of human use",
+   "phase": "06"
+  },
+  "P-06-005": {
+   "status": "PARTIALLY_ESTABLISHED",
+   "version": "v1.8",
+   "claim": "Long-term biocompatibility documented",
+   "phase": "06",
+   "evidence": [
+    {
+     "source": "Prasad et al. 2013",
+     "finding": "Utah arrays showed <25% functional yield in chronic rat implants; abiotic failure modes predominant",
+     "metric": "Chronic yield",
+     "value": "<25% at 6 months"
+    },
+    {
+     "source": "PMC8981395 (2022)",
+     "finding": "30,000+ aggregate days of human use with ZERO reported serious adverse device events",
+     "metric": "Safety record",
+     "value": "0 SAEs in 30,000+ days"
+    },
+    {
+     "source": "PMC8981395 (2022)",
+     "finding": "Documented recording longevity exceeds 8 years in human BCI participants",
+     "metric": "Longevity",
+     "value": "8+ years human use"
+    },
+    {
+     "source": "PMC8981395 (2022)",
+     "finding": "Iridium oxide metallization showed superior yield compared to platinum in intermediate term (months 3-12)",
+     "metric": "Metallization comparison",
+     "value": "IrOx > Pt for yield"
+    },
+    {
+     "source": "Ward et al. 2009",
+     "finding": "Utah arrays had highest impedance spike post-insertion (immune response) but comparable SNR to microwire arrays",
+     "metric": "Impedance/SNR",
+     "value": "Higher initial impedance, comparable SNR"
+    }
+   ],
+   "biocompatibility_summary": "Utah arrays show documented long-term biocompatibility with 30,000+ aggregate human days, zero serious adverse events, and recording longevity exceeding 8 years. Chronic yield declines over time (~2% per month) but remains functional for years.",
+   "state": "PARTIALLY_ESTABLISHED",
+   "partiality": {
+    "established": "Safety record: 0 SAEs in 30,000+ human days; 8+ year longevity",
+    "not_established": "Long-term functional stability: chronic yield <25% at 6 months; progressive yield decline ~2%/month",
+    "recommended_action": "Independent verification of chronic-yield claims; source upgrade from single-study to multi-study meta-analysis."
+   }
+  },
+  "P-06-006": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Zero reported serious adverse device events",
+   "phase": "06"
+  },
+  "P-07-001": {
+   "status": "PARTIALLY_ESTABLISHED",
+   "version": "v1.8",
+   "claim": "BCI market ~$3.25B with 14.5% CAGR",
+   "phase": "07",
+   "state": "PARTIALLY_ESTABLISHED",
+   "partiality": {
+    "established": "Directional claim: BCI market is large and growing (multiple sources)",
+    "not_established": "Specific numbers ($3.25B TAM, 14.5% CAGR) are LLM inference, not structured market database facts",
+    "recommended_action": "Source upgrade: purchase/query structured market database (e.g. Grand View, MarketsandMarkets) for the specific figures."
+   }
+  },
+  "P-07-002": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Utah Array holds ~35-40% research market share",
+   "phase": "07"
+  },
+  "P-07-003": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Utah Array holds ~90%+ human BCI market share",
+   "phase": "07"
+  },
+  "P-07-004": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Estimated revenue $40-60M annually (Blackrock Neurotech)",
+   "phase": "07"
+  },
+  "P-08-001": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "University of Utah Research Foundation holds IP",
+   "phase": "08"
+  },
+  "P-08-002": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Blackrock Neurotech is exclusive commercial licensee",
+   "phase": "08"
+  },
+  "P-08-003": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "IP portfolio includes 25+ patents",
+   "phase": "08"
+  },
+  "P-08-004": {
+   "status": "ESTABLISHED",
+   "version": "v2",
+   "claim": "Active family members include US8359083B2 (expires ~2031)",
+   "phase": "08"
+  },
+  "P-08-005": {
+   "status": "PARTIALLY_ESTABLISHED",
+   "version": "v1.8",
+   "claim": "Licensing terms: Exclusive license to Blackrock Neurotech; specific financial terms not publicly disclosed",
+   "phase": "08",
+   "evidence": [
+    {
+     "source": "University of Utah public records",
+     "finding": "Blackrock Neurotech holds exclusive commercial license for Utah Array technology",
+     "status": "EXCLUSIVE_LICENSE_CONFIRMED"
+    },
+    {
+     "source": "Blackrock Neurotech corporate filings",
+     "finding": "Specific royalty rates, upfront payments, and milestone payments are not publicly disclosed",
+     "status": "FINANCIAL_TERMS_CONFIDENTIAL"
+    },
+    {
+     "source": "Industry analysis",
+     "finding": "Typical medical device licensing: 3-8% royalty rate; upfront $1-5M; milestones based on regulatory/commercial achievements",
+     "status": "INDUSTRY_BENCHMARK"
+    }
+   ],
+   "licensing_summary": "Blackrock Neurotech holds exclusive commercial license from University of Utah Research Foundation. Specific financial terms (royalty rates, upfront payments, milestones) are confidential. Industry benchmark for medical device licensing: 3-8% royalty, $1-5M upfront.",
+   "state": "PARTIALLY_ESTABLISHED",
+   "children": [
+    "P-08-005a",
+    "P-08-005b",
+    "P-08-005c",
+    "P-08-005d",
+    "P-08-005e",
+    "P-08-005f"
+   ],
+   "decomposition_note": "Parent proposition decomposed into atomic sub-propositions. Parent state is auto-derived: PARTIALLY_ESTABLISHED because children a-c are ESTABLISHED but children d-f are NOT_ESTABLISHED (confidential financial terms)."
+  },
+  "P-08-005a": {
+   "status": "ESTABLISHED",
+   "state": "ESTABLISHED",
+   "version": "v1.8",
+   "phase": "08",
+   "parent": "P-08-005",
+   "claim": "Exclusive licensee is Blackrock Neurotech",
+   "evidence": [
+    {
+     "source": "University of Utah public records",
+     "finding": "Blackrock Neurotech holds exclusive commercial license",
+     "status": "EXCLUSIVE_LICENSE_CONFIRMED"
+    }
+   ]
+  },
+  "P-08-005b": {
+   "status": "ESTABLISHED",
+   "state": "ESTABLISHED",
+   "version": "v1.8",
+   "phase": "08",
+   "parent": "P-08-005",
+   "claim": "License type is exclusive commercial",
+   "evidence": [
+    {
+     "source": "Blackrock Neurotech corporate filings",
+     "finding": "Exclusive commercial license",
+     "status": "EXCLUSIVE_COMMERCIAL_CONFIRMED"
+    }
+   ]
+  },
+  "P-08-005c": {
+   "status": "ESTABLISHED",
+   "state": "ESTABLISHED",
+   "version": "v1.8",
+   "phase": "08",
+   "parent": "P-08-005",
+   "claim": "Field of use is neural interfaces / BCI",
+   "evidence": [
+    {
+     "source": "Patent claims",
+     "finding": "Neural interfaces, BCI",
+     "status": "FIELD_OF_USE_CONFIRMED"
+    }
+   ]
+  },
+  "P-08-005d": {
+   "status": "NOT_ESTABLISHED",
+   "state": "NOT_ESTABLISHED",
+   "version": "v1.8",
+   "phase": "08",
+   "parent": "P-08-005",
+   "claim": "Royalty rate",
+   "debt": [
+    {
+     "debt_id": "P-08-005d-debt-1",
+     "proposition": "P-08-005d",
+     "missingness": "Royalty rate is confidential; only industry benchmark (3-8%) available",
+     "recovery_class": "UNAVAILABLE_BY_CONSTRAINT",
+     "severity": "HIGH",
+     "recoverable": false,
+     "reason": "Financial terms of the Blackrock/University of Utah agreement are not publicly disclosed",
+     "recommended_action": "Request terms under NDA during due diligence; treat benchmark as non-evidence"
+    }
+   ]
+  },
+  "P-08-005e": {
+   "status": "NOT_ESTABLISHED",
+   "state": "NOT_ESTABLISHED",
+   "version": "v1.8",
+   "phase": "08",
+   "parent": "P-08-005",
+   "claim": "Upfront payment",
+   "debt": [
+    {
+     "debt_id": "P-08-005e-debt-1",
+     "proposition": "P-08-005e",
+     "missingness": "Upfront payment is confidential; only industry benchmark ($1-5M) available",
+     "recovery_class": "UNAVAILABLE_BY_CONSTRAINT",
+     "severity": "HIGH",
+     "recoverable": false,
+     "reason": "Financial terms of the Blackrock/University of Utah agreement are not publicly disclosed",
+     "recommended_action": "Request terms under NDA during due diligence; treat benchmark as non-evidence"
+    }
+   ]
+  },
+  "P-08-005f": {
+   "status": "NOT_ESTABLISHED",
+   "state": "NOT_ESTABLISHED",
+   "version": "v1.8",
+   "phase": "08",
+   "parent": "P-08-005",
+   "claim": "Milestone payments",
+   "debt": [
+    {
+     "debt_id": "P-08-005f-debt-1",
+     "proposition": "P-08-005f",
+     "missingness": "Milestone payments are confidential; only industry benchmark available",
+     "recovery_class": "UNAVAILABLE_BY_CONSTRAINT",
+     "severity": "HIGH",
+     "recoverable": false,
+     "reason": "Financial terms of the Blackrock/University of Utah agreement are not publicly disclosed",
+     "recommended_action": "Request terms under NDA during due diligence; treat benchmark as non-evidence"
+    }
+   ]
+  }
+ }
+}

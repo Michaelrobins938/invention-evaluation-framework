@@ -1,0 +1,20 @@
+{
+  "claim_id": "US3470828-claim-1",
+  "domains": [
+    {"name": "vehicle", "limitations": ["L1"]},
+    {"name": "superconducting_magnets", "limitations": ["L2"]},
+    {"name": "track_loop_array", "limitations": ["L3", "L4", "L5"]},
+    {"name": "inductive_lift", "limitations": ["L6", "L7"]},
+    {"name": "vertical_stabilization", "limitations": ["L8"]}
+  ],
+  "relationships": [
+    ["L2", "induces_current_in", "L3"],
+    ["L3", "generates", "L6"],
+    ["L6", "maintains", "L7"],
+    ["L7", "is_stabilized_by", "L8"]
+  ],
+  "inventive_center_candidates": [
+    "passive electrodynamic lift from superconducting vehicle magnets and shorted track loops",
+    "integration of lift and vertical restoring force in the speed-dependent inductive relationship"
+  ]
+}

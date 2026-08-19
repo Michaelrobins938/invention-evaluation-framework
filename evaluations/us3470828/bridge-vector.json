@@ -1,0 +1,11 @@
+{
+  "state": "unresolved",
+  "feature_availability": "high",
+  "motivation": "not_established",
+  "compatibility": "not_established",
+  "architecture_constraint": "strong",
+  "combination_coherence": "not_established",
+  "expected_result": "not_established",
+  "unexpected_result": "not_established",
+  "evidence_quality": "partial"
+}

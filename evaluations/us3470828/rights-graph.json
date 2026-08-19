@@ -1,0 +1,12 @@
+{
+  "patent": "US3470828A",
+  "family": {"application": "US684775A", "family_status": "not established"},
+  "status": {
+    "public_database_label": "Expired - Lifetime",
+    "active": null,
+    "legal_conclusion": "not established",
+    "source": "https://patents.google.com/patent/US3470828A/en"
+  },
+  "assignments": [],
+  "asset_layers": ["historical_technology", "know_how_possible", "family_rights_unverified"]
+}

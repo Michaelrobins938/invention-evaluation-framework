@@ -1,0 +1,64 @@
+{
+  "run_id": "RUN-US7149534B2-20260818",
+  "invention_id": "US7149534B2",
+  "evidence_graph": {
+    "nodes": [
+      {"id": "P-02-001", "state": "CONFIRMED PRESENT", "phase": "02"},
+      {"id": "P-02-002", "state": "NOT ESTABLISHED", "work_state": "EXHAUSTED", "phase": "02"},
+      {"id": "P-03-001", "state": "NOT ESTABLISHED", "work_state": "EXHAUSTED", "phase": "03"},
+      {"id": "P-04-001", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-04-002", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-04-003", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-04-004", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-04-005", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-04-006", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-04-007", "state": "CONFIRMED PRESENT", "phase": "04"},
+      {"id": "P-05-001", "state": "NOT ESTABLISHED", "work_state": "EXHAUSTED", "phase": "05"},
+      {"id": "P-05-002", "state": "NOT ESTABLISHED", "work_state": "EXHAUSTED", "phase": "05"},
+      {"id": "P-06-001", "state": "NOT ESTABLISHED", "work_state": "EXHAUSTED", "phase": "06"},
+      {"id": "P-06-002", "state": "CONFIRMED PRESENT", "phase": "06"},
+      {"id": "P-07-001", "state": "CONFIRMED PRESENT", "phase": "07"},
+      {"id": "P-07-002", "state": "NOT ESTABLISHED", "work_state": "EXHAUSTED", "phase": "07"},
+      {"id": "P-08-001", "state": "NOT ESTABLISHED", "work_state": "SEARCHING", "phase": "08"}
+    ],
+    "edges": [
+      {"from": "P-02-001", "to": "P-03-001", "type": "handoff"},
+      {"from": "P-02-001", "to": "P-04-001", "type": "handoff"},
+      {"from": "P-04-001", "to": "P-05-001", "type": "handoff"},
+      {"from": "P-04-005", "to": "P-05-002", "type": "neutral_signal"},
+      {"from": "P-04-006", "to": "P-07-001", "type": "context"},
+      {"from": "P-05-001", "to": "P-05-002", "type": "gate"},
+      {"from": "P-07-001", "to": "P-07-002", "type": "context"},
+      {"from": "P-07-002", "to": "P-08-001", "type": "handoff"}
+    ]
+  },
+  "evidence_debt": [
+    {"proposition_id": "P-05-001", "missingness": "incomplete prior-art search", "escalation": "family tree, continuity, examiner/applicant citations, prosecution history", "state": "ESCALATION_REQUIRED"},
+    {"proposition_id": "P-05-002", "missingness": "incomplete combination analysis", "escalation": "motivation, expected-result, unexpected-result review", "state": "ESCALATION_REQUIRED"},
+    {"proposition_id": "P-07-001", "missingness": "specialty-market data incomplete", "escalation": "A-GPS-specific revenue, adoption proxies", "state": "ESCALATION_REQUIRED"},
+    {"proposition_id": "P-08-001", "missingness": "portfolio diligence incomplete", "escalation": "surviving family rights, know-how, successor records", "state": "ESCALATION_REQUIRED"}
+  ],
+  "constraints": [
+    {"proposition_id": "P-04-002", "constraint": "US grant expired; target-patent licensing constrained"},
+    {"proposition_id": "P-05-001", "constraint": "no positive novelty conclusion beyond reviewed record"},
+    {"proposition_id": "P-05-002", "constraint": "no ultimate legal obviousness conclusion"},
+    {"proposition_id": "P-07-002", "constraint": "commercial readiness NOT ESTABLISHED"},
+    {"proposition_id": "P-08-001", "constraint": "no exclusivity claim; strongest identified pathways only"}
+  ],
+  "rights": {
+    "patent": "US7149534B2",
+    "state": "EXPIRED",
+    "active": false,
+    "adjusted_expiration": "2023-04-04",
+    "status_source": "https://patents.google.com/patent/US7149534B2/en",
+    "disclaimer": "public database status is an assumption and not a legal conclusion"
+  },
+  "bridge_vector": {
+    "feature_availability": "HIGH",
+    "motivation": "PARTIALLY GROUNDED",
+    "compatibility": "PARTIAL",
+    "architecture_constraint": "MEDIUM",
+    "expected_result": "NOT ESTABLISHED",
+    "unexpected_result": "NOT ESTABLISHED"
+  }
+}

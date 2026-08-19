@@ -1,6 +1,6 @@
 # Invention Evaluation Engine
 
-An evidence-constrained invention reasoning engine: a nine-phase pipeline that
+An evidence-constrained invention reasoning engine: a ten-phase pipeline that
 takes an invention submission and produces a structured evaluation report —
 technology profile, patent landscape, novelty search, literature search, market
 opportunity, partner identification, and a compiled final report. Every finding
@@ -27,7 +27,7 @@ Literature Search → Market Opportunity → Partners → Report.
 Unzip the archive, then from the `invention-evaluation-framework/` folder run:
 
 ```bash
-./install.shs
+./install.sh
 ```
 
 (Or point your model at this directory and tell it to install and configure to your .config/.skills directory 
@@ -53,7 +53,7 @@ reload skills).
 ./verify.sh
 ```
 
-Prints PASS/FAIL for the engine skill, all 9 sub-skills, docs, and the sample
+Prints PASS/FAIL for the engine skill, all 10 sub-skills, docs, and the sample
 case. Exit code 0 = all good.
 
 ## Quickstart — sample run
@@ -64,7 +64,7 @@ case. Exit code 0 = all good.
 2. The engine runs the full pipeline on the Tesla US433,700 sample submission
    (live searches — this takes several minutes).
 3. Compare the output with
-   `invention-evaluation-engine/examples/tesla-us433700/report-tesla-us433700-e2e-v15.md`
+   `invention-evaluation-engine/examples/tesla-us433700/report-tesla-us433700-e2e-v16.md`
    (the validated reference report).
 
 ## Running on your own invention
@@ -99,7 +99,7 @@ MIT — see `LICENSE`.
 ```
 invention-evaluation-engine/   ← the installed skill
 ├── SKILL.md                   ← engine entry point (orchestration)
-├── skills/                    ← the 9 sub-skills
+├── skills/                    ← the 10 sub-skills
 ├── docs/                      ← DIGEST, GLOSSARY, INDEX, PIPELINE_STATE
 └── examples/tesla-us433700/   ← sample submission, prompt, reference report
 install.sh                     ← one-command installer

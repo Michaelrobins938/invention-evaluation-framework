@@ -1,0 +1,13 @@
+{
+  "run_status": "COMPLETED_WITH_EVIDENCE_DEBT",
+  "evaluation_dir": "evaluations/7153242",
+  "artifacts": {
+    "report_markdown": "evaluations/7153242/report-us7153242b2-v17.md",
+    "report_html": "evaluations/7153242/report-us7153242b2-v17.html",
+    "report_pdf": "evaluations/7153242/report-us7153242b2-v17.pdf",
+    "run_manifest": "evaluations/7153242/run-manifest.json",
+    "execution_ledger": "evaluations/7153242/execution-ledger.json",
+    "evidence_graph": "evaluations/7153242/evidence-graph.json",
+    "proposition_ledger": "evaluations/7153242/proposition-ledger.json"
+  }
+}

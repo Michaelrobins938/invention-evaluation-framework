@@ -1,0 +1,113 @@
+{
+  "run_id": "us5850650",
+  "invention_name": "Combination Hammer and Lumber Manipulating Tool",
+  "submitted_by": "Sample submission (law-firm public page)",
+  "invention_id": "US 5,850,650",
+  "submitted_date": "2026-08-14",
+  "report_date": "2026-08-14",
+  "disclaimer": "Please note this is a hypothetical technology presented solely for demonstration purposes. This report is a sample/demo deliverable of the inventionevaluator platform; content is derived from a retrospective evaluation of an expired patent conducted from public records.",
+  "gauges": {
+    "technology": {
+      "tier_index": 3,
+      "tier_label": "Moderate",
+      "basis": "Derived from report findings P-03-001/P-03-002 (fixed-geometry single-tool integration, no moving parts, two mounting configurations), P-04-001 (crowded B25D class, few direct equivalents), P-03-004a (LOW regulatory hurdle), P-03-003/P-03-005 (concept stage, no performance or prototype data established).",
+      "subfactors": {"Development": 1, "Unique Benefits": 2, "Landscape": 2, "Regulatory Hurdles": 3}
+    },
+    "ip": {
+      "tier_index": 1,
+      "tier_label": "Limited",
+      "basis": "Derived from report findings P-02-006 (US term expired 2017-06-13; CA expired 2018-06-12 — no enforceable exclusivity), P-05-007 (NOT ANTICIPATED by identified references), P-04-001 (crowded class). IP asset is granted but lapsed: exclusivity value is nil.",
+      "subfactors": {"Development": 0, "Unique Benefits": 0, "Landscape": 2, "Regulatory Hurdles": 3}
+    },
+    "market": {
+      "tier_index": 3,
+      "tier_label": "Moderate",
+      "basis": "Derived from report findings P-07-002 (US hand tools USD 6.1B 2024, CAGR 3.4%; hammer CAGR 3.0-4.5%), P-07-004 (premium tier 45-55% of revenue; high competitive intensity), P-02-006 (expired — free-to-practice concept only), P-07-001 (no commercial adoption established).",
+      "subfactors": {"Development": 1, "Unique Benefits": 2, "Landscape": 2, "Regulatory Hurdles": 3}
+    }
+  },
+  "commercialization_summary": {
+    "paragraph": "Commercial actionability is Moderate (market size medium-high, mature low-growth category, high competitive intensity). The US patent expired June 13, 2017 and the Canadian family member expired June 12, 2018: the fixed-jaw hammer concept is now in the public domain, so commercial value exists only as a free-to-practice product concept — there is no IP left to license. Commercial adoption could not be established from the completed evidence protocol.",
+    "teasers": [
+      "No exclusivity remains: US term expired 2017-06-13; CA term expired 2018-06-12.",
+      "Estwing and Vaughan & Bushnell identified as the strongest fit pathways for a framing-focused fixed-jaw hammer."
+    ]
+  },
+  "tech_ladder": {
+    "stages": ["Material", "Subcomponent", "Component", "Device", "System", "Service"],
+    "current": "Device",
+    "basis": "The invention is a single integrated tool (hammer-head + fixed jaw on one device); no system-level integration is claimed."
+  },
+  "dev_ladder": {
+    "stages": ["Concept", "Proof of Concept", "Testing", "Manufacturing", "Sales"],
+    "current": "Concept",
+    "basis": "P-03-003/P-03-005/P-03-006: no prototype, test, or production evidence established."
+  },
+  "semantic_map": {
+    "current": "Combination Hammer & Lumber Manipulating Tool",
+    "tree": [
+      {"label": "Hand Tools", "children": [
+        {"label": "Hammers (B25D)", "children": [
+          {"label": "Framing hammers"},
+          {"label": "Combination / multipurpose hammers", "children": [
+            {"label": "Combination Hammer & Lumber Manipulating Tool"}
+          ]}
+        ]},
+        {"label": "Lumber manipulation tools", "children": [
+          {"label": "Opposed-grip straightening tools (US4762303A lineage)"}
+        ]}
+      ]}
+    ],
+    "footnotes": [
+      {"label": "IPC B25D 1/04 — patent front page", "url": "https://patents.google.com/patent/US5850650A"},
+      {"label": "NAICS 332216 Saw Blade and Handtool Manufacturing", "url": "https://www.census.gov/naics/"}
+    ]
+  },
+  "charts": {
+    "region_pie": {
+      "title": "Forward-Citing Documents by Jurisdiction",
+      "note": "Verified from Google Patents 'Families Citing this family' (22 citing documents): US 19, AU 1 (AU2009100791B4), CN 1 (CN104275681B), EP 1 (EP2016239A1). Neutral historical signal, not patentability evidence.",
+      "data": {"US": 19, "AU": 1, "CN": 1, "EP": 1}
+    },
+    "applicants_pie": {
+      "title": "B25D US Grants 2015-2025 by Top Assignees",
+      "note": "PlainPatent B25D search (1,146 US grants 2015-2025): Makita 175, Hilti 126, Milwaukee 113, Black & Decker 78, others 654. Dominated by power percussion tools.",
+      "data": {"Makita": 175, "Hilti": 126, "Milwaukee": 113, "Black & Decker": 78, "Others": 654},
+      "sub_pie": {"Estwing": 6, "Vaughan": 4, "Stanley B&D": 78}
+    },
+    "activity_line": null,
+    "naics_dual": null,
+    "naics_bubble": null,
+    "third_party": [
+      {"label": "Fortune Business Insights — US Hand Tools Market", "note": "Third-party market-report graphic (native branding). Source image not available in this environment; referenced as P-07-002 corroboration."},
+      {"label": "MarketsandMarkets — Hand Tools Infographic", "note": "Third-party market-report graphic (native branding). Source image not available in this environment; referenced as P-07-004 competitive-structure corroboration."}
+    ]
+  },
+  "swot": {
+    "badge_k": "Commercial Opportunity",
+    "badge_v": "Moderate",
+    "s": [
+      "NOT ANTICIPATED by any identified prior-art reference (P-05-007)",
+      "Fixed-geometry single-tool integration — no moving parts, dual mounting configurations claimed (P-03-001/P-03-002)",
+      "LOW regulatory burden — general workplace hand-tool rule only (P-03-004a)",
+      "Established premium framing-tool tier, 45-55% of category revenue (P-07-004)"
+    ],
+    "w": [
+      "Patent expired 2017 — no enforceable exclusivity; concept in public domain (P-02-006)",
+      "No prototype, performance, or production evidence established (P-03-003/005/006)",
+      "No commercial adoption established (P-07-001)",
+      "Mature low-growth category: hand tools CAGR 3.4%; hammers 3.0-4.5% (P-07-002)"
+    ],
+    "o": [
+      "Framing-focused premium makers (Estwing, Vaughan & Bushnell) match the concept (P-08-002/003)",
+      "Free-to-practice design could be adopted into pro-tool lines without licensing",
+      "Stanley B&D demolition-tool lineage shows continued relevance of gripping-jaw hammers (P-04-005)"
+    ],
+    "t": [
+      "High competitive intensity: Stanley B&D, Estwing, Vaughan & Bushnell, Milwaukee dominate (P-07-004)",
+      "B25D class dominated by power percussion — hand-hammer innovation is a niche (P-04-001)",
+      "Private-label pressure at 25-35% of units (P-07-004)",
+      "Later in-force patents (e.g., demolition-tool family) — FTO review by counsel required before any product decision"
+    ]
+  }
+}

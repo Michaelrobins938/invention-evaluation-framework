@@ -1,0 +1,161 @@
+{
+  "run_id": "RUN-US7149534B2-20260818",
+  "invention_id": "US7149534B2",
+  "propositions": [
+    {
+      "proposition_id": "P-02-001",
+      "proposition_version": "v1",
+      "statement": "The patent discloses peer-to-peer GPS assistance data exchange between mobile terminals over a cellular network.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "US7149534B2 specification and claims",
+      "locator": "abstract; claims 1, 15, 23, 37",
+      "phase": "02"
+    },
+    {
+      "proposition_id": "P-02-002",
+      "proposition_version": "v1",
+      "statement": "Pre-filing public disclosure or sale-offer history for the invention.",
+      "evidence_state": "NOT ESTABLISHED",
+      "work_state": "EXHAUSTED",
+      "barrier_type": "no_inventor_statement",
+      "phase": "02"
+    },
+    {
+      "proposition_id": "P-03-001",
+      "proposition_version": "v1",
+      "statement": "Comparative performance data (time-to-first-fix, sensitivity gain, network-traffic impact) for the peer-mobile assistance mechanism.",
+      "evidence_state": "NOT ESTABLISHED",
+      "work_state": "EXHAUSTED",
+      "barrier_type": "insufficient_technical_demonstration",
+      "phase": "03"
+    },
+    {
+      "proposition_id": "P-04-001",
+      "proposition_version": "v1",
+      "statement": "Target patent classification in satellite-positioning aiding, user-group management, and mobile-station position transmission.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents classification record for US7149534B2",
+      "locator": "G01S19/05, G01S5/0072, H04W4/08, H04W8/186, G01S19/015",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-04-002",
+      "proposition_version": "v1",
+      "statement": "US grant legal status recorded as Expired - Lifetime with adjusted expiration 2023-04-04.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents legal-status record",
+      "locator": "US7149534B2 legal-status",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-04-003",
+      "proposition_version": "v1",
+      "statement": "Family spans PCT/WO, EP, DE, AT, AU plus US.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents family record",
+      "locator": "WO2002059640A2, EP1356314B1, DE60138650T, ATE430946T1, AU2002232915A1",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-04-004",
+      "proposition_version": "v1",
+      "statement": "Family has a recorded US litigation event in Texas Eastern District Court.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents litigation metadata (Unified Patents)",
+      "locator": "case 2:15-cv-00290",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-04-005",
+      "proposition_version": "v1",
+      "statement": "58 forward-citing records spanning GNSS-assistance, A-GPS, peer-to-peer positioning, and location-analytics applicants.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents citation record",
+      "locator": "Cited By (58)",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-04-006",
+      "proposition_version": "v1",
+      "statement": "CPC G01S19/05 field volume: 2,171 US, 814 WO, 1,685 EP, 971 CN, 366 JP, 120 AU, 105 CA publication records.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents XHR country queries",
+      "locator": "q=G01S19/05 country=US/WO/EP/CN/JP/AU/CA",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-04-007",
+      "proposition_version": "v1",
+      "statement": "Top returned US applicants in G01S19/05: Qualcomm 104, Seiko Epson 32, Nokia 22, Broadcom 20, Samsung 19, Ericsson 18.",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Google Patents XHR assignee cluster",
+      "locator": "country=US q=G01S19/05",
+      "phase": "04"
+    },
+    {
+      "proposition_id": "P-05-001",
+      "proposition_version": "v1",
+      "statement": "No single reference anticipates independent claim 1.",
+      "evidence_state": "NOT ESTABLISHED (reviewed record)",
+      "work_state": "EXHAUSTED",
+      "barrier_type": "insufficient_search_completion",
+      "conclusion": "NOT ANTICIPATED on reviewed record",
+      "phase": "05"
+    },
+    {
+      "proposition_id": "P-05-002",
+      "proposition_version": "v1",
+      "statement": "Obviousness of the peer-mobile GPS assistance combination over the closest prior art.",
+      "evidence_state": "NOT ESTABLISHED",
+      "work_state": "EXHAUSTED",
+      "barrier_type": "motivation_partially_grounded_no_unexpected_result",
+      "bridge_status": "PARTIALLY TRAVERSED",
+      "phase": "05"
+    },
+    {
+      "proposition_id": "P-06-001",
+      "proposition_version": "v1",
+      "statement": "No pre-filing academic publication discloses the peer-mobile GPS assistance combination.",
+      "evidence_state": "NOT ESTABLISHED",
+      "work_state": "EXHAUSTED",
+      "barrier_type": "insufficient_search_completion",
+      "phase": "06"
+    },
+    {
+      "proposition_id": "P-06-002",
+      "proposition_version": "v1",
+      "statement": "Closest peer-to-peer cooperative GPS positioning academic disclosures are post-filing (2013-2014).",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "Crossref API",
+      "locator": "Morosi 2013/2014, Dovis 2014, Chang 2013",
+      "phase": "06"
+    },
+    {
+      "proposition_id": "P-07-001",
+      "proposition_version": "v1",
+      "statement": "Industry aggregates: NAICS 334220 664 establishments/49,776 employees/$6.07B payroll; NAICS 517312 25,798 establishments/260,496 employees/$18.96B payroll (2022).",
+      "evidence_state": "CONFIRMED PRESENT",
+      "source_identity": "US Census Bureau CBP 2022",
+      "locator": "cbp22us.zip, naics=334220/517312, lfo=-",
+      "phase": "07"
+    },
+    {
+      "proposition_id": "P-07-002",
+      "proposition_version": "v1",
+      "statement": "Commercial adoption of the specific peer-mobile mechanism.",
+      "evidence_state": "NOT ESTABLISHED",
+      "work_state": "EXHAUSTED",
+      "barrier_type": "no_product_identity_link",
+      "phase": "07"
+    },
+    {
+      "proposition_id": "P-08-001",
+      "proposition_version": "v1",
+      "statement": "Partner-fit for GNSS-assistance incumbents and forward-citing entities.",
+      "evidence_state": "NOT ESTABLISHED",
+      "work_state": "SEARCHING",
+      "barrier_type": "requires_current_diligence",
+      "phase": "08"
+    }
+  ]
+}

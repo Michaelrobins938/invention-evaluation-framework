@@ -1,0 +1,460 @@
+                                                                                                                                      USOO7149534B2
+
+
+(12) United States Patent                                                                                        (10) Patent No.:                   US 7,149,534 B2
+       Bloebaum et al.                                                                                           (45) Date of Patent:                         Dec. 12, 2006
+
+(54) PEER TO PEER INFORMATION EXCHANGE                                                                               6,240,069 B1* 5/2001 Alperovich et al. ........ 370,260
+        FOR MOBILE COMMUNICATIONS                                                                                    6,266,533 B1* 7/2001 Zadeh et al. ............. 455,456.2
+        DEVICES                                                                                                      6,301,609 B1 * 10/2001 Aravamudan et al. ...... 709f2O7
+                                                                                                                     6,323,803 B1 * 1 1/2001 Jolley et al. ........... 342,357.03
+(75) Inventors: L. Scott Bloebaum, Cary, NC (US);                                                                    6,373,430 B1 * 4/2002 Beason et al. ......... 342,357.09
+                             Havish Koorapaty, Cary, NC (US)                                                         6,377.793 B1 * 4/2002 Jenkins ............. ... 455,412.1
+                                                                                                                     6,389,291 B1*  5/2002 Pande et al. ............. 455/456.5
+(73) Assignee: Ericsson Inc., Research Triangle Park,                                                                6,397,074 B1* 5/2002 Pihl et al. ......... ... 455,456.2
+               NC (US)                                                                                               6,411,811 B1* 6/2002 Kingdon et al. ......... 455/456.5
+                                                                                                                     6,449.486 B1       9/2002 Rao ........................ 455,456.1
+(*) Notice:                  Subject to any disclaimer, the term of this                                             6,449,558 B1 : 9/2002 Small ......................... TO1,213
+                             patent is extended or adjusted under 35                                                 6,477.353 B1 * 1 1/2002 Honda et al. .............. 455,111
+                             U.S.C. 154(b) by 801 days                                                               6,542,749 B1 * 4/2003 Tanaka et al. ........... 455/4.56.1
+                               M YW-                                                                                 6,542,750 B1 *     4/2003 Hendrey et al. ......... 455/4.56.1
+(21) Appl. No.: 09/767,461                                                                                           6,553,236 B1 * 4/2003 Dunko et al. ............... 455,457
+                  y x- - -             9                                                                             6,625,458 B1*      9/2003 Pihl et al. ................ 455,456.1
+(22) Filed:                  Jan. 23, 2001
+(65)                            Prior Publication Data
+                                                                                                                                          (Continued)
+                                                                                                                           FOREIGN PATENT DOCUMENTS
+        US 2002fOO988.49 A1                         Jul. 25, 2002
+                                                                                                            EP                     O748O85         12/1996
+(51) Int. Cl.
+     H04O 7/20                             (2006.01)
+        H04M II/04                         (2006.01)                                                                                         (Continued)
+(52) U.S. Cl. ............................... 455/456.6; 455/404.2:                                                                OTHER PUBLICATIONS
+                                                                               342/357.09                   Patent
+                                                                                                             al Abstracts
+                                                                                                                   Stracts of J
+                                                                                                                           of Japan    1, 1998,, No.
+                                                                                                                                    vol.             02, Jan.
+                                                                                                                                                 NO. U2, Jan. 30,
+                                                                                                                                                              3U, 1998 & JP 09
+(58) Field of state Sarth 1.                                                S. 53.                          284275 A (Nippon Telegr & Teleph Corp), Oct. 31, 1997 abstract.
+                  342/357.1, 357.15,357.01 357.11: 709/225,                                                                               (Continued)
+                   709/226. 229: 713f2OO: 701 (213. 215, 226
+                             s
+        S         lication file f s  let s    h historv.s                                                   Primary Examiner—Charles N. Appiah
+                                                                                                                   y                        pp
+            ee appl1cauon Ille Ior complete searcn n1story                                                  (74) Attorney, Agent, or Firm—Coats & Bennett, P.L.L.C.
+(56)                           References Cited
+                                                                                                            (57)                         ABSTRACT
+                  U.S. PATENT DOCUMENTS
+       5,355,511 A * 10, 1994 Hatano et al. ............. 455,111                                           The invention discloses various methods whereby mobile
+       5,473,605 A              12, 1995 Grube et al............... 370.261                                 communications devices, connected to a communications
+        St.                  ck 1 YE No.                   ----- -- --      - - - - i.     2.               network can share data by acting as both clients and servers.
+       5,953.959 A *             9, 1999 N.                -----            - - - - 342.3570s               Specifically contemplated is the sharing of GPS assistance
+       6032051 A                 2.2000 NT al.                             ... 4555 is                      data. Also disclosed is the formation and use of hierarchical
+       6,058.338 A *             5/2000 Agashe et al- - - - - - - - - - - - - - - - -    TO1/13             groups of mobile communications devices for the purpose of
+       6,070,078 A   5/2000 Camp, Jr. et al.                                                                information sharing.
+       6,097.949 A   8/2000 Jung et al.
+       6,111,540 A * 8/2000 Krasner ................... 342,357.1                                                              44 Claims, 1 Drawing Sheet
+
+                                                                                            3Positioning
+                                                                                                Satellite
+
+
+
+
+                                                                                                                       - ways---
+
+
+
+
+                                                                                                                 6
+                                                      US 7,149,534 B2
+                                                               Page 2
+
+               U.S. PATENT DOCUMENTS                                WO           WOOO 10O28            2, 2000
+                                                                    WO           WOOO46777             8, 2000
+     6,671,620 B1* 12/2003 Garin et al. ................ 701/213    wo           WO OO691.87           11 2000
+     6,748,195 B1* 6/2004 Phillips ......              455,412      WO           WO O158098             8, 2001
+     6,816,782 B1 * 1 1/2004 Walters et al. ....    ... 701 (209
+2002/0143856 A1* 10, 2002 Traversat et al. ........... TO9,202
+                                                                                      OTHER PUBLICATIONS
+           FOREIGN PATENT DOCUMENTS
+                                                                    Patent Abstracts of Japan vol. 2000, No. 14, Mar. 5, 2001 & JP 2000
+WO          WO94O9599            4f1994                             324120 A (Kokusai Electric Co Ltd), Nov. 24, 2000 abstract.
+WO          WO9810608            3, 1998
+WO         WO 99.63358           12/1999                            * cited by examiner
+U.S. Patent          Dec. 12, 2006   US 7,149,534 B2
+
+
+
+
+              2. b
+              Positioning
+                Satellite
+
+
+
+
+                                          Radio
+                                           Base
+                                          Station
+
+
+
+
+                                60
+                                                    US 7,149,534 B2
+                              1.                                                                  2
+    PEER TO PEER INFORMATION EXCHANGE                                           SUMMARY OF THE INVENTION
+        FOR MOBILE COMMUNICATIONS
+                  DEVICES                                              The invention provides a means whereby various GPS
+                                                                    related information, such as the GPS satellite ephemeris and
+               FIELD OF THE INVENTION                               the approximate time, and other, application-specific data,
+                                                                    can be provided to a cellular phone via the cellular network,
+                                                                    even when the information is unavailable from the cell to
+   This invention is related to cellular telephones and, in
+particular, to cellular telephones equipped with the capabil which    the phone is currently connected. According to this
+                                                               invention, other mobile devices can behave as information
+ity of determining their location using the Global Position 10 servers to mobile devices requiring the information.
+ing Satellite (GPS) system.                                      The concept of a server in a cellular network is typically
+                                                                    constrained to have the server as a fixed node within the
+         BACKGROUND OF THE INVENTION                                 cellular infrastructure. As disclosed herein, a cell phone is
+                                                                     allowed to be a server in addition to being a client in the
+   It is required for cellular telephone operation for a cellular 15 cellular network, where it provides information to other
+phone to be aware of what cell it is located within. Cells in mobile units in the network. A primary example of this is a
+the cellular telephone system refer to the area covered by cell phone which is equipped with a GPS receiver that is
+singular cellular tower, and can overlap. In general, a capable of providing GPS assistance data, such as almanac,
+cellular phone will monitor the control channel of the ephemeris,                 reference time, reference location and iono
+cellular tower having the strongest signal. Therefore, a the cellular network toandother
+                                                                     spheric  corrections,          GPS-equipped cell phones in
+                                                                                                to fixed nodes within the cellular
+cellular phone has a rudimentary knowledge of its location.
+   However, there are applications, other than the normal and             backbone networks. The key idea here is that the server
+                                                                     is not necessarily a fixed node but is a mobile user device.
+Voice communications capabilities of the cellular phone, that           According to further aspects of the invention, cellular
+may require a more exact knowledge of the phone's location 25 devices connected to the cellular network are able to form
+within a cell. These include, for example, an application hierarchical groups for information-sharing or other pur
+providing location sensitive advertising over the cell phone, poses. Requests for information may be classified according
+wherein targeted advertising could be sent to cell phone to various levels of the hierarchy, according to priority, and
+users within a certain proximity of the advertiser's location. units may choose to respond or not to respond to requests for
+Other such applications would be the provision of travel 30 information based on the profile and the classification.
+directions based on current location and enhanced 911                Further, responses to requests for information may only be
+emergency services from calls made using a cellular phone. accepted from certain member(s) of the group.
+   To improve certain characteristics of GPS receiver per               Cellular networks currently are set up such that cell
+                                                                     phones
+formance, such as time-to-first-fix and sensitivity, it is 35 mainly with     in the network exchange information and interact
+possible to provide to the receiver various aiding informa action between          the base station except for user initiated inter
+tion, such as a GPS satellite ephemeris, the approximate voice calls or SMS            cell phones, such as a mobile-to-mobile
+time and a reference location. The reference location is an                                 messages. This invention further pro
+                                                                     poses  an automatic  mode
+approximation or estimate of the receiver's current position, where information is exchanged    of operation for a cellular network
+                                                                                                       via cell phone to cellphone
+which, when used with other information, allows the 40 interaction in situations that are not indicated by the user of
+receiver to determine which GPS satellites should be visible
+                                                                     each cell phone in real time.
+and to estimate the signal transit times from the each
+satellite. Generally, without this aiding information, acquir            DETAILED DESCRIPTION OF THE DRAWINGS
+ing the satellite signals and computing the receiver's exact
+location could take much longer. This delay could have 45 FIG. 1 is a schematic diagram of the system of the current
+serious impacts on the performance of mobile location invention showing the flow of information and communi
+based services, which tend to be time-sensitive.                     cation channels.
+   It is therefore desirable to provide a means by which a
+reference location and other GPS-related information can be                    DETAILED DESCRIPTION OF THE
+provided to a GPS receiver which is integrated into a cellular 50                       INVENTION
+phone. It is known in the prior art to provide such informa
+tion via the cellular network. U.S. Pat. No. 5,365,450        FIG. 1 shows a radio network comprised of a core
+(Schuchman et al.) describes an approach wherein the net network 60 and a radio access network shown as a plurality
+work transmits GPS satellite ephemeris and other informa of radio base stations 40, each of which serves a region or
+tion to a GPS-equipped mobile communication device, 55 cell in the network. An example of Such a network is a
+which then utilizes this information to acquire the GPS cellular telephone network. The core network consists of the
+satellite signals and to compute a position estimate. Other interconnections between the plurality of radio base stations
+methods are described in U.S. Pat. Nos. 5,418,538 (Lau) and 40 and also may include an interconnection with external
+5,883,594 (Lau).                                            networks, such as the PSTN and Internet.
+   One problem with these approaches is that the GPS 60 Also shown in FIG. 1 is a plurality of positioning-capable
+equipped cellular phone may at times be situated within a mobile radiotelephones 20 that access the radio network.
+cell not having access to the GPS-related information. The following description of the invention uses GPS as an
+Therefore, it would be desirable to be able to provide this example of an applicable positioning technology. However,
+information from another, alternate source. Further, once the       this is not intended to limit the invention to GPS receivers.
+capability is established to provide the data from an alternate 65 Other positioning technologies such as Russian GLONASS
+source, it would be desirable to be able to utilize the alternate  are also relevant. As shown in the figure, the GPS-equipped
+Source to provide other, application-specific types of data.       cellular phone 20 receives signals from the positioning
+                                                    US 7,149,534 B2
+                              3                                                                    4
+signal sources, in this case GPS satellites 30, and has a             Cell phone 24 may choose not to provide the aiding
+bi-directional radio link with one or more of a plurality of       information to requesting cellphone 22. Users of cellphones
+radio base stations 40.                                            have control over the privacy of both the position and aiding
+   The lower layers of the communication protocol between information, either globally or for particular user(s) within
+the radio base stations 40 and cellular phones 20 tends to be the group.
+relatively generic for most air-interface standards, providing        Further, multiple cell phones 20 may exchange position
+a foundation for developing applications that are interesting information or aiding information to facilitate or enhance
+to the user of the wireless device. Such applications include position computation. Such information could include the
+email, web browsing, etc. Another class of applications that computed positions of the cell phones or specific pieces of
+are becoming increasingly important to users is group infor 10 assistance data useful for enhancing GPS receiver perfor
+mation services, where multiple members of a group share mance, such as approximate time, reference location, visible
+information about their activities, plans, etc. A wide variety satellites, almanac, ephemeris, ionospheric corrections, etc.
+of groups can be imagined, including families, work teams Such information could also include the location of nearby
+and friends.                                                       base stations 40 that are received by certain cell phones 20
+   One particularly interesting type of group application is 15 as aiding information and shared with other cell phones 20
+requesting and sharing of position information among some that may not have GPS receivers but that may compute their
+or all members of a group. The provision of position positions using the cellular network with the knowledge of
+information allows group members to locate each other for the locations of the base stations 40. This is particularly
+a variety of reasons, such as, for example, to meet for dinner, useful in networks that have synchronized base stations 40,
+sporting activities, shopping, etc. Having GPS capabilities in Such as cmdaOne.
+cell phone 20 allows the user to respond to requests with a           Alternately, in Systems where the locations of base sta
+highly accurate position information.                              tions 40 are transmitted by the system or are otherwise
+   However, it is well-known that autonomous GPS does not          known, but the timing of their transmissions is unknown,
+work in all environments and all situations, due to low signal cell phones 20 with GPS receivers can compute the trans
+strength from GPS satellites 30. Thus, there may be many 25 mission times from different base stations 40 and share this
+times when the user cannot send his current position because information with cell phones 20 that do not have GPS
+he is unable to receive a sufficient number of GPS signals to receivers, so that these cell phones 20 may compute their
+compute it. Given the proper aiding information, however, positions from signals in the terrestrial system. Cell phones
+the sensitivity and time-to-first-fix can be improved for a cell 20 with GPS receivers can compute base station transmis
+phone 20 not having access to the aiding information.           30 sion times if the base station locations and the location of the
+   A key aspect of the current invention is that cell phone 20, cell phone itself is known.
+rather than getting aiding information (assistance) from              It should be noted that, in general, a cell phone may
+some central source or server within or outside of core            compile the information that it needs from multiple sources
+network 60, can request and receive assistance from other in the group. Hence, the cell phone can put together data
+cell phones 20 within a group or community.                     35 about different GPS satellites 30 from multiple group mem
+   Consider the example shown in FIG.1. Three cellphones bers. The cell phone may need to sort the compiled data
+20, 22 and 24 are within geographic proximity, either within based on Some criterion Such as age of the assistance data.
+the same or a nearby cell. Cell phone 24 is in a favorable In another aspect of this invention, cell phones may
+signal environment (e.g., outdoors) where it is able to exchange types of data other than GPS position aiding type
+acquire a plurality signals from visible GPS satellites 30, 40 data. Exchanges of information Such as phone numbers and
+demodulate navigation messages (ephemeris, etc.) and store e-mail addresses between phones may take place. Such
+this data in memory. Alternately, cellphone 24 could retrieve exchanges may be generated, for example, by a high level
+aiding information from a source (e.g., a server) within or requirement by a user for synchronization between the data
+outside of core network 60. In either case, cell phone 24 has bases of multiple phones used by the user. Alternately, such
+the necessary information to compute its own position, and 45 applications may be attractive to a group of users who wish
+stores this information for future usage.                          to share common information data bases and keep them
+   Subsequently, a second cell phone 22 in the vicinity of synchronized and updated. Cell phones within the network
+cell phone 24 needs to determine its own location, and also may communication using SMS. The cell phones may also
+perhaps the location of other cell phones for Some group communicate through the Wireless Application Protocol
+application. Cellphone 22 sends a query to cell phone 24 via 50 (WAP) or Internet Protocol (IP). In essence, any form by
+radio base stations 40 and core network 60, requesting which a mobile terminal can send messages to another
+assistance in determining its own position. Alternatively, cell mobile terminal may be used for exchanging information.
+phone 22 may send out a query to all members of the group             In yet another aspect of the invention, cell phones may
+rather than to only cellphone 24. Cellphone 24 may respond form into groups in an ad-hoc manner in order to share
+with one or more of the following according to its internal 55 specific information. Such groups may be formed with or
+information:                                                       without user initiation. As an example of the formation of a
+   A list of visible GPS satellites 30 and corresponding user-initiated group, all the members of a family may choose
+      ephemeris and clock corrections;                             to form a group that shares GPS assistance data in order to
+   Approximate GPS time-of-week (TOW);                             improve GPS receiver performance. Similarly, a set of
+   Approximate position (e.g., current or last computed 60 friends could from a group to share files for applications
+      position);                                                   Such as games or music between their cell phones. In these
+   Ionospheric or differential corrections:                        cases, the cell phone joins a group through direct initiation
+   Satellite almanac.                                              by the user of the MS.
+                                                                      Alternatively, groups may be formed without user initia
+This would assist cell phone 22 in acquiring the satellite 65 tion based on profiles set up by the user. As an example, a
+signals necessary to compute its own position in a timely user may set up a profile within the phone for the class of
+manner, even in disadvantaged signal conditions.                   requests the cell phone may entertain and the services for
+                                                   US 7,149,534 B2
+                                5                                                              6
+which the cell phone may join groups. The profile may also this problem, the client application could assign levels of
+indicate that a cell phone should join a group for a certain trust to different groups (e.g., inner circle (family), outer
+type of information sharing service, if it can find Such a circle (friends and associates), world (everyone else)), and
+group. After the profile is set up, whenever the cell phone is decide from which ones to accept assistance. The client
+in contact with another cell phone either for a voice call or 5 application then matches the available sources with these
+for messaging, the cell phones may exchange information groups to determine if a source is available that meets the
+regarding the type of information service groups they can be client criteria for trustworthiness, and if not, whether or not
+part of and would like to be part of. If the other cell phone to get the information from a secure fixed server instead, or
+is part of or had knowledge of Such groups, then the cell if multiple sources are available, which ones are the most
+phone may join the group. Similarly, the cell phone may 10 trusted. In one possible embodiment, the user of the cell
+allow the other cell phones in the messaging or voice phone sets the “trust' parameter by a choosing from a menu,
+transaction to join a particular group. An example of such an with a default trust requirement assumed prior to any choice
+ad-hoc group might be a group that has access to a particular made.
+set of games. The user of the cell phone may determine that         This invention also contemplates coordinated information
+he would like the cell phone to be a part of a group that can 15 sharing between the members of a group for the benefit of
+share a particular class of games. The classification of games all the members of the group: The techniques for this part of
+may be determined by the common application used by all the invention, explained in the context of GPS assistance
+the cell phones in the group.                                    data, are as follows.
+   To facilitate decisions on whether a cell phone may join         Regularly scheduled collection of data: Cell phones in a
+a particular group and to maintain a list of the members of group that shares data, for example, GPS assistance data,
+the group, one cell phone may serve as the group leader or may decide to update their data periodically with the cell
+host for the group by storing this information and making phone providing the information to the group being different
+Sure cell phones that are admitted into the group satisfy all each time. For example, GPS ephemeris information is valid
+the privacy and any other constraints that might be set up.      only for limited time periods of 2–4 hours. In a group having
+   In another embodiment of the invention, the formation of 25 multiple members, the members of the group could take
+groups and the maintenance of a list of cell phones within turns downloading the GPS ephemeris information and
+each group may be performed by a server that is located making it available to other members of the group.
+within the cellular or the backbone data network. For               For example, each cell phone in the group may be
+example, the server could be located within the core network scheduled to obtain the GPS ephemeris information directly
+and be accessible via IP or WAP. Such a server can be used 30 from the GPS satellites (in areas without any network
+to allow a cell phone to query the information services assistance for GPS) once very 8 hours. The scheduled times
+available and also to query some or all group members for members in a four-member group are staggered such that
+within a certain area. The server may also be used to one of the four cellphone is obtaining ephemeris data every
+maintain the status of cell phones within a group with 2 hours and distributing this data to peers in the group. Thus,
+reduced traffic. For example, such a server may maintain the 35 all the cell phones in the group have up to date ephemeris
+set of cell phones that are able and willing to provide GPS data through cheap messaging operations that require
+assistance data at the current time.                             receiver on times of less than a second, except when it is the
+   This invention also contemplates the formation of sub turn of a cell phone to obtain the ephemeris data directly
+groups within any group or Sub-group and having priorities from satellites, which may take more than 30 seconds or
+assigned to the members of each group or Sub-group. These 40 which may not be possible in Some environments. This
+priorities may indicate the preferences for requesting infor technique enhances the GPS receiver performance of all
+mation. For example, when a cell phone needs GPS assis phones in terms of time to first fix with a significant
+tance data, it might query members of the Sub-group with the reduction in the associated penalty of maintain up-to-date
+highest priority for this function. If it does not obtain ephemeris by reading them off the satellites.
+information from any of the cell phones in this sub-group, it 45 Supply of GPS assistance data by a cell phone within a
+will then query cell phones belonging to lower priority group to other cell phones in the group to enhance their GPS
+Sub-groups. Sub-groups may be formed independently for receiver performance: When cell phones that are part of a
+each information sharing function. Therefore, there may be group that shares GPS assistance data enter an area where
+a different sets of sub-groups defined for sharing GPS GPS assistance data from the cellular network is unavail
+assistance data information and for sharing game application 50 able, a cell phone that has poor signal-to-noise ratio for
+files with no dependence between these two sets of sub acquiring signals from the GPS satellites may query other
+groups.                                                          cell phones within the group for assistance data. This is a
+   A protocol may be set up that allows cell phones within likely scenario for a cell phone that is in an indoor envi
+the cellular network to query each other about specific ronment and must compute its own position. Any of the cell
+information sharing capabilities. Such as the capability to 55 phones within the group that have good signal-to-noise ratio
+gather and distribute GPS assistance data.                       for the GPS satellite signals may then obtain the assistance
+   Although the traditional fixed client-server relationship data and pass the data on to the cell phone requiring it via
+relies on the principle that the data from the server is valid, the cellular infrastructure. The assistance data will then
+this principle is not necessarily true for the peer-aided case.  significantly enhance the sensitivity and time to first fix of
+When the user receives aiding information from some 60 the GPS receiver in the cellphone required to position itself.
+member of a group acting as a server, the user must                 In another embodiment of the invention, when cellphones
+determine the validity of that information based on the are part of a group that shares GPS assistance data in an area
+trustworthiness of the source. In the case of GPS assistance,    where GPS assistance data from the cellular network is
+for example, it is possible for a peer server to spoof the available, a cell phone that travels to an area without
+requesting cell phone by sending false or inaccurate orbital 65 network assistance can obtain assistance from other cell
+information for GPS satellites 30, which could lead to          phones in the group that are within the home area (with
+erroneous position results in the client cellphone. To address network assistance) for GPS assistance data. One of the cell
+                                                     US 7,149,534 B2
+                                 7                                                              8
+phones within the group will then obtain the assistance data            GPS data, and transmits the GPS assistance data to a
+from the network and provide the assistance data to the cell            remote mobile terminal via the wireless communica
+phone that is travelling. In order to account for the difference        tions network.
+in visible satellites, the cell phone requesting the assistance      2. The mobile terminal of claim 1 wherein the mobile
+data may provide a Superset of satellites that is guaranteed 5 terminal and the remote mobile terminal are part of a group
+to have the visible satellites as a subset. Some forms of        comprising a plurality of mobile terminals communicating
+assistance, such as reference time (GPS time with respect to via the wireless communications network.
+a local base station’s transmissions), clearly cannot be            3. The mobile terminal of claim 2 wherein the group is a
+provided in this embodiment. However, ephemeris and hierarchical group having one or more levels, and wherein
+almanac information can be provided.                          10 the mobile terminal determines whether to transmit the GPS
+   Supply of data by a cell phone within a group to other cell assistance data to the remote mobile terminal based on the
+phones in the group for other reasons such as cost reduction:    level assigned to the remote mobile terminal.
+This technique allows users to share GPS information to             4. The mobile terminal of claim 2 wherein the group has
+avoid service charges. One cell phone could get the infor one or more Sub-groups, and wherein the mobile terminal
+mation from a network server and then share the information 15 determines whether to transmit the GPS assistance data to
+with all others in the group.                                      the remote mobile terminal based on the Sub-group assigned
+   In another embodiment of the invention, applications for        to the remote mobile terminal.
+various information sharing services may be downloaded                5. The mobile terminal of claim 3 wherein each of the one
+from a web site on the data network. For example, a GPS            or more sub-groups is assigned a priority, and wherein the
+assistance sharing application could be downloaded from a          mobile terminal determines whether to transmit the GPS
+portal or a web site. Such an application may be a plug-in for     assistance data to the remote mobile terminal based on the
+a browser in the cell phone so that gathering of assistance        priority of the Sub-group assigned to the remote mobile
+data for the GPS receiver from peer groups may be launched        terminal.
+from the browser.                                                    6. The mobile terminal of claim 2 wherein the mobile
+  The user of the cell phone may set up a profile that selects 25 terminal determines whether to transmit the GPS assistance
+from one of several levels of desired standby time and talk data to the remote mobile terminal based on a priority
+time performance. These levels may be indicated as a assigned to the remote mobile terminal.
+percentage of the maximum standby and talk time offered by       7. The mobile terminal of claim 2 wherein formation of
+the phone. Such a profile may than be used by the informa 30 the group is ad-hoc.
+tion sharing application to determine to what degree the cell    8. The mobile terminal of claim 2 wherein formation of
+phone will participate in the group sharing activities. For the group is based on the geographic proximity of the mobile
+example, a particular standby time limit may cause the cell terminal and the remote mobile terminal.
+phone to request GPS assistance information with only            9. The mobile terminal of claim 2 wherein membership in
+certain maximum frequency Such as one request every 30 35 the group is defined by a profile for each mobile terminal in
+minutes, or on an as-needed basis. The highest priority class the group.
+among the priority classes discussed earlier may be set up to    10. The mobile terminal of claim 9 wherein the mobile
+override such constraints. Constraints may also be set up to terminal transmits the GPS assistance data to the remote
+protect the privacy of the cell phone. Hence, a cell phone mobile terminal based on the information contained within
+may not provide its position information to members of a 40 the profile of the remote mobile terminal.
+group if its privacy constraints are not met by the cellphone    11. The mobile terminal of claim 10 wherein the mobile
+to which the information is being sent.                        terminal is configured to receive the profile of the remote
+   Lastly, cell phones that are currently engaged in a voice mobile terminal.
+call may exchange information, such as GPS assistance data.      12. The mobile terminal of claim 10 wherein the mobile
+If a cell phone requires such data and the other cell phone 45 terminal is configured to retrieve the profile of the remote
+have the data, if privacy conditions and the performance mobile terminal from a server in the wireless communica
+constraints discussed above are met, the data can be trans         tions network.
+ferred during the voice call.                                   13. The mobile terminal of claim 1 wherein the mobile
+   The foregoing invention has been described in terms of terminal is configured to transmit the GPS assistance data
+usage with a typical cellular telephone network. The inven 50 responsive to a request from the remote mobile terminal.
+tion, however, is not meant to be limited to any single         14. The mobile terminal of claim 1 wherein the mobile
+implementation of a cellular network. Various standards for terminal is configured to transmit the GPS assistance data
+second-generation cellular radio networks, such as GSM, automatically to the remote mobile terminal.
+TDMA and cdmaOne, incorporate assistance for GPS                15. A mobile terminal comprising:
+equipped cellular phones. Furthermore, the invention, need 55 a cellular transceiver to communicate with a wireless
+not be limited to cellular radio devices and networks. The              communications network;
+invention could be implemented using any GPS-equipped                wherein the mobile terminal receives GPS assistance data
+mobile communications device. Such as a combination com                via the wireless communications network that was
+puter, GPS & phone device. Therefore, the scope of the                  generated by a remote mobile terminal from GPS data
+invention is embodied in the following claims.         60               received by the remote mobile terminal; and
+                                                                     wherein the mobile terminal determines a reference loca
+  We claim:                                                            tion based on the GPS assistance data received from the
+  1. A mobile terminal comprising:                                     remote mobile terminal.
+  a GPS receiver to receive GPS data;                                16. The mobile terminal of claim 15 wherein the mobile
+  a cellular transceiver to communicate with a wireless 65 terminal and the remote mobile terminal are part of a group
+     communications network; and wherein the mobile ter            comprising a plurality of mobile terminals communicating
+     minal generates GPS assistance data from the received         via the wireless communications network.
+                                                   US 7,149,534 B2
+                                                                                              10
+   17. The mobile terminal of claim 16 wherein the group is         31. The method of claim 23 wherein the determination of
+a hierarchical group having one or more levels, and wherein       whether to transmit the GPS assistance data to the remote
+the mobile terminal determines whether to trust the GPS           mobile terminal is based on information contained within a
+assistance data received from the remote mobile terminal         profile set up by the user of the remote mobile terminal.
+based on the level assigned to the remote mobile terminal. 5 32. The method of claim 31 further comprising receiving,
+   18. The mobile terminal of claim 16 wherein the group at the mobile terminal, the profile of the remote mobile
+has one or more sub-groups, and wherein the mobile termi terminal.
+nal determines whether to trust the GPS assistance data             33. The method of claim 31 further comprising retrieving
+received from the remote mobile terminal based on the            the profile of the remote mobile terminal from a server in the
+Sub-group assigned to the remote mobile terminal.             10 wireless communications network.
+   19. The mobile terminal of claim 18 wherein each of the          34. The method of claim 23 further comprising the mobile
+one or more sub-groups is assigned a priority, and wherein terminal transmitting the GPS assistance data to the remote
+the mobile terminal determines whether to trust the GPS          mobile terminal responsive to a request from the remote
+assistance data received from the remote mobile terminal         mobile terminal.
+based on the priority of the Sub-group assigned to the remote 15 35. The method of claim 23 further comprising the mobile
+mobile terminal.                                                 terminal transmitting the GPS assistance data automatically
+  20. The mobile terminal of claim 16 wherein the mobile          to the remote mobile terminal.
+terminal determines whether to trust the GPS assistance data        36. The method of claim 24 further comprising assigning
+received from the remote mobile terminal based on a priority      the mobile terminal to periodically retrieve the GPS data and
+assigned to the remote mobile terminal.                           transmit the generated GPS assistance data to the remote
+  21. The mobile terminal of claim 15 wherein the mobile          mobile terminal.
+terminal is configured to request the GPS assistance data      37. A method of exchanging GPS assistance data among
+from the remote mobile terminal.                             mobile terminals communicating within a wireless commu
+  22. The mobile terminal of claim 15 wherein the mobile     nications network comprising:
+terminal is configured to receive the GPS assistance data 25 receiving, at a mobile terminal, GPS assistance data from
+automatically from the remote mobile terminal.                    a remote mobile terminal over a wireless communica
+   23. A method of exchanging GPS assistance data among           tions network, the GPS assistance data being generated
+mobile terminals communicating within a wireless commu            by the remote mobile terminal from GPS data received
+nications network comprising:                                     by the remote mobile terminal;
+   receiving, at a mobile terminal communicating in a wire 30 determining    whether to trust the GPS assistance data
+      less communications network, GPS data from an exter             received from the remote mobile terminal as valid; and
+      nal source:                                                   determining  a reference location based on the GPS assis
+   generating, at the mobile terminal, GPS assistance data            tance data received from the remote mobile terminal.
+      from the received GPS data; determining, at the mobile        38. The method of claim 37 wherein the mobile terminal
+     terminal, whether to transmit the GPS assistance data to 35 and the remote mobile terminal are part of a group com
+      a remote mobile terminal communicating in the wire prising a plurality of mobile terminals communicating via
+      less communications network; and                           the wireless communications network.
+   transmitting the GPS assistance data to a remote mobile          39. The method of claim 38 wherein the group is a
+     terminal via the wireless communications network
+     based on the determination.                              40 hierarchical  group having one or more levels, and wherein
+   24. The method of claim 23 further comprising forming a the       determination of whether to trust the GPS assistance data
+                                                                 received from the remote mobile terminal is based on the
+group comprising at least the mobile terminal and the remote level      assigned to the remote mobile terminal.
+terminal.
+                                                                    40.
+   25. The method of claim 24 wherein the group is a more Sub-groups,   The method of claim 38 wherein the group has one or
+hierarchical group having one or more levels, and wherein 45 to                     and wherein the determination of whether
+the determination of whether to transmit the GPS assistance         trust  the GPS  assistance data received from the remote
+data to the remote mobile terminal is based on the level         mobile terminal is based on the Sub-group assigned to the
+                                                                 remote mobile terminal.
+assigned to the remote mobile terminal.                             41. The method of claim 38 wherein each of the one or
+   26. The method of claim 24 wherein the group includes more            Sub-groups is assigned a priority, and wherein the
+one or more sub-groups, and wherein the determination of 50       determination of whether to trust the GPS assistance data
+whether to transmit the GPS assistance data to the remote
+mobile terminal is based on the Sub-group assigned to the         received from the remote mobile terminal based on the
+remote mobile terminal.                                           priority of the Sub-group assigned to the remote mobile
+  27. The method of claim 26 wherein each of the one or           terminal.
+more Sub-groups is assigned a priority, and wherein the 55           42. The method of claim 38 further comprising assigning
+determination of whether to transmit the GPS assistance data      a priority to the remote mobile terminal, and wherein the
+to the remote mobile terminal is based on the priority of the     determination of whether to trust the GPS assistance data
+Sub-group assigned to the remote mobile terminal.                 received from the remote mobile terminal is based on the
+  28. The method of claim 24 wherein the determination of     assigned priority.
+whether to transmit the GPS assistance data to the remote 60     43. The method of claim 37 further comprising requesting
+mobile terminal is based on a priority assigned to the remote the remote mobile terminal to transmit the GPS assistance
+mobile terminal.                                              data.
+  29. The method of claim 24 wherein forming a group           44. The method of claim 37 further comprising receiving
+comprises forming an ad-hoc group.                           the GPS assistance data periodically from the remote mobile
+  30. The method of claim 24 wherein forming a group 65 terminal.
+comprises forming the group based on the geographic proX
+imity of the mobile terminal and the remote mobile terminal.
+

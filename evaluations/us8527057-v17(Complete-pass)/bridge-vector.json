@@ -1,0 +1,11 @@
+{
+  "state": "partially_traversed",
+  "feature_availability": "high",
+  "motivation": "moderate",
+  "compatibility": "partial",
+  "architecture_constraint": "strong",
+  "combination_coherence": "moderate",
+  "expected_result": "not_established",
+  "unexpected_result": "not_established",
+  "evidence_quality": "partial"
+}

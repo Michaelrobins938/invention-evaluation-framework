@@ -1,0 +1,30 @@
+{
+  "run_id": "RUN-US7149534B2-20260818",
+  "invention_id": "US7149534B2",
+  "pipeline_version": "v1.7",
+  "run_status": "COMPLETED_WITH_EVIDENCE_DEBT",
+  "phase_status": {
+    "submission": "COMPLETED",
+    "technology": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "landscape": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "novelty": "ESCALATION_REQUIRED",
+    "literature": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "market": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "partners": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "compile": "COMPLETED_WITH_EVIDENCE_DEBT",
+    "render": "COMPLETED"
+  },
+  "evidence_debt_count": 10,
+  "downstream_constraint_count": 5,
+  "render_verified": {
+    "a4": true,
+    "pages": 47,
+    "toc_matches_physical_pages": true,
+    "no_tocmark_artifacts": true,
+    "footer_on_all_pages": true,
+    "footer_counter_clear_of_footer_line": true,
+    "exec_findings_rendered": true,
+    "operational_audit_rendered": true,
+    "swot_headers_not_obscured": true
+  }
+}

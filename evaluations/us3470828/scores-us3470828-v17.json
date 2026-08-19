@@ -1,0 +1,19 @@
+{
+  "run_id": "us3470828-v17",
+  "invention_name": "Electromagnetic Inductive Suspension and Stabilization System for a Ground Vehicle",
+  "submitted_by": "User-provided patent PDF",
+  "invention_id": "US 3,470,828",
+  "submitted_date": "2026-08-16",
+  "report_date": "2026-08-16",
+  "disclaimer": "Preliminary evidence-constrained evaluation. Not legal advice, not a formal patentability opinion, and not an FTO opinion.",
+  "gauges": {
+    "technology": {"tier_index": 3, "tier_label": "Moderate", "basis": "Detailed patent disclosure is established; experimental validation and modern feasibility evidence remain unestablished.", "subfactors": {"Development": 2, "Unique Benefits": 4, "Landscape": 2, "Regulatory Hurdles": 1}},
+    "ip": {"tier_index": 1, "tier_label": "Limited-Moderate", "basis": "Earlier related magnetic suspension records were located, but claim-level anticipation and inventive-step recovery remain incomplete.", "subfactors": {"Development": 2, "Unique Benefits": 3, "Landscape": 2, "Regulatory Hurdles": 1}},
+    "market": {"tier_index": 1, "tier_label": "Limited-Moderate", "basis": "The application domain is clear, but quantified market size, adoption, commercialization, and current rights are not established.", "subfactors": {"Development": 1, "Unique Benefits": 3, "Landscape": 1, "Regulatory Hurdles": 1}}
+  },
+  "commercialization_summary": {"paragraph": "Commercial actionability is Indeterminate-to-Limited on the completed evidence. The patent discloses a technically specific passive electrodynamic suspension architecture, but market size, deployment history, current rights, and product-level adoption remain in the recovery queue.", "teasers": ["Strong historical technical disclosure with substantial infrastructure and cryogenic burden.", "Strongest identified pathway is technical and historical-technology diligence, not an unqualified standalone patent license."]},
+  "tech_ladder": {"stages": ["Material", "Subcomponent", "Component", "Device", "System", "Service"], "current": "System", "basis": "The patent discloses an integrated vehicle, magnet, track-loop, stabilization, damping, and current-limiting system."},
+  "dev_ladder": {"stages": ["Concept", "Proof of Concept", "Testing", "Manufacturing", "Sales"], "current": "Concept", "basis": "Patent-level embodiments and calculations are present; independent prototype, test, production, and sales evidence is not established."},
+  "charts": {"region_pie": {"title": "Patent-family geography", "note": "Placeholder: family-deduplicated geography was not established.", "data": {}}, "applicants_pie": {"title": "Top assignees", "note": "Placeholder: normalized assignee counts were not established.", "data": {}}, "activity_line": {"title": "Filing activity", "note": "Placeholder: reproducible annual series was not established.", "data": {}}},
+  "swot": {"badge_k": "Commercial Actionability", "badge_v": "Indeterminate-to-Limited", "s": ["Detailed passive suspension and stabilization architecture", "Multiple disclosed loop geometries"], "w": ["Cryogenic superconducting burden", "No independent performance validation established"], "o": ["Historical technology resurrection using modern materials and controls", "Research collaboration or infrastructure-subsystem pathway"], "t": ["Capital-intensive guideway deployment", "Safety, reliability, and regulatory burden"]}
+}

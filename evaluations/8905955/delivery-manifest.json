@@ -1,0 +1,13 @@
+{
+  "run_status": "COMPLETED_WITH_EVIDENCE_DEBT",
+  "evaluation_dir": "evaluations/8905955",
+  "artifacts": {
+    "report_markdown": "evaluations/8905955/report-us8905955b2-v17.md",
+    "report_html": "evaluations/8905955/report-us8905955b2-v17.html",
+    "report_pdf": "evaluations/8905955/report-us8905955b2-v17.pdf",
+    "run_manifest": "evaluations/8905955/run-manifest.json",
+    "execution_ledger": "evaluations/8905955/execution-ledger.json",
+    "evidence_graph": "evaluations/8905955/evidence-graph.json",
+    "proposition_ledger": "evaluations/8905955/proposition-ledger.json"
+  }
+}

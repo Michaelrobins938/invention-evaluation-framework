@@ -1,0 +1,275 @@
+{
+  "target_patent": "US7153242B2",
+  "target_claim": {
+    "claim_number": "1",
+    "text": "1. A gait-locomotor apparatus for support gait, stance and climb, and transitions between lie-sit-stance positions of a person with a locomotion disability, the apparatus comprising: an exoskeleton bracing system comprising jointed support arms for coupling to the trunk of the body and lower limbs of the person; propulsion means coupled to the exoskeleton bracing system, for providing relative movement between said segments to parts of the exoskeleton bracing system; a plurality of sensors for sensing tilt of the trunk and angular position of parts of exoskeleton bracing system; a control unit for receiving information from said plurality of sensors, and for identifying the relative position of parts of the exoskeleton bracing system, the tilt of the person with respect to the ground and gait phases or other phases of modes of operation, a current mode of operation being manually set by the person by an interface into the control unit, processing information in accordance with the current mode of operation and activating and controlling the propulsion system in accordance with a set of predefined movement modes or patterns; whereby the apparatus establishes a man-machine interface relation with the person with the locomotion disability, and aids the person in acquiring locomotion as desired.",
+    "limitations": [
+      "1. A gait-locomotor apparatus for support gait, stance and climb, and transitions between lie-sit-stance positions of a person with a locomotion disability, the apparatus comprising: an exoskeleton bracing system comprising jointed support arms for coupling to the trunk of the body and lower limbs of the person",
+      "propulsion means coupled to the exoskeleton bracing system, for providing relative movement between said segments to parts of the exoskeleton bracing system",
+      "a plurality of sensors for sensing tilt of the trunk and angular position of parts of exoskeleton bracing system",
+      "a control unit for receiving information from said plurality of sensors, and for identifying the relative position of parts of the exoskeleton bracing system, the tilt of the person with respect to the ground and gait phases or other phases of modes of operation, a current mode of operation being manually set by the person by an interface into the control unit, processing information in accordance with the current mode of operation and activating and controlling the propulsion system in accordance with a set of predefined movement modes or patterns",
+      "whereby the apparatus establishes a man-machine interface relation with the person with the locomotion disability, and aids the person in acquiring locomotion as desired."
+    ]
+  },
+  "references": [
+    {
+      "reference_id": "US4206558A",
+      "execution_id": "EX-05-00007",
+      "raw_artifact": "evaluations/7153242/raw-prior-art-us4206558a.html",
+      "claims": [
+        {
+          "claim_number": "1",
+          "text": "1. An exercise shoe for wear on a human foot during simulated jogging, comprising a foot support platform characterized by a substantially planar foot support surface; a bottom surface having a sharper than circular center portion smoothly leading to substantially linear regions extending to each end, for providing forward-breaking and backward-breaking motions during simulated jogging, and means for attaching said platform to such foot.",
+          "limitations": [
+            "1. An exercise shoe for wear on a human foot during simulated jogging, comprising a foot support platform characterized by a substantially planar foot support surface; a bottom surface having a sharper than circular center portion smoothly leading to substantially linear regions extending to each end, for providing forward-breaking and backward-breaking motions during simulated jogging, and means for attaching said platform to such foot."
+          ]
+        },
+        {
+          "claim_number": "2",
+          "text": "2. An exercise device according to claim 1 wherein said curved bottom surface is substantially hyperbolic.",
+          "limitations": [
+            "2. An exercise device according to claim 1 wherein said curved bottom surface is substantially hyperbolic."
+          ]
+        },
+        {
+          "claim_number": "3",
+          "text": "3. An exercise device according to claim 1 wherein said curved bottom surface is provided with a non-skid texture.",
+          "limitations": [
+            "3. An exercise device according to claim 1 wherein said curved bottom surface is provided with a non-skid texture."
+          ]
+        },
+        {
+          "claim_number": "4",
+          "text": "4. An exercise device according to claim 1 wherein said planar foot support surface is provided with a thin layer of firmly supporting foam.",
+          "limitations": [
+            "4. An exercise device according to claim 1 wherein said planar foot support surface is provided with a thin layer of firmly supporting foam."
+          ]
+        },
+        {
+          "claim_number": "5",
+          "text": "5. An exercise device according to claim 1 wherein the ratio of the minimum thickness to the maximum thickness of said platform is in the range between about 1:8 and 1:2.",
+          "limitations": [
+            "5. An exercise device according to claim 1 wherein the ratio of the minimum thickness to the maximum thickness of said platform is in the range between about 1:8 and 1:2."
+          ]
+        }
+      ]
+    },
+    {
+      "reference_id": "US4422453A",
+      "execution_id": "EX-05-00008",
+      "raw_artifact": "evaluations/7153242/raw-prior-art-us4422453a.html",
+      "claims": [
+        {
+          "claim_number": "1",
+          "text": "1. External apparatus for the vertical stance and walking for a person with handicap of the motor system of one or two lower limbs, comprising, in combination:(a) a single piece corset disposed at the height of the pelvic girdle of the wearer; (b) parallel to the side of the femur of the wearer and over its length, an outer femoral lever comprising a strip of flexible metal capable of absorbing and restoring the flexural and torsional stresses; (c) at knee level of the wearer, a knee piece capable of maintaining the relative movements between the thigh and the leg in slight flexion and slight valgus position, within the strict limits of the physiological articular play; (d) parallel to the antero-internal side of the tibia of the wearer and over its whole length, an antero-inner lever comprising a strip of flexible metal capable of absorbing and restoring the flexural and torsional stresses; (e) a first elastic strap connecting the upper end of the outer femoral lever, substantially as an extension of the outer femoral lever, to the said corset in the vicinity of the iliac crest of the wearer; (f) a second elastic strap extending transversely whilst sloping slightly upwardly connecting the outer femoral lever to the corset towards or in the direction of the iliac spines of the wearer, the second elastic strap thus substantially crossing the pubic symphysis of the wearer; (g) means connecting the lower end of the femoral lever to the knee piece; (h) means connecting the upper end of the tibial lever to the knee piece; and (i) means limiting the articular play of the tibio-tarsal articulation of the wearer, and connected to the lower end of the tibial lever.",
+          "limitations": [
+            "1. External apparatus for the vertical stance and walking for a person with handicap of the motor system of one or two lower limbs, comprising, in combination:(a) a single piece corset disposed at the height of the pelvic girdle of the wearer",
+            "(b) parallel to the side of the femur of the wearer and over its length, an outer femoral lever comprising a strip of flexible metal capable of absorbing and restoring the flexural and torsional stresses",
+            "(c) at knee level of the wearer, a knee piece capable of maintaining the relative movements between the thigh and the leg in slight flexion and slight valgus position, within the strict limits of the physiological articular play",
+            "(d) parallel to the antero-internal side of the tibia of the wearer and over its whole length, an antero-inner lever comprising a strip of flexible metal capable of absorbing and restoring the flexural and torsional stresses",
+            "(e) a first elastic strap connecting the upper end of the outer femoral lever, substantially as an extension of the outer femoral lever, to the said corset in the vicinity of the iliac crest of the wearer",
+            "(f) a second elastic strap extending transversely whilst sloping slightly upwardly connecting the outer femoral lever to the corset towards or in the direction of the iliac spines of the wearer, the second elastic strap thus substantially crossing the pubic symphysis of the wearer",
+            "(g) means connecting the lower end of the femoral lever to the knee piece",
+            "(h) means connecting the upper end of the tibial lever to the knee piece; and",
+            "(i) means limiting the articular play of the tibio-tarsal articulation of the wearer, and connected to the lower end of the tibial lever."
+          ]
+        },
+        {
+          "claim_number": "2",
+          "text": "2. Apparatus according to claim 1, including means for adjusting the length of said first and second elastic straps.",
+          "limitations": [
+            "2. Apparatus according to claim 1, including means for adjusting the length of said first and second elastic straps."
+          ]
+        },
+        {
+          "claim_number": "3",
+          "text": "3. Apparatus according to claim 1, wherein said femoral lever has a substantially sub-trochanteric upper end and a lower end which is substantially above the condyle of the wearer.",
+          "limitations": [
+            "3. Apparatus according to claim 1, wherein said femoral lever has a substantially sub-trochanteric upper end and a lower end which is substantially above the condyle of the wearer."
+          ]
+        },
+        {
+          "claim_number": "4",
+          "text": "4. Apparatus according to claim 1, wherein the tibial lever has a top end which is substantially below the articulation and a lower end which is substantially above the malleolus of the wearer.",
+          "limitations": [
+            "4. Apparatus according to claim 1, wherein the tibial lever has a top end which is substantially below the articulation and a lower end which is substantially above the malleolus of the wearer."
+          ]
+        },
+        {
+          "claim_number": "5",
+          "text": "5. Apparatus according to any one of claims 1 to 4, wherein the knee piece comprises a plurality of straps constituting restraints to recurvation to the varus and valgus states, to flexion, as well as to internal and external rotations.",
+          "limitations": [
+            "5. Apparatus according to any one of claims 1 to 4, wherein the knee piece comprises a plurality of straps constituting restraints to recurvation to the varus and valgus states, to flexion, as well as to internal and external rotations."
+          ]
+        },
+        {
+          "claim_number": "6",
+          "text": "6. Apparatus according to claim 5, including means for adjusting the length of said knee piece straps.",
+          "limitations": [
+            "6. Apparatus according to claim 5, including means for adjusting the length of said knee piece straps."
+          ]
+        },
+        {
+          "claim_number": "7",
+          "text": "7. Apparatus according to one of claims 1 to 4, wherein said means for limiting the articular play of the tibio-tarsal articulation of the wearer is an orthopaedic boot.",
+          "limitations": [
+            "7. Apparatus according to one of claims 1 to 4, wherein said means for limiting the articular play of the tibio-tarsal articulation of the wearer is an orthopaedic boot."
+          ]
+        },
+        {
+          "claim_number": "8",
+          "text": "8. Apparatus according to claim 7, wherein the orthopaedic boot comprises:(i) a semi-rigid shell, defining a sole and a vamp, and surrounding the foot and the lower tibial cone of the wearer; (ii) means defining an opening in said shell, said opening extending opposite the antero-external accommodation of the tibial cone and opposite the outer edge of the foot of the wearer, above the cuboid and at least one metatarsal range; (iii) securing means on said shell, in the zone of the internal malleolus of the wearer, for the lower end of the tibial lever; (iv) elastic supporting means comprising, on the one hand, a spring strip fastened to the shell and disposed vertically opposite the fibula of the wearer, from the external side of the calcaneus as far as the zone of the upper edge of the shell and, on the other hand, elastic adjusting means outside the shell, extending firstly from the inner edge of the sole of the shell towards the upper part of the vamp and towards the upper edge of the leg of the shell and secondly, from said fixing means for the tibial lever to the postero-external zone of the heel of the sole; and (v) means for closing the shell of the boot.",
+          "limitations": [
+            "8. Apparatus according to claim 7, wherein the orthopaedic boot comprises:(i) a semi-rigid shell, defining a sole and a vamp, and surrounding the foot and the lower tibial cone of the wearer",
+            "(ii) means defining an opening in said shell, said opening extending opposite the antero-external accommodation of the tibial cone and opposite the outer edge of the foot of the wearer, above the cuboid and at least one metatarsal range",
+            "(iii) securing means on said shell, in the zone of the internal malleolus of the wearer, for the lower end of the tibial lever",
+            "(iv) elastic supporting means comprising, on the one hand, a spring strip fastened to the shell and disposed vertically opposite the fibula of the wearer, from the external side of the calcaneus as far as the zone of the upper edge of the shell and, on the other hand, elastic adjusting means outside the shell, extending firstly from the inner edge of the sole of the shell towards the upper part of the vamp and towards the upper edge of the leg of the shell and secondly, from said fixing means for the tibial lever to the postero-external zone of the heel of the sole; and",
+            "(v) means for closing the shell of the boot."
+          ]
+        },
+        {
+          "claim_number": "9",
+          "text": "9. Apparatus according to claim 8, wherein said means for closing the shell comprise elastic means stretched between the inner edge of the sole of the shell, at the level of the first metatarsal of the wearer, and the outer edge of the said sole, at the level of the cuboid of the wearer.",
+          "limitations": [
+            "9. Apparatus according to claim 8, wherein said means for closing the shell comprise elastic means stretched between the inner edge of the sole of the shell, at the level of the first metatarsal of the wearer, and the outer edge of the said sole, at the level of the cuboid of the wearer."
+          ]
+        },
+        {
+          "claim_number": "10",
+          "text": "10. Apparatus according to claim 8, wherein the means for closing the shell comprise an elastic means stretched between the inner edge of the sole of the shell at the level of the first metatarsal of the wearer and the outer edge of the said sole, at the level of the fifth metatarsal of the wearer.",
+          "limitations": [
+            "10. Apparatus according to claim 8, wherein the means for closing the shell comprise an elastic means stretched between the inner edge of the sole of the shell at the level of the first metatarsal of the wearer and the outer edge of the said sole, at the level of the fifth metatarsal of the wearer."
+          ]
+        },
+        {
+          "claim_number": "11",
+          "text": "11. Apparatus according to claim 8, wherein, at the foot end, the opening of the shell extends transversely above the last two metatarsals.",
+          "limitations": [
+            "11. Apparatus according to claim 8, wherein, at the foot end, the opening of the shell extends transversely above the last two metatarsals."
+          ]
+        },
+        {
+          "claim_number": "12",
+          "text": "12. Apparatus according to claim 8, wherein the shell surrounds the lower tibial cone over a distance covering at least the lower third of the leg of the wearer, and the closing means comprise a tightening band extending all along the upper edge of the leg of the shell.",
+          "limitations": [
+            "12. Apparatus according to claim 8, wherein the shell surrounds the lower tibial cone over a distance covering at least the lower third of the leg of the wearer, and the closing means comprise a tightening band extending all along the upper edge of the leg of the shell."
+          ]
+        },
+        {
+          "claim_number": "13",
+          "text": "13. Apparatus according to claim 8, wherein the shell of the boot is integrally moulded of a plastic material.",
+          "limitations": [
+            "13. Apparatus according to claim 8, wherein the shell of the boot is integrally moulded of a plastic material."
+          ]
+        },
+        {
+          "claim_number": "14",
+          "text": "14. Apparatus according to claim 7, wherein the boot comprises internally a support sole for the foot, moulded to the shape of the plantar arch of the wearer when the wearer is in the vertical equilibrium position.",
+          "limitations": [
+            "14. Apparatus according to claim 7, wherein the boot comprises internally a support sole for the foot, moulded to the shape of the plantar arch of the wearer when the wearer is in the vertical equilibrium position."
+          ]
+        }
+      ]
+    },
+    {
+      "reference_id": "US4697808A",
+      "execution_id": "EX-05-00009",
+      "raw_artifact": "evaluations/7153242/raw-prior-art-us4697808a.html",
+      "claims": [
+        {
+          "claim_number": "1",
+          "text": "1. A walking assistance system comprising:left and right leg braces for supporting a handicapped person in a standing position, said braces being configured for restricting the legs of said person to forward and rearward movement, interconnection means for causing forward movement of a nonweight bearing one of said braces in response to extension of a weight bearing opposite hip of said person first and second stimulation means for stimulating controlled contractions of the left and right hip extension muscles respectively of said person, and control means for selective activation by said person to cause alternate operation of said first and second stimulation means and resultant steps defining a walking motion.",
+          "limitations": [
+            "1. A walking assistance system comprising:left and right leg braces for supporting a handicapped person in a standing position, said braces being configured for restricting the legs of said person to forward and rearward movement,",
+            "interconnection means for causing forward movement of a nonweight bearing one of said braces in response to extension of a weight bearing opposite hip of said person",
+            "first and second stimulation means for stimulating controlled contractions of the left and right hip extension muscles respectively of said person, and",
+            "control means for selective activation by said person to cause alternate operation of said first and second stimulation means and resultant steps defining a walking motion."
+          ]
+        },
+        {
+          "claim_number": "2",
+          "text": "2. Apparatus according to claim 1, said control means comprising means for activation by said person to adjust the speed and duration of said steps.",
+          "limitations": [
+            "2. Apparatus according to claim 1, said control means comprising means for activation by said person to adjust the speed and duration of said steps."
+          ]
+        },
+        {
+          "claim_number": "3",
+          "text": "3. Apparatus according to claim 1, said braces comprising joints for permitting flexion and extension of the knees and locking means for selectively locking said knees at predetermined flexion angles.",
+          "limitations": [
+            "3. Apparatus according to claim 1, said braces comprising joints for permitting flexion and extension of the knees and locking means for selectively locking said knees at predetermined flexion angles."
+          ]
+        },
+        {
+          "claim_number": "4",
+          "text": "4. Apparatus according to claim 3 wherein said knee joints are offset and comprise gravity locks.",
+          "limitations": [
+            "4. Apparatus according to claim 3 wherein said knee joints are offset and comprise gravity locks."
+          ]
+        },
+        {
+          "claim_number": "5",
+          "text": "5. Apparatus according to claim 3 further comprising:third and fourth stimulation means for stimulating controlled contractions of the left knee and right knee extension muscles respectively of said person,said control means comprising computing means for causing said third and fourth stimulation means to produce a simultaneous controlled contraction of said knee extension muscles and also causing said first and second stimulation means to produce a coordinated contraction of both of said hip extension muscles, so that said person rises from a sitting position to a standing position.",
+          "limitations": [
+            "5. Apparatus according to claim 3 further comprising:third and fourth stimulation means for stimulating controlled contractions of the left knee and right knee extension muscles respectively of said person,said control means comprising computing means for causing said third and fourth stimulation means to produce a simultaneous controlled contraction of said knee extension muscles and also causing said first and second stimulation means to produce a coordinated contraction of both of said hip extension muscles, so that said person rises from a sitting position to a standing position."
+          ]
+        },
+        {
+          "claim_number": "6",
+          "text": "6. Apparatus according to claim 5 and further comprising first and second sensing means for sensing the flexion angles of the left and right knees respectively of said person;said computing means being responsive to said first and second sensing means for closed loop control of said contractions.",
+          "limitations": [
+            "6. Apparatus according to claim 5 and further comprising first and second sensing means for sensing the flexion angles of the left and right knees respectively of said person;said computing means being responsive to said first and second sensing means for closed loop control of said contractions."
+          ]
+        },
+        {
+          "claim_number": "7",
+          "text": "7. Apparatus according to claim 5 and further comprising means for sensing hip flexion angles indicating an erect posture and means for communicating said indication to said computing means.",
+          "limitations": [
+            "7. Apparatus according to claim 5 and further comprising means for sensing hip flexion angles indicating an erect posture and means for communicating said indication to said computing means."
+          ]
+        },
+        {
+          "claim_number": "8",
+          "text": "8. Apparatus according to claim 1 wherein said interconnection means include means for causing rearward movement of a nonweight bearing one of said braces when the weight of said person is placed on the opposite leg and the nonweight bearing hip of said person is extended.",
+          "limitations": [
+            "8. Apparatus according to claim 1 wherein said interconnection means include means for causing rearward movement of a nonweight bearing one of said braces when the weight of said person is placed on the opposite leg and the nonweight bearing hip of said person is extended."
+          ]
+        },
+        {
+          "claim_number": "9",
+          "text": "9. Apparatus according to claim 8 wherein said left and right braces each comprise hip joints and said interconnecting means comprises a pair of cables for producing cooperative torques at said joints.",
+          "limitations": [
+            "9. Apparatus according to claim 8 wherein said left and right braces each comprise hip joints and said interconnecting means comprises a pair of cables for producing cooperative torques at said joints."
+          ]
+        },
+        {
+          "claim_number": "10",
+          "text": "10. A method of assisting a seated handicapped person to rise and walk comprising the steps of:restricting the legs of said person to forward and rearward movement, simultaneously stimulating the extension muscles for both knees of said person to produce a rising motion, simultaneously stimulating the extension muscles for both hips of said person to produce an erect standing position, mechanically interconnecting the hips of said person so that supported extension of one hip produces flexion of the other, and alternately stimulating said hip extension muscles to produce opposite hip flexion and a resultant walking sequence;said person participating in such method by leaning forward from an initial sitting position and by alternately shifting his weight from hip to hip during said walking sequence.",
+          "limitations": [
+            "10. A method of assisting a seated handicapped person to rise and walk comprising the steps of:restricting the legs of said person to forward and rearward movement,",
+            "simultaneously stimulating the extension muscles for both knees of said person to produce a rising motion,",
+            "simultaneously stimulating the extension muscles for both hips of said person to produce an erect standing position,",
+            "mechanically interconnecting the hips of said person so that supported extension of one hip produces flexion of the other, and",
+            "alternately stimulating said hip extension muscles to produce opposite hip flexion and a resultant walking sequence;said person participating in such method by leaning forward from an initial sitting position and by alternately shifting his weight from hip to hip during said walking sequence."
+          ]
+        },
+        {
+          "claim_number": "11",
+          "text": "11. A method according to claim 10 and further comprising the step of locking said knees in a substantially fully extended position whenever they are bearing weight during said walking sequence.",
+          "limitations": [
+            "11. A method according to claim 10 and further comprising the step of locking said knees in a substantially fully extended position whenever they are bearing weight during said walking sequence."
+          ]
+        },
+        {
+          "claim_number": "12",
+          "text": "12. A method according to claim 11 and further comprising the steps of unlocking and flexing said knees during flexion of their corresponding hips.",
+          "limitations": [
+            "12. A method according to claim 11 and further comprising the steps of unlocking and flexing said knees during flexion of their corresponding hips."
+          ]
+        }
+      ]
+    }
+  ],
+  "state": "WORK QUEUE",
+  "reason": "reference claim text and temporal/legal relevance require proposition-level verification"
+}

@@ -1,0 +1,21 @@
+{
+  "claim_graph": {
+    "US7071258-claim-1": {
+      "id": "US7071258-claim-1",
+      "domains": [
+        {"name": "retinal_interface", "limitations": []},
+        {"name": "mechanical_fixation", "limitations": []},
+        {"name": "electronics_packaging", "limitations": []},
+        {"name": "interconnect", "limitations": []},
+        {"name": "power_architecture", "limitations": []},
+        {"name": "manufacturing_process", "limitations": []},
+        {"name": "surgical_handling", "limitations": []}
+      ],
+      "relationships": [],
+      "inventive_center_candidates": ["cross-domain spatial integration", "low-profile scleral geometry"]
+    }
+  },
+  "claim_matrix": {},
+  "claim_links": {},
+  "claim_coverage": {}
+}

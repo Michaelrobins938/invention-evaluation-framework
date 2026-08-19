@@ -1,0 +1,98 @@
+{
+  "propositions": [
+    {
+      "id": "P-02-001",
+      "claim": "Patent identity and source record",
+      "state": "established",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "complete",
+      "evidence_strength": "strong",
+      "confidence": "high",
+      "blockers": [],
+      "dependencies": [],
+      "downstream_effects": [
+        "technology_profile"
+      ],
+      "evidence_sufficiency_passed": true,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-05-001",
+      "claim": "Claim 1 anticipation",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "claim_level_search_incomplete"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "anticipation",
+        "patentability_confidence"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-05-002",
+      "claim": "Obviousness bridge",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "motivation_and_expectation_incomplete"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "inventive_step_assessment"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-07-001",
+      "claim": "Market opportunity",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "market_evidence_incomplete"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "commercial_confidence"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    },
+    {
+      "id": "P-08-001",
+      "claim": "Partner fit",
+      "state": "escalation_required",
+      "evidence_state": "WORK QUEUE",
+      "unknown_type": null,
+      "search_completeness": "incomplete",
+      "evidence_strength": "insufficient",
+      "confidence": "low",
+      "blockers": [
+        "partner_fit_unverified"
+      ],
+      "dependencies": [],
+      "downstream_effects": [
+        "partner_recommendation"
+      ],
+      "evidence_sufficiency_passed": false,
+      "migration_metadata": {}
+    }
+  ]
+}

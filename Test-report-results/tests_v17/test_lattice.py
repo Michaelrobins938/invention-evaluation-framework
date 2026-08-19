@@ -98,3 +98,71 @@ def test_proposition_from_lattice_fields_sets_state_shim():
 def test_proposition_default_scope_is_target_patent():
     p = Proposition(id="P-03-001", claim="y")
     assert p.scope == Scope.TARGET_PATENT
+
+
+# --- Task A3: transition_lattice in recovery.py ---
+
+from engine_v17.recovery import transition_lattice, RecoveryAttempt
+from engine_v17.execution import ExecutionLedger
+
+
+def test_transition_lattice_no_attempts_is_escalation():
+    p = Proposition(id="P-05-001", claim="Claim 1 anticipation")
+    assert transition_lattice(p, []) == (
+        EpistemicState.NOT_ESTABLISHED, RecoveryState.ESCALATION_REQUIRED)
+
+
+def test_transition_lattice_evidence_passed_is_established():
+    p = Proposition(id="P-03-001", claim="3D array", evidence_sufficiency_passed=True)
+    attempts = [RecoveryAttempt("primary_patent_database", "keyword", result_count=3)]
+    assert transition_lattice(p, attempts) == (
+        EpistemicState.ESTABLISHED, RecoveryState.NONE_REQUIRED)
+
+
+def test_transition_lattice_terminal_exhaustion():
+    from engine_v17.models import ResearchExhaustion
+    p = Proposition(id="P-05-001", claim="Claim 1 anticipation",
+                    recovery=ResearchExhaustion(
+                        proposition_id="P-05-001",
+                        sources=["primary_patent_database", "secondary_patent_database"],
+                        methods=["keyword", "verified_classification",
+                                 "citation_traversal", "family_traversal"],
+                        coverage={"claims_checked": ["claim_1"], "limitations_checked": ["L1", "L2"]},
+                        results={"result_count": 0},
+                        failure_diagnosis="historical terminology and lineage may be indexed separately",
+                        troubleshooting=[{"query": "patent search guidance", "source": "database documentation"}],
+                        recovery_strategies=[
+                            {"strategy_class": "terminology", "executed": True},
+                            {"strategy_class": "classification", "executed": True},
+                            {"strategy_class": "citation_lineage", "executed": True},
+                            {"strategy_class": "family", "executed": True},
+                            {"strategy_class": "terminology", "executed": True},
+                        ],
+                        alternate_routes_attempted=["secondary_patent_database"],
+                        recursive_recovery_completed=True,
+                        termination_basis="five distinct recovery strategies completed without admissible evidence"))
+    ledger = ExecutionLedger(run_id="RUN-05")
+    attempts = [
+        RecoveryAttempt("primary_patent_database", "keyword", result_count=0, strategy_class="terminology"),
+        RecoveryAttempt("primary_patent_database", "verified_classification", result_count=0, strategy_class="classification"),
+        RecoveryAttempt("primary_patent_database", "citation_traversal", result_count=0, strategy_class="citation_lineage"),
+        RecoveryAttempt("primary_patent_database", "family_traversal", result_count=0, strategy_class="family"),
+        RecoveryAttempt("secondary_patent_database", "keyword", result_count=0, strategy_class="terminology"),
+        RecoveryAttempt("secondary_patent_database", "verified_classification", result_count=0, strategy_class="classification"),
+        RecoveryAttempt("secondary_patent_database", "citation_traversal", result_count=0, strategy_class="citation_lineage"),
+        RecoveryAttempt("secondary_patent_database", "family_traversal", result_count=0, strategy_class="family"),
+    ]
+    for a in attempts:
+        rec = ledger.record(
+            phase_id="patent",
+            action_type=a.method,
+            source=a.source,
+            query="",
+            result_count=a.result_count,
+            outcome="",
+            candidate_evidence=False,
+            evidence_sufficiency=False,
+        )
+        a.execution_id = rec.execution_id
+    assert transition_lattice(p, attempts, ledger) == (
+        EpistemicState.NOT_ESTABLISHED, RecoveryState.EXHAUSTED)

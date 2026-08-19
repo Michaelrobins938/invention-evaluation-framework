@@ -22,9 +22,6 @@ __pycache__/
 evaluations/*/raw-*.html
 evaluations/*/raw-*.bin
 evaluations/*/source/*.html
-evaluations/*/qa-raster/
-evaluations/*/report-*.pdf
-evaluations/*/report-*.html
 report-renderer/*.pdf
 report-renderer/*.png
 

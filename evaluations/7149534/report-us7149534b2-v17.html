@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invention Evaluation Report — Peer to Peer Information Exchange for Mobile Communications Devices</title>
+<style>
+/* ============================================================
+   inventionevaluator — report template (v1.6 pipeline, Phase 10)
+   Faithful reproduction of the branded report chrome:
+   chevron header band · running footer · CONFIDENTIAL watermark
+   cover · TOC · gauges · section dividers · SWOT · search boxes
+   ============================================================ */
+
+:root{
+  --ink:#1a1f26;
+  --ink-soft:#4a5560;
+  --ink-faint:#7a8590;
+  --paper:#ffffff;
+  --gray-band:#e9ebee;
+  --gray-band-2:#dfe2e6;
+  --blue-navy:#16324f;
+  --blue-mid:#2c5f9e;
+  --blue:#3d7abf;
+  --blue-pale:#dbe7f4;
+  --blue-paler:#eef4fa;
+  --red:#c0392b;
+  --rule:#c9d4e0;
+  --tier-1:#dbe7f4; /* Very Limited */
+  --tier-2:#b9d2ec; /* Limited */
+  --tier-3:#97bde4; /* Limited-Moderate */
+  --tier-4:#75a8dc; /* Moderate */
+  --tier-5:#5393d4; /* Moderate-Strong */
+  --tier-6:#317ecc; /* Strong */
+  --font-display:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Consolas","Menlo",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:clip;}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  font-size:10.5pt;
+  line-height:1.5;
+  background:var(--paper);
+}
+
+/* ---------- print setup ----------
+   A4 to match the reference branded report (595.2 x 841.92 pt).
+   Footer lives in @page margin boxes: the page counter (counter(page))
+   is only reliable there — fixed-element counters return 0 in Chromium. */
+@page{
+  size:A4;
+  margin:0.85in 0.9in 0.9in 0.9in;
+  @bottom-left{
+    content:"IEAUS 7,149,534 B2: User-provided patent PDF – Peer to Peer Information Exchange for…. Submitted 2026-08-18. Report 2026-08-18.";
+    font-size:6.5pt;
+    font-variant:small-caps;
+    letter-spacing:0.05em;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+    padding-top:3pt;
+    vertical-align:top;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    max-width:5.8in;
+    overflow:hidden;
+  }
+  @bottom-right{
+    content:counter(page);
+    font-size:7pt;
+    font-variant:small-caps;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+    padding-top:3pt;
+    vertical-align:top;
+  }
+}
+
+/* ---------- header band (fixed, repeats on every page) ---------- */
+.header-band{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:0.62in;
+  background:var(--gray-band);
+  z-index:5;
+  clip-path:polygon(0 0,100% 0,100% 62%,0 100%);
+  border-bottom:2px solid var(--blue-mid);
+}
+
+/* ---------- watermark (fixed, behind content, SVG so it doesn't leak into text layer) ---------- */
+.watermark{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-32deg);
+  z-index:0;
+  pointer-events:none;
+  opacity:0.055;
+}
+.watermark svg{width:7in;height:auto;}
+.header-band .logo{
+  position:absolute;
+  top:0.10in;left:0.9in;
+  font-family:var(--font-display);
+  font-size:11pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  letter-spacing:0.02em;
+}
+.header-band .logo .mag{
+  display:inline-block;
+  width:0.62em;height:0.62em;
+  vertical-align:middle;
+  margin-left:0.05em;
+}
+.header-band .logo .reg{
+  font-size:0.62em;
+  vertical-align:super;
+  color:var(--blue-mid);
+}
+.header-band .tagline{
+  position:absolute;
+  top:0.30in;left:0.9in;
+  font-size:6.5pt;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+/* ---------- running footer: rendered via @page margin boxes (see @page) ---------- */
+
+/* ---------- cover ---------- */
+.cover{position:relative;min-height:9.5in;}
+.cover .cover-gray{
+  background:var(--gray-band);
+  height:4.6in;
+  position:relative;
+  clip-path:polygon(0 0,100% 0,100% 88%,0 100%);
+}
+.cover .cover-logo{
+  position:absolute;
+  top:0.5in;left:0.9in;
+  font-family:var(--font-display);
+  font-size:20pt;
+  font-weight:600;
+  color:var(--blue-navy);
+}
+.cover .cover-logo .mag{
+  display:inline-block;
+  width:0.6em;height:0.6em;
+  vertical-align:middle;
+  margin-left:0.06em;
+}
+.cover .cover-logo .reg{font-size:0.6em;vertical-align:super;color:var(--blue-mid);}
+.cover .cover-tagline{
+  position:absolute;
+  top:1.15in;left:0.9in;
+  font-size:9pt;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.cover .icon-cluster{
+  position:absolute;
+  top:0.55in;right:0.9in;
+  display:flex;gap:0.18in;
+  opacity:0.85;
+}
+.cover .icon-cluster .ic{
+  width:0.62in;height:0.62in;
+  background:var(--blue-pale);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16pt;color:var(--blue-mid);
+}
+.cover .cover-blue{
+  background:var(--blue-navy);
+  color:#fff;
+  padding:0.55in 0.9in 0.5in 0.9in;
+  margin-top:-0.55in;
+  position:relative;
+  clip-path:polygon(0 0,100% 0,100% 100%,0 96%);
+}
+.cover .cover-blue h1{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:23pt;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:0.28in;
+}
+.cover .cover-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.14in 0.5in;
+  font-size:10pt;
+}
+.cover .cover-meta .k{
+  font-size:7.5pt;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:#9fc0e0;
+}
+.cover .cover-meta .v{color:#fff;font-weight:600;}
+.cover .cover-legal{
+  margin:0.35in 0.9in 0;
+  font-size:7.5pt;
+  color:var(--ink-faint);
+  line-height:1.45;
+}
+.cover .cover-disclaimer{
+  margin:0.28in 0.9in 0;
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:0.12in 0.2in;
+  font-size:8pt;
+  color:var(--ink-soft);
+  background:var(--blue-paler);
+}
+
+/* ---------- TOC ---------- */
+.toc h2{
+  font-family:var(--font-display);
+  font-size:17pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  margin-bottom:0.25in;
+  letter-spacing:0.04em;
+}
+.toc ul{list-style:none;}
+.toc li{
+  display:flex;
+  align-items:baseline;
+  gap:0.12in;
+  padding:0.055in 0;
+  border-bottom:1px dotted var(--rule);
+  font-size:10pt;
+}
+.toc li.lvl2{padding-left:0.35in;font-size:9pt;color:var(--ink-soft);}
+.toc li .t{font-weight:600;color:var(--blue-navy);}
+.toc li.lvl2 .t{font-weight:400;color:var(--ink-soft);}
+.toc li .dots{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-3px);}
+.toc li .pg{font-variant-numeric:tabular-nums;color:var(--ink-faint);}
+
+/* ---------- page layout: each .page block starts a new printed page ---------- */
+.page{
+  position:relative;
+  page-break-before:always;
+  padding-top:0.88in;
+  min-height:8.5in;
+}
+.page.cover{page-break-before:auto;padding-top:0;}
+
+/* ---------- section divider pages ---------- */
+.divider{position:relative;}
+.divider .div-title{
+  margin-top:1.1in;
+  font-family:var(--font-display);
+  font-size:26pt;
+  font-weight:600;
+  letter-spacing:0.06em;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+}
+.divider .div-sub{
+  margin-top:0.3in;
+  list-style:none;
+}
+.divider .div-sub li{
+  padding:0.09in 0;
+  border-bottom:1px solid var(--blue-paler);
+  font-size:11pt;
+}
+.divider .div-sub a{color:var(--blue-mid);text-decoration:none;font-weight:600;}
+.divider .div-sub a:hover{text-decoration:underline;}
+
+/* ---------- headings ---------- */
+h2.sec{
+  font-family:var(--font-display);
+  font-size:15pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  margin:0.18in 0 0.14in 0;
+  letter-spacing:0.03em;
+  border-bottom:2px solid var(--blue-mid);
+  padding-bottom:0.06in;
+}
+h3.sub{
+  font-family:var(--font-display);
+  font-size:11.5pt;
+  font-weight:600;
+  color:var(--blue-mid);
+  margin:0.16in 0 0.08in 0;
+}
+h4.mini{
+  font-size:9.5pt;
+  font-weight:700;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin:0.12in 0 0.06in 0;
+}
+p.body{margin:0.08in 0;color:var(--ink);}
+p.small{font-size:8pt;color:var(--ink-faint);}
+ul.bullets{margin:0.08in 0 0.08in 0.22in;}
+ul.bullets li{margin:0.05in 0;}
+a{color:var(--blue-mid);}
+a.more{color:var(--blue-mid);font-weight:600;text-decoration:none;}
+
+/* ---------- tables ---------- */
+table.data{
+  width:100%;
+  border-collapse:collapse;
+  margin:0.1in 0 0.16in 0;
+  font-size:8.8pt;
+}
+table.data thead th{
+  background:var(--blue-pale);
+  color:var(--blue-navy);
+  font-weight:700;
+  text-align:left;
+  padding:0.07in 0.1in;
+  border-bottom:2px solid var(--blue-mid);
+}
+table.data tbody td{
+  padding:0.06in 0.1in;
+  border-bottom:1px solid var(--blue-paler);
+  vertical-align:top;
+}
+table.data tbody tr:nth-child(even){background:#f7fafc;}
+table.data td.idx{font-weight:700;color:var(--blue-mid);width:0.5in;}
+table.data td.title{font-weight:600;color:var(--blue-navy);}
+table.data td.title a{color:var(--blue-mid);text-decoration:none;}
+table.data td.title a:hover{text-decoration:underline;}
+
+/* ---------- search query boxes ---------- */
+.search-box{
+  border:1.5px solid var(--blue-mid);
+  border-radius:5px;
+  margin:0.14in 0 0.1in 0;
+  padding:0.12in 0.16in;
+  background:#fbfdff;
+  page-break-inside:avoid;
+}
+.search-box .sq{
+  font-weight:700;
+  color:var(--blue-navy);
+  font-size:9.5pt;
+  letter-spacing:0.02em;
+}
+.search-box .sq .lbl{color:var(--ink-faint);font-weight:600;text-transform:uppercase;font-size:7.5pt;letter-spacing:0.1em;}
+.search-box .rc{
+  font-style:italic;
+  font-weight:700;
+  color:var(--blue-mid);
+  font-size:9pt;
+  margin:0.04in 0;
+}
+.search-box .rc a{color:var(--blue-mid);}
+.search-box .sm{font-size:8.8pt;color:var(--ink-soft);}
+
+/* ---------- gauges ---------- */
+.gauge-row{
+  display:flex;
+  gap:0.25in;
+  justify-content:space-between;
+  margin:0.12in 0;
+}
+.gauge-card{
+  flex:1;
+  text-align:center;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in 0.08in 0.14in 0.08in;
+  background:#fff;
+}
+.gauge-card .g-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:11pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+.gauge-card .g-tier{
+  font-size:9.5pt;
+  font-weight:700;
+  color:var(--blue-mid);
+  margin-top:0.03in;
+}
+.gauge-card svg{width:100%;height:auto;}
+
+/* ---------- legend ---------- */
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.08in 0.16in;
+  justify-content:flex-end;
+  margin:0.06in 0 0.1in 0;
+  font-size:7.5pt;
+  color:var(--ink-soft);
+}
+.legend .sw{
+  display:inline-block;
+  width:0.14in;height:0.14in;
+  border-radius:2px;
+  margin-right:0.04in;
+  vertical-align:-0.02in;
+}
+
+/* ---------- grouped bars ---------- */
+.bar-row{
+  display:flex;
+  gap:0.25in;
+  margin:0.1in 0 0.16in 0;
+}
+.bar-card{
+  flex:1;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in;
+  background:#fff;
+}
+.bar-card .b-title{
+  font-weight:700;
+  font-size:9.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  text-align:center;
+  margin-bottom:0.06in;
+}
+.bar-card svg{width:100%;height:auto;}
+
+/* ---------- commercialization panel ---------- */
+.commercial-panel{
+  background:var(--gray-band);
+  border-radius:6px;
+  padding:0.16in 0.2in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.commercial-panel h3{
+  font-family:var(--font-display);
+  font-size:12pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  letter-spacing:0.04em;
+  margin-bottom:0.08in;
+}
+.commercial-panel p{font-size:9.5pt;color:var(--ink);}
+.commercial-panel ul{margin:0.08in 0 0 0.22in;}
+.commercial-panel ul li{font-size:9.5pt;margin:0.04in 0;}
+
+/* ---------- ladder diagrams ---------- */
+.ladder{
+  display:flex;
+  align-items:center;
+  gap:0.06in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.ladder .node{
+  flex:1;
+  background:var(--blue-mid);
+  color:#fff;
+  text-align:center;
+  padding:0.12in 0.06in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.ladder .node.current{
+  background:var(--red);
+  box-shadow:0 0 0 2px #fff,0 0 0 4px var(--red);
+}
+.ladder .chev{
+  color:var(--blue-mid);
+  font-size:13pt;
+  font-weight:700;
+  flex:0 0 auto;
+}
+
+/* ---------- semantic map ---------- */
+.semantic-map{
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.semantic-map .sm-row{
+  display:flex;
+  align-items:center;
+  gap:0.08in;
+  margin:0.07in 0;
+}
+.semantic-map .sm-node{
+  background:var(--blue-mid);
+  color:#fff;
+  padding:0.09in 0.14in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  white-space:nowrap;
+}
+.semantic-map .sm-node.current{background:var(--red);}
+.semantic-map .sm-node.leaf{background:var(--blue-pale);color:var(--blue-navy);font-weight:500;}
+.semantic-map .sm-conn{color:var(--blue-mid);font-weight:700;}
+.semantic-map .sm-branch{
+  margin-left:0.5in;
+  display:flex;
+  flex-direction:column;
+  gap:0.06in;
+}
+.semantic-map .fn{
+  font-size:6.5pt;
+  color:var(--ink-faint);
+  margin-top:0.06in;
+}
+.semantic-map .fn sup{color:var(--blue-mid);}
+
+/* ---------- charts ---------- */
+.chart-frame{
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.12in;
+  margin:0.12in 0;
+  background:#fff;
+  page-break-inside:avoid;
+}
+.chart-frame .c-title{
+  font-weight:700;
+  font-size:9.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:0.06in;
+}
+.chart-frame svg{width:100%;height:auto;}
+.chart-frame .placeholder{
+  border:1.5px dashed var(--rule);
+  border-radius:4px;
+  padding:0.3in 0.2in;
+  text-align:center;
+  color:var(--ink-faint);
+  font-size:8.5pt;
+  background:var(--blue-paler);
+}
+.chart-frame .placeholder .ph-title{font-weight:700;color:var(--ink-soft);margin-bottom:0.05in;}
+.chart-frame .caption{font-size:7.5pt;color:var(--ink-faint);margin-top:0.05in;}
+
+/* ---------- SWOT ---------- */
+.swot-wrap{position:relative;margin:0.16in 0;page-break-inside:avoid;}
+.swot-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:0.14in;
+}
+.swot-quad{
+  border-radius:8px;
+  padding:0.16in 0.18in;
+  min-height:1.7in;
+}
+.swot-quad.s{background:var(--blue-paler);border-top:4px solid var(--blue-mid);}
+.swot-quad.w{background:#f4f6f8;border-top:4px solid var(--ink-faint);}
+.swot-quad.o{background:var(--blue-paler);border-top:4px solid var(--blue);}
+.swot-quad.t{background:#f4f6f8;border-top:4px solid var(--red);}
+.swot-quad h4{
+  font-size:10pt;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:0.07in;
+  text-align:center;
+}
+.swot-quad.s h4{color:var(--blue-mid);}
+.swot-quad.w h4{color:var(--ink-soft);}
+.swot-quad.o h4{color:var(--blue);}
+.swot-quad.t h4{color:var(--red);}
+.swot-quad ul{margin-left:0;list-style:none;padding:0;}
+.swot-quad li{font-size:8.8pt;margin:0.04in 0;color:var(--ink);text-align:center;}
+.swot-badge{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:1.15in;height:1.15in;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid var(--blue-mid);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(22,50,79,0.18);
+  z-index:2;
+}
+.swot-badge .b-k{
+  font-size:6pt;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.swot-badge .b-v{
+  font-size:9pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  line-height:1.15;
+}
+
+/* ---------- appendices ---------- */
+.appendix p{font-size:9pt;color:var(--ink);margin:0.07in 0;}
+.appendix ul{margin:0.07in 0 0.07in 0.22in;}
+.appendix li{font-size:9pt;margin:0.04in 0;}
+.appendix a{color:var(--blue-mid);}
+
+/* ---------- buffer pages ---------- */
+.buffer{min-height:8in;}
+</style>
+</head>
+<body>
+
+
+
+<!-- watermark (SVG so it doesn't leak into the text layer) -->
+<div class="watermark"><svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg"><text x="400" y="100" dominant-baseline="middle" text-anchor="middle" font-size="120" font-weight="700" fill="#8a939c" font-family="Arial" letter-spacing="0.35em">CONFIDENTIAL</text></svg></div>
+
+<!-- header band -->
+<div class="header-band">
+  <div class="logo">invention<svg width="0.62em" height="0.62em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="vertical-align:middle;margin-left:0.05em;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>evaluat<span class="reg">©</span>r</div>
+  <div class="tagline">objective idea analysis</div>
+</div>
+
+<!-- running footer: rendered via @page margin boxes (see @page rule) -->
+
+<!-- ============ COVER ============ -->
+<div class="page cover">
+  <div class="cover-gray">
+    <div class="cover-logo">invention<svg width="0.6em" height="0.6em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:middle;margin-left:0.06em;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>evaluat<span class="reg">©</span>r</div>
+    <div class="cover-tagline">objective idea analysis</div>
+    <div class="icon-cluster">
+      <div class="ic">🖥</div>
+      <div class="ic">👥</div>
+      <div class="ic">📊</div>
+      <div class="ic">⚙️</div>
+    </div>
+  </div>
+  <div class="cover-blue">
+    <h1>Assess the Commercial Potential of your IP</h1>
+    <div class="cover-meta">
+      <div><div class="k">Invention Name</div><div class="v">Peer to Peer Information Exchange for Mobile Communications Devices</div></div>
+      <div><div class="k">Submitted By</div><div class="v">User-provided patent PDF</div></div>
+      <div><div class="k">Invention ID</div><div class="v">US 7,149,534 B2</div></div>
+      <div><div class="k">Date</div><div class="v">2026-08-18</div></div>
+    </div>
+  </div>
+  <div class="cover-legal">
+    This report was generated by the inventionevaluator report-automation platform from the
+    Invention Evaluation Engine v1.6 pipeline (evidence sufficiency architecture). It compiles
+    established findings, analytical conclusions, and an operational audit produced by the
+    nine-phase evaluation. Scores shown are derived executive summaries of the underlying
+    findings — they are presentation-layer derivations, not new evidence, and do not constitute
+    an overall patentability label. This document is not legal advice.
+  </div>
+  <div class="cover-disclaimer">This is a preliminary evidence-constrained evaluation based on a public patent record and selected public sources. It is not legal advice, not a patentability opinion, and not an FTO opinion.</div>
+</div>
+
+<!-- ============ TOC ============ -->
+<div class="page toc">
+  <h2>Table of Contents</h2>
+  <ul id="toc-list">
+    <li class="" data-target="technology-analysis"><span class="t">Technology Analysis</span><span class="dots"></span><span class="pg">8</span></li>
+<li class="" data-target="patent-landscape-analysis"><span class="t">Patent Landscape Analysis</span><span class="dots"></span><span class="pg">13</span></li>
+<li class="" data-target="ip-novelty-analysis"><span class="t">IP / Novelty Analysis</span><span class="dots"></span><span class="pg">16</span></li>
+<li class="" data-target="literature-analysis"><span class="t">Literature Analysis</span><span class="dots"></span><span class="pg">22</span></li>
+<li class="" data-target="market-analysis"><span class="t">Market Analysis</span><span class="dots"></span><span class="pg">25</span></li>
+<li class="" data-target="opportunity-assessment"><span class="t">Opportunity Assessment</span><span class="dots"></span><span class="pg">29</span></li>
+<li class="" data-target="potential-partners"><span class="t">Potential Partners</span><span class="dots"></span><span class="pg">31</span></li>
+  </ul>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<div class="page">
+  <h2 class="sec">Executive Summary</h2>
+  <p class="small">Derived executive summary — constrained to Established Findings + Analytical Conclusions (Executive Summary ⊆ findings + conclusions). Gauge and bar scores are presentation-layer derivations from the findings; basis proposition_ids are listed in the scores manifest.</p>
+
+  <div class="legend">
+    <span><span class="sw" style="background:var(--tier-1)"></span>Very Limited</span>
+    <span><span class="sw" style="background:var(--tier-2)"></span>Limited</span>
+    <span><span class="sw" style="background:var(--tier-3)"></span>Limited-Moderate</span>
+    <span><span class="sw" style="background:var(--tier-4)"></span>Moderate</span>
+    <span><span class="sw" style="background:var(--tier-5)"></span>Moderate-Strong</span>
+    <span><span class="sw" style="background:var(--tier-6)"></span>Strong</span>
+  </div>
+
+  <div class="gauge-row">
+    <div class="gauge-card"><div class="g-title">Technology</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="11.1" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-75.0 11.1 76.2)">Very Limited</text><text x="34.9" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-45.0 34.9 34.9)">Limited</text><text x="76.2" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-15.0 76.2 11.1)">Limited-Moderate</text><text x="123.8" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(15.0 123.8 11.1)">Moderate</text><text x="165.1" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(45.0 165.1 34.9)">Moderate-Strong</text><text x="188.9" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(75.0 188.9 76.2)">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">IP</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="11.1" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-75.0 11.1 76.2)">Very Limited</text><text x="34.9" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-45.0 34.9 34.9)">Limited</text><text x="76.2" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-15.0 76.2 11.1)">Limited-Moderate</text><text x="123.8" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(15.0 123.8 11.1)">Moderate</text><text x="165.1" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(45.0 165.1 34.9)">Moderate-Strong</text><text x="188.9" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(75.0 188.9 76.2)">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">Market</div><svg viewBox="0 0 200 150" role="img" aria-label="Limited-Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="86.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="11.1" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-75.0 11.1 76.2)">Very Limited</text><text x="34.9" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-45.0 34.9 34.9)">Limited</text><text x="76.2" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-15.0 76.2 11.1)">Limited-Moderate</text><text x="123.8" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(15.0 123.8 11.1)">Moderate</text><text x="165.1" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(45.0 165.1 34.9)">Moderate-Strong</text><text x="188.9" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(75.0 188.9 76.2)">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Limited-Moderate</text></svg><div class="g-tier">Limited-Moderate</div></div>
+  </div>
+
+  <div class="bar-row">
+    <div class="bar-card"><div class="b-title">Technology</div><svg viewBox="0 0 260 150" role="img" aria-label="Technology sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="57.8" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="113.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="168.8" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="-25.3" width="30.5" height="149.3" fill="#5393d4" rx="2"/><text x="224.2" y="-28.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">4</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+    <div class="bar-card"><div class="b-title">IP</div><svg viewBox="0 0 260 150" role="img" aria-label="IP sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="57.8" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="113.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="168.8" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="-25.3" width="30.5" height="149.3" fill="#5393d4" rx="2"/><text x="224.2" y="-28.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">4</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+    <div class="bar-card"><div class="b-title">Market</div><svg viewBox="0 0 260 150" role="img" aria-label="Market sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="57.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="113.2" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="168.8" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="-25.3" width="30.5" height="149.3" fill="#5393d4" rx="2"/><text x="224.2" y="-28.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">4</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+  </div>
+
+  <div class="commercial-panel">
+    <h3>Commercialization Summary</h3>
+    <p>Commercial actionability is Indeterminate-to-Limited on the current evidence. The patent discloses a technically differentiated peer-mobile GPS assistance mechanism, but the US grant is expired, the dominant A-GPS path remained network-fixed-node, and the specific mechanism&#x27;s adoption and commercialization readiness are not established.</p><ul><li>Large, mature technology area (A-GPS/LBS), but the specific peer-mobile mechanism has no established commercial embodiment. <a class='more' href='#'>more</a></li><li>Strongest identified pathways are R&amp;D/standards collaboration with GNSS-assistance incumbents and forward-citing entities. <a class='more' href='#'>more</a></li></ul>
+  </div>
+
+  <h3 class="sub">Established findings (evidence-backed)</h3>
+  <ul class="bullets">
+    <li>The target patent US 7,149,534 B2 (&quot;Peer to Peer Information Exchange for</li>
+<li>The US grant is recorded as &quot;Expired - Lifetime&quot; with adjusted expiration</li>
+<li>The family spans PCT/WO (WO2002059640A2), EP (EP1356314B1), DE (DE60138650T),</li>
+<li>The family has a recorded US litigation event: Texas Eastern District Court</li>
+<li>The target has 58 forward-citing records spanning GNSS-assistance, A-GPS,</li>
+<li>CPC G01S19/05 (aiding data) returns 2,171 US, 814 WO, 1,685 EP, 971 CN, 366</li>
+<li>The closest peer-to-peer cooperative GPS positioning academic disclosures</li>
+<li>The technology area (A-GPS / location-based services) is large and mature:</li>
+  </ul>
+
+  <h3 class="sub">Analytical conclusions (inference from established findings, never evidence)</h3>
+  <ul class="bullets">
+    <li>Novelty: NOT ANTICIPATED by the reviewed record — no single reference</li>
+<li>Inventive step: NOT ESTABLISHED — the causal bridge is partially traversable,</li>
+<li>Commercial actionability for the specific peer-mobile mechanism is</li>
+  </ul>
+
+  <h3 class="sub">Operational Audit (unestablished propositions, with barrier types)</h3>
+  <table class="data">
+    <thead><tr><th>Proposition</th><th>Barrier type</th></tr></thead>
+    <tbody>
+      <tr><td>P-02-001 disclosure history</td><td>primary record COMPLETE; terminology COMPLETE; jurisdiction COMPLETE; independent corroboration BLOCKED</td></tr>
+<tr><td>P-02-002 pre-filing disclosure / sale offer</td><td>primary record COMPLETE; inventor statement BLOCKED</td></tr>
+<tr><td>P-03-001 performance data</td><td>patent COMPLETE; citation expansion COMPLETE; terminology COMPLETE; alternate engineering databases BLOCKED; independent corroboration BLOCKED</td></tr>
+<tr><td>P-04-006 quantitative landscape</td><td>Google Patents COMPLETE; USPTO CPC COMPLETE; alternate database BLOCKED; independent corroboration BLOCKED</td></tr>
+<tr><td>P-05-001 anticipation</td><td>target patent COMPLETE; cited references COMPLETE; classification search COMPLETE; alternate database BLOCKED; independent corroboration BLOCKED</td></tr>
+<tr><td>P-05-002 obviousness bridge</td><td>target/sibling records COMPLETE; analogous references COMPLETE; motivation analogous/inferred; independent corroboration BLOCKED</td></tr>
+<tr><td>P-06-001 literature application disclosure</td><td>Crossref COMPLETE; IEEE Xplore/Google Scholar BLOCKED; independent corroboration BLOCKED</td></tr>
+<tr><td>P-07-001 market size</td><td>Census CBP COMPLETE; market database BLOCKED; independent corroboration BLOCKED</td></tr>
+<tr><td>P-07-002 commercial adoption</td><td>landscape COMPLETE; product-identity link BLOCKED; independent corroboration BLOCKED</td></tr>
+<tr><td>P-08-001 partner fit</td><td>patent assignment COMPLETE; company/need verification BLOCKED</td></tr>
+<tr><td>Patent applications by region</td><td>Patent front page: H04Q 7/20, H04M 11/04; USPC 455/456.6; CPC G01S19/05 verified</td></tr>
+<tr><td>Patent applications by main applicants</td><td>Same verified CPC gate</td></tr>
+<tr><td>Patent activity trend</td><td>Same verified CPC gate</td></tr>
+<tr><td>Industry metrics</td><td>Candidate NAICS 334220 / 517312</td></tr>
+<tr><td>Employee-size brackets</td><td>Candidate NAICS 334220</td></tr>
+<tr><td>P-05-001</td><td>incomplete prior-art search</td></tr>
+<tr><td>P-05-002</td><td>incomplete combination analysis</td></tr>
+<tr><td>P-07-001</td><td>specialty-market data incomplete</td></tr>
+<tr><td>P-08-001</td><td>portfolio diligence incomplete</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ SECTION DIVIDERS + BODY ============ -->
+<div class="page"><h2 class="sec">Technology Analysis</h2><h3 class="sub">Technology Abstraction Ladder</h3><div class="ladder"><div class="node">Material</div><span class="chev">›</span> › <div class="node">Subcomponent</div><span class="chev">›</span> › <div class="node current">Component</div><span class="chev">›</span> › <div class="node">Device</div><span class="chev">›</span> › <div class="node">System</div><span class="chev">›</span> › <div class="node">Service</div></div><h3 class="sub">Development-Stage Ladder</h3><div class="ladder"><div class="node current">Concept</div><span class="chev">›</span> › <div class="node">Proof of Concept</div><span class="chev">›</span> › <div class="node">Testing</div><span class="chev">›</span> › <div class="node">Manufacturing</div><span class="chev">›</span> › <div class="node">Sales</div></div><h3 class="sub">Semantic Map — Taxonomy Position</h3><div class="semantic-map"><div class="sm-row"><span class="sm-node sm-node">Wireless Communications</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node">Mobile Positioning</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node">Assisted GPS (A-GPS)</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node leaf">Peer-mobile GPS assistance data sharing</span></div></div></div></div><div class="fn"><sup>1</sup> <a href="https://patents.google.com/patent/US7149534B2/en">Google Patents US7149534B2</a> · <sup>2</sup> <a href="https://www.uspto.gov/web/patents/classification/cpc/html/cpc-G01S.html">USPTO CPC G01S19/05 scheme</a></div></div></div>
+<div class="page divider" id="technology-analysis"><div class="div-title">Technology Analysis</div><ul class="div-sub"><li><a href='#1-2-technology-profile'>1.2 Technology profile</a></li><li><a href='#2-2-mechanism-design-choice-distances'>2.2 Mechanism/design-choice distances</a></li></ul></div>
+<div class="page"><h2 class="sec">1.2 Technology profile</h2><p class='body'><strong>Plain-language description.</strong> Mobile handsets in a cellular network share GPS</p><p class='body'>assistance data peer-to-peer. A GPS-equipped phone that successfully receives</p><p class='body'>satellite signals generates assistance data (ephemeris, almanac, reference time,</p><p class='body'>reference location, ionospheric corrections) and transmits it over the cellular</p><p class='body'>network to peer handsets that need it, so those peers can acquire satellites and</p><p class='body'>compute their position faster or in signal-poor environments. The invention adds</p><p class='body'>a hierarchical-group structure: handsets form ad-hoc or profile-driven groups</p><p class='body'>with levels and prioritized sub-groups, decide which requests to answer and</p><p class='body'>whose data to trust (privacy and trust profiles), and coordinate scheduled</p><p class='body'>sharing so group members take turns refreshing assistance data.</p><p class='body'><strong>Feature-to-benefit map</strong></p><p class='body'><strong>Innovation assessment.</strong> The claimed delta is not GPS assistance by itself; it</p><p class='body'>is the peer mobile terminal as the source of the assistance data over the</p><p class='body'>cellular network, with hierarchical-group, trust, privacy, and</p><p class='body'>scheduled-coordination machinery. The invention combines known elements (GPS</p><p class='body'>receivers, cellular transceivers, A-GPS assistance content, peer messaging,</p><p class='body'>group membership), creating <strong>combination-obviousness exposure</strong>; the operative</p><p class='body'>question is whether the peer-mobile-as-server shift was directly motivated.</p><p class='body'>Specific technical elements claimed as unique: mobile-generated-and-relayed GPS</p><p class='body'>assistance data over a cellular network (claims 1, 15, 23, 37);</p><p class='body'>hierarchical/sub-group and priority-based transmission and trust decisions;</p><p class='body'>profile-defined membership and transmission; periodic scheduled refresh.</p><p class='body'>Design-space position: the peer-mobile-assistance variant of the assisted-GPS</p><p class='body'>design space; the dominant commercialization path (3GPP A-GPS/SUPL) remained</p><p class='body'>network-fixed-node.</p><p class='body'><strong>Unexpected-result gate.</strong> No comparative performance data (time-to-first-fix,</p><p class='body'>sensitivity improvement, network-traffic impact) is established by the supplied</p><p class='body'>record. The proposition enters the work layer with barrier type</p><p class='body'><code>insufficient_technical_demonstration</code>.</p><p class='body'><strong>Regulatory scope estimate.</strong> The technology is a consumer mobile-</p><p class='body'>communications method. It is not a medical device or safety-critical regulated</p><p class='body'>product. Governing regime for the underlying radio devices is FCC RF/EMC rules</p><p class='body'>(e.g., 47 CFR Parts 15/22) and the jurisdiction&#x27;s spectrum/type-approval rules</p><p class='body'>for handsets; the disclosed method itself introduces no new product-class</p><p class='body'>authorization. Scope-level burden is <strong>Low</strong> for the method.</p><p class='body'><strong>Development stage.</strong> Patent-disclosed method/architecture. Implementation</p><p class='body'>feasibility is plausible given assisted-GPS and cellular-messaging (SMS/WAP/IP)</p><p class='body'>technologies, but no prototype, field trial, or commercial deployment evidence</p><p class='body'>is established from this intake.</p><p class='body'><strong>Classification candidates.</strong> Candidates, not established classifications for</p><p class='body'>the complete invention: H04W 4/02 / H04W 4/029 (location-based services); H04W</p><p class='body'>4/20 (SMS services); H04W 84/18 (ad-hoc networks); G01S 19/05 (aiding data);</p><p class='body'>G01S 19/46 (aiding-based position); G01S 19/254 / G01S 19/27 (ephemeris/almanac</p><p class='body'>aiding); H04L 67/104 (peer-to-peer networks); H04Q 7/20 and H04M 11/04 (IPC,</p><p class='body'>shown on front page).</p><table class="data"><thead><tr><th>Feature</th><th>User-facing or system benefit</th><th>Evidence</th></tr></thead><tbody><tr><td>Peer handset acts as GPS-assistance server</td><td>Improves time-to-first-fix and sensitivity for requesting handset without network assistance coverage</td><td>US7149534B2, abstract; summary; spec pp. 3–4</td></tr><tr><td>Assistance data set (ephemeris, almanac, TOW, reference location, ionospheric corrections)</td><td>Lets a disadvantaged (e.g., indoor) handset acquire satellites and compute position</td><td>US7149534B2, summary; spec pp. 3–4</td></tr><tr><td>Hierarchical groups with levels and prioritized sub-groups</td><td>Enables prioritized querying (highest-priority sub-group first) and structured information sharing</td><td>US7149534B2, claims 3–6; spec pp. 5–6</td></tr><tr><td>Ad-hoc / profile-driven group formation</td><td>Groups form with or without user initiation based on shared services or user profiles</td><td>US7149534B2, claims 7–9; spec pp. 5–6</td></tr><tr><td>Trust levels (inner circle / outer circle / world)</td><td>Client accepts assistance only from sufficiently trusted peer sources; falls back to secure fixed server</td><td>US7149534B2, spec pp. 5–6</td></tr><tr><td>Privacy and performance profiles</td><td>User controls disclosure of position/aiding info and limits assistance-request frequency (e.g., one per 30 min)</td><td>US7149534B2, claims 9–10, 31; spec pp. 5, 7–8</td></tr><tr><td>Scheduled periodic data collection</td><td>Group members take turns refreshing 2–4-hour ephemeris, keeping all members current via cheap messaging</td><td>US7149534B2, claims 36, 44; spec pp. 6–7</td></tr><tr><td>Compilation of data from multiple peers</td><td>Requesting handset sorts combined data (e.g., by age) to assemble full satellite coverage</td><td>US7149534B2, spec pp. 4–5</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.2 Mechanism/design-choice distances</h2><p class='body'>positioning-related data between mobiles), different intervention point</p><p class='body'>(assistance data vs position; relay of general info vs assistance data).</p><p class='body'>positioning), minor variation in source/sink role.</p><p class='body'>closest reference pathway (Pande + Honda).</p></div>
+<div class="page divider" id="patent-landscape-analysis"><div class="div-title">Patent Landscape Analysis</div><ul class="div-sub"><li><a href='#1-3-patent-landscape'>1.3 Patent landscape</a></li><li><a href='#2-3-design-space-position'>2.3 Design-space position</a></li></ul></div>
+<div class="page"><h2 class="sec">1.3 Patent landscape</h2><p class='body'><strong>Search scope and sources.</strong> Primary source: Google Patents record for</p><p class='body'>US7149534B2 (raw HTML preserved at <code>raw-patent-us7149534b2.html</code>) and Google</p><p class='body'>Patents XHR classification queries for CPC G01S19/05. Geographic distribution</p><p class='body'>queries across US, WO, EP, CN, JP, AU, CA; US and WO cluster data returned,</p><p class='body'>EP/CN/JP/AU/CA geographic totals returned (assignee clusters rate-limited by the</p><p class='body'>provider).</p><p class='body'><strong>Established landscape findings</strong></p><table class="data"><thead><tr><th>Proposition</th><th>Finding</th><th>Source</th></tr></thead><tbody><tr><td>P-04-001 v1</td><td>The target patent is classified in satellite-positioning aiding (G01S19/05), receiver acquisition/aiding (G01S19/24/25), transmission of position info between mobile stations (G01S5/0072), user-group management (H04W4/08, H04W8/186), and spoofing countermeasures (G01S19/015).</td><td>Google Patents classification record for US7149534B2</td></tr><tr><td>P-04-002 v1</td><td>Legal status of the US grant is recorded as &quot;Expired - Lifetime&quot; with adjusted expiration 2023-04-04. Status is a public-database assumption, not a legal conclusion.</td><td>Google Patents legal-status record</td></tr><tr><td>P-04-003 v1</td><td>Family spans PCT/WO (WO2002059640A2), EP (EP1356314B1), DE (DE60138650T), AT (ATE430946T1), AU (AU2002232915A1), plus US.</td><td>Google Patents family record</td></tr><tr><td>P-04-004 v1</td><td>The family has a recorded US litigation event: Texas Eastern District Court case 2:15-cv-00290.</td><td>Google Patents litigation metadata</td></tr><tr><td>P-04-005 v1</td><td>The target has 58 forward-citing records spanning GNSS-assistance, A-GPS, peer-to-peer positioning, location-analytics, and ad-hoc network applicants.</td><td>Google Patents citation record</td></tr><tr><td>P-04-006 v1</td><td>Field volume: CPC G01S19/05 returns 2,171 US, 814 WO, 1,685 EP, 971 CN, 366 JP, 120 AU, 105 CA publication records.</td><td>Google Patents XHR country queries</td></tr><tr><td>P-04-007 v1</td><td>Top returned US applicants in the G01S19/05 space: Qualcomm 104, Seiko Epson 32, Nokia 22, Broadcom 20, Samsung 19, Ericsson 18, Trimble 17, Global Locate 17, SiRF 17, Motorola 13, Huawei 13.</td><td>Google Patents XHR assignee cluster</td></tr><tr><td>P-04-008 v1</td><td>US filing frequency in G01S19/05 peaked in 2007–2010 (150 returned records), declining through 2019–2022 (121) and 2022–2025 (97).</td><td>Google Patents XHR frequency buckets</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.3 Design-space position</h2><p class='body'>The invention sits in the &quot;peer-aided GPS assistance&quot; branch of the assisted-GPS</p><p class='body'>design space: it moves the assistance-data source from a fixed network node to a</p><p class='body'>peer mobile device, and adds hierarchical-group, trust, privacy, and scheduled-</p><p class='body'>sharing machinery. The dominant commercialization path for assisted GPS</p><p class='body'>(network-delivered assistance per 3GPP A-GPS/SUPL) remained the fixed-node</p><p class='body'>architecture; peer-to-peer assistance appears in the record as a recurring but</p><p class='body'>secondary line (see forward citations including Samsung, Broadcom, ITRI, and</p><p class='body'>ad-hoc Bluetooth assistance references). This is contextual evidence, not a</p><p class='body'>patentability score.</p></div>
+<div class="page divider" id="ip-novelty-analysis"><div class="div-title">IP / Novelty Analysis</div><ul class="div-sub"><li><a href='#1-4-novelty-prior-art-disclosure-mapping'>1.4 Novelty — prior-art disclosure mapping</a></li><li><a href='#1-5-novelty-knowledge-decomposition'>1.5 Novelty — knowledge decomposition</a></li><li><a href='#2-1-anticipation-gate'>2.1 Anticipation gate</a></li><li><a href='#2-6-chronology-validator'>2.6 Chronology validator</a></li></ul></div>
+<div class="page"><h2 class="sec">1.4 Novelty — prior-art disclosure mapping</h2><p class='body'><strong>Claim-construction layer.</strong> The supplied patent provides formal claims (44</p><p class='body'>claims, 4 independent). The principal evaluation targets are independent claims</p><p class='body'>1 and 23 (mobile terminal generates GPS assistance data and transmits it to a</p><p class='body'>remote mobile terminal) and independent claims 15 and 37 (mobile terminal</p><p class='body'>receives peer-supplied GPS assistance data and determines a reference location).</p><p class='body'><strong>Independent claim 1 limitations.</strong> L1: a GPS receiver to receive GPS data</p><p class='body'>(satellite signals). L2: a cellular transceiver to communicate with a wireless</p><p class='body'>communications network. L3: the mobile terminal generates GPS assistance data</p><p class='body'>from the received GPS data. L4: the mobile terminal transmits the GPS assistance</p><p class='body'>data to a remote mobile terminal via the wireless communications network.</p><p class='body'><strong>Flagged references</strong></p><p class='body'><strong>Claim-element mapping — claim 1</strong></p><p class='body'><strong>Anticipation gate.</strong> No single reference discloses all four limitations of</p><p class='body'>claim 1. Each reference misses at least one of: (a) the peer-mobile as the</p><p class='body'>source of the assistance data; (b) the specific content of GPS assistance data;</p><p class='body'>(c) generation of assistance data at the mobile from satellite signals.</p><p class='body'><strong>Claim 1 is not anticipated by the reviewed record.</strong></p><table class="data"><thead><tr><th>Reference</th><th>Relationship</th><th>Relevance</th></tr></thead><tbody><tr><td>US 6,411,811 (Kingdon, Ericsson)</td><td>E3/E4</td><td>Network reference GPS receivers supply assistance data to a GPS-MS via the cellular network (MLC/BTS). Network-fixed-node source, not peer-to-peer.</td></tr><tr><td>US 6,625,458 (Pihl, Nokia)</td><td>E3</td><td>Network transmits GPS Assistance Data to a mobile via point-to-point signalling. Network-fixed-node source.</td></tr><tr><td>US 6,266,533 (Zadeh, Ericsson)</td><td>E3/E4</td><td>MLC provides range-measurement assistance data to the GPS-MS; GPS-MS returns measurements; MLC computes position. Network-fixed-node source.</td></tr><tr><td>US 6,389,291 (Pande, SiRF)</td><td>E3</td><td>Multi-mode GPS; mobile sends computed <em>position</em> to a server, not assistance data to a peer.</td></tr><tr><td>US 6,553,236 (Dunko)</td><td>E2/E3</td><td>Mobile location/broadcast information sharing; not specifically GPS assistance data.</td></tr><tr><td>US 6,748,195 (Phillips/Motorola)</td><td>E1/E2</td><td>Context-based wireless device behaviour; no GPS assistance data generation/transmission.</td></tr><tr><td>US 6,542,750 (Hendrey)</td><td>E2</td><td>Geographic targeted advertising via mobile; not GPS assistance.</td></tr><tr><td>US 6,542,749 (Tanaka)</td><td>E2/E3</td><td>Location-based mobile services; not GPS assistance peer sharing.</td></tr><tr><td>US 6,477,353 (Honda, IBM)</td><td>E4</td><td>Mobile-to-mobile information relay with position-based propagation control; relayed content is general local info, NOT GPS assistance data.</td></tr><tr><td>US 2002/0143856 (Traversat)</td><td>E1/E2</td><td>Generic P2P protocol framework (JXTA); no GPS assistance data limitation.</td></tr></tbody></table><table class="data"><thead><tr><th>Limitation</th><th>US 6,411,811 Kingdon</th><th>US 6,625,458 Pihl</th><th>US 6,266,533 Zadeh</th><th>US 6,389,291 Pande</th><th>US 6,477,353 Honda</th><th>US 2002/0143856 Traversat</th></tr></thead><tbody><tr><td>L1 GPS receiver receives GPS data</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Not established</td><td>No</td></tr><tr><td>L2 cellular transceiver to wireless network</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Not established</td></tr><tr><td>L3 mobile terminal generates GPS assistance data</td><td>Partial (assistance data generated at network reference receiver)</td><td>Partial (assistance data generated at network side)</td><td>Partial (assistance data generated at network MLC/LMU)</td><td>Partial (mobile computes position, not assistance data)</td><td>No (relays general local info)</td><td>No</td></tr><tr><td>L4 transmits GPS assistance data to a remote mobile terminal via the wireless network</td><td>No (network to mobile)</td><td>No (network to mobile)</td><td>No (network to mobile)</td><td>No (mobile to server, position not assistance)</td><td>Partial (mobile to mobile, but not GPS assistance)</td><td>Partial (generic P2P, no GPS assistance content)</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">1.5 Novelty — knowledge decomposition</h2><p class='body'>mobile-to-mobile relay; A-GPS content)</p><p class='body'>assistance-data specifically is not directly taught by any pre-filing reference)</p><p class='body'>teaches the specific application of a peer mobile supplying GPS assistance data</p><p class='body'>to another peer mobile over the cellular network with hierarchical group/trust)</p><p class='body'>no contradiction)</p></div>
+<div class="page"><h2 class="sec">2.1 Anticipation gate</h2><p class='body'>No single external reference in the reviewed record discloses all four</p><p class='body'>limitations of claim 1. The anticipation proposition is therefore excluded from</p><p class='body'>factual findings as NOT ANTICIPATED on the reviewed record; a complete</p><p class='body'>independent full-text/classification search was not completed in this run, so</p><p class='body'>the proposition is recorded in the Operational Audit as requiring escalation.</p></div>
+<div class="page"><h2 class="sec">2.6 Chronology validator</h2><p class='body'>23, 2001 priority date. No pre-filing disclosure or sale-offer date is</p><p class='body'>established in the record (P-02-002, work layer).</p></div>
+<div class="page divider" id="literature-analysis"><div class="div-title">Literature Analysis</div><ul class="div-sub"><li><a href='#1-6-literature'>1.6 Literature</a></li></ul></div>
+<div class="page"><h2 class="sec">1.6 Literature</h2><p class='body'><strong>Search scope.</strong> Queries run against Crossref covering: (a) GPS assistance data</p><p class='body'>peer-to-peer mobile; (b) assisted GPS assistance data mobile positioning; (c)</p><p class='body'>cooperative GPS positioning peer assistance GNSS; (d) GPS assistance data</p><p class='body'>cellular network provisioning restricted to 1995–2001. Raw results preserved at</p><p class='body'><code>lit-crossref-1.json</code> … <code>lit-crossref-4.json</code>.</p><p class='body'><strong>Literature disclosures</strong></p><p class='body'>1. <strong>Syrjarinne (2000).</strong> &quot;Time recovery through fusion of inaccurate network</p><p class='body'>timing assistance with GPS measurements.&quot; Proc. 3rd Int. Conf. on Information</p><p class='body'>Fusion. DOI: 10.1109/IFIC.2000.859864. Pre-filing network-based assistance.</p><p class='body'>2. <strong>Harper, Nicholson, Poon (2004).</strong> &quot;Process for improving GPS acquisition</p><p class='body'>assistance data and server-side location determination for cellular networks.&quot;</p><p class='body'>J. Global Positioning Systems 3(1):132. DOI: 10.5081/jgps.3.1.132. Post-filing</p><p class='body'>server-side assistance.</p><p class='body'>3. <strong>Morosi, Del Re, Martinelli (2013).</strong> &quot;P2P cooperative GPS positioning with</p><p class='body'>fine/coarse time assistance.&quot; 2013 ICL-GNSS. DOI: 10.1109/ICL-GNSS.2013.6577279.</p><p class='body'>Post-filing; closest academic analogue to the invention&#x27;s peer-to-peer</p><p class='body'>assistance concept.</p><p class='body'>4. <strong>Morosi, Del Re, Martinelli (2014).</strong> &quot;Cooperative GPS positioning with</p><p class='body'>peer-to-peer time assistance.&quot; 2014 VITAE. DOI: 10.1109/VITAE.2014.6934462.</p><p class='body'>Post-filing.</p><p class='body'>5. <strong>Dovis, Chiasserini, Musumeci (2014).</strong> &quot;Context-aware peer-to-peer and</p><p class='body'>cooperative positioning.&quot; 2014 ICL-GNSS. DOI: 10.1109/ICL-GNSS.2014.6934166.</p><p class='body'>Post-filing.</p><p class='body'>6. <strong>Chang, Li, Hou (2013).</strong> &quot;Peer-to-Peer Cooperative Positioning between GNSS</p><p class='body'>Receivers.&quot; Applied Mechanics and Materials 341-342:614.</p><p class='body'>DOI: 10.4028/www.scientific.net/AMM.341-342.614. Post-filing.</p><p class='body'><strong>Literature conclusion.</strong> The background objective (GPS assistance data</p><p class='body'>improves time-to-first-fix and sensitivity; delivered via cellular network) is</p><p class='body'>well established, including pre-filing work (Syrjarinne 2000). The peer-to-</p><p class='body'>peer/cooperative GPS positioning concept is actively researched, but the closest</p><p class='body'>academic disclosures are all post-filing relative to the January 23, 2001</p><p class='body'>priority date. No pre-filing academic publication was identified in the reviewed</p><p class='body'>record that discloses the specific peer-mobile GPS assistance combination. This</p><p class='body'>is a negative search result (avenue metadata), not CONFIRMED ABSENT.</p></div>
+<div class="page divider" id="market-analysis"><div class="div-title">Market Analysis</div><ul class="div-sub"><li><a href='#1-7-market'>1.7 Market</a></li></ul></div>
+<div class="page"><h2 class="sec">1.7 Market</h2><p class='body'><strong>Market boundary.</strong> The direct technology area is assisted GPS / location</p><p class='body'>determination for mobile communications devices, and the location-based services</p><p class='body'>that depend on it (E-911, navigation, location-based advertising, fleet/asset</p><p class='body'>tracking). Adjacent areas: peer-to-peer/cooperative positioning, GNSS assistance</p><p class='body'>infrastructure (SUPL/A-GPS), location analytics.</p><p class='body'><strong>Critical status context:</strong> the target US grant is recorded as EXPIRED</p><p class='body'>(adjusted expiration 2023-04-04). Direct licensing of the US7149534B2 grant is</p><p class='body'>closed. The market analysis addresses the technology area, not a live licensing</p><p class='body'>opportunity for the expired US grant.</p><p class='body'><strong>Industry classification (NAICS)</strong></p><p class='body'><strong>Industry trend data (US Census CBP 2022)</strong></p><p class='body'>Establishment size brackets (NAICS 334220): &lt;5 emp: 201; 5–9: 116; 10–19: 95;</p><p class='body'>20–49: 111; 50–99: 61; 100–249: 47; 250–499: 16; 500–999: 10; 1000+: 7.</p><p class='body'>Source: US Census Bureau CBP 2022 downloadable file <code>cbp22us.zip</code>, national rows</p><p class='body'>(<code>lfo=-</code>). These are industry aggregates; they do not establish A-GPS-specific</p><p class='body'>revenue, shipment value, or market size.</p><p class='body'><strong>Opportunity structure.</strong> Product/service: GPS assistance data delivery for</p><p class='body'>mobile positioning (network-based A-GPS, and the peer-to-peer variant disclosed</p><p class='body'>in the target). Need: fast, accurate mobile location for E-911, navigation, LBS.</p><p class='body'>Purchaser vs end consumer: carriers/device OEMs purchase positioning capability;</p><p class='body'>end users consume location services. Channel: cellular network infrastructure,</p><p class='body'>device software/firmware, standards (3GPP A-GPS/SUPL). Price point / frequency:</p><p class='body'>infrastructure/software licensing; recurring service fees.</p><p class='body'><strong>Technical maturity vs commercial readiness</strong></p><p class='body'><strong>Competitive landscape.</strong> Direct competitors (peer/cooperative positioning):</p><p class='body'>none established as commercially dominant; the peer-mobile concept appears in</p><p class='body'>post-filing patents (Samsung US20100007553, Broadcom US20090079622) but no</p><p class='body'>commercial product-identity link is established. Indirect competitors (network</p><p class='body'>A-GPS): Qualcomm (gpsOne/SUPL), Broadcom/CSR (SiRF GNSS), u-blox, carrier</p><p class='body'>infrastructure — the dominant, deployed path. Future: cooperative/context-aware</p><p class='body'>positioning research (Morosi 2013/2014, Dovis 2014).</p><p class='body'><strong>SWOT.</strong> Strengths: well-specified disclosure of peer-mobile assistance with</p><p class='body'>hierarchical-group, trust, privacy, and scheduled-coordination machinery; the</p><p class='body'>concept anticipates later cooperative-positioning research and patenting.</p><p class='body'>Weaknesses: no performance, prototype, production, or adoption evidence in the</p><p class='body'>supplied record; the US grant is expired; the dominant A-GPS path remained</p><p class='body'>network-fixed-node. Opportunities: the concept is relevant to modern cooperative</p><p class='body'>positioning, V2X, and device-to-device GNSS assistance; the expired patent&#x27;s</p><p class='body'>concepts are available for use (no licensing needed for the US grant). Threats:</p><p class='body'>network A-GPS (SUPL/3GPP) is entrenched; peer-mobile assistance adds</p><p class='body'>trust/privacy overhead; no established commercial embodiment of the peer-mobile</p><p class='body'>mechanism; family-level rights status requires separate diligence.</p><table class="data"><thead><tr><th>Field</th><th>Value</th><th>Basis</th></tr></thead><tbody><tr><td>NAICS code (primary)</td><td>334220</td><td>Radio and Television Broadcasting and Wireless Communications Equipment Manufacturing — GPS-enabled mobile device manufacturing is an activity match. 2022 edition.</td></tr><tr><td>NAICS code (service-layer context)</td><td>517312</td><td>Wireless Telecommunications Carriers (except Satellite) — the network layer in which the disclosed method operates. 2022 edition.</td></tr><tr><td>Taxonomy source</td><td>US Census Bureau NAICS 2022</td><td>Official classification authority</td></tr></tbody></table><table class="data"><thead><tr><th>NAICS</th><th>Establishments</th><th>Employees</th><th>Annual payroll ($000)</th><th>1st-qtr payroll ($000)</th></tr></thead><tbody><tr><td>334220 (wireless comm equipment mfg)</td><td>664</td><td>49,776</td><td>6,074,114</td><td>1,565,710</td></tr><tr><td>334290 (other comm equipment mfg)</td><td>334</td><td>12,762</td><td>1,005,404</td><td>233,355</td></tr><tr><td>517312 (wireless carriers)</td><td>25,798</td><td>260,496</td><td>18,964,583</td><td>5,656,701</td></tr></tbody></table><table class="data"><thead><tr><th>Dimension</th><th>Status</th><th>Evidence</th></tr></thead><tbody><tr><td>Patent disclosure</td><td>CONFIRMED PRESENT</td><td>US7149534B2 specification and claims</td></tr><tr><td>Engineering feasibility</td><td>High (components and combination are standard integration)</td><td>A-GPS literature; landscape</td></tr><tr><td>Prototype evidence</td><td>NOT ESTABLISHED</td><td>No prototype record in the supplied intake</td></tr><tr><td>Production evidence</td><td>NOT ESTABLISHED</td><td>No production record in the supplied intake</td></tr><tr><td>Commercial adoption evidence</td><td>NOT ESTABLISHED</td><td>No product-identity link established; dominant A-GPS path (SUPL/3GPP) is network-fixed-node</td></tr></tbody></table></div>
+<div class="page divider" id="opportunity-assessment"><div class="div-title">Opportunity Assessment</div><ul class="div-sub"><li><a href='#2-4-commercial-actionability'>2.4 Commercial actionability</a></li></ul></div>
+<div class="page"><h2 class="sec">2.4 Commercial actionability</h2><p class='body'>Two &quot;low/medium&quot; accessibility signals → commercial actionability for the</p><p class='body'>specific peer-mobile mechanism is <strong>Indeterminate-to-Limited</strong> on the current</p><p class='body'>evidence. This is not a financial forecast or legal opinion.</p><table class="data"><thead><tr><th>Dimension</th><th>Score</th><th>Rationale</th></tr></thead><tbody><tr><td>Market size</td><td>High</td><td>A-GPS/LBS is a large, mature market (334220: 664 establishments, ~$6.1B payroll; 517312: 25,798 establishments, ~$19.0B payroll)</td></tr><tr><td>Growth</td><td>Medium</td><td>Mature A-GPS market; cooperative positioning is emerging research</td></tr><tr><td>Accessibility</td><td>Low</td><td>The specific peer-mobile mechanism has no established commercial embodiment; trust/privacy/standardization barriers</td></tr><tr><td>Competitive intensity</td><td>High</td><td>Entrenched network A-GPS (Qualcomm, Broadcom, u-blox)</td></tr></tbody></table></div>
+<div class="page divider" id="potential-partners"><div class="div-title">Potential Partners</div><ul class="div-sub"><li><a href='#1-8-partners'>1.8 Partners</a></li><li><a href='#2-5-partner-prioritization'>2.5 Partner prioritization</a></li></ul></div>
+<div class="page"><h2 class="sec">1.8 Partners</h2><p class='body'><strong>Candidate pathways</strong></p><table class="data"><thead><tr><th>Candidate</th><th>Model</th><th>Fit</th><th>Evidence-backed rationale</th></tr></thead><tbody><tr><td>Qualcomm Incorporated</td><td>R&amp;D / standards collaboration</td><td>Medium</td><td>Dominant A-GPS/SUPL provider; 104 returned US records in G01S19/05; forward-citing.</td></tr><tr><td>Broadcom / CSR (SiRF lineage)</td><td>R&amp;D collaboration</td><td>Medium</td><td>20 returned US records in G01S19/05; forward-citing US20090079622 (sharing of GPS information between mobile devices).</td></tr><tr><td>Samsung Electronics</td><td>R&amp;D collaboration</td><td>Medium</td><td>19 returned US records in G01S19/05; forward-citing US20100007553 (sharing assistance data between A-GPS and GPS terminals).</td></tr><tr><td>u-blox AG</td><td>R&amp;D / product collaboration</td><td>Medium</td><td>Major GNSS receiver vendor; cooperative positioning is active research. Not independently verified in this run.</td></tr><tr><td>Nokia</td><td>R&amp;D / standards collaboration</td><td>Low-Medium</td><td>22 returned US records in G01S19/05; forward-citing. Ericsson&#x27;s historical competitor.</td></tr><tr><td>Academic/consortium GNSS-positioning groups</td><td>Research collaboration</td><td>Low-Medium</td><td>Morosi 2013/2014, Dovis 2014 publish peer-to-peer cooperative positioning; no specific institution verified.</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.5 Partner prioritization</h2><p class='body'>No candidate is established as &quot;the only&quot; pathway. The strongest identified</p><p class='body'>pathways are the GNSS-assistance incumbents (Qualcomm, Broadcom/CSR, u-blox) and</p><p class='body'>the forward-citing entities that demonstrated post-filing interest in peer-mobile</p><p class='body'>assistance sharing (Samsung, Broadcom). Alternatives (academic cooperative-</p><p class='body'>positioning groups, V2X programs) are identified but not established as</p><p class='body'>commercial. Contact information and current interest require independent</p><p class='body'>verification before any outreach.</p></div>
+<div class="page"><h2 class="sec">SWOT Analysis</h2><div class="swot-wrap"><div class="swot-grid"><div class="swot-quad s"><h4>Strengths</h4><ul><li>Detailed peer-mobile GPS assistance disclosure with group/trust/privacy machinery (P-03-001)</li><li>Concept anticipates later cooperative-positioning research (P-06-002)</li><li>Large, mature technology area (P-07-001)</li></ul></div><div class="swot-quad w"><h4>Weaknesses</h4><ul><li>US grant expired (P-04-002)</li><li>No performance, prototype, production, or adoption evidence (P-03-001/P-07-002)</li><li>Dominant A-GPS path remained network-fixed-node (P-04-005)</li></ul></div><div class="swot-quad o"><h4>Opportunities</h4><ul><li>R&amp;D/standards collaboration with GNSS-assistance incumbents (P-08-001)</li><li>Relevance to cooperative positioning, V2X, device-to-device GNSS assistance</li><li>Expired US grant concepts available for use</li></ul></div><div class="swot-quad t"><h4>Threats</h4><ul><li>Entrenched network A-GPS (SUPL/3GPP)</li><li>Peer-mobile assistance adds trust/privacy overhead</li><li>Family-level rights status requires separate diligence</li></ul></div></div><div class="swot-badge"><span class="b-k">Commercial Actionability</span><span class="b-v">Indeterminate-to-Limited</span></div></div><p class="small">SWOT content is derived from Established Findings and Analytical Conclusions (see scores manifest for proposition_id basis).</p></div>
+<div class="page"><h2 class="sec">Operational Audit</h2>
+<p class='body'><strong>Run date:</strong> 2026-08-18. <strong>Submission:</strong> <code>submission-us7149534.md</code>. <strong>Rule:</strong></p>
+<p class='body'>EXHAUSTED is a work-layer termination state, not evidence.</p>
+<p class='body'><strong>Landscape &amp; Market Data classification gate</strong></p>
+<p class='body'>The renderer must not substitute any unrelated class.</p>
+<p class='body'><strong>Rights state.</strong> Patent: US7149534B2. State: EXPIRED (adjusted expiration</p>
+<p class='body'>2023-04-04). Active: False. Status source:</p>
+<p class='body'>https://patents.google.com/patent/US7149534B2/en. Status disclaimer: public</p>
+<p class='body'>database status is an assumption and not a legal conclusion. Target-patent</p>
+<p class='body'>licensing: constrained by target lapse. Family-level licensing: requires</p>
+<p class='body'>separate current-status check of EP1356314B1, DE60138650T, ATE430946T1,</p>
+<p class='body'>AU2002232915A1.</p>
+<p class='body'><strong>Anticipation state.</strong> NOT ANTICIPATED on the reviewed record. No positive</p>
+<p class='body'>novelty conclusion beyond the reviewed record is emitted; the remaining work is</p>
+<p class='body'>tracked under P-05-001 with escalation-required state.</p>
+<p class='body'><strong>Bridge vector.</strong> PARTIALLY TRAVERSED — feature availability HIGH; motivation</p>
+<p class='body'>PARTIALLY GROUNDED; compatibility PARTIAL; architecture constraint MEDIUM;</p>
+<p class='body'>expected and unexpected result NOT ESTABLISHED.</p>
+<p class='body'><strong>Evidence debt and downstream constraints.</strong> The compiled graph contains 10</p>
+<p class='body'>evidence-debt items and 5 downstream constraints. These constraints accompany</p>
+<p class='body'>any derived score or recommendation in this report.</p>
+<p class='body'><strong>Evidence recovery queue</strong></p>
+<table class="data"><thead><tr><th>Proposition</th><th>Required avenue coverage</th><th>Disposition</th><th>Barrier / note</th></tr></thead><tbody><tr><td>P-02-001 disclosure history</td><td>primary record COMPLETE; terminology COMPLETE; jurisdiction COMPLETE; independent corroboration BLOCKED</td><td>EXHAUSTED → excluded</td><td>No inventor statement or complete personal disclosure records.</td></tr><tr><td>P-02-002 pre-filing disclosure / sale offer</td><td>primary record COMPLETE; inventor statement BLOCKED</td><td>EXHAUSTED → excluded</td><td>No inventor statement supplied.</td></tr><tr><td>P-03-001 performance data</td><td>patent COMPLETE; citation expansion COMPLETE; terminology COMPLETE; alternate engineering databases BLOCKED; independent corroboration BLOCKED</td><td>EXHAUSTED → excluded</td><td>No reconstructable comparative performance data.</td></tr><tr><td>P-04-006 quantitative landscape</td><td>Google Patents COMPLETE; USPTO CPC COMPLETE; alternate database BLOCKED; independent corroboration BLOCKED</td><td>SEARCHING → analytical work item</td><td>Directional counts established; second-source family/assignee normalization remains.</td></tr><tr><td>P-05-001 anticipation</td><td>target patent COMPLETE; cited references COMPLETE; classification search COMPLETE; alternate database BLOCKED; independent corroboration BLOCKED</td><td>EXHAUSTED → excluded</td><td>NOT ANTICIPATED on reviewed record; no final finding from incomplete external search.</td></tr><tr><td>P-05-002 obviousness bridge</td><td>target/sibling records COMPLETE; analogous references COMPLETE; motivation analogous/inferred; independent corroboration BLOCKED</td><td>EXHAUSTED → analytical work item</td><td>Partially grounded bridge; no ultimate legal conclusion.</td></tr><tr><td>P-06-001 literature application disclosure</td><td>Crossref COMPLETE; IEEE Xplore/Google Scholar BLOCKED; independent corroboration BLOCKED</td><td>EXHAUSTED → excluded</td><td>Background confirmed; closest P2P disclosures are post-filing.</td></tr><tr><td>P-07-001 market size</td><td>Census CBP COMPLETE; market database BLOCKED; independent corroboration BLOCKED</td><td>EXHAUSTED → excluded</td><td>Industry aggregates established; A-GPS-specific figure not established.</td></tr><tr><td>P-07-002 commercial adoption</td><td>landscape COMPLETE; product-identity link BLOCKED; independent corroboration BLOCKED</td><td>EXHAUSTED → excluded</td><td>Field activity established; embodiment of this patent not established.</td></tr><tr><td>P-08-001 partner fit</td><td>patent assignment COMPLETE; company/need verification BLOCKED</td><td>SEARCHING → operational audit</td><td>Candidate pathways require current diligence.</td></tr></tbody></table>
+<table class="data"><thead><tr><th>Subsection</th><th>Classification-in</th><th>Query/source</th><th>Result</th><th>Disposition</th></tr></thead><tbody><tr><td>Patent applications by region</td><td>Patent front page: H04Q 7/20, H04M 11/04; USPC 455/456.6; CPC G01S19/05 verified</td><td>Google Patents XHR, same query by country: US/WO/EP/CN/JP/AU/CA</td><td>2171 / 814 / 1685 / 971 / 366 / 120 / 105 publication records</td><td>COMPLETE — counts are records, not deduplicated families</td></tr><tr><td>Patent applications by main applicants</td><td>Same verified CPC gate</td><td>Google Patents XHR country=US q=G01S19/05</td><td>2171 results; top returned applicants: Qualcomm 104, Seiko Epson 32, Nokia 22, Broadcom 20, Samsung 19, Ericsson 18</td><td>COMPLETE — names not merged across corporate variants</td></tr><tr><td>Patent activity trend</td><td>Same verified CPC gate</td><td>Same Google Patents XHR summary frequency buckets</td><td>2001–04: 92; 2004–07: 101; 2007–10: 150; 2010–13: 108; 2013–16: 115; 2016–19: 111; 2019–22: 121; 2022–25: 97</td><td>COMPLETE — three-year buckets, not annual deduplicated filings</td></tr><tr><td>Industry metrics</td><td>Candidate NAICS 334220 / 517312</td><td>Census CBP 2022 cbp22us.zip, rows naics=334220,lfo=- and naics=517312,lfo=-</td><td>334220: 664 establishments, 49,776 employees, 6,074,114 thousand dollars payroll; 517312: 25,798 establishments, 260,496 employees, 18,964,583 thousand dollars payroll</td><td>COMPLETE — payroll, not revenue or shipment value</td></tr><tr><td>Employee-size brackets</td><td>Candidate NAICS 334220</td><td>Same CBP row; n-fields by employee-size bracket</td><td>Establishments: &lt;5 201; 5–9 116; 10–19 95; 20–49 111; 50–99 61; 100–249 47; 250–499 16; 500–999 10; 1000+ 7</td><td>COMPLETE</td></tr></tbody></table>
+<table class="data"><thead><tr><th>Proposition</th><th>Missingness</th><th>Required escalation</th><th>State</th></tr></thead><tbody><tr><td>P-05-001</td><td>incomplete prior-art search</td><td>family tree, continuity, examiner/applicant citations, prosecution history</td><td>ESCALATION_REQUIRED</td></tr><tr><td>P-05-002</td><td>incomplete combination analysis</td><td>motivation, expected-result, and unexpected-result review</td><td>ESCALATION_REQUIRED</td></tr><tr><td>P-07-001</td><td>specialty-market data incomplete</td><td>A-GPS-specific revenue, adoption proxies</td><td>ESCALATION_REQUIRED</td></tr><tr><td>P-08-001</td><td>portfolio diligence incomplete</td><td>surviving family rights, know-how, successor records</td><td>ESCALATION_REQUIRED</td></tr></tbody></table>
+</div>
+<div class="page"><h2 class="sec">Landscape &amp; Market Data</h2><div class="chart-frame"><div class="c-title">GPS-aiding-data (G01S19/05) patent records by jurisdiction</div><svg viewBox="0 0 300 190" role="img" aria-label="GPS-aiding-data (G01S19/05) patent records by jurisdiction"><path d="M 130 90 L 130.0 28.0 A 62 62 0 0 1 180.5 125.9 Z" fill="#dbe7f4" stroke="#fff" stroke-width="1.5"/><line x1="194.0" y1="57.0" x2="208.2" y2="49.6" stroke="#c9d4e0"/><text x="212.2" y="49.6" font-size="7.5" fill="#1a1f26" text-anchor="start">US · 2171</text><path d="M 130 90 L 180.5 125.9 A 62 62 0 0 1 138.2 151.5 Z" fill="#b9d2ec" stroke="#fff" stroke-width="1.5"/><line x1="167.2" y1="151.7" x2="175.4" y2="165.4" stroke="#c9d4e0"/><text x="179.4" y="165.4" font-size="7.5" fill="#1a1f26" text-anchor="start">WO · 814</text><path d="M 130 90 L 138.2 151.5 A 62 62 0 0 1 68.0 90.3 Z" fill="#97bde4" stroke="#fff" stroke-width="1.5"/><line x1="82.7" y1="144.3" x2="72.2" y2="156.3" stroke="#c9d4e0"/><text x="68.2" y="156.3" font-size="7.5" fill="#1a1f26" text-anchor="end">EP · 1685</text><path d="M 130 90 L 68.0 90.3 A 62 62 0 0 1 95.2 38.7 Z" fill="#75a8dc" stroke="#fff" stroke-width="1.5"/><line x1="66.3" y1="56.4" x2="52.2" y2="48.9" stroke="#c9d4e0"/><text x="48.2" y="48.9" font-size="7.5" fill="#1a1f26" text-anchor="end">CN · 971</text><path d="M 130 90 L 95.2 38.7 A 62 62 0 0 1 116.1 29.6 Z" fill="#5393d4" stroke="#fff" stroke-width="1.5"/><line x1="101.2" y1="24.0" x2="94.8" y2="9.3" stroke="#c9d4e0"/><text x="90.8" y="9.3" font-size="7.5" fill="#1a1f26" text-anchor="end">JP · 366</text><path d="M 130 90 L 116.1 29.6 A 62 62 0 0 1 123.4 28.3 Z" fill="#317ecc" stroke="#fff" stroke-width="1.5"/><line x1="118.1" y1="19.0" x2="115.4" y2="3.2" stroke="#c9d4e0"/><text x="111.4" y="3.2" font-size="7.5" fill="#1a1f26" text-anchor="end">AU · 120</text><path d="M 130 90 L 123.4 28.3 A 62 62 0 0 1 130.0 28.0 Z" fill="#dbe7f4" stroke="#fff" stroke-width="1.5"/><line x1="126.2" y1="18.1" x2="125.3" y2="2.1" stroke="#c9d4e0"/><text x="121.3" y="2.1" font-size="7.5" fill="#1a1f26" text-anchor="end">CA · 105</text></svg><div class="caption">Google Patents XHR query: CPC G01S19/05; same classification query issued per jurisdiction. Counts are publication records returned, not deduplicated families.</div></div><div class="chart-frame"><div class="c-title">Top returned US applicants in the G01S19/05 query</div><svg viewBox="0 0 300 190" role="img" aria-label="Top returned US applicants in the G01S19/05 query"><path d="M 130 90 L 130.0 28.0 A 62 62 0 0 1 148.4 30.8 Z" fill="#dbe7f4" stroke="#fff" stroke-width="1.5"/><line x1="140.8" y1="18.8" x2="143.2" y2="3.0" stroke="#c9d4e0"/><text x="147.2" y="3.0" font-size="7.5" fill="#1a1f26" text-anchor="start">Qualcomm · 104</text><path d="M 130 90 L 148.4 30.8 A 62 62 0 0 1 153.8 32.7 Z" fill="#b9d2ec" stroke="#fff" stroke-width="1.5"/><line x1="154.5" y1="22.3" x2="160.0" y2="7.3" stroke="#c9d4e0"/><text x="164.0" y="7.3" font-size="7.5" fill="#1a1f26" text-anchor="start">Seiko Epson · 32</text><path d="M 130 90 L 153.8 32.7 A 62 62 0 0 1 157.4 34.4 Z" fill="#97bde4" stroke="#fff" stroke-width="1.5"/><line x1="159.7" y1="24.4" x2="166.3" y2="9.8" stroke="#c9d4e0"/><text x="170.3" y="9.8" font-size="7.5" fill="#1a1f26" text-anchor="start">Nokia · 22</text><path d="M 130 90 L 157.4 34.4 A 62 62 0 0 1 160.5 36.0 Z" fill="#75a8dc" stroke="#fff" stroke-width="1.5"/><line x1="163.6" y1="26.3" x2="171.1" y2="12.2" stroke="#c9d4e0"/><text x="175.1" y="12.2" font-size="7.5" fill="#1a1f26" text-anchor="start">Broadcom · 20</text><path d="M 130 90 L 160.5 36.0 A 62 62 0 0 1 163.5 37.8 Z" fill="#5393d4" stroke="#fff" stroke-width="1.5"/><line x1="167.2" y1="28.3" x2="175.4" y2="14.6" stroke="#c9d4e0"/><text x="179.4" y="14.6" font-size="7.5" fill="#1a1f26" text-anchor="start">Samsung · 19</text><path d="M 130 90 L 163.5 37.8 A 62 62 0 0 1 166.1 39.6 Z" fill="#317ecc" stroke="#fff" stroke-width="1.5"/><line x1="170.4" y1="30.4" x2="179.4" y2="17.2" stroke="#c9d4e0"/><text x="183.4" y="17.2" font-size="7.5" fill="#1a1f26" text-anchor="start">Ericsson · 18</text><path d="M 130 90 L 166.1 39.6 A 62 62 0 1 1 130.0 28.0 Z" fill="#dbe7f4" stroke="#fff" stroke-width="1.5"/><line x1="108.0" y1="158.5" x2="103.1" y2="173.8" stroke="#c9d4e0"/><text x="99.1" y="173.8" font-size="7.5" fill="#1a1f26" text-anchor="end">Others · 1956</text></svg><div class="caption">Google Patents XHR query: country=US; CPC G01S19/05; 2171 results. Display labels shorten returned applicant names; names have not been merged across corporate variants.</div></div><div class="chart-frame"><div class="c-title">US G01S19/05 filing-activity windows</div><svg viewBox="0 0 300 150" role="img" aria-label="US G01S19/05 filing-activity windows"><line x1="34" y1="124.0" x2="290" y2="124.0" stroke="#e2e8f0"/><text x="30" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="34" y1="96.0" x2="290" y2="96.0" stroke="#e2e8f0"/><text x="30" y="99.0" font-size="7" fill="#7a8590" text-anchor="end">41</text><line x1="34" y1="68.0" x2="290" y2="68.0" stroke="#e2e8f0"/><text x="30" y="71.0" font-size="7" fill="#7a8590" text-anchor="end">82</text><line x1="34" y1="40.0" x2="290" y2="40.0" stroke="#e2e8f0"/><text x="30" y="43.0" font-size="7" fill="#7a8590" text-anchor="end">124</text><line x1="34" y1="12.0" x2="290" y2="12.0" stroke="#e2e8f0"/><text x="30" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">165</text><polyline points="34.0,61.6 70.6,55.4 107.1,22.2 143.7,50.7 180.3,45.9 216.9,48.7 253.4,41.9 290.0,58.2" fill="none" stroke="#3d7abf" stroke-width="2.5"/><circle cx="34.0" cy="61.6" r="3" fill="#3d7abf"/><text x="34.0" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2001–04</text><circle cx="70.6" cy="55.4" r="3" fill="#3d7abf"/><text x="70.6" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2004–07</text><circle cx="107.1" cy="22.2" r="3" fill="#3d7abf"/><text x="107.1" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2007–10</text><circle cx="143.7" cy="50.7" r="3" fill="#3d7abf"/><text x="143.7" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2010–13</text><circle cx="180.3" cy="45.9" r="3" fill="#3d7abf"/><text x="180.3" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2013–16</text><circle cx="216.9" cy="48.7" r="3" fill="#3d7abf"/><text x="216.9" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2016–19</text><circle cx="253.4" cy="41.9" r="3" fill="#3d7abf"/><text x="253.4" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2019–22</text><circle cx="290.0" cy="58.2" r="3" fill="#3d7abf"/><text x="290.0" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2022–25</text></svg><div class="caption">Google Patents query frequency buckets, not a deduplicated annual filing series.</div></div><div class="chart-frame"><div class="c-title">NAICS 334220 — employees vs establishments, 2022</div><svg viewBox="0 0 300 150" role="img" aria-label="NAICS 334220 — employees vs establishments, 2022"><line x1="34" y1="124.0" x2="266" y2="124.0" stroke="#e2e8f0"/><line x1="34" y1="96.0" x2="266" y2="96.0" stroke="#e2e8f0"/><line x1="34" y1="68.0" x2="266" y2="68.0" stroke="#e2e8f0"/><line x1="34" y1="40.0" x2="266" y2="40.0" stroke="#e2e8f0"/><line x1="34" y1="12.0" x2="266" y2="12.0" stroke="#e2e8f0"/><polyline points="34.0,22.2" fill="none" stroke="#3d7abf" stroke-width="2.5"/><circle cx="34.0" cy="22.2" r="3" fill="#3d7abf"/><text x="30" y="127.0" font-size="6.5" fill="#3d7abf" text-anchor="end">0</text><text x="30" y="99.0" font-size="6.5" fill="#3d7abf" text-anchor="end">13688</text><text x="30" y="71.0" font-size="6.5" fill="#3d7abf" text-anchor="end">27377</text><text x="30" y="43.0" font-size="6.5" fill="#3d7abf" text-anchor="end">41065</text><text x="30" y="15.0" font-size="6.5" fill="#3d7abf" text-anchor="end">54754</text><polyline points="34.0,22.2" fill="none" stroke="#c0392b" stroke-width="2.5"/><circle cx="34.0" cy="22.2" r="3" fill="#c0392b"/><text x="270" y="127.0" font-size="6.5" fill="#c0392b" text-anchor="start">0</text><text x="270" y="99.0" font-size="6.5" fill="#c0392b" text-anchor="start">183</text><text x="270" y="71.0" font-size="6.5" fill="#c0392b" text-anchor="start">365</text><text x="270" y="43.0" font-size="6.5" fill="#c0392b" text-anchor="start">548</text><text x="270" y="15.0" font-size="6.5" fill="#c0392b" text-anchor="start">730</text><text x="34.0" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">2022</text></svg><div class="caption">U.S. Census Bureau CBP 2022 downloadable file cbp22us.zip; NAICS 334220, lfo=&#x27;-&#x27; (all legal forms). Employees and establishments are reported values.</div></div><div class="chart-frame"><div class="c-title">NAICS 334220 establishments by employee-size bracket, 2022</div><svg viewBox="0 0 300 160" role="img" aria-label="NAICS 334220 establishments by employee-size bracket, 2022"><line x1="40" y1="130.0" x2="290" y2="130.0" stroke="#e2e8f0"/><text x="36" y="133.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="40" y1="100.5" x2="290" y2="100.5" stroke="#e2e8f0"/><text x="36" y="103.5" font-size="7" fill="#7a8590" text-anchor="end">60</text><line x1="40" y1="71.0" x2="290" y2="71.0" stroke="#e2e8f0"/><text x="36" y="74.0" font-size="7" fill="#7a8590" text-anchor="end">121</text><line x1="40" y1="41.5" x2="290" y2="41.5" stroke="#e2e8f0"/><text x="36" y="44.5" font-size="7" fill="#7a8590" text-anchor="end">181</text><line x1="40" y1="12.0" x2="290" y2="12.0" stroke="#e2e8f0"/><text x="36" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">241</text><circle cx="53.9" cy="31.7" r="28.0" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="53.9" y="-0.3" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">201</text><text x="53.9" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">&lt;5</text><circle cx="81.7" cy="73.3" r="18.7" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="81.7" y="50.6" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">116</text><text x="81.7" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">5–9</text><circle cx="109.4" cy="83.5" r="16.4" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="109.4" y="63.1" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">95</text><text x="109.4" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">10–19</text><circle cx="137.2" cy="75.7" r="18.1" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="137.2" y="53.5" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">111</text><text x="137.2" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">20–49</text><circle cx="165.0" cy="100.2" r="12.7" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="165.0" y="83.5" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">61</text><text x="165.0" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">50–99</text><circle cx="192.8" cy="107.0" r="11.1" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="192.8" y="91.9" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">47</text><text x="192.8" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">100–249</text><circle cx="220.6" cy="122.2" r="7.8" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="220.6" y="110.4" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">16</text><text x="220.6" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">250–499</text><circle cx="248.3" cy="125.1" r="7.1" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="248.3" y="114.0" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">10</text><text x="248.3" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">500–999</text><circle cx="276.1" cy="126.6" r="6.8" fill="#75a8dc" fill-opacity="0.55" stroke="#2c5f9e" stroke-width="1.5"/><text x="276.1" y="115.8" font-size="7" font-weight="700" fill="#16324f" text-anchor="middle">7</text><text x="276.1" y="152.0" font-size="6.5" fill="#4a5560" text-anchor="middle">1000+</text></svg><div class="caption">U.S. Census Bureau CBP 2022 downloadable file cbp22us.zip; n-fields are establishment counts.</div></div></div>
+
+<!-- ============ APPENDICES ============ -->
+<div class="page divider appendix">
+  <div class="div-title">Appendices</div>
+  <ul class="div-sub">
+    <li><a href="#app-a">Appendix A — Patentability Primer</a></li>
+    <li><a href="#app-b">Appendix B — Search Methodology &amp; Query Log</a></li>
+    <li><a href="#app-c">Appendix C — Original Submission Record</a></li>
+  </ul>
+</div>
+
+<div class="page appendix" id="app-a">
+  <h2 class="sec">Appendix A — Patentability Primer</h2>
+  <p>Patentability in the United States is assessed in two principal gates: novelty (35 U.S.C. § 102) and non-obviousness (35 U.S.C. § 103). A claim is anticipated if a single prior-art reference discloses every limitation of the claim. A claim is obvious if the differences between the claimed subject matter and the prior art are such that the subject matter as a whole would have been obvious to a person having ordinary skill in the art at the time the invention was made.</p>
+  <p>This report's novelty assessment is a preliminary, evidence-based screen against identified references. It is <strong>not</strong> a freedom-to-operate (FTO) opinion and is not legal advice. FTO analysis requires a different search scope (in-force claims, current legal status, broader claim reading) and a formal opinion from counsel.</p>
+  <p>Useful references: <a href="https://www.wipo.int/patents/en/">WIPO — Patents</a> · <a href="https://www.uspto.gov/patents">USPTO — Patents</a></p>
+</div>
+
+<div class="page appendix" id="app-b">
+  <h2 class="sec">Appendix B — Search Methodology &amp; Query Log</h2>
+  <p>Every search avenue opened during the run is recorded in the avenue ledger with priority, disposition (COMPLETE / BLOCKED / NOT_APPLICABLE / REQUIRES_VERIFICATION), and audit entry. The full escalation ladders are in <code>avenue-ledger-RUN-US7149534B2-20260818-v16.md</code>. Search-query summary boxes below reproduce the primary-source avenue (A1) for each proposition ladder.</p>
+  <div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-02-001</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → excluded — disclosure history not</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-05-001</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → excluded — NOT ANTICIPATED on the</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-05-002</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → analytical work item — partially</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-06-001</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → excluded — background confirmed; closest</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-07-001</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → excluded — industry aggregates</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-07-002</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → excluded — field activity established;</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-08-001</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm"></div><div class="sm"><strong>Disposition:</strong> SEARCHING → operational audit — candidate pathways</div></div>
+</div>
+
+<div class="page appendix" id="app-c">
+  <h2 class="sec">Appendix C — Original Submission Record</h2>
+  <p>&gt; Structured submission record captured per <code>skill-02-gather-invention-submission</code>.</p>
+<p>&gt; Source: user-provided PDF <code>US7149534.pdf</code> from Downloads, text-extracted to</p>
+<p>&gt; <code>source/US7149534.txt</code>. Facts below are drawn from the patent front page,</p>
+<p>&gt; abstract, specification, and claims. No inventor interview was conducted;</p>
+<p>&gt; fields requiring an inventor statement are explicitly marked as not established.</p>
+<li>Inventors: L. Scott Bloebaum, Cary, NC (US); Havish Koorapaty, Cary, NC (US).</li>
+<li>Assignee: Ericsson Inc., Research Triangle Park, NC (US).</li>
+<li>Application: US 09/767,461, filed January 23, 2001.</li>
+<li>Prior publication: US 2002/0098849 A1, published July 25, 2002.</li>
+<li>Patent grant: US 7,149,534 B2, December 12, 2006.</li>
+<li>Patent term extended or adjusted under 35 U.S.C. 154(b) by 801 days.</li>
+<li>Submission date: 2026-08-18 (evaluation intake date).</li>
+<li>Title: Peer to Peer Information Exchange for Mobile Communications Devices.</li>
+<li>Technical field: cellular telephony, GPS-equipped mobile radiotelephones,</li>
+<p>peer-to-peer information sharing, GPS assistance data (almanac, ephemeris,</p>
+<p>reference time, reference location, ionospheric corrections), and hierarchical</p>
+<p>ad-hoc group formation over a wireless communications network.</p>
+<li>Classification shown on the patent: Int. Cl. H04Q 7/20, H04M 11/04;</li>
+<p>USPC 455/456.6, 455/404.2, 342/357.09. Field of search spans 455/456.x,</p>
+<p>342/357.x, 709/2xx, 713/200, 701/2xx.</p>
+<p>Mobile communications devices connected to a cellular network can share data by</p>
+<p>acting as both clients and servers: a GPS-equipped handset generates GPS</p>
+<p>assistance data from satellite signals it receives and transmits that data</p>
+<p>over the cellular network to peer handsets, which use it to determine a</p>
+<p>reference location. The invention also discloses hierarchical groups of mobile</p>
+<p>devices (including sub-groups and priorities) for information sharing, with</p>
+<p>profile- and trust-based control over which requests are answered and whose</p>
+<p>data is accepted.</p>
+<p>The preferred embodiment is a cellular telephone with an integrated GPS</p>
+<p>receiver. A handset in a favorable signal environment demodulates GPS</p>
+<p>navigation messages (ephemeris, almanac, clock corrections), stores them, and</p>
+<p>computes its own position. A second handset needing position assistance sends</p>
+<p>a query (via the radio base stations and core network) either to a specific</p>
+<p>peer or to all group members; the responding handset may supply a list of</p>
+<p>visible satellites with ephemeris and clock corrections, approximate</p>
+<p>time-of-week (TOW), approximate position, ionospheric/differential</p>
+<p>corrections, and satellite almanac. The requesting handset may compile data</p>
+<p>from multiple peers and sort it (e.g., by data age).</p>
+<p>Additional disclosed aspects:</p>
+<li><strong>Hierarchical groups.</strong> Groups may have one or more levels and sub-groups;</li>
+<p>each sub-group may be assigned a priority. A phone needing assistance queries</p>
+<p>the highest-priority sub-group first, then lower-priority ones. Requests may</p>
+<p>be classified by hierarchy level, and a handset may choose to respond or not</p>
+<p>based on profile and classification. Responses may be accepted only from</p>
+<p>certain group members.</p>
+<li><strong>Group formation.</strong> Groups form ad-hoc, with or without user initiation,</li>
+<p>or automatically based on user profiles (e.g., profile indicates joining a</p>
+<p>group for a class of information-sharing service when one is found). A group</p>
+<p>leader/host may maintain membership and enforce privacy constraints; a</p>
+<p>server within the cellular or backbone network may alternatively maintain</p>
+<p>group membership and status.</p>
+<li><strong>Trust model.</strong> Because peer-supplied assistance data is not guaranteed</li>
+<p>valid, a client may assign trust levels to groups (e.g., inner circle =</p>
+<p>family, outer circle = friends and associates, world = everyone else) and</p>
+<p>accept assistance accordingly, falling back to a secure fixed server if no</p>
+<p>trusted peer source meets criteria.</p>
+<li><strong>Coordinated sharing techniques.</strong> (a) Regularly scheduled collection: group</li>
+<p>members take turns downloading ephemeris (valid 2-4 hours) directly from</p>
+<p>satellites and distributing it to peers via cheap messaging, staggering</p>
+<p>schedules so one member refreshes every 2 hours. (b) Supply from a peer with</p>
+<p>good signal-to-noise ratio to a peer in a disadvantaged environment (e.g.,</p>
+<p>indoor) via the cellular infrastructure. (c) Relaying data from a network</p>
+<p>assistance area to a handset travelling into an unassisted area. (d) Cost</p>
+<p>reduction by sharing a single network-assisted download among the group.</p>
+<li><strong>Other data.</strong> Exchange of phone numbers, e-mail addresses, database</li>
+<p>synchronization, games, music files. Communication over SMS, WAP, or IP.</p>
+<p>Data may also be exchanged during an ongoing voice call.</p>
+<li><strong>Privacy and performance profiles.</strong> Users control privacy of position and</li>
+<p>aiding information (globally or per user/group). Profiles may encode desired</p>
+<p>standby/talk time trade-offs, e.g., limiting assistance requests to one every</p>
+<p>30 minutes or on an as-needed basis.</p>
+<li><strong>Applications.</strong> GPS-assistance-sharing applications downloadable from a web</li>
+<p>portal, possibly as a browser plug-in.</p>
+<p>The patent discusses the requirement for a cellular phone to know its cell,</p>
+<p>location-sensitive applications (targeted advertising, travel directions,</p>
+<p>enhanced 911), and the desirability of providing GPS assistance data to</p>
+<p>handsets to improve time-to-first-fix and sensitivity. It cites prior</p>
+<p>network-based assistance approaches: US 5,365,450 (Schuchman et al.), US</p>
+<p>5,418,538 (Lau), US 5,883,594 (Lau). It identifies the problem that a</p>
+<p>GPS-equipped phone may sit in a cell lacking GPS assistance data, and the</p>
+<p>desire for an alternate source.</p>
+<li><strong>Claim 1 (independent, apparatus):</strong> a mobile terminal comprising a GPS</li>
+<p>receiver to receive GPS data, a cellular transceiver to communicate with a</p>
+<p>wireless communications network, wherein the terminal generates GPS</p>
+<p>assistance data from the received GPS data and transmits the GPS assistance</p>
+<p>data to a remote mobile terminal via the wireless communications network.</p>
+<li><strong>Claim 15 (independent, apparatus):</strong> a mobile terminal with a cellular</li>
+<p>transceiver, wherein the terminal receives GPS assistance data via the</p>
+<p>wireless network generated by a remote mobile terminal from GPS data the</p>
+<p>remote received, and determines a reference location from that assistance</p>
+<p>data.</p>
+<li><strong>Claim 23 (independent, method):</strong> receiving GPS data from an external</li>
+<p>source, generating GPS assistance data, determining whether to transmit the</p>
+<p>assistance data to a remote mobile terminal, and transmitting it based on</p>
+<p>that determination.</p>
+<li><strong>Claim 37 (independent, method):</strong> receiving GPS assistance data from a</li>
+<p>remote mobile terminal, determining whether to trust that data as valid, and</p>
+<p>determining a reference location based on it.</p>
+<li>Dependent features: group membership (hierarchical, sub-groups, priorities,</li>
+<p>ad-hoc, geographic proximity, profile-defined membership); trust decisions</p>
+<p>based on hierarchy level/sub-group/priority; transmission responsive to</p>
+<p>request or automatic; periodic retrieval and distribution; profiles for</p>
+<p>transmission decisions.</p>
+<li>Proof-of-concept status: Not established from the supplied patent PDF alone.</li>
+<li>Product commercialization evidence: Not established from the supplied patent</li>
+<p>PDF alone.</p>
+<li>Production or sales evidence: Not established from the supplied patent PDF</li>
+<p>alone.</p>
+<li>Development stage for this record: Patent-disclosed implementation;</li>
+<p>engineering maturity and commercial readiness require separate evidence.</p>
+<li>Patent family / continuity: none disclosed on the front page beyond the</li>
+<p>application; the notice states a 801-day term adjustment under 35 U.S.C.</p>
+<p>154(b).</p>
+<li>Government rights: none disclosed in the record.</li>
+<li>Patent term/status: the supplied PDF confirms grant on December 12, 2006, but</li>
+<p>current enforceability and expiration require a separate current-status check;</p>
+<p>this evaluation is not an FTO opinion.</p>
+<li>Public disclosure before the January 23, 2001 filing date: <strong>NOT ESTABLISHED</strong>.</li>
+<p>No inventor statement or complete disclosure history was supplied.</p>
+<li>Patent publication dates established from the PDF: US 2002/0098849 A1 on</li>
+<p>July 25, 2002; US 7,149,534 B2 on December 12, 2006. These are post-filing</p>
+<p>disclosures.</p>
+<li>Sale offer / commercial offer dates: <strong>NOT ESTABLISHED</strong>.</li>
+<li>Required follow-up: obtain an inventor or rights-holder statement covering</li>
+<p>talks, publications, demonstrations, offers for sale, grants, and social-media</p>
+<p>disclosures, each with a date. This intake gap remains in the Operational</p>
+<p>Audit and must not be silently treated as &quot;none.&quot;</p>
+<p>This is a public-patent test run, not an inventor interview. Patent-record facts</p>
+<p>are separated from unestablished proof-of-concept, disclosure-history,</p>
+<p>commercialization, and current legal-status propositions. Patentability and</p>
+<p>regulatory statements in any downstream report are preliminary and not legal</p>
+<p>advice.</p>
+</div>
+
+</body>
+</html>

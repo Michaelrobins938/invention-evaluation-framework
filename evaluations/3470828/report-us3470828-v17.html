@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invention Evaluation Report — Electromagnetic Inductive Suspension and Stabilization System for a Ground Vehicle</title>
+<style>
+/* ============================================================
+   inventionevaluator — report template (v1.6 pipeline, Phase 10)
+   Faithful reproduction of the branded report chrome:
+   clean sample-faithful cover (wordmark + metadata block) · running footer · CONFIDENTIAL watermark
+   TOC · gauges · section dividers · SWOT · search boxes
+   ============================================================ */
+
+:root{
+  --ink:#1a1f26;
+  --ink-soft:#4a5560;
+  --ink-faint:#7a8590;
+  --paper:#ffffff;
+  --gray-band:#e9ebee;
+  --gray-band-2:#dfe2e6;
+  --blue-navy:#16324f;
+  --blue-mid:#2c5f9e;
+  --blue:#3d7abf;
+  --blue-pale:#dbe7f4;
+  --blue-paler:#eef4fa;
+  --red:#c0392b;
+  --rule:#c9d4e0;
+  --tier-1:#dbe7f4; /* Very Limited */
+  --tier-2:#b9d2ec; /* Limited */
+  --tier-3:#97bde4; /* Limited-Moderate */
+  --tier-4:#75a8dc; /* Moderate */
+  --tier-5:#5393d4; /* Moderate-Strong */
+  --tier-6:#317ecc; /* Strong */
+  --font-display:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Consolas","Menlo",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow:visible;}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  font-size:11.5pt;
+  line-height:1.5;
+  background:var(--paper);
+}
+
+/* ---------- print setup ----------
+   A4 to match the reference branded report (595.2 x 841.92 pt).
+   Footer lives in @page margin boxes: the page counter (counter(page))
+   is only reliable there — fixed-element counters return 0 in Chromium. */
+@page{
+  size:A4;
+  margin:0.85in 0.9in 0.9in 0.9in;
+  @bottom-left{
+    content:"IEAUS 3,470,828: User-provided patent PDF – Electromagnetic Inductive Suspension and Stabilization System for a Ground Vehicle. Submitted 2026-08-16. Report 2026-08-16.";
+     font-size:5pt;
+    font-variant:small-caps;
+    letter-spacing:0.05em;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+    padding-top:3pt;
+    vertical-align:top;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+     max-width:6.0in;
+    overflow:hidden;
+  }
+  @bottom-right{
+     content:"Page " counter(page);
+    font-size:7pt;
+    font-variant:small-caps;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+     padding-top:3pt;
+     vertical-align:top;
+     white-space:nowrap;
+  }
+}
+
+/* ---------- watermark (fixed, behind content) ---------- */
+.watermark{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-32deg);
+  z-index:1;
+  pointer-events:none;
+  opacity:0.08;
+}
+.watermark-text{
+  color:#8a939c;
+  font-family:Arial,sans-serif;
+  font-size:54pt;
+  font-weight:700;
+  letter-spacing:0.22em;
+  white-space:nowrap;
+}
+
+/* ---------- running footer: rendered via @page margin boxes (see @page) ---------- */
+
+/* ---------- cover ---------- */
+.cover{position:relative;min-height:9.6in;}
+.cover .cover-brand{
+  padding:1.0in 0.9in 0 0.9in;
+}
+.cover .cover-logo{
+  font-family:var(--font-display);
+  font-size:27pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  letter-spacing:0.02em;
+}
+.cover .cover-logo .mag{
+  display:inline-block;
+  width:0.6em;height:0.6em;
+  vertical-align:middle;
+  margin-left:0.06em;
+}
+.cover .cover-logo .reg{font-size:0.6em;vertical-align:super;color:var(--blue-mid);}
+.cover .cover-tagline{
+  margin-top:0.14in;
+  font-size:9pt;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.cover .cover-meta{
+  margin:4.75in 0.9in 0 0.9in;
+  font-size:16pt;
+  line-height:1.25;
+}
+.cover .cover-meta .row{
+  margin:0.04in 0;
+}
+.cover .cover-meta .k{
+  display:inline-block;
+  width:1.85in;
+  font-weight:600;
+  color:var(--blue-navy);
+}
+.cover .cover-meta .v{color:var(--ink);}
+.cover .cover-legal{
+  margin:0.22in 0.9in 0 0.9in;
+  font-size:6.8pt;
+  color:var(--ink-faint);
+  line-height:1.4;
+}
+.cover .cover-disclaimer{
+  margin:0.1in 0.9in 0 0.9in;
+  font-size:6.8pt;
+  color:var(--ink-faint);
+  line-height:1.4;
+}
+
+/* ---------- TOC ---------- */
+.toc h2{
+  font-family:var(--font-display);
+  font-size:28pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  margin-bottom:0.3in;
+  letter-spacing:0.02em;
+  text-align:left;
+}
+.toc ul{list-style:none;}
+.toc li{
+  display:flex;
+  align-items:baseline;
+  gap:0.12in;
+  padding:0.07in 0;
+  border-bottom:1px dotted var(--rule);
+  font-size:12pt;
+}
+.toc li.lvl2{padding-left:0.35in;font-size:11pt;color:var(--ink-soft);}
+.toc li .t{font-weight:600;color:var(--blue-navy);letter-spacing:0.02em;font-size:12pt;}
+.toc li.lvl2 .t{font-weight:400;color:var(--ink-soft);letter-spacing:0;font-size:11pt;}
+.toc li .dots{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-3px);}
+.toc li .pg{font-variant-numeric:tabular-nums;color:var(--ink-faint);}
+
+/* ---------- section divider pages ---------- */
+.divider{position:relative;}
+.divider .div-title{
+  margin-top:1.1in;
+  font-family:var(--font-display);
+  font-size:26pt;
+  font-weight:600;
+  letter-spacing:0.06em;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+}
+.divider .div-sub{
+  margin-top:0.3in;
+  list-style:none;
+}
+.divider .div-sub li{
+  padding:0.09in 0;
+  border-bottom:1px solid var(--blue-paler);
+  font-size:11pt;
+}
+.divider .div-sub a{color:var(--blue-mid);text-decoration:none;font-weight:600;}
+.divider .div-sub a:hover{text-decoration:underline;}
+
+/* ---------- headings ---------- */
+.page{
+  position:relative;
+  page-break-before:always;
+  padding-top:0.88in;
+  min-height:8.5in;
+}
+.page.cover{page-break-before:auto;padding-top:0;}
+.evidence-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.03in 0.2in;
+  margin-top:0.06in;
+}
+.evidence-grid li{font-size:6.3pt;line-height:1.05;margin:0.01in 0;}
+.evidence-id-line{font-size:6.5pt;line-height:1.15;color:var(--ink-soft);word-spacing:0.04in;}
+.v17-control-panel{margin-top:0.1in;padding:0.08in 0.12in;border:1px solid #c9d5e1;background:#f7fafc;font-size:6.8pt;line-height:1.2;}
+.v17-control-panel strong{color:var(--navy);}
+h2.sec{
+  font-family:var(--font-display);
+  font-size:28pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  margin:0 0 0.22in 0;
+  letter-spacing:0.02em;
+  text-align:left;
+}
+h3.sub{
+  font-family:var(--font-display);
+  font-size:15pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  margin:0.24in 0 0.1in 0;
+}
+h4.mini{
+  font-size:10.5pt;
+  font-weight:700;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin:0.12in 0 0.06in 0;
+}
+p.body{margin:0.08in 0;color:var(--ink);}
+p.small{font-size:8pt;color:var(--ink-faint);}
+ul.bullets{margin:0.08in 0 0.08in 0.22in;}
+ul.bullets li{margin:0.05in 0;}
+a{color:var(--blue-mid);}
+a.more{color:var(--blue-mid);font-weight:600;text-decoration:none;}
+
+/* ---------- tables ---------- */
+table.data{
+  width:100%;
+  border-collapse:collapse;
+  margin:0.1in 0 0.16in 0;
+  font-size:10.5pt;
+}
+table.data thead th{
+  background:var(--blue-pale);
+  color:var(--blue-navy);
+  font-weight:700;
+  text-align:left;
+  padding:0.07in 0.1in;
+  border-bottom:2px solid var(--blue-mid);
+}
+table.data tbody td{
+  padding:0.06in 0.1in;
+  border-bottom:1px solid var(--blue-paler);
+  vertical-align:top;
+}
+table.data tbody tr:nth-child(even){background:#f7fafc;}
+table.data td.idx{font-weight:700;color:var(--blue-mid);width:0.5in;}
+table.data td.title{font-weight:600;color:var(--blue-navy);}
+table.data td.title a{color:var(--blue-mid);text-decoration:none;}
+table.data td.title a:hover{text-decoration:underline;}
+
+/* ---------- search query boxes ---------- */
+.search-box{
+  border:1.5px solid var(--blue-mid);
+  border-radius:5px;
+  margin:0.14in 0 0.1in 0;
+  padding:0.12in 0.16in;
+  background:#fbfdff;
+  page-break-inside:avoid;
+}
+.search-box .sq{
+  font-weight:700;
+  color:var(--blue-navy);
+  font-size:9.5pt;
+  letter-spacing:0.02em;
+}
+.search-box .sq .lbl{color:var(--ink-faint);font-weight:600;text-transform:uppercase;font-size:7.5pt;letter-spacing:0.1em;}
+.search-box .rc{
+  font-style:italic;
+  font-weight:700;
+  color:var(--blue-mid);
+  font-size:9pt;
+  margin:0.04in 0;
+}
+.search-box .rc a{color:var(--blue-mid);}
+.search-box .sm{font-size:8.8pt;color:var(--ink-soft);}
+
+/* ---------- gauges ---------- */
+.gauge-row{
+  display:flex;
+  gap:0.25in;
+  justify-content:space-between;
+  margin:0.12in 0;
+}
+.gauge-card{
+  flex:1;
+  text-align:center;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in 0.08in 0.14in 0.08in;
+  background:#fff;
+}
+.gauge-card .g-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:14pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+}
+.gauge-card .g-tier{
+  font-size:10.5pt;
+  font-weight:700;
+  color:var(--blue-mid);
+  margin-top:0.03in;
+}
+.gauge-card svg{width:100%;height:auto;}
+
+/* ---------- legend ---------- */
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.08in 0.16in;
+  justify-content:flex-end;
+  margin:0.06in 0 0.1in 0;
+  font-size:8.5pt;
+  color:var(--ink-soft);
+}
+.legend .sw{
+  display:inline-block;
+  width:0.14in;height:0.14in;
+  border-radius:2px;
+  margin-right:0.04in;
+  vertical-align:-0.02in;
+}
+
+/* ---------- grouped bars ---------- */
+.bar-row{
+  display:flex;
+  gap:0.25in;
+  margin:0.1in 0 0.16in 0;
+}
+.bar-card{
+  flex:1;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in;
+  background:#fff;
+}
+.bar-card .b-title{
+  font-weight:700;
+  font-size:10.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  text-align:center;
+  margin-bottom:0.06in;
+}
+.bar-card svg{width:100%;height:auto;}
+
+/* ---------- commercialization panel ---------- */
+.commercial-panel{
+  background:var(--gray-band);
+  border-radius:6px;
+  padding:0.16in 0.2in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.commercial-panel h3{
+  font-family:var(--font-display);
+  font-size:13pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  letter-spacing:0.04em;
+  margin-bottom:0.08in;
+}
+.commercial-panel p{font-size:10.5pt;color:var(--ink);}
+.commercial-panel ul{margin:0.08in 0 0 0.22in;}
+.commercial-panel ul li{font-size:10.5pt;margin:0.04in 0;}
+
+/* ---------- ladder diagrams ---------- */
+.ladder{
+  display:flex;
+  align-items:center;
+  gap:0.06in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.ladder .node{
+  flex:1;
+  background:var(--blue-mid);
+  color:#fff;
+  text-align:center;
+  padding:0.12in 0.06in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.ladder .node.current{
+  background:var(--red);
+  box-shadow:0 0 0 2px #fff,0 0 0 4px var(--red);
+}
+.ladder .chev{
+  color:var(--blue-mid);
+  font-size:13pt;
+  font-weight:700;
+  flex:0 0 auto;
+}
+
+/* ---------- semantic map ---------- */
+.semantic-map{
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.semantic-map .sm-row{
+  display:flex;
+  align-items:center;
+  gap:0.08in;
+  margin:0.07in 0;
+}
+.semantic-map .sm-node{
+  background:var(--blue-mid);
+  color:#fff;
+  padding:0.09in 0.14in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  white-space:nowrap;
+}
+.semantic-map .sm-node.current{background:var(--red);}
+.semantic-map .sm-node.leaf{background:var(--blue-pale);color:var(--blue-navy);font-weight:500;}
+.semantic-map .sm-conn{color:var(--blue-mid);font-weight:700;}
+.semantic-map .sm-branch{
+  margin-left:0.5in;
+  display:flex;
+  flex-direction:column;
+  gap:0.06in;
+}
+.semantic-map .fn{
+  font-size:6.5pt;
+  color:var(--ink-faint);
+  margin-top:0.06in;
+}
+.semantic-map .fn sup{color:var(--blue-mid);}
+
+/* ---------- charts ---------- */
+.chart-frame{
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.12in;
+  margin:0.12in 0;
+  background:#fff;
+  page-break-inside:avoid;
+}
+.chart-frame .c-title{
+  font-weight:700;
+  font-size:10.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:0.06in;
+}
+.chart-frame svg{width:100%;height:auto;}
+.chart-frame .placeholder{
+  border:1.5px dashed var(--rule);
+  border-radius:4px;
+  padding:0.3in 0.2in;
+  text-align:center;
+  color:var(--ink-faint);
+  font-size:8.5pt;
+  background:var(--blue-paler);
+}
+.chart-frame .placeholder .ph-title{font-weight:700;color:var(--ink-soft);margin-bottom:0.05in;}
+.chart-frame .caption{font-size:7.5pt;color:var(--ink-faint);margin-top:0.05in;}
+
+/* ---------- SWOT ---------- */
+.swot-wrap{position:relative;margin:0.16in 0;page-break-inside:avoid;}
+.swot-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:0.14in;
+}
+.swot-quad{
+  border-radius:8px;
+  padding:0.16in 0.18in;
+  min-height:1.7in;
+}
+.swot-quad.s{background:var(--blue-paler);border-top:4px solid var(--blue-mid);}
+.swot-quad.w{background:#f4f6f8;border-top:4px solid var(--ink-faint);}
+.swot-quad.o{background:var(--blue-paler);border-top:4px solid var(--blue);}
+.swot-quad.t{background:#f4f6f8;border-top:4px solid var(--red);}
+.swot-quad h4{
+  font-size:10pt;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:0.07in;
+}
+.swot-quad.s h4{color:var(--blue-mid);}
+.swot-quad.w h4{color:var(--ink-soft);}
+.swot-quad.o h4{color:var(--blue);}
+.swot-quad.t h4{color:var(--red);}
+.swot-quad ul{margin-left:0.2in;}
+.swot-quad li{font-size:8.8pt;margin:0.04in 0;color:var(--ink);}
+.swot-badge{
+  position:relative;
+  width:2.35in;height:0.62in;
+  margin:0 auto 0.14in;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid var(--blue-mid);
+  display:flex;
+  flex-direction:row;
+  gap:0.1in;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(22,50,79,0.18);
+  z-index:2;
+}
+.swot-badge .b-k{
+  font-size:6pt;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.swot-badge .b-v{
+  font-size:9pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  line-height:1.15;
+}
+
+/* ---------- appendices ---------- */
+.appendix p{font-size:9pt;color:var(--ink);margin:0.07in 0;}
+.appendix ul{margin:0.07in 0 0.07in 0.22in;}
+.appendix li{font-size:9pt;margin:0.04in 0;}
+.appendix a{color:var(--blue-mid);}
+
+/* ---------- buffer pages ---------- */
+.buffer{min-height:8in;}
+</style>
+</head>
+<body>
+
+
+
+<!-- watermark -->
+<div class="watermark"><div class="watermark-text">CONFIDENTIAL</div></div>
+
+<!-- running footer: rendered via @page margin boxes (see @page rule) -->
+
+<!-- ============ COVER ============ -->
+<div class="page cover">
+  <div class="cover-brand">
+    <div class="cover-logo">invention<svg width="0.6em" height="0.6em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:middle;margin-left:0.06em;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>evaluat<span class="reg">®</span>r</div>
+    <div class="cover-tagline">objective idea analysis</div>
+  </div>
+  <div class="cover-meta">
+    <div class="row"><span class="k">Invention Name:</span> <span class="v">Electromagnetic Inductive Suspension and Stabilization System for a Ground Vehicle</span></div>
+    <div class="row"><span class="k">Submitted By:</span> <span class="v">User-provided patent PDF</span></div>
+    <div class="row"><span class="k">Invention ID:</span> <span class="v">US 3,470,828</span></div>
+    <div class="row"><span class="k">Date of Report:</span> <span class="v">2026-08-16</span></div>
+  </div>
+  <div class="cover-legal">
+    This report was generated by the inventionevaluator report-automation platform from the
+    Invention Evaluation Engine v1.6 pipeline (evidence sufficiency architecture). It compiles
+    established findings, analytical conclusions, and an operational audit produced by the
+    nine-phase evaluation. Scores shown are derived executive summaries of the underlying
+    findings — they are presentation-layer derivations, not new evidence, and do not constitute
+    an overall patentability label. This document is not legal advice.
+  </div>
+  <div class="cover-disclaimer">Preliminary evidence-constrained evaluation. Not legal advice, not a formal patentability opinion, and not an FTO opinion.</div>
+</div>
+
+<!-- ============ TOC ============ -->
+<div class="page toc">
+  <h2>Table of Contents</h2>
+  <ul id="toc-list">
+    <li class="" data-target="executive-summary"><span class="t">Executive Summary</span><span class="dots"></span><span class="pg">3</span></li>
+<li class="" data-target="2-technology-analysis"><span class="t">Technology Analysis</span><span class="dots"></span><span class="pg">5</span></li>
+<li class="" data-target="3-patent-landscape-analysis"><span class="t">Patent Landscape Analysis</span><span class="dots"></span><span class="pg">9</span></li>
+<li class="" data-target="4-ip-novelty-analysis"><span class="t">IP / Novelty Analysis</span><span class="dots"></span><span class="pg">11</span></li>
+<li class="" data-target="5-literature-analysis"><span class="t">Literature Analysis</span><span class="dots"></span><span class="pg">14</span></li>
+<li class="" data-target="6-market-analysis"><span class="t">Market Analysis</span><span class="dots"></span><span class="pg">16</span></li>
+<li class="" data-target="7-potential-partners"><span class="t">Potential Partners</span><span class="dots"></span><span class="pg">18</span></li>
+<li class="" data-target="8-operational-audit"><span class="t">Operational Audit</span><span class="dots"></span><span class="pg">19</span></li>
+<li class="" data-target="9-evidence-recovery-record"><span class="t">Evidence Recovery Record</span><span class="dots"></span><span class="pg">23</span></li>
+<li class="" data-target="swot-analysis"><span class="t">SWOT Analysis</span><span class="dots"></span><span class="pg">24</span></li>
+<li class="" data-target="landscape-market-data"><span class="t">Landscape &amp; Market Data</span><span class="dots"></span><span class="pg">25</span></li>
+  </ul>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<div class="page">
+  <h2 class="sec">Executive Summary</h2>
+  <p class="small">Derived executive summary — constrained to Established Findings + Analytical Conclusions (Executive Summary ⊆ findings + conclusions). Gauge and bar scores are presentation-layer derivations from the findings; basis proposition_ids are listed in the scores manifest.</p>
+
+  <div class="legend">
+    <span><span class="sw" style="background:var(--tier-1)"></span>Very Limited</span>
+    <span><span class="sw" style="background:var(--tier-2)"></span>Limited</span>
+    <span><span class="sw" style="background:var(--tier-3)"></span>Limited-Moderate</span>
+    <span><span class="sw" style="background:var(--tier-4)"></span>Moderate</span>
+    <span><span class="sw" style="background:var(--tier-5)"></span>Moderate-Strong</span>
+    <span><span class="sw" style="background:var(--tier-6)"></span>Strong</span>
+  </div>
+
+  <div class="gauge-row">
+    <div class="gauge-card"><div class="g-title">Technology</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="24" y="121" font-size="6.5" fill="#7a8590" text-anchor="start">Very Limited</text><text x="176" y="121" font-size="6.5" fill="#7a8590" text-anchor="end">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">IP</div><svg viewBox="0 0 200 150" role="img" aria-label="Limited-Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="61.8" y2="61.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="24" y="121" font-size="6.5" fill="#7a8590" text-anchor="start">Very Limited</text><text x="176" y="121" font-size="6.5" fill="#7a8590" text-anchor="end">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Limited-Moderate</text></svg><div class="g-tier">Limited-Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">Market</div><svg viewBox="0 0 200 150" role="img" aria-label="Limited-Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="61.8" y2="61.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="24" y="121" font-size="6.5" fill="#7a8590" text-anchor="start">Very Limited</text><text x="176" y="121" font-size="6.5" fill="#7a8590" text-anchor="end">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Limited-Moderate</text></svg><div class="g-tier">Limited-Moderate</div></div>
+  </div>
+
+  <div class="bar-row">
+    <div class="bar-card"><div class="b-title">Technology</div><svg viewBox="0 0 260 150" role="img" aria-label="Technology sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="57.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="-25.3" width="30.5" height="149.3" fill="#5393d4" rx="2"/><text x="113.2" y="-28.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">4</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="168.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="224.2" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+    <div class="bar-card"><div class="b-title">IP</div><svg viewBox="0 0 260 150" role="img" aria-label="IP sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="57.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="113.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="168.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="224.2" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+    <div class="bar-card"><div class="b-title">Market</div><svg viewBox="0 0 260 150" role="img" aria-label="Market sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="57.8" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="113.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="168.8" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="224.2" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+  </div>
+
+  <div class="commercial-panel">
+    <h3>Commercialization Summary</h3>
+    <p>Commercial actionability is Indeterminate-to-Limited on the completed evidence. The patent discloses a technically specific passive electrodynamic suspension architecture, but market size, deployment history, current rights, and product-level adoption remain in the recovery queue.</p><ul><li>Strong historical technical disclosure with substantial infrastructure and cryogenic burden. <a class='more' href='#'>more</a></li><li>Strongest identified pathway is technical and historical-technology diligence, not an unqualified standalone patent license. <a class='more' href='#'>more</a></li></ul>
+  </div>
+
+  <h3 class="sub">Evidence trace</h3>
+  <p class="small">The proposition register below is extracted from the compiled report so every score basis can be checked against visible report content.</p>
+  <div class="evidence-id-line">
+    <code>P-02-001</code> · <code>P-03-001</code> · <code>P-03-002</code> · <code>P-04-001</code> · <code>P-05-001</code> · <code>P-05-002</code> · <code>P-06-001</code> · <code>P-07-001</code> · <code>P-07-002</code> · <code>P-08-001</code>
+  </div>
+  
+</div>
+
+<!-- ============ SECTION DIVIDERS + BODY ============ -->
+<div class="page"><h2 class="sec">Technology Analysis</h2><h3 class="sub">Technology Profile — US 3,470,828</h3><h3 class="sub">Plain-language description</h3><p class='body'>US 3,470,828 describes a moving-ground-vehicle suspension system in which superconducting magnets carried by a train induce currents in longitudinal arrays of shorted conductive loops installed in a track bed. The magnetic interaction produces lift above a transitional speed and can also generate lateral restoring force, vertical stabilization, rotational stabilization, and damping of oscillatory motion. The patent also discloses alternative loop geometries and grouped diode-connected inductors for limiting induced current.</p><h3 class="sub">Technical vocabulary for downstream searches</h3><ul class="bullets"><li>electromagnetic inductive suspension</li><li>electrodynamic suspension / EDS</li><li>magnetic levitation / maglev</li><li>superconducting vehicle magnet</li><li>shorted track loop</li><li>conductive loop array</li><li>induced-current lift</li><li>lateral restoring force</li><li>oscillation damping loop</li><li>flux pump / superconducting solenoid</li><li>inductive coupling</li><li>eddy-current stabilization</li><li>transitional speed</li><li>current-limiting external inductor</li><li>figure-eight stabilizing loop</li></ul><h3 class="sub">Feature-to-benefit map</h3><table class="data"><thead><tr><th>Feature</th><th>Technical function</th><th>User-facing or system benefit</th></tr></thead><tbody><tr><td>Superconducting loops carried by vehicle</td><td>Produce high magnetic field with low resistive loss</td><td>Enables strong lift and stabilization forces on the vehicle</td></tr><tr><td>Longitudinal arrays of shorted conductive track loops</td><td>Receive changing flux and carry induced currents</td><td>Provides a passive electromagnetic interaction along the track</td></tr><tr><td>Vertical lifting-loop arrangement</td><td>Couples vehicle magnets to track loops to generate lift</td><td>Removes wheel/rail contact at operating speed</td></tr><tr><td>Figure-eight lateral loops</td><td>Produces net current when lateral symmetry is disturbed</td><td>Returns the vehicle toward lateral equilibrium</td></tr><tr><td>Long horizontal and vertical damping loops</td><td>Respond to transient coupling changes</td><td>Damp horizontal and vertical oscillations</td></tr><tr><td>Alternating polarity of adjacent vehicle magnets</td><td>Produces rapid flux reversal over successive track loops</td><td>Increases inductive excitation of the track array</td></tr><tr><td>Wheel support during rest and transition</td><td>Supports vehicle before suspension becomes effective</td><td>Allows practical starting and stopping operation</td></tr><tr><td>Liquid-helium cooling and superinsulation</td><td>Maintains superconducting state</td><td>Preserves high-current magnet operation</td></tr><tr><td>Diode-connected external inductors</td><td>Raises effective loop impedance and limits induced current</td><td>Controls current stress and coupling in the track array</td></tr><tr><td>Below-roadbed loop alternatives</td><td>Places suspension/stability loops near the road surface</td><td>Reduces need for elevated support structures</td></tr></tbody></table><h3 class="sub">Innovation assessment</h3><p class='body'>The central claimed combination is a moving vehicle carrying superconducting magnets interacting inductively with grounded, longitudinally arranged shorted loops to produce suspension and stabilization. The claims extend this architecture into distinct lift, lateral-stability, damping, geometric, and current-limiting configurations.</p><p class='body'>The invention combines known or separately searchable elements including superconducting magnets, conductive loops, inductive coupling, magnetic lift, passive restoring forces, damping circuits, and current-limiting inductors. The principal inventive-step question is not whether each component was known, but whether pre-filing evidence supplied a reason and reasonable expectation of success for this specific vehicle-track arrangement and its claimed stability/damping relationships.</p><ul class="bullets"><li>Passive electrodynamic lift produced by vehicle superconducting magnets and non-superconducting track loops.</li><li>Geometry-dependent restoring force that stabilizes vehicle position without active feedback.</li><li>Integration of separate loop arrays for lift, lateral stabilization, and oscillation damping.</li><li>Grouped diode/inductor circuit arrangement for limiting induced track-loop currents.</li></ul><p class='body'>These are analytical candidates, not established patentability findings.</p><p class='body'>The patent itself explores a broad design space: vertical loops, horizontal half-section loops, figure-eight loops, long damping loops, buried loops, road-level loops, alternative orientations, and grouped current-limiting circuits. It should therefore be evaluated as a design-space exploration event rather than only as one isolated embodiment.</p><h3 class="sub">Regulatory scoping</h3><ul class="bullets"><li>Preliminary burden: High for modern deployment because the system implicates rail/high-speed ground transportation safety, infrastructure, electromagnetic compatibility, cryogenic systems, structural safety, and potentially environmental or land-use approvals.</li><li>Evidence status: NOT ESTABLISHED as a formal regulatory proposition.</li><li>Governing regimes and jurisdiction-specific basis: not yet researched.</li></ul><h3 class="sub">Development stage</h3><ul class="bullets"><li>Patent-disclosed stage: engineering concept with theoretical calculations and multiple schematic embodiments.</li><li>Independent proof-of-concept status: not established.</li><li>Preliminary classification: Concept / pre-validation, pending evidence of built hardware, test track operation, controlled lift testing, or vehicle-scale trials.</li></ul><h3 class="sub">Initial IPC/CPC candidates</h3><p class='body'>These are search hypotheses seeded by the patent front matter and technical language; they are not independently verified classifications.</p><table class="data"><thead><tr><th>Candidate</th><th>Basis</th><th>Status</th></tr></thead><tbody><tr><td>B61B 13/08</td><td>Magnetic or electromagnetic railway/vehicle guidance context stated on patent</td><td>Candidate; verify official title and scope</td></tr><tr><td>H01F 7/00</td><td>Electromagnets and superconducting magnetic apparatus context</td><td>Candidate; verify official title and scope</td></tr><tr><td>H02K 41/00</td><td>Electromagnetic propulsion or related motor/generator arrangements stated on patent</td><td>Candidate; verify official title and scope</td></tr><tr><td>B60L 13/*</td><td>Modern adjacent electrodynamic/magnetic vehicle propulsion or suspension terminology</td><td>Search hypothesis; not an intake finding</td></tr></tbody></table><h3 class="sub">What remains unclear</h3><ul class="bullets"><li>Authoritative patent family and continuity structure.</li><li>Critical-date and priority chronology from authoritative records.</li><li>Historical legal term and current legal status by jurisdiction.</li><li>Complete prosecution history and examiner-cited references.</li><li>Whether the described system was physically built or tested.</li><li>Which claims were commercially practiced, if any.</li><li>Exact pre-filing terminology used in patents and technical literature.</li><li>Complete claim-level mapping against earlier magnetic suspension disclosures.</li><li>Modern market boundary for historical maglev infrastructure versus current applications.</li><li>Whether any surviving know-how, family rights, or technical assets have commercial value.</li></ul></div>
+<div class="page"><h2 class="sec">Patent Landscape Analysis</h2><h3 class="sub">Patent Landscape Analysis — US 3,470,828</h3><h3 class="sub">Search scope</h3><ul class="bullets"><li>Critical-date anchor: 1967-11-21 filing date shown on the primary patent record.</li><li>Primary source: Google Patents US3470828A.</li><li>Search concepts: electromagnetic inductive suspension, electrodynamic suspension, magnetic levitation, superconducting vehicle magnets, shorted track loops, magnetic stabilization, oscillation damping, current-limiting inductors.</li><li>Classification seed: B61B13/08, B60L13/04, H01F7/00, H02K41/00, and historical Y10S505/903/Y10S505/907 tags shown on the primary record.</li></ul><h3 class="sub">Directly retrieved landscape records</h3><table class="data"><thead><tr><th>Record</th><th>Date</th><th>Relationship</th><th>Evidence state</th></tr></thead><tbody><tr><td>US1020943A, Bachelet, <em>Levitating transmitting apparatus</em></td><td>1912-03-19</td><td>Earlier magnetic levitation using vehicle magnets and non-magnetic conductive guideway; mechanism and architecture are related but not identical to Powell/Danby claim 1</td><td>CONFIRMED PRESENT</td></tr><tr><td>US3125964A, Silverman, <em>Transportation apparatus</em></td><td>1964-03-24</td><td>Earlier magnetic vehicle suspension with rail/vehicle magnetic relationship and gap control; different attraction/control architecture</td><td>CONFIRMED PRESENT</td></tr><tr><td>US3470828A, Powell/Danby</td><td>1969-10-07</td><td>Target record; priority and filing date 1967-11-21</td><td>CONFIRMED PRESENT</td></tr></tbody></table><h3 class="sub">Primary-record metadata</h3><p class='body'>The primary Google Patents record lists US3470828A, application US684775A, inventors James R. Powell Jr. and Gordon T. Danby, filing/priority date 1967-11-21, publication/grant date 1969-10-07, and the public-status label “Expired - Lifetime.” That label is explicitly a database assumption and is not treated as a legal conclusion. The record also lists B60L13/04 and B61B13/08 as modern classification renderings and historical Y10S505 suspension tags.</p><h3 class="sub">Landscape interpretation</h3><p class='body'>The retrieved records establish that magnetic levitation and magnetic vehicle suspension were active technical concepts before the target filing. They do not by themselves establish the complete claim-1 combination of superconducting vehicle magnets, longitudinal shorted conductive track loops, speed-dependent induced lift, and vertical stabilization.</p><p class='body'>The field appears to contain several design branches:</p><ul class="bullets"><li>Periodic or electromagnetically energized vehicle magnets with conductive guideways.</li><li>Attraction or repulsion between vehicle magnets and rails.</li><li>Induced-current/electrodynamic suspension using passive shorted loops.</li><li>Active gap sensing and feedback control.</li><li>Separate lift, guidance, stabilization, and damping loop arrays.</li><li>Linear motor or external propulsion systems combined with magnetic suspension.</li></ul><h3 class="sub">Required recovery still open</h3><ul class="bullets"><li>Full CPC/IPC query counts and family-deduplicated landscape.</li><li>Alternate patent databases and official registry confirmation.</li><li>Complete backward and forward citation traversal.</li><li>Applicant/examiner citation review for the target family.</li><li>Parent, continuation, divisional, and foreign-family reconstruction.</li><li>Assignee and ownership normalization.</li><li>Historical patent-term verification under the applicable law.</li></ul><h3 class="sub">State</h3><p class='body'><code>ESCALATION_REQUIRED</code>. The retrieved landscape is useful context, but a complete quantitative landscape has not been established.</p></div>
+<div class="page"><h2 class="sec">IP / Novelty Analysis</h2><h3 class="sub">IP and Novelty Analysis — US 3,470,828</h3><h3 class="sub">Analytical claim</h3><p class='body'>The target claim representation is a provisional evaluation claim derived from supplied claim 1. It is not a legal claim construction.</p><p class='body'>Claim 1 requires, in substance:</p><p class='body'>1. A ground vehicle. 2. A plurality of superconducting magnets carried by the vehicle. 3. A track bed formed by a longitudinally extending series of oriented shorted loops. 4. The loops are composed of metal conductors. 5. The magnets and loops are in electromagnetic inductive relationship. 6. Above a transitional speed, the relationship generates suspension force. 7. The force floats the vehicle and maintains it at an equilibrium position above the track bed. 8. The vehicle is stabilized against vertical displacement.</p><h3 class="sub">Claim-element mapping</h3><table class="data"><thead><tr><th>Limitation</th><th>US1020943A Bachelet</th><th>US3125964A Silverman</th><th>Status</th></tr></thead><tbody><tr><td>Ground vehicle/carrier</td><td>Yes, levitating carrier</td><td>Yes, transportation vehicle</td><td>CONFIRMED PRESENT in each reference</td></tr><tr><td>Plurality of superconducting vehicle magnets</td><td>Electromagnets, not superconducting magnets</td><td>Electromagnets, not superconducting magnets</td><td>Not established</td></tr><tr><td>Longitudinal series of oriented shorted loops</td><td>Non-magnetic conductive guideway, but not the target shorted-loop array as claimed</td><td>Rail/vehicle magnetic relationship, not target shorted-loop array</td><td>Not established</td></tr><tr><td>Metal conductors</td><td>Conductive guideway, including aluminum</td><td>Rail and magnetic apparatus</td><td>CONFIRMED PRESENT in related form</td></tr><tr><td>Electromagnetic inductive relationship</td><td>Eddy-current/repulsion language is present</td><td>Magnetic relationship is present, but not the same induced-loop architecture</td><td>Related, not identical</td></tr><tr><td>Transitional-speed operation</td><td>Periodic energization and movement disclosed</td><td>Propulsion and controlled levitation disclosed</td><td>Not the target limitation as a whole</td></tr><tr><td>Lift above track/ground</td><td>Yes</td><td>Yes</td><td>CONFIRMED PRESENT in related form</td></tr><tr><td>Equilibrium vertical stabilization</td><td>General levitation disclosed; target restoring relationship not mapped</td><td>Gap control disclosed, but different active control architecture</td><td>Not established</td></tr></tbody></table><h3 class="sub">Anticipation gate</h3><p class='body'>Neither retrieved reference discloses every limitation of the provisional claim in one reference based on the completed mapping above. No anticipation finding is admitted. This is not a formal patentability opinion.</p><h3 class="sub">Obviousness / causal bridge</h3><p class='body'>The principal bridge is:</p><p class='body'><code>`</code>text Known magnetic levitation or suspension → superconducting magnets carried by a moving vehicle → passive longitudinal shorted-loop track arrays → induced lift with speed threshold → vertical equilibrium stabilization <code>`</code></p><ul class="bullets"><li>Magnetic levitation principle: CONFIRMED PRESENT in US1020943A and US3125964A.</li><li>Conductive guideway / magnetic interaction: CONFIRMED PRESENT in US1020943A.</li><li>Magnetic vehicle suspension: CONFIRMED PRESENT in US3125964A.</li><li>Superconducting vehicle magnets in the target architecture: CONFIRMED PRESENT in US3470828A; pre-filing disclosure not established by the two retrieved references.</li><li>Complete passive shorted-loop track architecture: CONFIRMED PRESENT in US3470828A; pre-filing disclosure not established by the two retrieved references.</li><li>Specific speed-dependent lift and vertical restoring relationship: not established in the retrieved pre-filing references.</li><li>Motivation to combine these exact elements: not established.</li><li>Reasonable expectation of success at the claimed vehicle scale: not established.</li></ul><ul class="bullets"><li>US1020943A: structural relationship E3/E4 candidate; mechanism distance provisionally C2–C3; design-choice distance provisionally D2–D3.</li><li>US3125964A: structural relationship E3 candidate; mechanism distance provisionally C3; design-choice distance provisionally D2.</li></ul><p class='body'>C and D are diagnostic fields and are not combined into one score.</p><h3 class="sub">Search recovery state</h3><p class='body'><code>ESCALATION_REQUIRED</code>.</p><p class='body'>Required next recovery classes:</p><ul class="bullets"><li>Historical terminology expansion.</li><li>CPC/IPC classification traversal.</li><li>Backward and forward citation lineage.</li><li>Patent-family and continuity traversal.</li><li>Alternate database confirmation.</li><li>Examiner/applicant citation and prosecution-history review.</li><li>Independent literature search for the Powell/Danby 1963 and 1966 disclosures cited in the target patent.</li></ul></div>
+<div class="page"><h2 class="sec">Literature Analysis</h2><h3 class="sub">Literature Analysis — US 3,470,828</h3><h3 class="sub">Search scope</h3><p class='body'>The literature search targeted electrodynamic suspension, superconducting magnets, magnetic levitation, passive shorted-loop guideways, electromagnetic stabilization, and damping.</p><h3 class="sub">Literature leads identified in the patent</h3><p class='body'>The target patent itself cites or incorporates:</p><ul class="bullets"><li>J. R. Powell, “The Magnetic Road: A New Form of Transport,” ASME Railroad Conference, Paper 63-RR4, Apr. 23–25, 1963.</li><li>H. Van Beelen et al., “Flux Pumps and Superconducting Solenoids,” <em>Physica</em>, vol. 31, 1965.</li><li>Powell and Danby, ASME Report No. 66-WA/RR-5, presented Nov. 27–Dec. 1, 1966.</li></ul><p class='body'>These are source leads disclosed in US3470828A. Their existence as citations in the patent is CONFIRMED PRESENT. Their full text, publication metadata, experimental content, and exact pre-filing disclosure scope have not yet been independently verified.</p><h3 class="sub">Literature evidence status</h3><p class='body'>No independently verified paper has been admitted as a <code>literature_disclosure</code> finding in this run. The patent&#x27;s own references are retained as recovery targets, not silently promoted into independent corroboration.</p><h3 class="sub">State</h3><p class='body'><code>ESCALATION_REQUIRED</code>.</p><p class='body'>Required recovery:</p><ul class="bullets"><li>Retrieve the cited ASME papers and report.</li><li>Search periodical indexes for electrodynamic suspension and superconducting transport before 1967-11-21.</li><li>Search historical terminology such as magnetic road, magnetic railroad, levitating train, electrodynamic suspension, induced-current suspension, and superconductive transport.</li><li>Search citation and reference networks from US1020943A, US3125964A, and US3470828A.</li><li>Search contradictory or limiting technical evidence regarding stability, cryogenic burden, and passive damping.</li></ul></div>
+<div class="page"><h2 class="sec">Market Analysis</h2><h3 class="sub">Market Analysis — US 3,470,828</h3><h3 class="sub">Market boundary</h3><p class='body'>The relevant opportunity is not one single market. It spans:</p><ul class="bullets"><li>High-speed rail and maglev infrastructure.</li><li>Electrodynamic suspension subsystems.</li><li>Superconducting magnet systems.</li><li>Conductive guideway and track-loop infrastructure.</li><li>Cryogenic support and maintenance systems.</li><li>Future evacuated-tube or low-pressure transport concepts.</li></ul><h3 class="sub">Commercial actionability assessment</h3><table class="data"><thead><tr><th>Dimension</th><th>Assessment</th><th>Evidence state</th></tr></thead><tbody><tr><td>Technical distinctiveness</td><td>High at the patent-disclosure level</td><td>CONFIRMED PRESENT from US3470828A</td></tr><tr><td>Market size</td><td>Not established</td><td>Work queue</td></tr><tr><td>Growth</td><td>Not established</td><td>Work queue</td></tr><tr><td>Accessibility</td><td>Low-to-moderate hypothesis because infrastructure and cryogenic systems are capital-intensive</td><td>Inference, not evidence</td></tr><tr><td>Competitive intensity</td><td>Not established quantitatively</td><td>Work queue</td></tr><tr><td>Regulatory burden</td><td>High preliminary hypothesis</td><td>Scoping inference only</td></tr><tr><td>Commercial readiness</td><td>Not established</td><td>Work queue</td></tr></tbody></table><h3 class="sub">Commercial barriers</h3><ul class="bullets"><li>Guideway construction and maintenance cost.</li><li>Superconducting magnet cryogenics and quench protection.</li><li>Transitional-speed and propulsion requirements.</li><li>Safety systems for loss of superconductivity or power.</li><li>Track-loop conductor losses and thermal management.</li><li>Alignment tolerances and route infrastructure.</li><li>Regulatory approval for high-speed passenger transport.</li><li>Historical uncertainty about actual prototype, pilot, or production deployment.</li></ul><h3 class="sub">Market evidence gap</h3><p class='body'>No reconstructable TAM, CAGR, shipment, revenue, adoption, purchaser, or current-product embodiment finding is admitted in this run. The patent&#x27;s theoretical 100-foot train and 200-horsepower suspension estimate are technical disclosure claims, not market evidence.</p><h3 class="sub">State</h3><p class='body'><code>ESCALATION_REQUIRED</code>.</p></div>
+<div class="page"><h2 class="sec">Potential Partners</h2><h3 class="sub">Potential Partners — US 3,470,828</h3><h3 class="sub">Candidate categories</h3><p class='body'>The technology would require a consortium rather than a single generic licensee. Relevant candidate categories are:</p><ul class="bullets"><li>High-speed rail or maglev system integrators.</li><li>Superconducting magnet and cryogenic-system manufacturers.</li><li>Rail infrastructure and guideway contractors.</li><li>Power electronics and high-current conductor suppliers.</li><li>National transportation research laboratories.</li><li>Universities or institutes with superconductivity and transportation programs.</li><li>Operators or public agencies planning high-speed rail corridors.</li></ul><h3 class="sub">Partner-fit status</h3><p class='body'>No organization-specific partner-fit finding is admitted because the run has not yet verified each candidate&#x27;s current products, purchasing behavior, technical need, ownership status, or contact identity under the <code>partner_fit</code> schema.</p><h3 class="sub">Strategy implication</h3><p class='body'>The strongest identified pathway is a technical consortium or research collaboration, not an unqualified standalone patent license. The patent&#x27;s public status label is a database assumption and requires authoritative confirmation. Historical know-how, surviving family rights, technical documentation, and research assets would need separate diligence.</p><h3 class="sub">State</h3><p class='body'><code>ESCALATION_REQUIRED</code>.</p></div>
+<div class="page"><h2 class="sec">Operational Audit</h2><h3 class="sub">Avenue Ledger — US 3,470,828</h3><h3 class="sub">Run metadata</h3><ul class="bullets"><li>Run ID: us3470828-v17</li><li>Submission: <code>submission-us3470828.md</code></li><li>Primary source: https://patents.google.com/patent/US3470828A/en</li><li>Date of run: 2026-08-16</li><li>Evidence rule: search completion is not evidence; unresolved propositions remain in the work queue.</li></ul><h3 class="sub">Proposition ledger</h3><table class="data"><thead><tr><th>Proposition ID</th><th>Version</th><th>Proposition</th><th>State</th><th>Evidence state</th></tr></thead><tbody><tr><td>P-02-001</td><td>1</td><td>US3470828A identity, inventors, filing date, publication date, and claim count</td><td>ESTABLISHED</td><td>CONFIRMED PRESENT</td></tr><tr><td>P-03-001</td><td>1</td><td>Technical architecture disclosed by the patent</td><td>ESTABLISHED</td><td>CONFIRMED PRESENT</td></tr><tr><td>P-03-002</td><td>1</td><td>Independent experimental proof of performance</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-04-001</td><td>1</td><td>Broad pre-filing patent landscape</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-05-001</td><td>1</td><td>Claim 1 anticipation</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-05-002</td><td>1</td><td>Obviousness bridge and motivation</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-06-001</td><td>1</td><td>Independent literature disclosure before 1967-11-21</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-07-001</td><td>1</td><td>Quantified market size and growth</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-07-002</td><td>1</td><td>Commercial adoption and readiness</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr><tr><td>P-08-001</td><td>1</td><td>Organization-specific partner fit</td><td>ESCALATION_REQUIRED</td><td>WORK QUEUE</td></tr></tbody></table><h3 class="sub">Recovery records</h3><ul class="bullets"><li>Initial failure: no complete family-deduplicated landscape count established from the supplied PDF.</li><li>Diagnosis: terminology, classification, and historical database coverage may differ.</li><li>Troubleshooting: primary patent record classification and citation sections consulted; Google Patents historical search behavior used as the initial retrieval route.</li><li>Strategies executed:</li><li>R1 terminology: electromagnetic inductive suspension / magnetic levitation / electrodynamic suspension; Google Patents; relevant records US1020943A and US3125964A.</li><li>R2 classification: B60L13/04, B61B13/08, Y10S505/903; Google Patents; classification records returned.</li><li>R3 citation lineage: target patent cited references and cited-by records; Google Patents; US1020943A and US3125964A linked.</li><li>R4 alternate source: USPTO, Espacenet, PatentCenter links identified but not fully retrieved in this run; avenue remains incomplete.</li><li>R5 entity/jurisdiction: US application and inventor identity captured; family/foreign ownership remains incomplete.</li><li>Assessment: additional avenues remain; state remains <code>ESCALATION_REQUIRED</code>.</li></ul><ul class="bullets"><li>Initial failure: two retrieved historical patents were related but did not map every claim limitation.</li><li>Diagnosis: related magnetic suspension terminology does not establish the target superconducting passive-loop combination.</li><li>Troubleshooting: expanded terms and classification terms using the primary record; reviewed cited references and claims of US1020943A and US3125964A.</li><li>Strategies executed:</li><li>R1 terminology expansion: levitating transmitting apparatus, magnetic road, magnetic suspension, electrodynamic suspension.</li><li>R2 classification traversal: B61B13/08 and B60L13/04.</li><li>R3 citation lineage: target patent citations and cited-by trail.</li><li>R4 alternate source: Google Patents full-text and claim pages for US1020943A and US3125964A.</li><li>R5 temporal/entity: pre-1967 US records and named inventor/reference tracing.</li><li>Assessment: claim mapping remains incomplete; no anticipation finding admitted.</li></ul><ul class="bullets"><li>Initial failure: cited ASME and <em>Physica</em> references were named in the patent but full independent records were not retrieved.</li><li>Diagnosis: citation identity and archival accessibility require separate recovery.</li><li>Troubleshooting: exact titles, authors, venues, dates, and report numbers extracted from the target patent for archive searches.</li><li>Strategies executed:</li><li>R1 exact-title search for Powell 1963 paper.</li><li>R2 exact-title search for Van Beelen 1965 paper.</li><li>R3 exact-report search for ASME 66-WA/RR-5.</li><li>R4 citation expansion from the target patent and related patent pages.</li><li>R5 historical terminology search for magnetic road, superconductive transport, and electrodynamic suspension.</li><li>Assessment: independent literature evidence remains unestablished.</li></ul><ul class="bullets"><li>Initial failure: no reconstructable market-size dataset was supplied or retrieved.</li><li>Diagnosis: historical invention market boundary is not the same as a current maglev revenue category.</li><li>Troubleshooting: separated historical technology disclosure from modern market claims and identified the necessary infrastructure, cryogenic, and regulatory proxies.</li><li>Strategies executed:</li><li>R1 market-boundary reconstruction.</li><li>R2 transportation-infrastructure proxy search.</li><li>R3 superconducting-magnet supplier/industry proxy search.</li><li>R4 regulatory and public-procurement route.</li><li>R5 commercialization/adoption history route.</li><li>Assessment: no quantitative finding admitted; market proposition remains <code>ESCALATION_REQUIRED</code>.</li></ul><ul class="bullets"><li>Initial failure: no organization-specific fit record with sell/buy/need/mapping fields was established.</li><li>Diagnosis: candidate categories can be identified, but current organization-specific relevance and rights dependencies remain unverified.</li><li>Troubleshooting: separated consortium categories from named partner recommendations.</li><li>Strategies executed:</li><li>R1 system integrator category.</li><li>R2 superconducting/cryogenic supplier category.</li><li>R3 infrastructure contractor category.</li><li>R4 public transportation research category.</li><li>R5 university/research collaboration category.</li><li>Assessment: no partner-fit finding admitted.</li></ul></div>
+<div class="page"><h2 class="sec">Evidence Recovery Record</h2><p class='body'>Recovery evidence is recorded in the execution and avenue ledgers.</p></div>
+<div class="page"><h2 class="sec">SWOT Analysis</h2><div class="swot-wrap"><div class="swot-grid"><div class="swot-quad s"><h4>Strengths</h4><ul><li>Detailed passive suspension and stabilization architecture</li><li>Multiple disclosed loop geometries</li></ul></div><div class="swot-quad w"><h4>Weaknesses</h4><ul><li>Cryogenic superconducting burden</li><li>No independent performance validation established</li></ul></div><div class="swot-quad o"><h4>Opportunities</h4><ul><li>Historical technology resurrection using modern materials and controls</li><li>Research collaboration or infrastructure-subsystem pathway</li></ul></div><div class="swot-quad t"><h4>Threats</h4><ul><li>Capital-intensive guideway deployment</li><li>Safety, reliability, and regulatory burden</li></ul></div></div><div class="swot-badge"><span class="b-k">Commercial Actionability</span><span class="b-v">Indeterminate-to-Limited</span></div></div><p class="small">SWOT content is derived from Established Findings and Analytical Conclusions (see scores manifest for proposition_id basis).</p></div>
+<div class="page"><h2 class="sec">Landscape &amp; Market Data</h2><div class="chart-frame"><div class="c-title">Patent Applications by Region</div><div class="placeholder"><div class="ph-title">Data not established in this run</div>See Operational Audit — region split not established from completed evidence protocol.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Patent Applications by Main Applicants</div><div class="placeholder"><div class="ph-title">Data not established in this run</div>See Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Patent Activity Trend</div><div class="placeholder"><div class="ph-title">Yearly series not established in this run</div>No defensible yearly series was established in this run; see Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Industry Metrics</div><div class="placeholder"><div class="ph-title">Time series not established in this run</div>No invention-specific industry metrics were established in this run; see Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Establishments by Employee-Size Bracket</div><div class="placeholder"><div class="ph-title">Bracket data not established in this run</div>See Operational Audit.</div></div></div>
+
+<!-- ============ APPENDICES ============ -->
+<!-- Appendix content is rendered from the compiled report's actual section 11. -->
+
+</body>
+</html>

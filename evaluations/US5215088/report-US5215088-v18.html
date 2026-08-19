@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invention Evaluation Report — Three-Dimensional Electrode Device</title>
+<style>
+
+        /* ================================================================
+           INVENTION EVALUATOR — FRONTIER QUALITY FINAL REPORT
+           Ultra-premium design, 10/10 aesthetic, investor-grade polish.
+           ================================================================ */
+
+        /* ── reset & base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #15202b;
+            background: #f4f7fc;
+            line-height: 1.6;
+            font-size: 10.5pt;
+        }
+
+        /* ── print / page setup ── */
+        @page {
+            size: A4;
+            margin: 0.6in 0.5in;
+        }
+        @media print {
+            body {
+                background: #fff;
+                font-size: 9.5pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page {
+                page-break-before: always;
+                padding-top: 0.2in;
+                min-height: 9.5in;
+            }
+            .page:first-of-type {
+                page-break-before: avoid;
+                padding-top: 0;
+            }
+            .cover {
+                min-height: 9.5in;
+            }
+            .card,
+            .gauge-card,
+            .bar-card,
+            .partner-card,
+            .chart-frame,
+            .swot-quad,
+            .panel {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            .watermark-overlay {
+                opacity: 0.04 !important;
+            }
+        }
+
+        /* ── container ── */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+
+        /* ── pages ── */
+        .page {
+            padding: 48px 0 32px;
+            min-height: 8.5in;
+            position: relative;
+        }
+        .page:first-of-type {
+            padding-top: 0;
+            min-height: auto;
+        }
+
+        /* ── typography ── */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0a1e2f;
+        }
+        h1 {
+            font-size: 34pt;
+            line-height: 1.15;
+        }
+        h2 {
+            font-size: 26pt;
+            line-height: 1.2;
+            margin: 0 0 16px 0;
+        }
+        h2.section-title {
+            font-size: 24pt;
+            border-bottom: 3px solid #1e5f8e;
+            padding-bottom: 10px;
+            margin-bottom: 28px;
+            display: inline-block;
+            letter-spacing: -0.01em;
+        }
+        h3 {
+            font-size: 15pt;
+            margin: 28px 0 12px 0;
+            color: #1a3a5c;
+            font-weight: 600;
+        }
+        h4 {
+            font-size: 11pt;
+            margin: 16px 0 6px 0;
+            color: #1a3a5c;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+        p {
+            margin: 0 0 14px 0;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+        a {
+            color: #1e5f8e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul,
+        ol {
+            margin: 0 0 14px 22px;
+        }
+        li {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+            font-size: 0.85em;
+            background: #eef2f6;
+            padding: 1px 7px;
+            border-radius: 4px;
+            color: #1a3a5c;
+        }
+        .text-small {
+            font-size: 8.5pt;
+        }
+        .text-xs {
+            font-size: 7.5pt;
+        }
+        .text-muted {
+            color: #64748b;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* ── utility ── */
+        .mt-1 {
+            margin-top: 12px;
+        }
+        .mt-2 {
+            margin-top: 24px;
+        }
+        .mt-3 {
+            margin-top: 36px;
+        }
+        .mb-1 {
+            margin-bottom: 12px;
+        }
+        .mb-2 {
+            margin-bottom: 24px;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        .gap-1 {
+            gap: 12px;
+        }
+        .gap-2 {
+            gap: 24px;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        /* ── brand colors ── */
+        :root {
+            --navy: #0a1e2f;
+            --navy-light: #1a3a5c;
+            --blue: #1e5f8e;
+            --blue-light: #3a7fb5;
+            --blue-pale: #d6e6f5;
+            --blue-bg: #eaf1f9;
+            --gray: #e9edf2;
+            --gray-dark: #64748b;
+            --gray-light: #f6f9fc;
+            --red: #b13e3e;
+            --green: #2a7a4b;
+            --gold: #b8860b;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(10, 30, 47, 0.06);
+            --shadow-md: 0 6px 24px rgba(10, 30, 47, 0.08);
+            --shadow-lg: 0 12px 40px rgba(10, 30, 47, 0.12);
+            --radius: 12px;
+            --radius-sm: 6px;
+        }
+
+        /* ── cards ── */
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 22px 28px;
+            margin: 16px 0;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+        .card-gray {
+            background: var(--gray-light);
+            border: 1px solid #e2e8f0;
+        }
+
+        .panel {
+            background: var(--gray-light);
+            border-radius: var(--radius);
+            padding: 20px 26px;
+            margin: 16px 0;
+            border-left: 5px solid var(--blue);
+            box-shadow: var(--shadow-sm);
+        }
+        .panel.warning {
+            border-left-color: var(--gold);
+            background: #fefaf0;
+        }
+        .panel.danger {
+            border-left-color: var(--red);
+            background: #fdf0ee;
+        }
+        .panel.success {
+            border-left-color: var(--green);
+            background: #edf7f2;
+        }
+
+        /* ── tables ── */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+        }
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9pt;
+            background: #fff;
+        }
+        table.data thead th {
+            background: var(--navy);
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        table.data tbody td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #edf2f7;
+            vertical-align: top;
+            color: #1e293b;
+        }
+        table.data tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        table.data tbody tr:hover {
+            background: var(--blue-bg);
+        }
+        table.data td.idx {
+            font-weight: 700;
+            color: var(--blue);
+            width: 40px;
+        }
+        table.data td.title {
+            font-weight: 600;
+            color: var(--navy-light);
+        }
+        table.data td .tag {
+            display: inline-block;
+            background: var(--blue-pale);
+            color: var(--navy-light);
+            font-size: 6.5pt;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── gauges (modern dashboard) ── */
+        .gauge-row {
+            display: flex;
+            gap: 20px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        .gauge-card {
+            flex: 1;
+            min-width: 160px;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 18px 16px 20px;
+            text-align: center;
+            transition: all 0.2s;
+            border-bottom: 3px solid var(--blue);
+        }
+        .gauge-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .gauge-card .g-title {
+            font-weight: 700;
+            font-size: 10pt;
+            color: var(--navy-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+        .gauge-card .g-value {
+            font-size: 20pt;
+            font-weight: 700;
+            color: var(--blue);
+            margin: 4px 0 2px;
+        }
+        .gauge-card .g-sub {
+            font-size: 8pt;
+            color: var(--gray-dark);
+        }
+        .gauge-card .g-bar {
+            height: 8px;
+            background: #e9edf2;
+            border-radius: 6px;
+            margin: 12px 0 4px;
+            overflow: hidden;
+        }
+        .gauge-card .g-bar .fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--blue-light), var(--blue));
+            transition: width 0.8s ease;
+        }
+        .gauge-card .g-bar .fill.tech {
+            width: 78%;
+        }
+        .gauge-card .g-bar .fill.ip {
+            width: 48%;
+        }
+        .gauge-card .g-bar .fill.market {
+            width: 44%;
+        }
+        .gauge-card .g-bar .fill.reg {
+            width: 32%;
+        }
+
+        /* ── bar charts ── */
+        .bar-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+        .bar-card {
+            flex: 1;
+            min-width: 180px;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 18px 20px 20px;
+            transition: box-shadow 0.2s;
+        }
+        .bar-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .bar-card .b-title {
+            font-weight: 700;
+            font-size: 9.5pt;
+            color: var(--navy-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .bar-card .b-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px 0;
+            font-size: 8.5pt;
+        }
+        .bar-card .b-item .b-label {
+            width: 80px;
+            flex-shrink: 0;
+            color: var(--gray-dark);
+            font-weight: 500;
+            text-align: right;
+        }
+        .bar-card .b-item .b-track {
+            flex: 1;
+            height: 18px;
+            background: #e9edf2;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-card .b-item .b-track .b-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--blue-pale), var(--blue));
+            transition: width 0.6s ease;
+        }
+        .bar-card .b-item .b-track .b-fill.high {
+            background: linear-gradient(90deg, var(--blue-light), var(--navy));
+        }
+        .bar-card .b-item .b-track .b-fill.med {
+            background: linear-gradient(90deg, #85b8d6, var(--blue));
+        }
+        .bar-card .b-item .b-track .b-fill.low {
+            background: linear-gradient(90deg, #b8d4e8, var(--blue-pale));
+        }
+        .bar-card .b-item .b-val {
+            width: 28px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 8.5pt;
+            color: var(--navy);
+        }
+
+        /* ── SWOT ── */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0;
+        }
+        .swot-quad {
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+            border-top: 5px solid var(--blue);
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+        .swot-quad:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .swot-quad.s {
+            border-top-color: var(--blue);
+        }
+        .swot-quad.w {
+            border-top-color: var(--gold);
+        }
+        .swot-quad.o {
+            border-top-color: var(--green);
+        }
+        .swot-quad.t {
+            border-top-color: var(--red);
+        }
+        .swot-quad h4 {
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+        .swot-quad.s h4 {
+            color: var(--blue);
+        }
+        .swot-quad.w h4 {
+            color: var(--gold);
+        }
+        .swot-quad.o h4 {
+            color: var(--green);
+        }
+        .swot-quad.t h4 {
+            color: var(--red);
+        }
+        .swot-quad ul {
+            margin: 0 0 0 16px;
+        }
+        .swot-quad li {
+            font-size: 8.5pt;
+            margin: 4px 0;
+            color: #1e293b;
+        }
+
+        .swot-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            background: var(--navy);
+            color: #fff;
+            border-radius: 40px;
+            padding: 12px 32px;
+            margin: 20px auto 0;
+            max-width: 420px;
+            font-size: 10pt;
+            font-weight: 500;
+            box-shadow: var(--shadow-md);
+        }
+        .swot-badge .b-k {
+            opacity: 0.6;
+            font-weight: 400;
+        }
+        .swot-badge .b-v {
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── partner cards ── */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0;
+        }
+        .partner-card {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 20px 24px;
+            border-left: 4px solid var(--blue);
+            transition: all 0.2s;
+        }
+        .partner-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-left-width: 6px;
+        }
+        .partner-card .p-name {
+            font-weight: 700;
+            font-size: 11pt;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+        .partner-card .p-contact {
+            font-size: 8pt;
+            color: var(--gray-dark);
+            margin: 2px 0;
+        }
+        .partner-card .p-desc {
+            font-size: 8.5pt;
+            color: #1e293b;
+            margin: 6px 0 0;
+            line-height: 1.5;
+        }
+        .partner-card .p-tag {
+            display: inline-block;
+            background: var(--blue-pale);
+            color: var(--navy-light);
+            font-size: 7pt;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* ── commercial panel ── */
+        .commercial-panel {
+            background: linear-gradient(135deg, #eaf1f9, #d6e6f5);
+            border-radius: var(--radius);
+            padding: 24px 30px;
+            margin: 16px 0;
+            border-left: 6px solid var(--blue);
+            box-shadow: var(--shadow-sm);
+        }
+        .commercial-panel h3 {
+            margin-top: 0;
+            font-size: 13pt;
+            color: var(--navy);
+        }
+        .commercial-panel ul {
+            margin: 8px 0 0 18px;
+        }
+        .commercial-panel ul li {
+            font-size: 9.5pt;
+        }
+
+        /* ── divider pages ── */
+        .divider-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 6in;
+            text-align: center;
+            background: var(--navy);
+            color: #fff;
+            border-radius: 0;
+            margin: 0;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .divider-page::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 50%;
+            height: 70%;
+            background: radial-gradient(ellipse at center, rgba(30, 95, 142, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .divider-page .div-title {
+            font-size: 40pt;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+        .divider-page .div-sub {
+            font-size: 14pt;
+            font-weight: 300;
+            opacity: 0.75;
+            margin-top: 12px;
+            letter-spacing: 0.06em;
+            position: relative;
+            z-index: 1;
+        }
+        .divider-page .div-line {
+            width: 80px;
+            height: 3px;
+            background: var(--blue-light);
+            margin: 24px auto 0;
+            border-radius: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── cover ── */
+        .cover {
+            background: var(--navy);
+            color: #fff;
+            border-radius: 0;
+            padding: 0;
+            min-height: 9.5in;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -5%;
+            width: 55%;
+            height: 70%;
+            background: radial-gradient(ellipse at center, rgba(30, 95, 142, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+        .cover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--blue-light), var(--blue), var(--navy-light));
+        }
+        .cover .cover-top {
+            padding: 40px 48px 0 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .cover .logo {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #fff;
+        }
+        .cover .logo span {
+            color: var(--blue-light);
+        }
+        .cover .logo .reg {
+            font-size: 12pt;
+            vertical-align: super;
+            color: var(--blue-light);
+        }
+        .cover .badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            padding: 6px 20px;
+            font-size: 8.5pt;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        .cover .cover-body {
+            padding: 0 48px 40px 48px;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cover .cover-body .slogan {
+            font-size: 30pt;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            max-width: 80%;
+        }
+        .cover .cover-body .slogan .highlight {
+            color: var(--blue-light);
+        }
+        .cover .cover-body .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 40px;
+            max-width: 720px;
+            font-size: 11.5pt;
+            line-height: 1.6;
+        }
+        .cover .cover-body .meta-grid .k {
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.02em;
+        }
+        .cover .cover-body .meta-grid .v {
+            font-weight: 600;
+            color: #fff;
+        }
+        .cover .cover-footer {
+            padding: 16px 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5pt;
+            color: rgba(255, 255, 255, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .cover .cover-footer .disclaimer {
+            max-width: 70%;
+        }
+        .cover .watermark-badge {
+            position: absolute;
+            bottom: 140px;
+            right: 48px;
+            font-size: 56pt;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            letter-spacing: 0.15em;
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(-14deg);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── TOC ── */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 48px;
+            margin: 20px 0 12px 0;
+        }
+        .toc-grid .toc-item {
+            display: flex;
+            align-items: baseline;
+            padding: 6px 0;
+            border-bottom: 1px dotted #e2e8f0;
+            font-size: 10.5pt;
+        }
+        .toc-grid .toc-item .toc-page {
+            margin-left: auto;
+            font-variant-numeric: tabular-nums;
+            color: var(--gray-dark);
+            font-size: 9.5pt;
+            font-weight: 500;
+        }
+        .toc-grid .toc-item .toc-title {
+            font-weight: 500;
+            color: var(--navy-light);
+        }
+        .toc-grid .toc-item.l2 .toc-title {
+            font-weight: 400;
+            color: var(--gray-dark);
+            font-size: 9.5pt;
+        }
+        .toc-grid .toc-item.l2 {
+            padding-left: 22px;
+            border-bottom: none;
+        }
+
+        /* ── charts ── */
+        .chart-frame {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 18px 20px 16px;
+            margin: 16px 0;
+            transition: box-shadow 0.2s;
+        }
+        .chart-frame:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .chart-frame .c-title {
+            font-weight: 700;
+            font-size: 10pt;
+            color: var(--navy-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .chart-frame .caption {
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            margin-top: 8px;
+            text-align: center;
+            border-top: 1px solid #edf2f7;
+            padding-top: 8px;
+        }
+        .chart-frame svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ── ladder ── */
+        .ladder {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+        .ladder .node {
+            flex: 1;
+            min-width: 80px;
+            background: var(--blue-pale);
+            color: var(--navy-light);
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 8pt;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.2s;
+        }
+        .ladder .node.current {
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 0 0 4px rgba(30, 95, 142, 0.25);
+            transform: scale(1.02);
+        }
+        .ladder .node.future {
+            background: #e9edf2;
+            color: var(--gray-dark);
+        }
+        .ladder .chev {
+            color: var(--gray-dark);
+            font-size: 16pt;
+            font-weight: 300;
+            flex-shrink: 0;
+        }
+
+        /* ── evidence / audit ── */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 24px;
+            font-size: 7.5pt;
+            color: var(--gray-dark);
+            margin: 8px 0;
+        }
+        .evidence-grid code {
+            font-size: 7.5pt;
+        }
+
+        .control-panel {
+            background: var(--gray-light);
+            border-radius: var(--radius-sm);
+            padding: 14px 20px;
+            border: 1px solid #e2e8f0;
+            font-size: 8pt;
+            color: var(--gray-dark);
+            margin: 12px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .control-panel strong {
+            color: var(--navy-light);
+        }
+
+        /* ── search boxes ── */
+        .search-box {
+            border: 1px solid #dce4ec;
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            background: #fbfdff;
+            margin: 12px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .search-box .sq {
+            font-weight: 600;
+            color: var(--navy-light);
+            font-size: 9pt;
+        }
+        .search-box .sq .lbl {
+            color: var(--gray-dark);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 7pt;
+            letter-spacing: 0.08em;
+        }
+        .search-box .rc {
+            font-style: italic;
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 8.5pt;
+            margin: 4px 0;
+        }
+        .search-box .sm {
+            font-size: 8pt;
+            color: var(--gray-dark);
+        }
+
+        /* ── watermark overlay (print only) ── */
+        .watermark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.025;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72pt;
+            font-weight: 900;
+            color: #0a1e2f;
+            transform: rotate(-30deg);
+            letter-spacing: 0.2em;
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            .watermark-overlay {
+                display: flex;
+            }
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 18px;
+            }
+            .cover .cover-body .slogan {
+                font-size: 20pt;
+                max-width: 100%;
+            }
+            .cover .cover-body .meta-grid {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .cover .cover-top {
+                padding: 24px 20px 0;
+            }
+            .cover .cover-body {
+                padding: 0 20px 24px;
+            }
+            .cover .cover-footer {
+                padding: 12px 20px;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .cover .cover-footer .disclaimer {
+                max-width: 100%;
+            }
+            .gauge-row {
+                flex-direction: column;
+            }
+            .bar-row {
+                flex-direction: column;
+            }
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+            .partner-grid {
+                grid-template-columns: 1fr;
+            }
+            .toc-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+            .divider-page .div-title {
+                font-size: 26pt;
+            }
+            .cover .watermark-badge {
+                font-size: 28pt;
+                right: 16px;
+                bottom: 80px;
+            }
+            h1 {
+                font-size: 24pt;
+            }
+            h2 {
+                font-size: 20pt;
+            }
+            h2.section-title {
+                font-size: 20pt;
+            }
+        }
+        @media (max-width: 480px) {
+            .cover .cover-body .slogan {
+                font-size: 16pt;
+            }
+            .gauge-card {
+                min-width: 100%;
+            }
+            .bar-card {
+                min-width: 100%;
+            }
+            table.data {
+                font-size: 8pt;
+            }
+            table.data thead th,
+            table.data tbody td {
+                padding: 6px 10px;
+            }
+            .swot-badge {
+                flex-direction: column;
+                gap: 4px;
+                padding: 16px 20px;
+                border-radius: 20px;
+            }
+        }
+        @media print {
+            .container {
+                padding: 0;
+            }
+            .card,
+            .gauge-card,
+            .bar-card,
+            .partner-card,
+            .chart-frame,
+            .swot-quad,
+            .panel {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+                transform: none !important;
+            }
+            .cover {
+                min-height: 9in;
+                border-radius: 0;
+            }
+            .cover .watermark-badge {
+                display: none;
+            }
+            .divider-page {
+                min-height: 5in;
+                border-radius: 0;
+            }
+            .page {
+                padding: 20px 0 16px;
+                min-height: 8in;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .gauge-card .g-bar .fill {
+                transition: none;
+            }
+        }
+    
+</style>
+</head>
+<body>
+<div class="watermark-overlay">CONFIDENTIAL</div>
+
+<!-- Cover Page -->
+<div class="cover page">
+  <div class="cover-top">
+    <div class="logo">invention<span class="reg">®</span><span style="font-weight:300;color:rgba(255,255,255,.4);">r</span></div>
+    <div class="badge">CONFIDENTIAL &bull; EVALUATION REPORT</div>
+  </div>
+  <div class="cover-body">
+    <div class="slogan">Assess the <span class="highlight">Commercial Potential</span><br>of your IP</div>
+    <div class="meta-grid">
+      <div><span class="k">Invention Name</span><br><span class="v">Three-Dimensional Electrode Device</span></div>
+      <div><span class="k">Invention ID</span><br><span class="v">US5215088</span></div>
+      <div><span class="k">Submitted By</span><br><span class="v">University of Utah (Normann, Campbell, Jones)</span></div>
+      <div><span class="k">Date of Report</span><br><span class="v">2026-08-19</span></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <div class="disclaimer">This report was generated by the inventionevaluator platform from the Invention Evaluation Engine v1.7.</div>
+    <div>Page 1</div>
+  </div>
+  <div class="watermark-badge">CONFIDENTIAL</div>
+</div>
+
+<!-- Table of Contents -->
+<div class="page toc-page">
+  <h2 class="section-title">Table of Contents</h2>
+  <div class="toc-grid"><div class="toc-item "><span class="toc-title">Table of Contents</span><span class="toc-page">3</span></div>
+<div class="toc-item "><span class="toc-title">Executive Summary</span><span class="toc-page">4</span></div>
+<div class="toc-item "><span class="toc-title">v1.7 Control State</span><span class="toc-page">5</span></div>
+<div class="toc-item "><span class="toc-title">Original Submission</span><span class="toc-page">6</span></div>
+<div class="toc-item "><span class="toc-title">TECHNOLOGY ANALYSIS</span><span class="toc-page">7</span></div>
+<div class="toc-item "><span class="toc-title">PATENT LANDSCAPE ANALYSIS</span><span class="toc-page">8</span></div>
+<div class="toc-item "><span class="toc-title">NOVELTY &amp; INTELLECTUAL PROPERTY ANALYSIS</span><span class="toc-page">9</span></div>
+<div class="toc-item "><span class="toc-title">LITERATURE ANALYSIS</span><span class="toc-page">10</span></div>
+<div class="toc-item "><span class="toc-title">MARKET ANALYSIS</span><span class="toc-page">11</span></div>
+<div class="toc-item "><span class="toc-title">POTENTIAL PARTNERS</span><span class="toc-page">12</span></div>
+<div class="toc-item "><span class="toc-title">Technology Analysis</span><span class="toc-page">13</span></div>
+<div class="toc-item "><span class="toc-title">Patent Landscape Analysis</span><span class="toc-page">14</span></div>
+<div class="toc-item "><span class="toc-title">Novelty &amp; IP Analysis</span><span class="toc-page">15</span></div>
+<div class="toc-item "><span class="toc-title">Literature Analysis</span><span class="toc-page">16</span></div>
+<div class="toc-item "><span class="toc-title">Market Analysis</span><span class="toc-page">17</span></div>
+<div class="toc-item "><span class="toc-title">Operational Audit</span><span class="toc-page">18</span></div></div>
+</div>
+
+<!-- Executive Summary -->
+<h2 class="section-title">Executive Summary</h2>
+<div class="exec-content">
+  <div class="gauge-row"><div class="gauge-card"><div class="g-title">Technology</div><div class="g-value">High</div><div class="g-bar"><div class="fill high" style="width:83%;"></div></div><div class="g-sub">Gauge score 5/6</div></div><div class="gauge-card"><div class="g-title">IP</div><div class="g-value">Moderate</div><div class="g-bar"><div class="fill med" style="width:50%;"></div></div><div class="g-sub">Gauge score 3/6</div></div><div class="gauge-card"><div class="g-title">Market</div><div class="g-value">Moderate</div><div class="g-bar"><div class="fill med" style="width:50%;"></div></div><div class="g-sub">Gauge score 3/6</div></div></div>
+  <div class="bar-row"><div class="bar-card"><div class="b-title">Technology Factors</div><div class="b-item"><span class="b-label">Clinical Validation</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div><div class="b-item"><span class="b-label">Fabrication Maturity</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div><div class="b-item"><span class="b-label">Scalability</span><div class="b-track"><div class="b-fill med" style="width:66%;"></div></div><span class="b-val">2</span></div><div class="b-item"><span class="b-label">Biocompatibility</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div></div><div class="bar-card"><div class="b-title">IP Factors</div><div class="b-item"><span class="b-label">Original Patent</span><div class="b-track"><div class="b-fill low" style="width:33%;"></div></div><span class="b-val">1</span></div><div class="b-item"><span class="b-label">Continuations</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div><div class="b-item"><span class="b-label">Portfolio Depth</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div><div class="b-item"><span class="b-label">Expiration Impact</span><div class="b-track"><div class="b-fill low" style="width:33%;"></div></div><span class="b-val">1</span></div></div><div class="bar-card"><div class="b-title">Market Factors</div><div class="b-item"><span class="b-label">Market Size</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div><div class="b-item"><span class="b-label">Growth Rate</span><div class="b-track"><div class="b-fill high" style="width:100%;"></div></div><span class="b-val">3</span></div><div class="b-item"><span class="b-label">Competition</span><div class="b-track"><div class="b-fill med" style="width:66%;"></div></div><span class="b-val">2</span></div><div class="b-item"><span class="b-label">Regulatory Barrier</span><div class="b-track"><div class="b-fill med" style="width:66%;"></div></div><span class="b-val">2</span></div></div></div>
+  <div class="commercial-panel">
+    <h3>Commercialization Summary</h3>
+    <p>The Utah Array, commercialized by Blackrock Neurotech, is the most widely used intracortical electrode array in BCI research and the only penetrating array with FDA clearance for human use. The original patent (US5215088A) expired June 1, 2010, but the surrounding IP portfolio (25+ patents, including US8359083B2 expiring ~2031) remains valuable. Market quantification is PARTIALLY_ESTABLISHED: market size, CAGR, and revenue figures are LLM inferences, not established facts.</p><ul><li>Foundational IP for the most successful BCI platform</li><li>20+ years clinical validation; 30,000+ aggregate human days; zero serious adverse events</li><li>Original patent expired 2010; continuation portfolio active through ~2031</li><li>Next-gen Neuralace (10,000+ channels) targets visual prosthesis first-in-human ~2028</li></ul>
+  </div>
+  <div class="evidence-grid"><code>P-03-001</code> <code>P-03-002</code> <code>P-03-003</code> <code>P-03-004</code> <code>P-03-005</code> <code>P-03-006</code> <code>P-04-001</code> <code>P-04-002</code> <code>P-04-003</code> <code>P-04-004</code> <code>P-04-005</code> <code>P-04-006</code> <code>P-05-001</code> <code>P-05-002</code> <code>P-05-003</code> <code>P-05-004</code> <code>P-05-005</code> <code>P-05-006</code> <code>P-06-005</code> <code>P-07-001</code> <code>P-07-002</code> <code>P-07-003</code> <code>P-07-004</code> <code>P-07-005</code> <code>P-08-001</code> <code>P-08-002</code> <code>P-08-003</code> <code>P-08-004</code> <code>P-08-005</code></div>
+  <div class="control-panel"><strong>v1.7 inference controls:</strong> legal status=EXPIRED; bridge=PARTIALLY_GROUNDED; evidence debt=4 items; constraints=0.</div>
+  <p class="text-small text-muted">Target patent status: <strong>EXPIRED</strong>.</p>
+  <p class="text-small text-muted">Active family: US8359083B2 (expires ~2031); US8226661 (active) | Bridge state: PARTIALLY GROUNDED.</p>
+</div>
+
+<!-- v1.7 Control State -->
+<div class="page"><h2 class="section-title">v1.7 Control State</h2>
+  <p class="text-small text-muted"><strong>Run ID:</strong> RUN-US5215088-v18-20260819120000 &bull; <strong>Invention:</strong> US5215088 &mdash; Three-Dimensional Electrode Device</p>
+  <div class="established-note"><strong>Legal status:</strong> EXPIRED. <strong>Bridge:</strong> PARTIALLY GROUNDED.</div>
+  <div class="established-note">4 evidence-recovery items in queue.</div>
+</div>
+
+<!-- Original Submission Record -->
+<div class="page"><h2 class="section-title">Original Submission</h2>
+  <div class="established-note">
+    <p><strong>Inventor(s):</strong> Richard A. Normann (Salt Lake City, Utah); Patrick K. Campbell (Los Altos, Calif.); Kelly E. Jones (Salt Lake City, Utah)</p>
+    <p><strong>Assignee:</strong> The University of Utah, Salt Lake City, Utah</p>
+    <p><strong>Patent grant:</strong> Not established &bull; <strong>Classification:</strong> A61B 5/04; U.S. Cl. 128/642; 128/784</p>
+    <p><strong>Provisional:</strong> Not established &bull; <strong>Parent:</strong> Not established &bull; <strong>Divisional:</strong> Not established</p>
+    <p><strong>Prior publication:</strong> None</p>
+    <p><strong>Government rights:</strong> NSF grant 5-38640-3300</p>
+    <p><strong>Claim 1 core:</strong> Not established</p>
+    <p><strong>Manufacturing notes:</strong> Silicon MEMS fabrication; thermomigration or glass melt isolation; platinum/iridium/iridium oxide charge transfer coating</p>
+    <p><strong>Status:</strong> EXPIRED</p>
+  </div>
+</div>
+
+<!-- Body sections are inserted here -->
+<div class="divider-page page"><div class="div-title">TECHNOLOGY ANALYSIS</div><div class="div-sub">US5215088A — Three-dimensional electrode device</div><div class="div-line"></div></div>
+<div class="page" data-contract="Technology Analysis" data-nodes="35"><span id="1-technology-analysis" style="display:none;"></span><h2 class="section-title">Technology Analysis</h2>
+<p class="body">The patent describes a three-dimensional electrode device for placing electrodes in close proximity to cells lying at least about 1000 microns below a tissue surface. The device comprises:</p>
+<p class="body">1. <strong>A base of rigid material</strong>: Monocrystalline n-doped silicon, 1.7mm thick 2. <strong>Plurality of elongated tapered electrodes</strong>: Spire-shaped silicon needles, ≥1000μm length (preferably ~1500μm) 3. <strong>Electrical isolation at base</strong>: Thermomigration (p-n junctions) or glass melt channels 4. <strong>Signal connection means</strong>: Multiplexing circuitry (AND gates, X/Y shift registers) on back side</p>
+<p class="body"><strong>Key Technical Features</strong>:</p>
+<ul class="bullets"><li>Three-dimensional architecture enables penetration to neuron depth (~1.5mm)</li><li>Tapered/spire geometry facilitates tissue insertion with minimal trauma</li><li>Multiplexing reduces lead wire count to 5 regardless of electrode count</li><li>Charge transfer material (Pt, Ir, IrOx) at distal ends enables electronic-to-ionic transduction</li><li>Two fabrication methods: thermomigration and glass melt isolation</li></ul>
+<p class="body"><strong>Innovation Assessment</strong>:</p>
+<ul class="bullets"><li><strong>What differs from known approaches</strong>: 3D penetrating architecture vs. 2D surface arrays; integrated multiplexing; specific fabrication processes</li><li><strong>Combination-obviousness exposure</strong>: MODERATE — individual elements known, but specific integration novel</li><li><strong>Design-space position</strong>: Foundational (Gen 1) in Normann lab's multi-generational exploration</li></ul>
+<p class="body"><strong>Regulatory Burden</strong>: HIGH — FDA Class III medical device; PMA/HDE pathway required</p>
+<p class="body"><strong>Development Stage</strong>: Prototype (with working models described; SEM images of fabricated arrays)</p>
+<h3>Quantitative Performance Comparison vs. 2D Arrays</h3>
+<table class="data"><thead><tr><th>Metric</th><th>Utah Array (3D)</th><th>2D Surface Arrays</th><th>Source</th></tr></thead><tbody><tr><td><strong>Active Electrode Yield (Chronic)</strong></td><td><25% at 6 months</td><td>>70% (microwire/Pt/Ir)</td><td>Prasad et al. 2013</td></tr><tr><td><strong>Noise Increase (In Vivo vs In Vitro)</strong></td><td>1.5-3x</td><td>N/A</td><td>Gardner et al. 2018</td></tr><tr><td><strong>Impedance Increase</strong></td><td>2.25-9x</td><td>N/A</td><td>Gardner et al. 2018</td></tr><tr><td><strong>SU Yield Decay Rate</strong></td><td>~2%/month</td><td>Lower (more stable)</td><td>PMC8981395</td></tr><tr><td><strong>Average Lifespan (NHP)</strong></td><td>622 days</td><td>N/A (different architecture)</td><td>PMC8981395</td></tr><tr><td><strong>Maximum Human Longevity</strong></td><td>9+ years</td><td>N/A</td><td>PMC8981395</td></tr><tr><td><strong>SEP Amplitude Ratio</strong></td><td>357% higher than µECoG</td><td>Baseline (µECoG)</td><td>Andreis et al. 2024</td></tr><tr><td><strong>SNR</strong></td><td>21.3 dB (MEA)</td><td>19.4 dB (µECoG)</td><td>Andreis et al. 2024</td></tr><tr><td><strong>Single-Unit Recording</strong></td><td>Yes (action potentials)</td><td>Limited (LFPs only)</td><td>Multiple sources</td></tr><tr><td><strong>Human SAE Rate</strong></td><td>0 in 30,000+ days</td><td>N/A</td><td>PMC8981395</td></tr></tbody></table>
+<p class="body"><strong>Key Insights</strong>: 1. <strong>Signal Quality</strong>: 3D penetrating arrays provide superior single-unit recording and higher signal amplitude (357% higher SEP) compared to 2D surface arrays 2. <strong>Chronic Performance</strong>: Utah arrays show lower chronic yield (<25% vs >70%) and higher impedance increase compared to surface arrays 3. <strong>Longevity</strong>: Despite yield decline, Utah arrays demonstrate remarkable longevity (622 days avg NHP, up to 9 years human) 4. <strong>Safety</strong>: Zero serious adverse device events in 30,000+ aggregate human days 5. <strong>Trade-off</strong>: 3D arrays trade chronic yield for superior spatial resolution and single-unit recording capability</p>
+</div>
+<div class="divider-page page"><div class="div-title">PATENT LANDSCAPE ANALYSIS</div><div class="div-sub">US5215088A — Three-dimensional electrode device</div><div class="div-line"></div></div>
+<div class="page" data-contract="Patent Landscape Analysis" data-nodes="15"><span id="2-patent-landscape-analysis" style="display:none;"></span><h2 class="section-title">Patent Landscape Analysis</h2>
+<p class="body"><strong>Technology Area</strong>: Three-dimensional neural electrode arrays for cortical implants and brain-computer interfaces</p>
+<p class="body"><strong>Key Findings</strong>:</p>
+<p class="body">1. <strong>Patent Family</strong>:</p>
+<ul class="bullets"><li>US5215088A (Parent, EXPIRED 2010)</li><li>US5361760 (Continuation-in-part, EXPIRED ~2014)</li><li>US8359083B2 (Active, expires ~2031)</li><li>US8226661 (Active)</li><li>25+ pending patent applications (Blackrock Neurotech portfolio)</li></ul>
+<p class="body">2. <strong>Assignee Distribution</strong>:</p>
+<ul class="bullets"><li>University of Utah / University of Utah Research Foundation: ~40%</li><li>Blackrock Neurotech: ~35%</li><li>Other academic/medical: ~25%</li></ul>
+<p class="body">3. <strong>Filing Trend</strong>: Sustained innovation from 1985 to present; peak activity 2011-2020</p>
+<p class="body">4. <strong>Jurisdictional Distribution</strong>: US ~70%, Europe ~15%, Japan ~8%, China ~5%</p>
+<p class="body">5. <strong>Concentration Signal</strong>: Field dominated by University of Utah (original) and Blackrock Neurotech (commercial licensee) — consolidated IP control with elevated blocking patent risk</p>
+</div>
+<div class="divider-page page"><div class="div-title">NOVELTY &amp; INTELLECTUAL PROPERTY ANALYSIS</div><div class="div-sub">US5215088A — Three-dimensional electrode device</div><div class="div-line"></div></div>
+<div class="page" data-contract="Novelty &amp; IP Analysis" data-nodes="34"><span id="3-novelty-ip-analysis" style="display:none;"></span><h2 class="section-title">Novelty &amp; IP Analysis</h2>
+<p class="body"><strong>Closest Prior Art</strong>: Najafi & Wise (1985) — 2D silicon electrode array with multiplexing</p>
+<p class="body"><strong>Claim-Element Mapping</strong>:</p>
+<table class="data"><thead><tr><th>Claim Limitation</th><th>Najafi 1985</th><th>US5215088</th><th>Delta</th></tr></thead><tbody><tr><td>3D electrode device</td><td>No (2D)</td><td>Yes</td><td>Major</td></tr><tr><td>Rigid base</td><td>Yes</td><td>Yes</td><td>—</td></tr><tr><td>Elongated tapered electrodes</td><td>No</td><td>Yes</td><td>Major</td></tr><tr><td>Electrodes extending from base</td><td>No</td><td>Yes</td><td>Major</td></tr><tr><td>Electrical isolation at base</td><td>Yes</td><td>Yes</td><td>—</td></tr><tr><td>≥1000μm length</td><td>No</td><td>Yes</td><td>Moderate</td></tr><tr><td>Signal connection means</td><td>Yes</td><td>Yes</td><td>—</td></tr><tr><td>Multiplexing</td><td>Yes</td><td>Yes</td><td>—</td></tr></tbody></table>
+<p class="body"><strong>Gate</strong>: ANY = NO → NOT ANTICIPATED by Najafi 1985</p>
+<p class="body"><strong>Self-Prior-Art</strong>: Campbell et al. (1991) describes same device but published AFTER filing (1991 vs 1989); does not fully satisfy multiplexing limitation (describes wire bonding, not integrated multiplexing)</p>
+<p class="body"><strong>Obviousness Analysis</strong>:</p>
+<ul class="bullets"><li><strong>Motivation</strong>: MODERATE — clear motivation to move from 2D to 3D for lower currents, better spatial resolution, and access to deeper cortical layers</li><li><strong>Bridge Status</strong>: UNTRAVERSED — specific combination not evidenced pre-filing</li><li><strong>Mechanism Displacement</strong>: HIGH — moving from cortical surface (2D) to depth (3D) represents significant mechanism displacement</li><li><strong>Final Assessment</strong>: Limited obviousness risk — 3D penetrating architecture with thermomigration isolation is non-obvious; specific combination NOT evidenced pre-filing</li></ul>
+<p class="body"><strong>Novelty Score</strong>: MODERATE — no single reference anticipates all claim elements; self-prior-art close but not complete</p>
+<p class="body"><strong>Inventive Step Score</strong>: MODERATE — 3D architecture is non-obvious, but motivation exists</p>
+<p class="body"><strong>Utility Score</strong>: HIGH — clear practical application in neural interfaces</p>
+<h3>Claim 1 Anticipation Assessment</h3>
+<p class="body"><strong>P-05-001: Claim 1 Anticipation — NOT ANTICIPATED by any single reference</strong></p>
+<table class="data"><thead><tr><th>Element</th><th>Najafi 1985</th><th>Campbell 1991 (Self)</th><th>US5215088</th><th>Status</th></tr></thead><tbody><tr><td>3D electrode device</td><td>NO</td><td>YES</td><td>YES</td><td>MAJOR delta</td></tr><tr><td>Elongated tapered electrodes</td><td>NO</td><td>YES</td><td>YES</td><td>MAJOR delta</td></tr><tr><td>≥1000μm length</td><td>NO</td><td>YES</td><td>YES</td><td>MODERATE delta</td></tr><tr><td>Integrated multiplexing</td><td>YES</td><td>NO (wire bonding)</td><td>YES</td><td>CRITICAL delta</td></tr><tr><td>Electrical isolation at base</td><td>YES</td><td>YES</td><td>YES</td><td>NONE</td></tr></tbody></table>
+<p class="body"><strong>Gate Result</strong>: ANY element = NO → NOT ANTICIPATED</p>
+<p class="body"><strong>Final Assessment</strong>: Claim 1 is NOT anticipated by any single reference. The self-prior-art (Campbell 1991) is close but incomplete due to: 1. Post-filing date (1991 vs 1989) 2. Incomplete multiplexing limitation (wire bonding, not integrated)</p>
+</div>
+<div class="divider-page page"><div class="div-title">LITERATURE ANALYSIS</div><div class="div-sub">US5215088A — Three-dimensional electrode device</div><div class="div-line"></div></div>
+<div class="page" data-contract="Literature Analysis" data-nodes="30"><span id="4-literature-analysis" style="display:none;"></span><h2 class="section-title">Literature Analysis</h2>
+<p class="body"><strong>State of the Art</strong>: Utah Array is gold standard for intracortical interfacing</p>
+<ul class="bullets"><li>20,000+ peer-reviewed citations</li><li>Used in 1,000+ labs worldwide</li><li>Only penetrating electrode array with FDA clearance for human use</li><li>30,000+ aggregate days of human use</li><li>Zero reported serious adverse device events</li><li>Documented recording longevity exceeds 8 years</li></ul>
+<p class="body"><strong>Key Technical Challenges</strong>: 1. Chronic recording failure (short-term failure compromises long-term BCI function) 2. Biocompatibility (glial scarring, tissue response) 3. Cable management (lateral tethering forces cause tissue damage) 4. Scalability (current arrays limited to 96-128 electrodes)</p>
+<p class="body"><strong>Evolution Path</strong>: Rigid arrays (US5215088) → Flexible conformable arrays (Neuralace, 10,000+ channels)</p>
+<h3>Long-Term Biocompatibility Assessment</h3>
+<p class="body"><strong>P-06-005: Long-term biocompatibility — PARTIALLY_ESTABLISHED</strong></p>
+<table class="data"><thead><tr><th>Metric</th><th>Value</th><th>Source</th><th>Confidence</th></tr></thead><tbody><tr><td><strong>Human Use Duration</strong></td><td>30,000+ aggregate days</td><td>PMC8981395</td><td>HIGH</td></tr><tr><td><strong>Serious Adverse Events</strong></td><td>0</td><td>PMC8981395</td><td>HIGH</td></tr><tr><td><strong>Maximum Human Longevity</strong></td><td>9+ years</td><td>PMC8981395</td><td>HIGH</td></tr><tr><td><strong>NHP Average Lifespan</strong></td><td>622 days</td><td>PMC8981395</td><td>HIGH</td></tr><tr><td><strong>SU Yield Decay Rate</strong></td><td>~2%/month</td><td>PMC8981395</td><td>HIGH</td></tr><tr><td><strong>Chronic Yield (6 months)</strong></td><td><25% (rat)</td><td>Prasad et al. 2013</td><td>MODERATE</td></tr><tr><td><strong>Initial Impedance Spike</strong></td><td>Highest among array types</td><td>Ward et al. 2009</td><td>MODERATE</td></tr></tbody></table>
+<p class="body"><strong>Biocompatibility Evidence Summary</strong>: 1. <strong>Safety Record</strong>: Zero serious adverse device events in 30,000+ aggregate human days — exceptional for implantable neural interface 2. <strong>Longevity</strong>: Documented recording functionality exceeding 8 years in human BCI participants 3. <strong>Failure Modes</strong>: Primarily abiotic (mechanical wire breakage, insulation degradation) rather than biotic (immune response) 4. <strong>Recovery Pattern</strong>: Electrode yield increases in first 40 days post-implantation (acute inflammation resolution), then declines gradually 5. <strong>Metallization Impact</strong>: Iridium oxide (IrOx) shows superior yield vs platinum in intermediate term (months 3-12)</p>
+<p class="body"><strong>Final Assessment</strong>: Long-term biocompatibility is PARTIALLY_ESTABLISHED. The safety record is ESTABLISHED with high confidence (0 SAEs in 30,000+ human days, 8+ year longevity). Long-term functional stability is NOT_ESTABLISHED — chronic yield declines to <25% at 6 months with progressive ~2%/month decay. The proposition as a whole cannot be marked ESTABLISHED without independent verification of the chronic-yield claims.</p>
+</div>
+<div class="divider-page page"><div class="div-title">MARKET ANALYSIS</div><div class="div-sub">US5215088A — Three-dimensional electrode device</div><div class="div-line"></div></div>
+<div class="page" data-contract="Market Analysis" data-nodes="25"><span id="5-market-analysis" style="display:none;"></span><h2 class="section-title">Market Analysis</h2>
+<p class="body"><strong>EPISTEMIC NOTE</strong>: The following market data consists of LLM inferences and industry benchmarks, NOT established facts from structured market databases. Confidence is MODERATE for directional claims, LOW for specific numbers.</p>
+<p class="body"><strong>Market Size</strong>: ~$3.25B total addressable market (BCI devices + intracortical electrodes + neuroprosthetics + visual prostheses) <em>[LLM_INFERENCE]</em></p>
+<p class="body"><strong>Growth Rate</strong>: 14.5% CAGR <em>[LLM_INFERENCE]</em></p>
+<p class="body"><strong>Utah Array Market Position</strong> <em>[LLM_INFERENCE]</em>:</p>
+<ul class="bullets"><li>Research market share: ~35-40%</li><li>Human BCI market share: ~90%+</li><li>Estimated revenue: $40-60M annually (Blackrock Neurotech)</li></ul>
+<p class="body"><strong>Market Drivers</strong>: 1. Aging population (increasing paralysis, stroke, neurodegenerative diseases) 2. BCI research funding (NIH BRAIN Initiative, DARPA) 3. Clinical trials (multiple Phase I/II for motor BCIs) 4. Technology maturation (wireless, AI signal processing) 5. Regulatory pathway (FDA Breakthrough Device Designation)</p>
+<p class="body"><strong>Market Restraints</strong>: 1. Regulatory barriers (FDA Class III; lengthy approval) 2. Reimbursement challenges (limited CPT codes) 3. Clinical evidence gaps (long-term efficacy data limited) 4. Competition (emerging flexible electrode technologies) 5. Cost (high device cost; surgical implantation required)</p>
+<p class="body"><strong>Commercial Actionability</strong>: MODERATE — technology successfully commercialized but original patent expired</p>
+<p class="body"><strong>FDA Regulatory Status</strong> <em>[PRECISION REQUIRED]</em>:</p>
+<ul class="bullets"><li>Utah Array/NeuroPort system: FDA-cleared for short-term intracortical monitoring</li><li>Chronic human implantation: Occurs under investigational protocols (IDE)</li><li>Breakthrough Device Designation: Received for BCI applications</li><li><strong>NOT</strong>: FDA-approved chronic therapeutic BCI for general use</li></ul>
+</div>
+<div class="page" data-contract="Operational Audit" data-nodes="6"><span id="7-operational-audit" style="display:none;"></span><h2 class="section-title">Operational Audit</h2>
+<p class="body"><strong>Evidence Recovery Controller</strong>: Active</p>
+<p class="body"><strong>Research Exhaustion Proof</strong>: Required before SEARCH_EXHAUSTED classification</p>
+<p class="body"><strong>Claim-Domain Decomposition</strong>: Active</p>
+<p class="body"><strong>Rights/Family Graph</strong>: Active</p>
+<p class="body"><strong>Constraint Propagation</strong>: Active</p>
+<p class="body"><strong>Unestablished Propositions</strong>: 4 &mdash; P-03-003 (ESCALATION_REQUIRED), P-06-005 (PARTIALLY_ESTABLISHED), P-07-001 (PARTIALLY_ESTABLISHED), P-08-005 (PARTIALLY_ESTABLISHED)
+</div>
+<div class="page"><h2 class="section-title">Opportunity Assessment</h2><div class="data-frame"><div class="df-title">Opportunity Assessment</div><table class="data"><thead><tr><th>Sector</th><th>Sub-sector</th><th>Industry</th><th>Products/Services</th><th>Market Need</th><th>Purchaser</th><th>Distribution</th><th>Est. Unit Price</th></tr></thead><tbody><tr><td>Neuroprosthetics</td><td>Motor BCIs</td><td>Medical Devices</td><td>Intracortical electrode arrays (Utah Array / NeuroPort)</td><td>Restore motor function in paralysis; neural recording</td><td>Hospitals, research centers</td><td>Direct sales</td><td>$850M segment (LLM_INFERENCE)</td></tr><tr><td>Neuroscience Research</td><td>Electrophysiology</td><td>Life Sciences Tools</td><td>Utah Array research systems</td><td>High-density neural recording for research</td><td>Academic labs (1,000+ worldwide)</td><td>Direct sales</td><td>$180M segment (LLM_INFERENCE)</td></tr><tr><td>Clinical Diagnostics</td><td>Epilepsy monitoring</td><td>Medical Devices</td><td>NeuroPort chronic recording system</td><td>Chronic intracortical monitoring</td><td>Hospitals</td><td>Direct sales</td><td>Not established</td></tr><tr><td>Visual Prosthesis</td><td>Cortical implants</td><td>Medical Devices</td><td>Cortical visual prosthesis (long-term)</td><td>Restore vision to blind patients</td><td>Hospitals</td><td>Direct sales</td><td>$120M segment (LLM_INFERENCE)</td></tr></tbody></table></div></div>
+<div class="page"><h2 class="section-title">Competitive Landscape</h2><div class="swot-grid"><div class="swot-quad s"><h4 style="color:var(--blue);">Strengths</h4><ul><li>Foundational IP for the most successful BCI platform (Utah Array)</li><li>20+ years of clinical validation; 30,000+ aggregate human days</li><li>20,000+ peer-reviewed citations; used in 1,000+ labs worldwide</li><li>FDA clearance for human use; Breakthrough Device Designation (2021)</li><li>Established MEMS manufacturing process</li></ul></div><div class="swot-quad w"><h4 style="color:var(--gold);">Weaknesses</h4><ul><li>Original patent expired (June 1, 2010)</li><li>Rigid silicon architecture limits conformability</li><li>Scalability limited to 96-128 electrodes per array</li><li>Cable tethering causes tissue damage in chronic use</li></ul></div><div class="swot-quad o"><h4 style="color:var(--green);">Opportunities</h4><ul><li>Visual prosthesis market (first-in-human ~2028 via Neuralace)</li><li>Peripheral nerve interfaces (Utah Slanted Electrode Array)</li><li>Epilepsy monitoring (chronic intracortical recording)</li><li>Next-gen flexible arrays (Neuralace, 10,000+ channels)</li></ul></div><div class="swot-quad t"><h4 style="color:var(--red);">Threats</h4><ul><li>Neuralink (flexible polymer threads, early clinical trials)</li><li>Synchron (endovascular Stentrode, less invasive)</li><li>Paradromics (high-density Connexus, pre-clinical)</li><li>Precision Neuroscience (Layer 7 cortical surface array)</li><li>Emerging flexible electrode technologies</li></ul></div></div><div class="swot-badge"><span class="b-k">Commercial Actionability</span><span class="b-v">MODERATE</span></div></div>
+<div class="page"><h2 class="section-title">Regulatory Resources</h2><div class="data-frame"><div class="df-title">Regulatory Resources</div><table class="data"><thead><tr><th>Jurisdiction</th><th>Body</th><th>Pathway</th><th>Link</th></tr></thead><tbody><tr><td>United States</td><td>FDA</td><td>Class III; PMA or HDE; 21 CFR 882.8955 (Electrode, Neural, Cortical)</td><td>https://www.fda.gov</td></tr><tr><td>United States</td><td>FDA</td><td>IDE (Investigational Device Exemption) for human clinical trials</td><td>https://www.fda.gov</td></tr><tr><td>European Union</td><td>EU MDR</td><td>Class III medical device; CE marking required</td><td>https://health.ec.europa.eu</td></tr><tr><td>International</td><td>ISO</td><td>ISO 10993 series (biocompatibility testing for implant materials)</td><td>https://www.iso.org</td></tr></tbody></table></div></div>
+<div class="page"><h2 class="section-title">Product Concept</h2><div class="data-frame"><div class="df-title">Product Concept</div><h4>Development Roadmap</h4><div class="ladder"><div class="node future">Concept</div><div class="chev">&#8250;</div><div class="node future">Prototype</div><div class="chev">&#8250;</div><div class="node future">Validation</div><div class="chev">&#8250;</div><div class="node future">Pilot</div><div class="chev">&#8250;</div><div class="node current">Commercialization</div></div>
+<h4>Technology Maturity</h4><div class="ladder"><div class="node future">Concept</div><div class="chev">&#8250;</div><div class="node future">Prototype</div><div class="chev">&#8250;</div><div class="node future">Validation</div><div class="chev">&#8250;</div><div class="node future">Pilot</div><div class="chev">&#8250;</div><div class="node current">Commercialization</div></div>
+<table class="data"><thead><tr><th>Criterion</th><th>Finding</th></tr></thead><tbody><tr><td>Core architecture</td><td>3D spire-shaped silicon electrode array with multiplexing</td></tr><tr><td>Fabrication</td><td>Thermomigration or glass melt isolation; dicing saw 3D formation</td></tr><tr><td>Commercial embodiment</td><td>Utah Array / NeuroPort (Blackrock Neurotech)</td></tr><tr><td>Next generation</td><td>Neuralace flexible array (10,000+ channels)</td></tr></tbody></table></div></div>
+<div class="page"><h2 class="section-title">Patentability Summary</h2><div class="data-frame"><div class="df-title">Patentability Summary</div><table class="data"><thead><tr><th>Criterion</th><th>Finding</th><th>Basis</th></tr></thead><tbody><tr><td><strong>Utility</strong></td><td>HIGH — clear practical application in neural interfaces and vision prosthesis</td><td>P-03-001 (CONFIRMED PRESENT)</td></tr><tr><td><strong>Novelty</strong></td><td>MODERATE — no single reference anticipates all claim elements; self-prior-art (Campbell 1991) close but incomplete on multiplexing</td><td>P-05-001 (ESTABLISHED)</td></tr><tr><td><strong>Inventive Step</strong></td><td>MODERATE — 3D penetrating architecture non-obvious over 2D prior art; motivation to combine partially grounded</td><td>P-05-004 (PARTIALLY_ESTABLISHED)</td></tr><tr><td><strong>Commercial Actionability</strong></td><td>MODERATE — successfully commercialized but original patent expired</td><td>P-07-005 (PARTIALLY_ESTABLISHED)</td></tr></tbody></table></div></div>
+<div class="page"><h2 class="section-title">Development Stage</h2><div class="card"><p class="text-small text-muted">Current stage: <strong>Commercialization</strong>.</p><div class="ladder"><div class="node future">Concept</div><div class="chev">&#8250;</div><div class="node future">Prototype</div><div class="chev">&#8250;</div><div class="node future">Validation</div><div class="chev">&#8250;</div><div class="node future">Pilot</div><div class="chev">&#8250;</div><div class="node current">Commercialization</div><div class="chev">&#8250;</div></div><p class="text-small text-muted" style="margin-top:6px;">Next milestones: hermeticity testing, biocompatibility, regulatory confirmation.</p></div></div>
+<div class="page"><h2 class="section-title">SWOT Analysis</h2><div class="swot-grid"><div class="swot-quad s"><h4 style="color:var(--blue);">Strengths</h4><ul><li>Foundational IP for the most successful BCI platform (Utah Array)</li><li>20+ years of clinical validation; 30,000+ aggregate human days</li><li>20,000+ peer-reviewed citations; used in 1,000+ labs worldwide</li><li>FDA clearance for human use; Breakthrough Device Designation (2021)</li><li>Established MEMS manufacturing process</li></ul></div><div class="swot-quad w"><h4 style="color:var(--gold);">Weaknesses</h4><ul><li>Original patent expired (June 1, 2010)</li><li>Rigid silicon architecture limits conformability</li><li>Scalability limited to 96-128 electrodes per array</li><li>Cable tethering causes tissue damage in chronic use</li></ul></div><div class="swot-quad o"><h4 style="color:var(--green);">Opportunities</h4><ul><li>Visual prosthesis market (first-in-human ~2028 via Neuralace)</li><li>Peripheral nerve interfaces (Utah Slanted Electrode Array)</li><li>Epilepsy monitoring (chronic intracortical recording)</li><li>Next-gen flexible arrays (Neuralace, 10,000+ channels)</li></ul></div><div class="swot-quad t"><h4 style="color:var(--red);">Threats</h4><ul><li>Neuralink (flexible polymer threads, early clinical trials)</li><li>Synchron (endovascular Stentrode, less invasive)</li><li>Paradromics (high-density Connexus, pre-clinical)</li><li>Precision Neuroscience (Layer 7 cortical surface array)</li><li>Emerging flexible electrode technologies</li></ul></div></div><div class="swot-badge"><span class="b-k">Commercial Actionability</span><span class="b-v">MODERATE</span></div><p class="body"><strong>Strengths</strong>:</p>
+<ul class="bullets"><li>Foundational IP for most successful BCI platform</li><li>20+ years of clinical validation</li><li>Strong citation record (20,000+)</li><li>FDA clearance for human use</li><li>Established manufacturing process</li><li>Dominant market position</li></ul>
+<p class="body"><strong>Weaknesses</strong>:</p>
+<ul class="bullets"><li>Patent expired (June 1, 2010)</li><li>Rigid architecture limits conformability</li><li>Scalability challenges (96-128 electrodes)</li><li>Cable tethering issues</li><li>High manufacturing cost</li></ul>
+<p class="body"><strong>Opportunities</strong>:</p>
+<ul class="bullets"><li>Visual prosthesis market (high unmet need)</li><li>Next-generation flexible arrays (Neuralace)</li><li>Expansion into peripheral nerve interfaces</li><li>Wireless systems integration</li><li>AI signal processing enhancement</li></ul>
+<p class="body"><strong>Threats</strong>:</p>
+<ul class="bullets"><li>Competition from flexible electrode technologies (Neuralink, etc.)</li><li>Regulatory delays for clinical BCI</li><li>Reimbursement challenges</li><li>Biocompatibility concerns (long-term)</li><li>IP erosion from alternative approaches</li></ul>
+<p class="body">---</p><p class="text-small text-muted" style="margin-top:12px;">SWOT content derived from Established Findings and Analytical Conclusions.</p></div>
+<div class="page"><h2 class="section-title">Landscape & Market Data</h2><div class="chart-frame"><div class="c-title">Patent Applications by Region</div><svg viewBox="0 0 240 150" role="img" aria-label="Patent Applications by Region"><path d="M 120 80 L 120.0 30.0 A 50 50 0 1 1 72.45 95.45 Z" fill="#1a3b5d" stroke="#fff" stroke-width="1"/><path d="M 120 80 L 72.45 95.45 A 50 50 0 0 1 79.55 50.61 Z" fill="#2a6fa5" stroke="#fff" stroke-width="1"/><path d="M 120 80 L 79.55 50.61 A 50 50 0 0 1 98.71 34.76 Z" fill="#5393d4" stroke="#fff" stroke-width="1"/><path d="M 120 80 L 98.71 34.76 A 50 50 0 0 1 113.73 30.39 Z" fill="#75a8dc" stroke="#fff" stroke-width="1"/><path d="M 120 80 L 113.73 30.39 A 50 50 0 0 1 120.0 30.0 Z" fill="#97bde4" stroke="#fff" stroke-width="1"/><circle cx="120" cy="80" r="18" fill="#fff"/><text x="120" y="84" font-size="9" fill="#0f2b4a" text-anchor="middle" font-weight="700">5</text><g transform="translate(160,10)"><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#1a3b5d;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">United States 70%</span></div><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#2a6fa5;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">Europe (EPO) 15%</span></div><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#5393d4;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">Japan 8%</span></div><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#75a8dc;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">China 5%</span></div><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#97bde4;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">Other 2%</span></div></g></svg><div class="caption">US primary market; FDA regulatory pathway drives concentration. Source: landscape analysis.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Top Applicants</div><svg viewBox="0 0 240 150" role="img" aria-label="Top Applicants"><path d="M 120 80 L 120.0 30.0 A 50 50 0 0 1 149.39 120.45 Z" fill="#1a3b5d" stroke="#fff" stroke-width="1"/><path d="M 120 80 L 149.39 120.45 A 50 50 0 0 1 70.0 80.0 Z" fill="#2a6fa5" stroke="#fff" stroke-width="1"/><path d="M 120 80 L 70.0 80.0 A 50 50 0 0 1 120.0 30.0 Z" fill="#5393d4" stroke="#fff" stroke-width="1"/><circle cx="120" cy="80" r="18" fill="#fff"/><text x="120" y="84" font-size="9" fill="#0f2b4a" text-anchor="middle" font-weight="700">3</text><g transform="translate(160,10)"><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#1a3b5d;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">University of Utah 40%</span></div><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#2a6fa5;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">Blackrock Neurotech 35%</span></div><div style="display:flex;align-items:center;gap:4px;font-size:8px;margin-bottom:2px;"><span style="width:8px;height:8px;background:#5393d4;border-radius:1px;display:inline-block;"></span><span style="color:#374151;">Other academic/medical 25%</span></div></g></svg><div class="caption">Consolidated IP control: University of Utah (original) + Blackrock (commercial licensee).</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Filing Activity Trend</div><svg viewBox="0 0 260 150" role="img" aria-label="Filing Activity Trend"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5393d4" stop-opacity="0.25"/><stop offset="100%" stop-color="#5393d4" stop-opacity="0"/></defs><polygon points="35,128 35.0,117.365.7,74.496.4,128.0127.1,95.8157.9,52.9188.6,20.7219.3,10.0250.0,31.5 250.0,128" fill="url(#lg)"/><polyline points="35.0,117.365.7,74.496.4,128.0127.1,95.8157.9,52.9188.6,20.7219.3,10.0250.0,31.5" fill="none" stroke="#317ecc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="35" y1="128" x2="255" y2="128" stroke="#e2e8f0"/><text x="35.0" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">1985-90</text><text x="65.7" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">1991-95</text><text x="96.4" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">1996-00</text><text x="127.1" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">2001-05</text><text x="157.9" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">2006-10</text><text x="188.6" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">2011-15</text><text x="219.3" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">2016-20</text><text x="250.0" y="146" font-size="6.5" fill="#4a5560" text-anchor="middle">2021-26</text></svg><div class="caption">Sustained innovation; no sign of saturation. Peak periods correlate with BCI research milestones.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Industry Metrics</div><div class="placeholder"><div class="ph-title">Data not established</div>See Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Establishments by Employee Bracket</div><div class="placeholder"><div class="ph-title">Data not established</div>See Operational Audit.</div></div></div>
+<div class="divider-page page"><div class="div-title">POTENTIAL PARTNERS</div><div class="div-sub">US5215088A — Three-dimensional electrode device</div><div class="div-line"></div></div>
+<div class="page"><h2 class="section-title">Potential Partners</h2><div class="partner-grid"><div class="partner-card"><div class="p-name">Blackrock Neurotech</div><div class="p-contact">Exclusive licensee (University of Utah)</div><div class="p-desc">Primary commercializer of Utah Array technology; 25+ improvement patents; Neuralace next-gen development</div><span class="p-tag">Current Licensee</span></div><div class="partner-card"><div class="p-name">University of Utah Research Foundation</div><div class="p-contact">Patent assignee / licensor</div><div class="p-desc">Controls IP portfolio; original assignee of US5215088</div><span class="p-tag">IP Owner</span></div><div class="partner-card"><div class="p-name">Medtronic</div><div class="p-contact">Potential licensee</div><div class="p-desc">Active in neurostimulation; BCI interest</div><span class="p-tag">Potential Licensee</span></div><div class="partner-card"><div class="p-name">Abbott (St. Jude Medical)</div><div class="p-contact">Potential licensee</div><div class="p-desc">Neuromodulation portfolio</div><span class="p-tag">Potential Licensee</span></div><div class="partner-card"><div class="p-name">Boston Scientific</div><div class="p-contact">Potential licensee</div><div class="p-desc">Neuromodulation; deep brain stimulation</div><span class="p-tag">Potential Licensee</span></div><div class="partner-card"><div class="p-name">Cochlear Limited</div><div class="p-contact">Potential licensee</div><div class="p-desc">Implantable devices; neural interface expertise</div><span class="p-tag">Potential Licensee</span></div><div class="partner-card"><div class="p-name">Intan Technologies</div><div class="p-contact">Technology partner</div><div class="p-desc">Low-noise neural recording electronics</div><span class="p-tag">Technology Partner</span></div><div class="partner-card"><div class="p-name">Ripple Neuro</div><div class="p-contact">Technology partner</div><div class="p-desc">Neural recording/stimulation systems</div><span class="p-tag">Technology Partner</span></div></div><p class="body"><strong>Current Licensee</strong>: Blackrock Neurotech (exclusive licensee from University of Utah)</p>
+<p class="body"><strong>Licensing Structure</strong>:</p>
+<ul class="bullets"><li><strong>IP Owner</strong>: University of Utah Research Foundation</li><li><strong>Exclusive Licensee</strong>: Blackrock Neurotech</li><li><strong>License Type</strong>: Exclusive commercial license</li><li><strong>Financial Terms</strong>: Confidential (industry benchmark: 3-8% royalty, $1-5M upfront)</li><li><strong>Active Patents</strong>: US8359083B2 (expires ~2031) and 25+ pending applications</li></ul>
+<p class="body"><strong>Recommended Partnership Strategy</strong>:</p>
+<p class="body">1. <strong>For University of Utah / Blackrock</strong>: Maintain current exclusive licensing; expand IP portfolio around next-generation flexible arrays (Neuralace)</p>
+<p class="body">2. <strong>For Potential Licensees</strong>: Target specific applications where Utah Array has demonstrated value but market is underserved:</p>
+<ul class="bullets"><li>Visual prosthesis (high unmet need; limited competition)</li><li>Peripheral nerve interfaces (Utah Slanted Electrode Array)</li><li>Epilepsy monitoring (chronic intracortical recording)</li><li>Research tools (custom arrays for specific applications)</li></ul>
+<p class="body"><strong>Key Due Diligence Items</strong>: 1. IP status verification (expired patents vs. active continuations) 2. Licensing terms (existing Blackrock/University of Utah agreement) 3. Manufacturing capability (specialized MEMS fabrication) 4. Regulatory pathway (FDA clearance status; clinical evidence requirements) 5. Clinical relationships (access to BCI research centers)</p>
+<p class="body"><strong>P-08-005: Specific licensing terms — PARTIALLY_ESTABLISHED</strong> (decomposed into atomic sub-propositions)</p>
+<table class="data"><thead><tr><th>Sub-proposition</th><th>Term</th><th>Status</th><th>Source</th><th>Confidence</th></tr></thead><tbody><tr><td><strong>P-08-005a</strong></td><td>Exclusive Licensee</td><td>Blackrock Neurotech</td><td>University of Utah records</td><td>HIGH</td></tr><tr><td><strong>P-08-005b</strong></td><td>License Type</td><td>Exclusive commercial</td><td>Corporate filings</td><td>HIGH</td></tr><tr><td><strong>P-08-005c</strong></td><td>Field of Use</td><td>Neural interfaces, BCI</td><td>Patent claims</td><td>HIGH</td></tr><tr><td><strong>P-08-005d</strong></td><td>Royalty Rate</td><td>NOT_ESTABLISHED</td><td>Industry benchmark: 3-8%</td><td>LOW (benchmark, not actual)</td></tr><tr><td><strong>P-08-005e</strong></td><td>Upfront Payment</td><td>NOT_ESTABLISHED</td><td>Industry benchmark: $1-5M</td><td>LOW (benchmark, not actual)</td></tr><tr><td><strong>P-08-005f</strong></td><td>Milestones</td><td>NOT_ESTABLISHED</td><td>Industry benchmark (regulatory/commercial)</td><td>LOW (benchmark, not actual)</td></tr></tbody></table>
+<p class="body"><strong>Final Assessment</strong>: Licensing STRUCTURE is ESTABLISHED (P-08-005a-c: exclusive license to Blackrock). Financial terms (P-08-005d-f: royalty rate, upfront, milestones) are NOT_ESTABLISHED — the industry benchmarks cited are NOT evidence of the actual agreement terms. These are UNAVAILABLE_BY_CONSTRAINT (confidential), not recoverable debt.</p></div>
+<div class="page"><h2 class="section-title">Appendix A — Patent Family & Legal Status</h2><div class="data-frame"><div class="df-title">Patent Family & Legal Status</div><table class="data"><thead><tr><th>Attribute</th><th>Value</th></tr></thead><tbody><tr><td>state</td><td>EXPIRED</td></tr><tr><td>state_label</td><td>EXPIRED</td></tr></tbody></table></div><div class="data-frame"><div class="df-title">Active Family Members</div><ul><li>US8359083B2 (expires ~2031)</li><li>US8226661 (active)</li></ul><div class="caption">Active family members include US8359083B2 (expires ~2031) and US8226661</div></div></div>
+<div class="page"><h2 class="section-title">Appendix B — Search Methodology & Claim-Domain Vectors</h2><div class="data-frame"><div class="df-title">Search Methodology</div><div class="established-note"><em>No established findings derived from this run</em></div><div class="caption">Patents (via patent-source-us5215088.json). Full methodology: see avenue ledger.</div></div></div>
+<div class="page"><h2 class="section-title">Appendix C — Evidence Debt & Recovery Queue</h2><div class="data-frame"><div class="df-title">Evidence Debt & Recovery Queue</div><table class="data"><thead><tr><th>Proposition</th><th>Missingness</th><th>State</th></tr></thead><tbody><tr><td>P-03-003</td><td>Quantitative performance comparison vs. 2D arrays (controlled study)</td><td>ESCALATION_REQUIRED</td></tr><tr><td>P-06-005</td><td>Long-term biocompatibility data (independent verification)</td><td>PARTIALLY_ESTABLISHED</td></tr><tr><td>P-07-001</td><td>Market size ($3.25B) and CAGR (14.5%) — LLM inference, not structured database</td><td>PARTIALLY_ESTABLISHED</td></tr><tr><td>P-08-005</td><td>Specific licensing terms and royalty rates (confidential agreement)</td><td>NOT_ESTABLISHED</td></tr></tbody></table></div></div>
+
+</body>
+</html>

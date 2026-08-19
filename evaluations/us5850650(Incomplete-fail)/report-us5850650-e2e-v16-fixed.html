@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invention Evaluation Report — Combination Hammer and Lumber Manipulating Tool</title>
+<style>
+/* ============================================================
+   inventionevaluator — report template (v1.6 pipeline, Phase 10)
+   Faithful reproduction of the branded report chrome:
+   chevron header band · running footer · CONFIDENTIAL watermark
+   cover · TOC · gauges · section dividers · SWOT · search boxes
+   ============================================================ */
+
+:root{
+  --ink:#1a1f26;
+  --ink-soft:#4a5560;
+  --ink-faint:#7a8590;
+  --paper:#ffffff;
+  --gray-band:#e9ebee;
+  --gray-band-2:#dfe2e6;
+  --blue-navy:#16324f;
+  --blue-mid:#2c5f9e;
+  --blue:#3d7abf;
+  --blue-pale:#dbe7f4;
+  --blue-paler:#eef4fa;
+  --red:#c0392b;
+  --rule:#c9d4e0;
+  --tier-1:#dbe7f4; /* Very Limited */
+  --tier-2:#b9d2ec; /* Limited */
+  --tier-3:#97bde4; /* Limited-Moderate */
+  --tier-4:#75a8dc; /* Moderate */
+  --tier-5:#5393d4; /* Moderate-Strong */
+  --tier-6:#317ecc; /* Strong */
+  --font-display:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Consolas","Menlo",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  font-size:10.5pt;
+  line-height:1.5;
+  background:var(--paper);
+}
+
+/* ---------- print setup ----------
+   A4 to match the reference branded report (595.2 x 841.92 pt).
+   Footer lives in @page margin boxes: the page counter (counter(page))
+   is only reliable there — fixed-element counters return 0 in Chromium. */
+@page{
+  size:A4;
+  margin:0.85in 0.9in 0.9in 0.9in;
+  @bottom-left{
+    content:"IEAUS 5,850,650: Sample submission (law-firm public page) – Combination Hammer and Lumber Manipulating Tool. Submitted 2026-08-14. Report 2026-08-14.";
+    font-size:6pt;
+    font-variant:small-caps;
+    letter-spacing:0.05em;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+    padding-top:3pt;
+    padding-right:0.25in;
+    vertical-align:top;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    max-width:5.3in;
+    overflow:hidden;
+  }
+  @bottom-right{
+    content:"Page " counter(page);
+    font-size:7pt;
+    font-variant:small-caps;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+    padding-top:3pt;
+    white-space:nowrap;
+    vertical-align:top;
+  }
+}
+.page{page-break-after:always;overflow-x:clip;}
+.page:last-child{page-break-after:auto;}
+.avoid-break{page-break-inside:avoid;}
+/* invisible TOC page markers (extracted by pdftotext for two-pass numbering) */
+.tocmark{position:absolute;top:0;left:0;color:#ffffff;font-size:1pt;font-family:monospace;pointer-events:none;}
+
+/* ---------- watermark ---------- */
+.watermark{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-32deg);
+  font-size:52pt;
+  font-weight:700;
+  letter-spacing:0.16em;
+  color:#8a939c;
+  opacity:0.055;
+  z-index:0;
+  pointer-events:none;
+  white-space:nowrap;
+  text-transform:uppercase;
+}
+
+/* ---------- header band (fixed, repeats on every page) ---------- */
+.header-band{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:0.62in;
+  background:var(--gray-band);
+  z-index:5;
+  clip-path:polygon(0 0,100% 0,100% 62%,0 100%);
+  border-bottom:2px solid var(--blue-mid);
+}
+.header-band .logo{
+  position:absolute;
+  top:0.10in;left:0.9in;
+  font-family:var(--font-display);
+  font-size:11pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  letter-spacing:0.02em;
+}
+.header-band .logo .mag{
+  display:inline-block;
+  width:0.62em;height:0.62em;
+  border:1.6px solid var(--blue-mid);
+  border-radius:50%;
+  position:relative;
+  margin-left:0.05em;
+}
+.header-band .logo .mag::after{
+  content:"";
+  position:absolute;
+  width:0.28em;height:1.6px;
+  background:var(--blue-mid);
+  transform:rotate(45deg);
+  right:-0.16em;bottom:-0.02em;
+}
+.header-band .logo .reg{
+  font-size:0.62em;
+  vertical-align:super;
+  color:var(--blue-mid);
+}
+.header-band .tagline{
+  position:absolute;
+  top:0.30in;left:0.9in;
+  font-size:6.5pt;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+/* ---------- running footer: rendered via @page margin boxes (see @page) ---------- */
+
+/* ---------- cover ---------- */
+.cover{position:relative;min-height:9.5in;}
+.cover .cover-gray{
+  background:var(--gray-band);
+  height:4.6in;
+  position:relative;
+  clip-path:polygon(0 0,100% 0,100% 88%,0 100%);
+}
+.cover .cover-logo{
+  position:absolute;
+  top:0.5in;left:0.9in;
+  font-family:var(--font-display);
+  font-size:20pt;
+  font-weight:600;
+  color:var(--blue-navy);
+}
+.cover .cover-logo .mag{
+  display:inline-block;
+  width:0.6em;height:0.6em;
+  border:2.5px solid var(--blue-mid);
+  border-radius:50%;
+  position:relative;
+  margin-left:0.06em;
+}
+.cover .cover-logo .mag::after{
+  content:"";
+  position:absolute;
+  width:0.3em;height:2.5px;
+  background:var(--blue-mid);
+  transform:rotate(45deg);
+  right:-0.17em;bottom:-0.03em;
+}
+.cover .cover-logo .reg{font-size:0.6em;vertical-align:super;color:var(--blue-mid);}
+.cover .cover-tagline{
+  position:absolute;
+  top:1.15in;left:0.9in;
+  font-size:9pt;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.cover .icon-cluster{
+  position:absolute;
+  top:1.6in;right:0.9in;
+  display:flex;gap:0.16in;
+  opacity:0.85;
+}
+.cover .icon-cluster .ic{
+  width:0.5in;height:0.5in;
+  background:var(--blue-pale);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13pt;color:var(--blue-mid);
+}
+.cover .cover-blue{
+  background:var(--blue-navy);
+  color:#fff;
+  padding:0.55in 0.9in 0.5in 0.9in;
+  margin-top:-0.55in;
+  position:relative;
+  clip-path:polygon(0 0,100% 0,100% 100%,0 96%);
+}
+.cover .cover-blue h1{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:23pt;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:0.28in;
+}
+.cover .cover-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.14in 0.5in;
+  font-size:10pt;
+}
+.cover .cover-meta .k{
+  font-size:7.5pt;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:#9fc0e0;
+}
+.cover .cover-meta .v{color:#fff;font-weight:600;}
+.cover .cover-legal{
+  margin:0.35in 0.9in 0;
+  font-size:7.5pt;
+  color:var(--ink-faint);
+  line-height:1.45;
+}
+.cover .cover-disclaimer{
+  margin:0.28in 0.9in 0;
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:0.12in 0.2in;
+  font-size:8pt;
+  color:var(--ink-soft);
+  background:var(--blue-paler);
+}
+
+/* ---------- TOC ---------- */
+.toc h2{
+  font-family:var(--font-display);
+  font-size:17pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  margin-bottom:0.25in;
+  letter-spacing:0.04em;
+}
+.toc ul{list-style:none;}
+.toc li{
+  display:flex;
+  align-items:baseline;
+  gap:0.12in;
+  padding:0.055in 0;
+  border-bottom:1px dotted var(--rule);
+  font-size:10pt;
+}
+.toc li.lvl2{padding-left:0.35in;font-size:9pt;color:var(--ink-soft);}
+.toc li .t{font-weight:600;color:var(--blue-navy);}
+.toc li.lvl2 .t{font-weight:400;color:var(--ink-soft);}
+.toc li .dots{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-3px);}
+.toc li .pg{font-variant-numeric:tabular-nums;color:var(--ink-faint);}
+
+/* ---------- section divider pages ---------- */
+.divider{position:relative;}
+.divider .div-title{
+  margin-top:1.1in;
+  font-family:var(--font-display);
+  font-size:26pt;
+  font-weight:600;
+  letter-spacing:0.06em;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+}
+.divider .div-sub{
+  margin-top:0.3in;
+  list-style:none;
+}
+.divider .div-sub li{
+  padding:0.09in 0;
+  border-bottom:1px solid var(--blue-paler);
+  font-size:11pt;
+}
+.divider .div-sub a{color:var(--blue-mid);text-decoration:none;font-weight:600;}
+.divider .div-sub a:hover{text-decoration:underline;}
+
+/* ---------- headings ---------- */
+h2.sec{
+  font-family:var(--font-display);
+  font-size:15pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  margin:0.18in 0 0.14in 0;
+  letter-spacing:0.03em;
+  border-bottom:2px solid var(--blue-mid);
+  padding-bottom:0.06in;
+}
+h3.sub{
+  font-family:var(--font-display);
+  font-size:11.5pt;
+  font-weight:600;
+  color:var(--blue-mid);
+  margin:0.16in 0 0.08in 0;
+}
+h4.mini{
+  font-size:9.5pt;
+  font-weight:700;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin:0.12in 0 0.06in 0;
+}
+p.body{margin:0.08in 0;color:var(--ink);}
+p.small{font-size:8pt;color:var(--ink-faint);}
+ul.bullets{margin:0.08in 0 0.08in 0.22in;}
+ul.bullets li{margin:0.05in 0;}
+a{color:var(--blue-mid);}
+a.more{color:var(--blue-mid);font-weight:600;text-decoration:none;}
+
+/* ---------- tables ---------- */
+table.data{
+  width:100%;
+  border-collapse:collapse;
+  margin:0.1in 0 0.16in 0;
+  font-size:8.8pt;
+}
+table.data thead th{
+  background:var(--blue-pale);
+  color:var(--blue-navy);
+  font-weight:700;
+  text-align:left;
+  padding:0.07in 0.1in;
+  border-bottom:2px solid var(--blue-mid);
+}
+table.data tbody td{
+  padding:0.06in 0.1in;
+  border-bottom:1px solid var(--blue-paler);
+  vertical-align:top;
+}
+table.data tbody tr:nth-child(even){background:#f7fafc;}
+table.data td.idx{font-weight:700;color:var(--blue-mid);width:0.5in;}
+table.data td.title{font-weight:600;color:var(--blue-navy);}
+table.data td.title a{color:var(--blue-mid);text-decoration:none;}
+table.data td.title a:hover{text-decoration:underline;}
+
+/* ---------- search query boxes ---------- */
+.search-box{
+  border:1.5px solid var(--blue-mid);
+  border-radius:5px;
+  margin:0.14in 0 0.1in 0;
+  padding:0.12in 0.16in;
+  background:#fbfdff;
+  page-break-inside:avoid;
+}
+.search-box .sq{
+  font-weight:700;
+  color:var(--blue-navy);
+  font-size:9.5pt;
+  letter-spacing:0.02em;
+}
+.search-box .sq .lbl{color:var(--ink-faint);font-weight:600;text-transform:uppercase;font-size:7.5pt;letter-spacing:0.1em;}
+.search-box .rc{
+  font-style:italic;
+  font-weight:700;
+  color:var(--blue-mid);
+  font-size:9pt;
+  margin:0.04in 0;
+}
+.search-box .rc a{color:var(--blue-mid);}
+.search-box .sm{font-size:8.8pt;color:var(--ink-soft);}
+
+/* ---------- gauges ---------- */
+.gauge-row{
+  display:flex;
+  gap:0.25in;
+  justify-content:space-between;
+  margin:0.12in 0;
+}
+.gauge-card{
+  flex:1;
+  text-align:center;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in 0.08in 0.14in 0.08in;
+  background:#fff;
+}
+.gauge-card .g-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:11pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+.gauge-card .g-tier{
+  font-size:9.5pt;
+  font-weight:700;
+  color:var(--blue-mid);
+  margin-top:0.03in;
+}
+.gauge-card svg{width:100%;height:auto;}
+
+/* ---------- legend ---------- */
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.08in 0.16in;
+  justify-content:flex-end;
+  margin:0.06in 0 0.1in 0;
+  font-size:7.5pt;
+  color:var(--ink-soft);
+}
+.legend .sw{
+  display:inline-block;
+  width:0.14in;height:0.14in;
+  border-radius:2px;
+  margin-right:0.04in;
+  vertical-align:-0.02in;
+}
+
+/* ---------- grouped bars ---------- */
+.bar-row{
+  display:flex;
+  gap:0.25in;
+  margin:0.1in 0 0.16in 0;
+}
+.bar-card{
+  flex:1;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in;
+  background:#fff;
+}
+.bar-card .b-title{
+  font-weight:700;
+  font-size:9.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  text-align:center;
+  margin-bottom:0.06in;
+}
+.bar-card svg{width:100%;height:auto;}
+
+/* ---------- commercialization panel ---------- */
+.commercial-panel{
+  background:var(--gray-band);
+  border-radius:6px;
+  padding:0.16in 0.2in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.commercial-panel h3{
+  font-family:var(--font-display);
+  font-size:12pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  letter-spacing:0.04em;
+  margin-bottom:0.08in;
+}
+.commercial-panel p{font-size:9.5pt;color:var(--ink);}
+.commercial-panel ul{margin:0.08in 0 0 0.22in;}
+.commercial-panel ul li{font-size:9.5pt;margin:0.04in 0;}
+
+/* ---------- ladder diagrams ---------- */
+.ladder{
+  display:flex;
+  align-items:center;
+  gap:0.06in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.ladder .node{
+  flex:1;
+  background:var(--blue-mid);
+  color:#fff;
+  text-align:center;
+  padding:0.12in 0.06in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.ladder .node.current{
+  background:var(--red);
+  box-shadow:0 0 0 2px #fff,0 0 0 4px var(--red);
+}
+.ladder .chev{
+  color:var(--blue-mid);
+  font-size:13pt;
+  font-weight:700;
+  flex:0 0 auto;
+}
+
+/* ---------- semantic map ---------- */
+.semantic-map{
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.semantic-map .sm-row{
+  display:flex;
+  align-items:center;
+  gap:0.08in;
+  margin:0.07in 0;
+}
+.semantic-map .sm-node{
+  background:var(--blue-mid);
+  color:#fff;
+  padding:0.09in 0.14in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  white-space:nowrap;
+}
+.semantic-map .sm-node.current{background:var(--red);}
+.semantic-map .sm-node.leaf{background:var(--blue-pale);color:var(--blue-navy);font-weight:500;}
+.semantic-map .sm-conn{color:var(--blue-mid);font-weight:700;}
+.semantic-map .sm-branch{
+  margin-left:0.5in;
+  display:flex;
+  flex-direction:column;
+  gap:0.06in;
+}
+.semantic-map .fn{
+  font-size:6.5pt;
+  color:var(--ink-faint);
+  margin-top:0.06in;
+}
+.semantic-map .fn sup{color:var(--blue-mid);}
+
+/* ---------- charts ---------- */
+.chart-frame{
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.12in;
+  margin:0.12in 0;
+  background:#fff;
+  page-break-inside:avoid;
+}
+.chart-frame .c-title{
+  font-weight:700;
+  font-size:9.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:0.06in;
+}
+.chart-frame svg{width:100%;height:auto;}
+.chart-frame .placeholder{
+  border:1.5px dashed var(--rule);
+  border-radius:4px;
+  padding:0.3in 0.2in;
+  text-align:center;
+  color:var(--ink-faint);
+  font-size:8.5pt;
+  background:var(--blue-paler);
+}
+.chart-frame .placeholder .ph-title{font-weight:700;color:var(--ink-soft);margin-bottom:0.05in;}
+.chart-frame .caption{font-size:7.5pt;color:var(--ink-faint);margin-top:0.05in;}
+
+/* ---------- SWOT ---------- */
+.swot-wrap{position:relative;margin:0.16in 0;page-break-inside:avoid;}
+.swot-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:0.14in;
+}
+.swot-quad{
+  border-radius:8px;
+  padding:0.16in 0.18in;
+  min-height:1.7in;
+}
+.swot-quad.s{background:var(--blue-paler);border-top:4px solid var(--blue-mid);}
+.swot-quad.w{background:#f4f6f8;border-top:4px solid var(--ink-faint);}
+.swot-quad.o{background:var(--blue-paler);border-top:4px solid var(--blue);}
+.swot-quad.t{background:#f4f6f8;border-top:4px solid var(--red);}
+.swot-quad h4{
+  font-size:10pt;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:0.07in;
+}
+.swot-quad.s h4{color:var(--blue-mid);}
+.swot-quad.w h4{color:var(--ink-soft);}
+.swot-quad.o h4{color:var(--blue);}
+.swot-quad.t h4{color:var(--red);}
+.swot-quad ul{margin-left:0.2in;}
+.swot-quad li{font-size:8.8pt;margin:0.04in 0;color:var(--ink);}
+.swot-badge{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:1.15in;height:1.15in;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid var(--blue-mid);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(22,50,79,0.18);
+  z-index:2;
+}
+.swot-badge .b-k{
+  font-size:6pt;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.swot-badge .b-v{
+  font-size:9pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  line-height:1.15;
+}
+
+/* ---------- appendices ---------- */
+.appendix p{font-size:9pt;color:var(--ink);margin:0.07in 0;}
+.appendix ul{margin:0.07in 0 0.07in 0.22in;}
+.appendix li{font-size:9pt;margin:0.04in 0;}
+.appendix a{color:var(--blue-mid);}
+
+/* ---------- buffer pages ---------- */
+.buffer{min-height:8in;}
+</style>
+</head>
+<body>
+
+<!-- watermark -->
+<div class="watermark">CONFIDENTIAL</div>
+
+<!-- header band -->
+<div class="header-band">
+  <div class="logo">invention<span class="mag"></span>evaluat<span class="reg">©</span>r</div>
+  <div class="tagline">objective idea analysis</div>
+</div>
+
+<!-- running footer: rendered via @page margin boxes (see @page rule) -->
+
+<!-- ============ COVER ============ -->
+<div class="page cover">
+  <div class="cover-gray">
+    <div class="cover-logo">invention<span class="mag"></span>evaluat<span class="reg">©</span>r</div>
+    <div class="cover-tagline">objective idea analysis</div>
+    <div class="icon-cluster">
+      <div class="ic">🖥</div>
+      <div class="ic">👥</div>
+      <div class="ic">📊</div>
+      <div class="ic">⚙️</div>
+    </div>
+  </div>
+  <div class="cover-blue">
+    <h1>Assess the Commercial Potential of your IP</h1>
+    <div class="cover-meta">
+      <div><div class="k">Invention Name</div><div class="v">Combination Hammer and Lumber Manipulating Tool</div></div>
+      <div><div class="k">Submitted By</div><div class="v">Sample submission (law-firm public page)</div></div>
+      <div><div class="k">Invention ID</div><div class="v">US 5,850,650</div></div>
+      <div><div class="k">Date</div><div class="v">2026-08-14</div></div>
+    </div>
+  </div>
+  <div class="cover-legal">
+    This report was generated by the inventionevaluator report-automation platform from the
+    Invention Evaluation Engine v1.6 pipeline (evidence sufficiency architecture). It compiles
+    established findings, analytical conclusions, and an operational audit produced by the
+    nine-phase evaluation. Scores shown are derived executive summaries of the underlying
+    findings — they are presentation-layer derivations, not new evidence, and do not constitute
+    an overall patentability label. This document is not legal advice.
+  </div>
+  <div class="cover-disclaimer">Please note this is a hypothetical technology presented solely for demonstration purposes. This report is a sample/demo deliverable of the inventionevaluator platform; content is derived from a retrospective evaluation of an expired patent conducted from public records.</div>
+</div>
+
+<!-- ============ TOC ============ -->
+<div class="page toc">
+  <h2>Table of Contents</h2>
+  <ul id="toc-list">
+    <li class="" data-target="technology-analysis"><span class="t">Technology Analysis</span><span class="dots"></span><span class="pg">7</span></li>
+<li class="" data-target="patent-landscape-analysis"><span class="t">Patent Landscape Analysis</span><span class="dots"></span><span class="pg">10</span></li>
+<li class="" data-target="ip-novelty-analysis"><span class="t">IP / Novelty Analysis</span><span class="dots"></span><span class="pg">13</span></li>
+<li class="" data-target="literature-analysis"><span class="t">Literature Analysis</span><span class="dots"></span><span class="pg">18</span></li>
+<li class="" data-target="market-analysis"><span class="t">Market Analysis</span><span class="dots"></span><span class="pg">20</span></li>
+<li class="" data-target="opportunity-assessment"><span class="t">Opportunity Assessment</span><span class="dots"></span><span class="pg">22</span></li>
+<li class="" data-target="potential-partners"><span class="t">Potential Partners</span><span class="dots"></span><span class="pg">24</span></li>
+  </ul>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<div class="page">
+  <h2 class="sec">Executive Summary</h2>
+  <p class="small">Derived executive summary — constrained to Established Findings + Analytical Conclusions (Executive Summary ⊆ findings + conclusions). Gauge and bar scores are presentation-layer derivations from the findings; basis proposition_ids are listed in the scores manifest.</p>
+
+  <div class="legend">
+    <span><span class="sw" style="background:var(--tier-1)"></span>Very Limited</span>
+    <span><span class="sw" style="background:var(--tier-2)"></span>Limited</span>
+    <span><span class="sw" style="background:var(--tier-3)"></span>Limited-Moderate</span>
+    <span><span class="sw" style="background:var(--tier-4)"></span>Moderate</span>
+    <span><span class="sw" style="background:var(--tier-5)"></span>Moderate-Strong</span>
+    <span><span class="sw" style="background:var(--tier-6)"></span>Strong</span>
+  </div>
+
+  <div class="gauge-row">
+    <div class="gauge-card"><div class="g-title">Technology</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="11.1" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-75.0 11.1 76.2)">Very Limited</text><text x="34.9" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-45.0 34.9 34.9)">Limited</text><text x="76.2" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-15.0 76.2 11.1)">Limited-Moderate</text><text x="123.8" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(15.0 123.8 11.1)">Moderate</text><text x="165.1" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(45.0 165.1 34.9)">Moderate-Strong</text><text x="188.9" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(75.0 188.9 76.2)">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">IP</div><svg viewBox="0 0 200 150" role="img" aria-label="Limited gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="61.8" y2="61.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="11.1" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-75.0 11.1 76.2)">Very Limited</text><text x="34.9" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-45.0 34.9 34.9)">Limited</text><text x="76.2" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-15.0 76.2 11.1)">Limited-Moderate</text><text x="123.8" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(15.0 123.8 11.1)">Moderate</text><text x="165.1" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(45.0 165.1 34.9)">Moderate-Strong</text><text x="188.9" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(75.0 188.9 76.2)">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Limited</text></svg><div class="g-tier">Limited</div></div>
+    <div class="gauge-card"><div class="g-title">Market</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="11.1" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-75.0 11.1 76.2)">Very Limited</text><text x="34.9" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-45.0 34.9 34.9)">Limited</text><text x="76.2" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(-15.0 76.2 11.1)">Limited-Moderate</text><text x="123.8" y="11.1" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(15.0 123.8 11.1)">Moderate</text><text x="165.1" y="34.9" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(45.0 165.1 34.9)">Moderate-Strong</text><text x="188.9" y="76.2" font-size="7" fill="#7a8590" text-anchor="middle" transform="rotate(75.0 188.9 76.2)">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+  </div>
+
+  <div class="bar-row">
+    <div class="bar-card"><div class="b-title">Technology</div><svg viewBox="0 0 260 150" role="img" aria-label="Technology sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="57.8" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="113.2" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="168.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="224.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+    <div class="bar-card"><div class="b-title">IP</div><svg viewBox="0 0 260 150" role="img" aria-label="IP sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="124.0" width="30.5" height="0.0" fill="#dbe7f4" rx="2"/><text x="57.8" y="121.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">0</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="124.0" width="30.5" height="0.0" fill="#dbe7f4" rx="2"/><text x="113.2" y="121.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">0</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="168.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="224.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+    <div class="bar-card"><div class="b-title">Market</div><svg viewBox="0 0 260 150" role="img" aria-label="Market sub-factors"><line x1="30" y1="124.0" x2="252" y2="124.0" stroke="#e2e8f0"/><text x="26" y="127.0" font-size="7" fill="#7a8590" text-anchor="end">0</text><line x1="30" y1="86.7" x2="252" y2="86.7" stroke="#e2e8f0"/><text x="26" y="89.7" font-size="7" fill="#7a8590" text-anchor="end">1</text><line x1="30" y1="49.3" x2="252" y2="49.3" stroke="#e2e8f0"/><text x="26" y="52.3" font-size="7" fill="#7a8590" text-anchor="end">2</text><line x1="30" y1="12.0" x2="252" y2="12.0" stroke="#e2e8f0"/><text x="26" y="15.0" font-size="7" fill="#7a8590" text-anchor="end">3</text><rect x="42.5" y="86.7" width="30.5" height="37.3" fill="#b9d2ec" rx="2"/><text x="57.8" y="83.7" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">1</text><text x="57.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Development</text><rect x="98.0" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="113.2" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="113.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Unique Benefits</text><rect x="153.5" y="49.3" width="30.5" height="74.7" fill="#97bde4" rx="2"/><text x="168.8" y="46.3" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">2</text><text x="168.8" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Landscape</text><rect x="209.0" y="12.0" width="30.5" height="112.0" fill="#75a8dc" rx="2"/><text x="224.2" y="9.0" font-size="8" font-weight="700" fill="#16324f" text-anchor="middle">3</text><text x="224.2" y="142.0" font-size="6.5" fill="#4a5560" text-anchor="middle">Regulatory Hurdles</text></svg></div>
+  </div>
+
+  <div class="commercial-panel">
+    <h3>Commercialization Summary</h3>
+    <p>Commercial actionability is Moderate (market size medium-high, mature low-growth category, high competitive intensity). The US patent expired June 13, 2017 and the Canadian family member expired June 12, 2018: the fixed-jaw hammer concept is now in the public domain, so commercial value exists only as a free-to-practice product concept — there is no IP left to license. Commercial adoption could not be established from the completed evidence protocol.</p><ul><li>No exclusivity remains: US term expired 2017-06-13; CA term expired 2018-06-12. <a class='more' href='#'>more</a></li><li>Estwing and Vaughan &amp; Bushnell identified as the strongest fit pathways for a framing-focused fixed-jaw hammer. <a class='more' href='#'>more</a></li></ul>
+  </div>
+
+  <h3 class="sub">Established findings (evidence-backed)</h3>
+  <ul class="bullets">
+    
+  </ul>
+
+  <h3 class="sub">Analytical conclusions (inference from established findings, never evidence)</h3>
+  <ul class="bullets">
+    <li>The anticipation gate resolves to NOT ANTICIPATED by any identified reference.</li>
+<li>The mechanism/design-choice distances (C2/D3 vs US4762303A, the closest functional art; C2/D2 vs US1469472A) characterize the invention as a cross-application design choice within a known design space, assessed per pathway and never combined.</li>
+<li>The inventor explored the design space within a single patent: two mounting configurations (jaw-on-socket, claims 1–5; jaw-on-handle, claims 6–13), with no sibling filings identified.</li>
+<li>Commercial actionability is Moderate (market size medium-high × growth low × accessibility medium × competitive intensity high), with the patent-expiry caveat that no exclusivity remains to commercialize.</li>
+  </ul>
+
+  <h3 class="sub">Operational Audit (unestablished propositions, with barrier types)</h3>
+  <table class="data">
+    <thead><tr><th>Proposition</th><th>Barrier type</th></tr></thead>
+    <tbody>
+      <tr><td>P-02-004</td><td>No public disclosure of the invention before filing</td></tr>
+<tr><td>P-03-003</td><td>No quantitative performance data exists</td></tr>
+<tr><td>P-03-004b</td><td>No mandatory product-design regulation governs hand hammers</td></tr>
+<tr><td>P-03-005</td><td>Prototype evidence</td></tr>
+<tr><td>P-03-006</td><td>Production evidence</td></tr>
+<tr><td>P-04-002</td><td>No international family members beyond US + CA</td></tr>
+<tr><td>P-05-009</td><td>Motivation proposition (PARTIALLY GROUNDED, analogous only)</td></tr>
+<tr><td>P-05-010</td><td>Obviousness proposition</td></tr>
+<tr><td>P-05-011</td><td>Unexpected-result proposition</td></tr>
+<tr><td>P-06-005</td><td>No pre-filing non-patent publication discloses the fixed-jaw hammer combination</td></tr>
+<tr><td>P-07-001</td><td>Commercial adoption</td></tr>
+<tr><td>P-08-005</td><td>No other viable commercialization pathway exists</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ SECTION DIVIDERS + BODY ============ -->
+<div class="page"><h2 class="sec">Technology Analysis</h2><h3 class="sub">Technology Abstraction Ladder</h3><div class="ladder"><div class="node">Material</div><span class="chev">›</span> › <div class="node">Subcomponent</div><span class="chev">›</span> › <div class="node">Component</div><span class="chev">›</span> › <div class="node current">Device</div><span class="chev">›</span> › <div class="node">System</div><span class="chev">›</span> › <div class="node">Service</div></div><h3 class="sub">Development-Stage Ladder</h3><div class="ladder"><div class="node current">Concept</div><span class="chev">›</span> › <div class="node">Proof of Concept</div><span class="chev">›</span> › <div class="node">Testing</div><span class="chev">›</span> › <div class="node">Manufacturing</div><span class="chev">›</span> › <div class="node">Sales</div></div><h3 class="sub">Semantic Map — Taxonomy Position</h3><div class="semantic-map"><div class="sm-row"><span class="sm-node sm-node">Hand Tools</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node">Hammers (B25D)</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node leaf">Framing hammers</span></div><div class="sm-row"><span class="sm-node sm-node">Combination / multipurpose hammers</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node current">Combination Hammer &amp; Lumber Manipulating Tool</span></div></div></div><div class="sm-row"><span class="sm-node sm-node">Lumber manipulation tools</span></div><div class="sm-branch"><div class="sm-row"><span class="sm-node sm-node leaf">Opposed-grip straightening tools (US4762303A lineage)</span></div></div></div><div class="fn"><sup>1</sup> <a href="https://patents.google.com/patent/US5850650A">IPC B25D 1/04 — patent front page</a> · <sup>2</sup> <a href="https://www.census.gov/naics/">NAICS 332216 Saw Blade and Handtool Manufacturing</a></div></div></div>
+<div class="page divider" id="technology-analysis"><div class="div-title">Technology Analysis</div><ul class="div-sub"><li><a href='#1-2-technology-profile'>1.2 Technology profile</a></li><li><a href='#2-2-mechanism-design-choice-distances'>2.2 Mechanism/design-choice distances</a></li></ul></div>
+<div class="page"><h2 class="sec">1.2 Technology profile</h2><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-03-001</td><td>The patent discloses a hammer-head with claw, striking head, and socket; jaw non-movably secured to the socket opposing the claw, spaced a finite distance (claims 1–5); alternative: jaw secured to the handle (claims 6–13)</td><td>Google Patents US5850650A full text (claims 1–13, specification)</td></tr><tr><td>P-03-002</td><td>The claimed mechanism is a fixed-geometry single-tool integration: no moving parts; jaw + claw grip lumber; handle provides leverage to twist lumber straight</td><td>Patent specification (jaw &quot;non-movably secured&quot;; &quot;does not have any moving parts&quot;; &quot;approximately the same weight as a conventional hammer&quot;)</td></tr><tr><td>P-03-004a</td><td>OSHA 29 CFR 1910.242 (Hand tools) requires employers to maintain hand tools in safe working condition</td><td>OSHA 29 CFR 1910.242 regulation text</td></tr><tr><td>P-03-007</td><td>Official classification on the patent: Int. Cl. 6 B25D 1/04; U.S. Cl. 7/146; Field of Search 7/143, 146, 147</td><td>Patent front page</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.2 Mechanism/design-choice distances</h2><p class='body'><strong>Reasoning:</strong> The fixed-jaw hammer shares the opposed-grip leverage principle with US4762303A (C2 — same principle, different configuration: hammer-integrated) but applies it through a cross-application leap (D3 — recognizing a hammer&#x27;s claw can serve as one gripping element of a lumber manipulator). Against US1469472A, the jaw-on-hammer-head placement was known (C2), with the lumber application as the leap (D2). Distances are assessed per pathway and never combined into a single composite.</p><table class="data"><thead><tr><th>proposition_id</th><th>Conclusion</th><th>Premise map</th><th>Rule applied</th></tr></thead><tbody><tr><td>P-05-012</td><td>C2/D3 vs US4762303A (closest functional art); C2/D2 vs US1469472A (per pathway, never combined)</td><td>P-05-002…P-05-008</td><td>C0–C4 / D0–D4 taxonomy, per pathway</td></tr></tbody></table></div>
+<div class="page divider" id="patent-landscape-analysis"><div class="div-title">Patent Landscape Analysis</div><ul class="div-sub"><li><a href='#1-3-patent-landscape'>1.3 Patent landscape</a></li><li><a href='#2-3-design-space-position'>2.3 Design-space position</a></li></ul></div>
+<div class="page"><h2 class="sec">1.3 Patent landscape</h2><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-04-001</td><td>B25D 1/00 (hand hammers) class: ~84 patents (ipqwery index); B25D total US grants 2015–2025 = 1,146 (PlainPatent); top B25D assignees 2015–2025: Makita 175, Hilti 126, Milwaukee 113, Black &amp; Decker 78 — dominated by power percussion tools</td><td>ipqwery IPC holdings index; PlainPatent B25D search</td></tr><tr><td>P-04-003</td><td>Forward citations: US5850650 family cited by 22 documents — Stanley B&amp;D demolition utility tool family (US8024994B2, US8117702B2, USD562101S1, USD595555S1, US20170297189A1), Mrugalski US7311293B2 (multi-use framing tool), Yung-Shou Chen multipurpose tools, Fiskars demolition tools, Ezy Lifter board removal tool, CN104275681B (adjustable-angle nail hammer)</td><td>Google Patents &quot;Families Citing this family&quot; (neutral historical signals, not patentability evidence)</td></tr><tr><td>P-04-004</td><td>Design-space position: two mounting configurations explored within one patent (jaw-on-socket claims 1–5; jaw-on-handle claims 6–13); no sibling filings identified</td><td>Patent claims 1–13; patent-family search</td></tr><tr><td>P-04-005</td><td>Post-filing lineage: Stanley Black &amp; Decker demolition utility tool (US8024994B2, priority 2007-06-26) has grasping jaws with teeth + striking head and cites US5850650</td><td>Google Patents US8024994B2 record (neutral historical signal)</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.3 Design-space position</h2><p class='body'><strong>Reasoning:</strong> Karsnia claimed both possible mounting locations of the fixed jaw within one filing, covering the design space broadly rather than filing multiple applications. No separate Karsnia filings were identified.</p><table class="data"><thead><tr><th>proposition_id</th><th>Conclusion</th><th>Premise map</th><th>Rule applied</th></tr></thead><tbody><tr><td>P-04-004a</td><td>The inventor explored the design space within a single patent: two mounting configurations (jaw-on-socket, claims 1–5; jaw-on-handle, claims 6–13); no sibling filings identified</td><td>P-04-004</td><td>Design-space/sibling analysis</td></tr></tbody></table></div>
+<div class="page divider" id="ip-novelty-analysis"><div class="div-title">IP / Novelty Analysis</div><ul class="div-sub"><li><a href='#1-4-novelty-prior-art-disclosure-mapping'>1.4 Novelty — prior-art disclosure mapping</a></li><li><a href='#1-5-novelty-knowledge-decomposition'>1.5 Novelty — knowledge decomposition</a></li><li><a href='#2-1-anticipation-gate'>2.1 Anticipation gate</a></li><li><a href='#2-6-chronology-validator'>2.6 Chronology validator</a></li></ul></div>
+<div class="page"><h2 class="sec">1.4 Novelty — prior-art disclosure mapping</h2><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-05-001</td><td>Claim 1 limitations (a)–(d) and Claim 6 limitations (a)–(e) as constructed from the patent&#x27;s actual claims</td><td>US5850650 claims, Google Patents</td></tr><tr><td>P-05-002</td><td>US513271A (Matthews 1894, &quot;Wrench&quot;): hammer part + movable jaw sliding on shank with inclined apertures + dowel pin; no claw, no socket, no lumber function; jaw movable, not non-movably secured</td><td>US513271A full text, Google Patents</td></tr><tr><td>P-05-003</td><td>US1469472A (Bangert 1923, &quot;Combination tool&quot;): hammer/wrench combo with stationary serrated jaw face on hammer head + slide jaw; no claw, no socket, no lumber</td><td>US1469472A full text, Google Patents</td></tr><tr><td>P-05-004</td><td>US4762303A (Thomas 1988, &quot;Lumber turning tool&quot;): elongated handle + head with two opposed spaced claws, one shorter; claws engage opposing sides of lumber; handle provides leverage; no striking head, no socket</td><td>US4762303A full text, Google Patents</td></tr><tr><td>P-05-005</td><td>US5255575A (Williams 1993, &quot;Multi-purpose hand tool&quot;): interchangeable heads; no fixed jaw, no lumber function</td><td>US5255575A full text, Google Patents</td></tr><tr><td>P-05-006</td><td>US5787676A (Scharf, filed 1997-03-18, granted 1998-08-04): lumber straightening apparatus — foot-operated lever, not a hammer; pre-filing priority</td><td>US5787676A record, Google Patents</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">1.5 Novelty — knowledge decomposition</h2><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-05-008a</td><td>component_known: claw hammers known before 1997</td><td>Ubiquitous (contemporary tool records)</td></tr><tr><td>P-05-008b</td><td>component_known: lumber-gripping claws known before 1997</td><td>US4762303A</td></tr><tr><td>P-05-008c</td><td>principle_known: opposed-grip leverage for straightening lumber known before 1997</td><td>US4762303A</td></tr><tr><td>P-05-008d</td><td>function_known: lumber manipulation known before 1997</td><td>US4762303A; Fine Homebuilding practice (1991-11-01 article)</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.1 Anticipation gate</h2><p class='body'><strong>Reasoning:</strong> Every identified reference misses at least one Claim 1 limitation. US513271A misses (a) partially (no claw, no socket), (b), (c), (d) — jaw movable; US1469472A misses (a) partially (no claw, no socket), (b), (c), (d) — no lumber function; US4762303A misses (a) (no striking head, no socket) and the hammer integration; US5255575A and US5787676A miss the hammer-head-with-claw structure and the fixed jaw. No single reference discloses the full combination. The same analysis holds for Claim 6, whose jaw is secured to the handle. This is not a freedom-to-operate (FTO) opinion: it addresses novelty against identified references only, and any decision to make or sell a hammer with a fixed lumber-gripping jaw should be reviewed by counsel against in-force claims of later patents (e.g., the Stanley B&amp;D demolition tool family).</p><table class="data"><thead><tr><th>proposition_id</th><th>Conclusion</th><th>Premise map</th><th>Rule applied</th></tr></thead><tbody><tr><td>P-05-007</td><td>NOT ANTICIPATED by any identified reference</td><td>P-05-002…P-05-006 (per-reference limitation mappings)</td><td>Anticipation gate: ALL limitations in a single reference → candidate; ANY missing → not anticipated</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.6 Chronology validator</h2><p class='body'><strong>Reasoning:</strong> The US filing (1997-06-13) precedes all identified prior art, including US5787676A (filed 1997-03-18, before the US filing — prior art despite later grant). The CA filing (1998-06-12) falls within the 12-month Paris Convention priority window from the US filing, so the CA grant (2001-06-05) and both term expirations (US 2017-06-13; CA 2018-06-12) are consistent.</p><p class='body'>---</p><table class="data"><thead><tr><th>proposition_id</th><th>Conclusion</th><th>Premise map</th><th>Rule applied</th></tr></thead><tbody><tr><td>P-09-001</td><td>All dates consistent; all identified prior art pre-dates the 1997-06-13 filing (US513271 1894; US1469472 1923; US4762303 1988; US5255575 1993; US5787676 filed 1997-03-18); family dates consistent (CA filed 1998-06-12 within the 12-month Convention window of US priority 1997-06-13)</td><td>P-02-001, P-02-002, P-02-005, P-02-006, P-05-002…P-05-006</td><td>Chronology validator</td></tr></tbody></table></div>
+<div class="page divider" id="literature-analysis"><div class="div-title">Literature Analysis</div><ul class="div-sub"><li><a href='#1-6-literature'>1.6 Literature</a></li></ul></div>
+<div class="page"><h2 class="sec">1.6 Literature</h2><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-06-001</td><td>Fine Homebuilding (1991-11-01) &quot;How to Straighten Crooked Boards, Built-Up Beams, and Headers&quot;: hammer + 16d nail used as lever to align framing members (pre-filing; lumber-straightening practice known)</td><td>Fine Homebuilding article record</td></tr><tr><td>P-06-002</td><td>Fine Homebuilding (1999-07-01) &quot;Tweak a twisted stud&quot;: bar clamp used as lever to straighten twisted stud (post-filing; background)</td><td>Fine Homebuilding article record</td></tr><tr><td>P-06-003</td><td>Fine Homebuilding (2000-09-01) &quot;Straightening Framed Walls&quot;: strong-backing, planing, shimming techniques (post-filing; background)</td><td>Fine Homebuilding article record</td></tr><tr><td>P-06-004</td><td>Audel&#x27;s Carpenters and Builders Guide (1923) documents balloon-framing practice (pre-filing; background)</td><td>Audel&#x27;s Guide (1923)</td></tr></tbody></table></div>
+<div class="page divider" id="market-analysis"><div class="div-title">Market Analysis</div><ul class="div-sub"><li><a href='#1-7-market'>1.7 Market</a></li></ul></div>
+<div class="page"><h2 class="sec">1.7 Market</h2><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-07-002</td><td>Market sizing: US hand tools market ≈ USD 6.1B (2024), CAGR ≈ 3.4% to 2032 (PS Market Research); US hammer market CAGR 3.0–4.5% (2026–2035) (IndexBox) — reconciled: hammer is a subsegment of hand tools; both mature, low-single-digit growth</td><td>PS Market Research (US hand tools, 2024–2032); IndexBox (US hammer market, 2026–2035) — two independent publishers</td></tr><tr><td>P-07-003</td><td>NAICS classification: 332216 Saw Blade and Handtool Manufacturing (2022 ed., US Census), includes &quot;Hammers, handtools, manufacturing&quot;</td><td>US Census NAICS 2022 documentation</td></tr><tr><td>P-07-004</td><td>Competitive landscape: Stanley Black &amp; Decker, Estwing, Vaughan &amp; Bushnell, Stiletto, Milwaukee (TTI), Tekton, private labels (Husky/Kobalt/Hart); premium tier ~45–55% of category revenue; private label 25–35% of units</td><td>IndexBox; Valuates (framing hammer manufacturers: Estwing, Vaughan &amp; Bushnell, STILETTO, Milwaukee, TEKTON, STANLEY); Strategic Market Research; HTF Market Intelligence; Freedonia — multiple independent publishers</td></tr></tbody></table></div>
+<div class="page divider" id="opportunity-assessment"><div class="div-title">Opportunity Assessment</div><ul class="div-sub"><li><a href='#2-4-commercial-actionability'>2.4 Commercial actionability</a></li></ul></div>
+<div class="page"><h2 class="sec">2.4 Commercial actionability</h2><p class='body'><strong>Reasoning:</strong> Market size is medium-high (USD 6.1B US hand tools, 2024); growth is low (3.0–4.5% CAGR — mature category); accessibility is medium (established distribution channels; concept is free to practice); competitive intensity is high (Stanley B&amp;D, Estwing, Vaughan &amp; Bushnell, Milwaukee dominate). One &quot;low&quot; score (growth) plus high competitive intensity → Moderate with risk flags. Critical caveat: the patent expired in 2017 and the concept is in the public domain — there is no IP to license, so commercial value exists only as a free-to-practice product concept.</p><table class="data"><thead><tr><th>proposition_id</th><th>Conclusion</th><th>Premise map</th><th>Rule applied</th></tr></thead><tbody><tr><td>P-07-005</td><td>Commercial actionability: Moderate (market size med-high × growth low × accessibility med × competitive intensity high), with patent-expiry caveat</td><td>P-07-002, P-07-004, P-02-006</td><td>Size × growth × accessibility × competitive intensity scoring</td></tr></tbody></table></div>
+<div class="page divider" id="potential-partners"><div class="div-title">Potential Partners</div><ul class="div-sub"><li><a href='#1-8-partners'>1.8 Partners</a></li><li><a href='#2-5-partner-prioritization'>2.5 Partner prioritization</a></li></ul></div>
+<div class="page"><h2 class="sec">1.8 Partners</h2><p class='body'>---</p><table class="data"><thead><tr><th>proposition_id</th><th>Finding</th><th>Source identity</th></tr></thead><tbody><tr><td>P-08-001</td><td>Stanley Black &amp; Decker: sells hammers (Stanley/DeWalt); buys/absorbs designs; technical need = differentiated professional hand tools; invention mapping = fixed-jaw framing hammer concept fits Stanley/DeWalt pro lines</td><td>IndexBox; Strategic Market Research; HTF Market Intelligence</td></tr><tr><td>P-08-002</td><td>Estwing Manufacturing: sells premium one-piece steel hammers; technical need = new professional features; invention mapping = fixed-jaw feature differentiates in premium tier</td><td>IndexBox; Strategic Market Research</td></tr><tr><td>P-08-003</td><td>Vaughan &amp; Bushnell: sells framing hammers (California Framer); niche loyalty; invention mapping = framing-focused line</td><td>IndexBox; Valuates; Strategic Market Research</td></tr><tr><td>P-08-004</td><td>Milwaukee Tool (TTI): sells professional hand tools; invention mapping = pro framing line</td><td>IndexBox; Valuates</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">2.5 Partner prioritization</h2><p class='body'><strong>Reasoning:</strong> Estwing (premium one-piece steel hammers) and Vaughan &amp; Bushnell (framing hammers, California Framer) sell exactly the product category the fixed-jaw hammer targets, and both differentiate on professional features. Stanley Black &amp; Decker and Milwaukee are larger but the feature would be a smaller addition to their broad lines. The claim is &quot;strongest identified pathways,&quot; not &quot;only pathways&quot; (see Operational Audit, P-08-005). Because the patent is expired, partnership value is design/feature licensing of a free-to-practice concept — a weak position.</p><table class="data"><thead><tr><th>proposition_id</th><th>Conclusion</th><th>Premise map</th><th>Rule applied</th></tr></thead><tbody><tr><td>P-08-006</td><td>Estwing and Vaughan &amp; Bushnell are the strongest identified commercialization pathways (framing-focused premium makers); partnership value limited to design/feature licensing given patent expiry</td><td>P-08-001…P-08-004, P-02-006</td><td>Counterfactual-exclusivity audit (reformulated from &quot;only partner&quot;)</td></tr></tbody></table></div>
+<div class="page"><h2 class="sec">SWOT Analysis</h2><div class="swot-wrap"><div class="swot-grid"><div class="swot-quad s"><h4>Strengths</h4><ul><li>NOT ANTICIPATED by any identified prior-art reference (P-05-007)</li><li>Fixed-geometry single-tool integration — no moving parts, dual mounting configurations claimed (P-03-001/P-03-002)</li><li>LOW regulatory burden — general workplace hand-tool rule only (P-03-004a)</li><li>Established premium framing-tool tier, 45-55% of category revenue (P-07-004)</li></ul></div><div class="swot-quad w"><h4>Weaknesses</h4><ul><li>Patent expired 2017 — no enforceable exclusivity; concept in public domain (P-02-006)</li><li>No prototype, performance, or production evidence established (P-03-003/005/006)</li><li>No commercial adoption established (P-07-001)</li><li>Mature low-growth category: hand tools CAGR 3.4%; hammers 3.0-4.5% (P-07-002)</li></ul></div><div class="swot-quad o"><h4>Opportunities</h4><ul><li>Framing-focused premium makers (Estwing, Vaughan &amp; Bushnell) match the concept (P-08-002/003)</li><li>Free-to-practice design could be adopted into pro-tool lines without licensing</li><li>Stanley B&amp;D demolition-tool lineage shows continued relevance of gripping-jaw hammers (P-04-005)</li></ul></div><div class="swot-quad t"><h4>Threats</h4><ul><li>High competitive intensity: Stanley B&amp;D, Estwing, Vaughan &amp; Bushnell, Milwaukee dominate (P-07-004)</li><li>B25D class dominated by power percussion — hand-hammer innovation is a niche (P-04-001)</li><li>Private-label pressure at 25-35% of units (P-07-004)</li><li>Later in-force patents (e.g., demolition-tool family) — FTO review by counsel required before any product decision</li></ul></div></div><div class="swot-badge"><span class="b-k">Commercial Opportunity</span><span class="b-v">Moderate</span></div></div><p class="small">SWOT content is derived from Established Findings and Analytical Conclusions (see scores manifest for proposition_id basis).</p></div>
+<div class="page"><h2 class="sec">Operational Audit</h2>
+<p class='body'>The following propositions could not be established from the completed evidence protocol. They are excluded from factual findings. Each is recorded with its barrier type and avenue disposition summary. Full avenue ladders are in <code>avenue-ledger-us5850650-v16.md</code>.</p>
+<p class='body'><strong>Audit note:</strong> The absence of a pre-filing disclosure, the absence of a mandatory product-design regime, the absence of international family members beyond US + CA, and the absence of commercial adoption are negative claims. Under v1.6, negative claims require a bounded evidence universe and (where the schema requires) independent corroboration. None of these could be established from the completed evidence protocol; they are recorded here as unestablished propositions, not as findings.</p>
+<p class='body'>---</p>
+<table class="data"><thead><tr><th>proposition_id</th><th>Proposition</th><th>Barrier type</th><th>Avenue summary</th></tr></thead><tbody><tr><td>P-02-004</td><td>No public disclosure of the invention before filing</td><td>insufficient_search_completion</td><td>A1 COMPLETE (search-based absence); A5 BLOCKED (no inventor records); A8 BLOCKED</td></tr><tr><td>P-03-003</td><td>No quantitative performance data exists</td><td>insufficient_technical_demonstration</td><td>A1 COMPLETE; A5 BLOCKED (trade-journal full-text); A8 BLOCKED</td></tr><tr><td>P-03-004b</td><td>No mandatory product-design regulation governs hand hammers</td><td>insufficient_search_completion</td><td>A1 COMPLETE (OSHA 1910.242 found — positive finding; no mandatory standard); A5 BLOCKED (CPSC universe); A8 BLOCKED</td></tr><tr><td>P-03-005</td><td>Prototype evidence</td><td>insufficient_search_completion</td><td>A1 COMPLETE; A5 BLOCKED; A6 BLOCKED (inventor records)</td></tr><tr><td>P-03-006</td><td>Production evidence</td><td>insufficient_search_completion</td><td>A1 COMPLETE; A5 BLOCKED; A6 BLOCKED (no manufacturer records)</td></tr><tr><td>P-04-002</td><td>No international family members beyond US + CA</td><td>insufficient_corroboration</td><td>A1 COMPLETE (single source); A5 BLOCKED (Espacenet 403); A8 BLOCKED</td></tr><tr><td>P-05-009</td><td>Motivation proposition (PARTIALLY GROUNDED, analogous only)</td><td>insufficient_search_completion</td><td>A1 COMPLETE (no direct source); A3 COMPLETE (analogous only)</td></tr><tr><td>P-05-010</td><td>Obviousness proposition</td><td>insufficient_search_completion</td><td>Motivation not GROUNDED; application NOT ESTABLISHED; bridge EXHAUSTED</td></tr><tr><td>P-05-011</td><td>Unexpected-result proposition</td><td>insufficient_technical_demonstration</td><td>A1 COMPLETE (no performance data)</td></tr><tr><td>P-06-005</td><td>No pre-filing non-patent publication discloses the fixed-jaw hammer combination</td><td>source_unavailable</td><td>A1 COMPLETE; A5 BLOCKED (trade-journal full-text)</td></tr><tr><td>P-07-001</td><td>Commercial adoption</td><td>insufficient_search_completion</td><td>A1 COMPLETE (no product identity link); A6 BLOCKED (manufacturer records)</td></tr><tr><td>P-08-005</td><td>No other viable commercialization pathway exists</td><td>insufficient_identity</td><td>Counterfactual-exclusivity; absence of alternatives not evidenced</td></tr></tbody></table>
+</div>
+<div class="page"><h2 class="sec">Landscape &amp; Market Data</h2><div class="chart-frame"><div class="c-title">Forward-Citing Documents by Jurisdiction</div><svg viewBox="0 0 300 190" role="img" aria-label="Forward-Citing Documents by Jurisdiction"><path d="M 130 90 L 130.0 28.0 A 62 62 0 1 1 83.1 49.4 Z" fill="#dbe7f4" stroke="#fff" stroke-width="1.5"/><line x1="159.9" y1="155.5" x2="166.6" y2="170.0" stroke="#c9d4e0"/><text x="170.6" y="170.0" font-size="7.5" fill="#1a1f26" text-anchor="start">US · 19</text><path d="M 130 90 L 83.1 49.4 A 62 62 0 0 1 96.5 37.8 Z" fill="#b9d2ec" stroke="#fff" stroke-width="1.5"/><line x1="82.9" y1="35.6" x2="72.4" y2="23.5" stroke="#c9d4e0"/><text x="68.4" y="23.5" font-size="7.5" fill="#1a1f26" text-anchor="end">AU · 1</text><path d="M 130 90 L 96.5 37.8 A 62 62 0 0 1 112.5 30.5 Z" fill="#97bde4" stroke="#fff" stroke-width="1.5"/><line x1="100.1" y1="24.5" x2="93.4" y2="10.0" stroke="#c9d4e0"/><text x="89.4" y="10.0" font-size="7.5" fill="#1a1f26" text-anchor="end">CN · 1</text><path d="M 130 90 L 112.5 30.5 A 62 62 0 0 1 130.0 28.0 Z" fill="#75a8dc" stroke="#fff" stroke-width="1.5"/><line x1="119.8" y1="18.7" x2="117.5" y2="2.9" stroke="#c9d4e0"/><text x="113.5" y="2.9" font-size="7.5" fill="#1a1f26" text-anchor="end">EP · 1</text></svg><div class="caption">Verified from Google Patents &#x27;Families Citing this family&#x27; (22 citing documents): US 19, AU 1 (AU2009100791B4), CN 1 (CN104275681B), EP 1 (EP2016239A1). Neutral historical signal, not patentability evidence.</div></div><div class="chart-frame"><div class="c-title">B25D US Grants 2015-2025 by Top Assignees</div><svg viewBox="0 0 300 190" role="img" aria-label="B25D US Grants 2015-2025 by Top Assignees"><path d="M 130 90 L 130.0 28.0 A 62 62 0 0 1 180.8 54.4 Z" fill="#dbe7f4" stroke="#fff" stroke-width="1.5"/><line x1="163.2" y1="26.1" x2="170.6" y2="11.9" stroke="#c9d4e0"/><text x="174.6" y="11.9" font-size="7.5" fill="#1a1f26" text-anchor="start">Makita · 175</text><path d="M 130 90 L 180.8 54.4 A 62 62 0 0 1 191.8 94.9 Z" fill="#b9d2ec" stroke="#fff" stroke-width="1.5"/><line x1="199.5" y1="71.1" x2="214.9" y2="66.9" stroke="#c9d4e0"/><text x="218.9" y="66.9" font-size="7.5" fill="#1a1f26" text-anchor="start">Hilti · 126</text><path d="M 130 90 L 191.8 94.9 A 62 62 0 0 1 177.5 129.9 Z" fill="#97bde4" stroke="#fff" stroke-width="1.5"/><line x1="196.6" y1="117.3" x2="211.4" y2="123.4" stroke="#c9d4e0"/><text x="215.4" y="123.4" font-size="7.5" fill="#1a1f26" text-anchor="start">Milwaukee · 113</text><path d="M 130 90 L 177.5 129.9 A 62 62 0 0 1 156.6 146.0 Z" fill="#75a8dc" stroke="#fff" stroke-width="1.5"/><line x1="174.0" y1="147.0" x2="183.8" y2="159.6" stroke="#c9d4e0"/><text x="187.8" y="159.6" font-size="7.5" fill="#1a1f26" text-anchor="start">Black &amp; Decker · 78</text><path d="M 130 90 L 156.6 146.0 A 62 62 0 1 1 130.0 28.0 Z" fill="#5393d4" stroke="#fff" stroke-width="1.5"/><line x1="59.8" y1="105.9" x2="44.2" y2="109.4" stroke="#c9d4e0"/><text x="40.2" y="109.4" font-size="7.5" fill="#1a1f26" text-anchor="end">Others · 654</text></svg><div class="caption">PlainPatent B25D search (1,146 US grants 2015-2025): Makita 175, Hilti 126, Milwaukee 113, Black &amp; Decker 78, others 654. Dominated by power percussion tools.</div></div><div class="chart-frame"><div class="c-title">Framing-Hammer Brands — B25D Grants Share</div><svg viewBox="0 0 200 190" role="img" aria-label="Framing-hammer brand grants: Estwing, Vaughan, Stanley B&amp;D"><path d="M 100 100 L 100.0 40.0 A 60 60 0 0 1 124.9 45.5 Z" fill="#75a8dc" stroke="#fff" stroke-width="1.5"/><line x1="112.5" y1="42.8" x2="115.7" y2="27.6" stroke="#c9d4e0"/><text x="115.7" y="23.6" font-size="7.5" fill="#1a1f26" text-anchor="middle">Estwing 6</text><path d="M 100 100 L 124.9 45.5 A 60 60 0 0 1 139.4 54.6 Z" fill="#5393d4" stroke="#fff" stroke-width="1.5"/><line x1="132.2" y1="50.1" x2="140.1" y2="37.7" stroke="#c9d4e0"/><text x="140.1" y="33.7" font-size="7.5" fill="#1a1f26" text-anchor="middle">Vaughan 4</text><path d="M 100 100 L 139.4 54.6 A 60 60 0 1 1 100.0 40.0 Z" fill="#317ecc" stroke="#fff" stroke-width="1.5"/><line x1="80.0" y1="150.9" x2="74.1" y2="165.5" stroke="#c9d4e0"/><text x="74.1" y="173.5" font-size="7.5" fill="#1a1f26" text-anchor="middle">Stanley B&amp;D 78</text></svg><div class="caption">Framing-hammer-focused manufacturers only, as a share of the same 1,146 B25D US grants 2015-2025 (Valuates; Strategic Market Research). Shown separately from the top-assignee chart because the two use different, non-additive denominators (all B25D vs. framing-hammer brands specifically).</div></div><div class="chart-frame"><div class="c-title">Patent Activity in the Last Decade</div><div class="placeholder"><div class="ph-title">Yearly series not established in this run</div>Total B25D US grants 2015–2025: 1,146 (PlainPatent) — yearly split not established.</div></div><div class="chart-frame"><div class="c-title">NAICS 332216 — Employees vs Establishments</div><div class="placeholder"><div class="ph-title">Time series not established in this run</div>Verified single-year figures: 920+ establishments, 27,200 workers, USD 6.3B revenue (US Census).</div></div><div class="chart-frame"><div class="c-title">Establishments by Employee-Size Bracket</div><div class="placeholder"><div class="ph-title">Bracket data not established in this run</div>See Operational Audit.</div></div><div class="chart-frame"><div class="c-title">Fortune Business Insights — US Hand Tools Market</div><div class="placeholder"><div class="ph-title">Third-party screenshot not available in this run</div>Third-party market-report graphic (native branding). Source image not available in this environment; referenced as P-07-002 corroboration.</div></div><div class="chart-frame"><div class="c-title">MarketsandMarkets — Hand Tools Infographic</div><div class="placeholder"><div class="ph-title">Third-party screenshot not available in this run</div>Third-party market-report graphic (native branding). Source image not available in this environment; referenced as P-07-004 competitive-structure corroboration.</div></div></div>
+
+<!-- ============ APPENDICES ============ -->
+<div class="page divider appendix">
+  <div class="div-title">Appendices</div>
+  <ul class="div-sub">
+    <li><a href="#app-a">Appendix A — Patentability Primer</a></li>
+    <li><a href="#app-b">Appendix B — Search Methodology &amp; Query Log</a></li>
+    <li><a href="#app-c">Appendix C — Original Submission Record</a></li>
+  </ul>
+</div>
+
+<div class="page appendix" id="app-a">
+  <h2 class="sec">Appendix A — Patentability Primer</h2>
+  <p>Patentability in the United States is assessed in two principal gates: novelty (35 U.S.C. § 102) and non-obviousness (35 U.S.C. § 103). A claim is anticipated if a single prior-art reference discloses every limitation of the claim. A claim is obvious if the differences between the claimed subject matter and the prior art are such that the subject matter as a whole would have been obvious to a person having ordinary skill in the art at the time the invention was made.</p>
+  <p>This report's novelty assessment is a preliminary, evidence-based screen against identified references. It is <strong>not</strong> a freedom-to-operate (FTO) opinion and is not legal advice. FTO analysis requires a different search scope (in-force claims, current legal status, broader claim reading) and a formal opinion from counsel.</p>
+  <p>Useful references: <a href="https://www.wipo.int/patents/en/">WIPO — Patents</a> · <a href="https://www.uspto.gov/patents">USPTO — Patents</a></p>
+</div>
+
+<div class="page appendix" id="app-b">
+  <h2 class="sec">Appendix B — Search Methodology &amp; Query Log</h2>
+  <p>Every search avenue opened during the run is recorded in the avenue ledger with priority, disposition (COMPLETE / BLOCKED / NOT_APPLICABLE / REQUIRES_VERIFICATION), and audit entry. The full escalation ladders are in <code>avenue-ledger-us5850650-v16.md</code>. Search-query summary boxes below reproduce the primary-source avenue (A1) for each proposition ladder.</p>
+  <div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-02-004 — &quot;No public disclosure of the invention before filing&quot; (P-02-004)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — Submission states &quot;Public disclosure date: None recorded&quot; — a search-based absence, not an inventor statement. First public availability of the invention occurred post-filing: CA A1 open-to-inspection 1998-12-13, US grant publication 1998-12-22.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (search-based absence is avenue metadata, not evidence).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-03-003 — &quot;No quantitative performance data exists&quot; (P-03-003)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No performance comparison source located (no weight delta, strike-character, or manipulation-force measurement).</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (`barrier_type: insufficient_technical_demonstration`).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-03-004 — &quot;No mandatory product-design regulation governs hand hammers&quot; (P-03-004b; positive OSHA finding P-03-004a established separately)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — OSHA 29 CFR 1910.242 identified as the governing general workplace hand-tool rule (positive finding P-03-004a established); no mandatory product-design standard identified for hand hammers.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (`barrier_type: insufficient_search_completion`). The absence of a mandatory product-design regime is a negative claim requiring a bounded universe of mandatory standards; not established. The positive OSHA general-duty finding (P-03-004a) stands as ESTABLISHED and supports the LOW regulatory-burden estimate.</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-03-005 — Prototype evidence (P-03-005)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No prototype/test records located.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (search-based absence; avenue metadata only).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-03-006 — Production evidence (P-03-006)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No production records located.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (search-based absence; avenue metadata only).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-04-002 — &quot;No international family members beyond US + CA&quot; (P-04-002; positive US+CA family record P-02-005 established)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — Google Patents Country Status: &quot;US (1) + CA (1)&quot; — single source.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (`barrier_type: insufficient_corroboration`). Single-source family record cannot support CONFIRMED ABSENT. The positive family record (US + CA) is established; the negative &quot;no other jurisdictions&quot; is not.</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-05-008 — Knowledge decomposition: combination_known / application_known (P-05-008)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No pre-filing source shows the fixed-jaw hammer combination (hammer with claw + fixed lumber-gripping jaw) or its application.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (combination_known, application_known not established; avenue records only).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-05-009 — Motivation proposition (P-05-009)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No direct pre-filing source motivating the fixed-jaw hammer implementation.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED. Motivation object: direct = none; analogous = US4762303A, US1469472A, US513271A, Maggard 711,408; inferred = general knowledge of the twisted-lumber problem (Fine Homebuilding practice articles, pre- and post-filing); contradicted = none → **PARTIALLY GROUNDED (analogous only)**. Per the deterministic derivation table, PARTIALLY GROUNDED is not GROUNDED; the motivation proposition is not established.</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-05-010 — Obviousness proposition (P-05-010)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No pre-filing source showing the combination as obvious.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED. Obviousness requires (1) GROUNDED motivation, (2) reasonable expectation of success, (3) C/D assessment, (4) Causal Bridge Test. Motivation is PARTIALLY GROUNDED (not GROUNDED); application NOT ESTABLISHED; bridge_work_state = EXHAUSTED. Per GLOSSARY: obviousness is not assessed as a conclusion — excluded from factual findings, recorded in the Operational Audit with `barrier_type: insufficient_search_completion`.</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-05-011 — Unexpected-result proposition (P-05-011)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No performance comparison data located.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (`barrier_type: insufficient_technical_demonstration`).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-06-005 — &quot;No pre-filing non-patent publication discloses the fixed-jaw hammer combination&quot; (P-06-005)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — Web literature search; no pre-filing disclosure of the fixed-jaw hammer combination. Background practice literature identified (Fine Homebuilding 1991-11-01, 1999-07-01, 2000-09-01; Audel&#x27;s 1923) — none discloses a jaw fixed to a hammer head opposing the claw.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED (`barrier_type: source_unavailable` + `insufficient_search_completion`).</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-07-001 — Commercial adoption (P-07-001)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No manufacturer identified as embodying the fixed-jaw hammer; &quot;Karsnia&quot; product search returned only the patent record.</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED. `commercial_adoption` schema requires product_identity_link, source, date, independence_lineage_id (min 2 independent sources); no product identity link exists. Report language: &quot;Commercial adoption could not be established from the completed evidence protocol.&quot;</div></div>
+<div class="search-box"><div class="sq"><span class="lbl">Search query</span> · A-08-005 — &quot;No other viable commercialization pathway exists&quot; (P-08-005)</div><div class="rc">A1 primary-source avenue: <a href="#">Click here</a></div><div class="sm">COMPLETE — No evidence of alternative pathways beyond the four identified partner classes (Stanley Black &amp; Decker, Estwing, Vaughan &amp; Bushnell, Milwaukee/TTI).</div><div class="sm"><strong>Disposition:</strong> EXHAUSTED → EXCLUDED. Counterfactual-exclusivity audit: &quot;no other pathway&quot; claims absence of alternatives, not evidenced; reformulated as &quot;strongest identified pathways&quot; (P-08-006).</div></div>
+</div>
+
+<div class="page appendix" id="app-c">
+  <h2 class="sec">Appendix C — Original Submission Record</h2>
+  <p>&gt; Structured submission record captured per <code>skill-02-gather-invention-submission</code>.</p>
+<p>&gt; Source: US Patent 5,850,650 (granted December 22, 1998) — sample patent provided</p>
+<p>&gt; as PDF (<code>Sample-Patent_Combination_Hammer_and_Lumber_Manipulating_Tool.pdf</code>).</p>
+<p>&gt; Facts are drawn from the patent record (front page, specification, claims) and</p>
+<p>&gt; the Google Patents family record. No inventor interview was conducted; fields</p>
+<p>&gt; requiring inventor statement are flagged accordingly.</p>
+<li>Inventor: John J. Karsnia, 2729 County Rd. 94, International Falls, Minn. 56649</li>
+<li>Submission date: 2026-08-14</li>
+<li>Earliest filing date: June 13, 1997 (US Appl. No. 08/876,165)</li>
+<li>Title: Combination Hammer and Lumber Manipulating Tool (US Patent 5,850,650)</li>
+<li>Technical field: Hand tools — combination hammer and lumber-manipulating tool for use with an air nailer</li>
+<p>A combination hammer and lumber manipulating tool for providing a hammer which is</p>
+<p>capable of being utilized as a lumber manipulating tool for use in combination with</p>
+<p>an air nailer. The device includes a handle, and a hammer-head having a claw, a</p>
+<p>socket and a striking head. The hammer-head further includes a jaw attached to a</p>
+<p>side of the socket distally spaced in opposition to the claw. The distal space</p>
+<p>between the claw and the jaw is formed to fittingly engage a piece of lumber for</p>
+<p>manipulating. The jaw preferably includes a plurality of teeth for gripping the</p>
+<p>piece of lumber. In an alternative embodiment, the jaw is secured to the handle</p>
+<p>adjacent the claw (one-piece hammer). In use, when a piece of lumber is twisted</p>
+<p>(e.g., due to water damage), the user positions the jaw and the claw around a</p>
+<p>portion of the lumber&#x27;s cross section and manipulates the handle towards the claw,</p>
+<p>forcing the lumber to twist into the desired position, after which the user air</p>
+<p>nails the lumber to retain it in position.</p>
+<p>When using an air nailer to force nails into lumber, a piece of lumber frequently</p>
+<p>becomes twisted, requiring the user to manipulate the twisted lumber straight</p>
+<p>again. Prior practice forced the user to twist the lumber by hand or use a tool</p>
+<p>other than a hammer. Prior combination hammer-and-wrench devices (Maggard 711,408;</p>
+<p>Mathews 513,271; Boswell 1,308,694) disclosed hammers with <strong>movable</strong> jaws that</p>
+<p>slide and lock, which the specification criticizes as adding weight, adding moving</p>
+<p>parts that wear and cause uneven impact, and not being designed for engaging lumber.</p>
+<p>Thomas 4,762,303 disclosed a dedicated lumber-turning tool (elongated handle with</p>
+<p>two opposed claws) that the specification criticizes as requiring the user to carry</p>
+<p>a heavy elongated bar in addition to a hammer and air nailer.</p>
+<p>Thirteen claims; two independent claims:</p>
+<li><strong>Claim 1 (primary):</strong> A combination hammer and lumber manipulating tool</li>
+<p>comprising: a hammer-head having a claw, a striking head and a socket for</p>
+<p>receiving a handle; and a jaw <strong>non-movably secured to said socket</strong> opposing</p>
+<p>said claw and spaced from said claw a finite distance, wherein said piece of</p>
+<p>lumber is positionable between said jaw and said claw.</p>
+<li><strong>Claim 6 (independent):</strong> A combination hammer and lumber manipulating tool</li>
+<p>comprising: a hammer having a hammer-head and a handle attached to said</p>
+<p>hammer-head; said hammer-head includes a claw and a striking head; and a jaw</p>
+<p><strong>non-movably secured to said handle</strong> opposing said claw and spaced from said</p>
+<p>claw a finite distance, wherein said piece of lumber is positionable between</p>
+<p>said jaw and said claw.</p>
+<li>Claims 2–5 depend on claim 1 (jaw taper, teeth, finite distance ≈ lumber width,</li>
+<p>weight ≈ conventional hammer-head).</p>
+<li>Claims 7–13 depend on claim 6 (jaw taper, teeth, finite distance, weight, jaw</li>
+<p>angled upwardly, one tooth at distal end).</p>
+<p>The distinguishing feature over the movable-jaw prior art is the **non-movably</p>
+<p>secured (fixed) jaw** opposing the claw, with no moving parts and approximately</p>
+<p>conventional hammer weight.</p>
+<p>Not recorded. No prototype, test, or production evidence is present in the patent</p>
+<p>record or accessible sources (see Operational Audit, P-03-005, P-03-006).</p>
+<li>Patents filed / granted: US 5,850,650, granted December 22, 1998 (filed June 13,</li>
+<p>1997, Appl. No. 08/876,165)</p>
+<li>Assignee: Individual (John J. Karsnia)</li>
+<li>Canadian family member: CA2240576C (filed June 12, 1998; priority June 13, 1997;</li>
+<p>granted June 5, 2001; expired June 12, 2018)</p>
+<li>Legal status: US term expired June 13, 2017 (20 years from filing, per the</li>
+<p>post-1995 statutory regime); Google Patents status &quot;Expired - Lifetime&quot;</p>
+<li>Examiner-cited references: US513271A (Matthews, 1894, &quot;Wrench&quot;); US1469472A</li>
+<p>(Bangert, 1923, &quot;Combination tool&quot;)</p>
+<li>Specification-described prior art: Maggard 711,408; Mathews 513,271; Boswell</li>
+<p>1,308,694; Thomas 4,762,303; Kellenbarger 2,718,374; Johnson 2,585,013; Thomas</p>
+<p>4,826,136; Reiley 5,605,319; Waters 4,620,691; Staskiewicz 4,621,791; Rossman</p>
+<p>5,382,000; Ott 5,478,050; Payne 5,575,518</p>
+<li>Public disclosure date: None recorded before filing. The patent was first</li>
+<p>publicly disclosed at publication: CA2240576A1 published December 13, 1998;</p>
+<p>US5850650A published/granted December 22, 1998. No pre-filing disclosure is</p>
+<p>established (search-based absence — see Operational Audit, P-02-004).</p>
+<li>Sale offer date: None recorded.</li>
+<li>Note: this is a sample patent from a law-firm public page; no inventor statement</li>
+<p>of disclosure history is available. The disclosure-timing field is therefore a</p>
+<p>search-based absence, not a confirmed &quot;none&quot; per inventor statement.</p>
+</div>
+
+</body>
+</html>

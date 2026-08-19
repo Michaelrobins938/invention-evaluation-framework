@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invention Evaluation Report — report-us7153242b2-v17</title>
+<style>
+/* ============================================================
+   inventionevaluator — report template (v1.6 pipeline, Phase 10)
+   Faithful reproduction of the branded report chrome:
+   clean sample-faithful cover (wordmark + metadata block) · running footer · CONFIDENTIAL watermark
+   TOC · gauges · section dividers · SWOT · search boxes
+   ============================================================ */
+
+:root{
+  --ink:#1a1f26;
+  --ink-soft:#4a5560;
+  --ink-faint:#7a8590;
+  --paper:#ffffff;
+  --gray-band:#e9ebee;
+  --gray-band-2:#dfe2e6;
+  --blue-navy:#16324f;
+  --blue-mid:#2c5f9e;
+  --blue:#3d7abf;
+  --blue-pale:#dbe7f4;
+  --blue-paler:#eef4fa;
+  --red:#c0392b;
+  --rule:#c9d4e0;
+  --tier-1:#dbe7f4; /* Very Limited */
+  --tier-2:#b9d2ec; /* Limited */
+  --tier-3:#97bde4; /* Limited-Moderate */
+  --tier-4:#75a8dc; /* Moderate */
+  --tier-5:#5393d4; /* Moderate-Strong */
+  --tier-6:#317ecc; /* Strong */
+  --font-display:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"Consolas","Menlo",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow:visible;}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  font-size:11.5pt;
+  line-height:1.5;
+  background:var(--paper);
+}
+
+/* ---------- print setup ----------
+   A4 to match the reference branded report (595.2 x 841.92 pt).
+   Footer lives in @page margin boxes: the page counter (counter(page))
+   is only reliable there — fixed-element counters return 0 in Chromium. */
+@page{
+  size:A4;
+  margin:0.85in 0.9in 0.9in 0.9in;
+  @bottom-left{
+    content:"IEAUS7153242B2: Structured submission – report-us7153242b2-v17. Submitted 2026-08-16. Report 2026-08-16.";
+     font-size:5pt;
+    font-variant:small-caps;
+    letter-spacing:0.05em;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+    padding-top:3pt;
+    vertical-align:top;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+     max-width:6.0in;
+    overflow:hidden;
+  }
+  @bottom-right{
+     content:"Page " counter(page);
+    font-size:7pt;
+    font-variant:small-caps;
+    color:#7a8590;
+    border-top:1px solid #c9d4e0;
+     padding-top:3pt;
+     vertical-align:top;
+     white-space:nowrap;
+  }
+}
+
+/* ---------- watermark (fixed, behind content) ---------- */
+.watermark{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-32deg);
+  z-index:1;
+  pointer-events:none;
+  opacity:0.08;
+}
+.watermark-text{
+  color:#8a939c;
+  font-family:Arial,sans-serif;
+  font-size:54pt;
+  font-weight:700;
+  letter-spacing:0.22em;
+  white-space:nowrap;
+}
+
+/* ---------- running footer: rendered via @page margin boxes (see @page) ---------- */
+
+/* ---------- cover ---------- */
+.cover{position:relative;min-height:9.6in;}
+.cover .cover-brand{
+  padding:1.0in 0.9in 0 0.9in;
+}
+.cover .cover-logo{
+  font-family:var(--font-display);
+  font-size:27pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  letter-spacing:0.02em;
+}
+.cover .cover-logo .mag{
+  display:inline-block;
+  width:0.6em;height:0.6em;
+  vertical-align:middle;
+  margin-left:0.06em;
+}
+.cover .cover-logo .reg{font-size:0.6em;vertical-align:super;color:var(--blue-mid);}
+.cover .cover-tagline{
+  margin-top:0.14in;
+  font-size:9pt;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.cover .cover-meta{
+  margin:4.75in 0.9in 0 0.9in;
+  font-size:16pt;
+  line-height:1.25;
+}
+.cover .cover-meta .row{
+  margin:0.04in 0;
+}
+.cover .cover-meta .k{
+  display:inline-block;
+  width:1.85in;
+  font-weight:600;
+  color:var(--blue-navy);
+}
+.cover .cover-meta .v{color:var(--ink);}
+.cover .cover-legal{
+  margin:0.22in 0.9in 0 0.9in;
+  font-size:6.8pt;
+  color:var(--ink-faint);
+  line-height:1.4;
+}
+.cover .cover-disclaimer{
+  margin:0.1in 0.9in 0 0.9in;
+  font-size:6.8pt;
+  color:var(--ink-faint);
+  line-height:1.4;
+}
+
+/* ---------- TOC ---------- */
+.toc h2{
+  font-family:var(--font-display);
+  font-size:28pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  margin-bottom:0.3in;
+  letter-spacing:0.02em;
+  text-align:left;
+}
+.toc ul{list-style:none;}
+.toc li{
+  display:flex;
+  align-items:baseline;
+  gap:0.12in;
+  padding:0.07in 0;
+  border-bottom:1px dotted var(--rule);
+  font-size:12pt;
+}
+.toc li.lvl2{padding-left:0.35in;font-size:11pt;color:var(--ink-soft);}
+.toc li .t{font-weight:600;color:var(--blue-navy);letter-spacing:0.02em;font-size:12pt;}
+.toc li.lvl2 .t{font-weight:400;color:var(--ink-soft);letter-spacing:0;font-size:11pt;}
+.toc li .dots{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-3px);}
+.toc li .pg{font-variant-numeric:tabular-nums;color:var(--ink-faint);}
+
+/* ---------- section divider pages ---------- */
+.divider{position:relative;}
+.divider .div-title{
+  margin-top:1.1in;
+  font-family:var(--font-display);
+  font-size:26pt;
+  font-weight:600;
+  letter-spacing:0.06em;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+}
+.divider .div-sub{
+  margin-top:0.3in;
+  list-style:none;
+}
+.divider .div-sub li{
+  padding:0.09in 0;
+  border-bottom:1px solid var(--blue-paler);
+  font-size:11pt;
+}
+.divider .div-sub a{color:var(--blue-mid);text-decoration:none;font-weight:600;}
+.divider .div-sub a:hover{text-decoration:underline;}
+
+/* ---------- headings ---------- */
+.page{
+  position:relative;
+  page-break-before:always;
+  padding-top:0.88in;
+  min-height:8.5in;
+}
+.page.cover{page-break-before:auto;padding-top:0;}
+.evidence-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.03in 0.2in;
+  margin-top:0.06in;
+}
+.evidence-grid li{font-size:6.3pt;line-height:1.05;margin:0.01in 0;}
+.evidence-id-line{font-size:6.5pt;line-height:1.15;color:var(--ink-soft);word-spacing:0.04in;}
+.v17-control-panel{margin-top:0.1in;padding:0.08in 0.12in;border:1px solid #c9d5e1;background:#f7fafc;font-size:6.8pt;line-height:1.2;}
+.v17-control-panel strong{color:var(--navy);}
+h2.sec{
+  font-family:var(--font-display);
+  font-size:28pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  margin:0 0 0.22in 0;
+  letter-spacing:0.02em;
+  text-align:left;
+}
+h3.sub{
+  font-family:var(--font-display);
+  font-size:15pt;
+  font-weight:600;
+  color:var(--blue-navy);
+  margin:0.24in 0 0.1in 0;
+}
+h4.mini{
+  font-size:10.5pt;
+  font-weight:700;
+  color:var(--ink-soft);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin:0.12in 0 0.06in 0;
+}
+p.body{margin:0.08in 0;color:var(--ink);}
+p.small{font-size:8pt;color:var(--ink-faint);}
+ul.bullets{margin:0.08in 0 0.08in 0.22in;}
+ul.bullets li{margin:0.05in 0;}
+a{color:var(--blue-mid);}
+a.more{color:var(--blue-mid);font-weight:600;text-decoration:none;}
+
+/* ---------- tables ---------- */
+table.data{
+  width:100%;
+  border-collapse:collapse;
+  margin:0.1in 0 0.16in 0;
+  font-size:10.5pt;
+}
+table.data thead th{
+  background:var(--blue-pale);
+  color:var(--blue-navy);
+  font-weight:700;
+  text-align:left;
+  padding:0.07in 0.1in;
+  border-bottom:2px solid var(--blue-mid);
+}
+table.data tbody td{
+  padding:0.06in 0.1in;
+  border-bottom:1px solid var(--blue-paler);
+  vertical-align:top;
+}
+table.data tbody tr:nth-child(even){background:#f7fafc;}
+table.data td.idx{font-weight:700;color:var(--blue-mid);width:0.5in;}
+table.data td.title{font-weight:600;color:var(--blue-navy);}
+table.data td.title a{color:var(--blue-mid);text-decoration:none;}
+table.data td.title a:hover{text-decoration:underline;}
+
+/* ---------- search query boxes ---------- */
+.search-box{
+  border:1.5px solid var(--blue-mid);
+  border-radius:5px;
+  margin:0.14in 0 0.1in 0;
+  padding:0.12in 0.16in;
+  background:#fbfdff;
+  page-break-inside:avoid;
+}
+.search-box .sq{
+  font-weight:700;
+  color:var(--blue-navy);
+  font-size:9.5pt;
+  letter-spacing:0.02em;
+}
+.search-box .sq .lbl{color:var(--ink-faint);font-weight:600;text-transform:uppercase;font-size:7.5pt;letter-spacing:0.1em;}
+.search-box .rc{
+  font-style:italic;
+  font-weight:700;
+  color:var(--blue-mid);
+  font-size:9pt;
+  margin:0.04in 0;
+}
+.search-box .rc a{color:var(--blue-mid);}
+.search-box .sm{font-size:8.8pt;color:var(--ink-soft);}
+
+/* ---------- gauges ---------- */
+.gauge-row{
+  display:flex;
+  gap:0.25in;
+  justify-content:space-between;
+  margin:0.12in 0;
+}
+.gauge-card{
+  flex:1;
+  text-align:center;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in 0.08in 0.14in 0.08in;
+  background:#fff;
+}
+.gauge-card .g-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:14pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+}
+.gauge-card .g-tier{
+  font-size:10.5pt;
+  font-weight:700;
+  color:var(--blue-mid);
+  margin-top:0.03in;
+}
+.gauge-card svg{width:100%;height:auto;}
+
+/* ---------- legend ---------- */
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.08in 0.16in;
+  justify-content:flex-end;
+  margin:0.06in 0 0.1in 0;
+  font-size:8.5pt;
+  color:var(--ink-soft);
+}
+.legend .sw{
+  display:inline-block;
+  width:0.14in;height:0.14in;
+  border-radius:2px;
+  margin-right:0.04in;
+  vertical-align:-0.02in;
+}
+
+/* ---------- grouped bars ---------- */
+.bar-row{
+  display:flex;
+  gap:0.25in;
+  margin:0.1in 0 0.16in 0;
+}
+.bar-card{
+  flex:1;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.1in;
+  background:#fff;
+}
+.bar-card .b-title{
+  font-weight:700;
+  font-size:10.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  text-align:center;
+  margin-bottom:0.06in;
+}
+.bar-card svg{width:100%;height:auto;}
+
+/* ---------- commercialization panel ---------- */
+.commercial-panel{
+  background:var(--gray-band);
+  border-radius:6px;
+  padding:0.16in 0.2in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.commercial-panel h3{
+  font-family:var(--font-display);
+  font-size:13pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  letter-spacing:0.04em;
+  margin-bottom:0.08in;
+}
+.commercial-panel p{font-size:10.5pt;color:var(--ink);}
+.commercial-panel ul{margin:0.08in 0 0 0.22in;}
+.commercial-panel ul li{font-size:10.5pt;margin:0.04in 0;}
+
+/* ---------- ladder diagrams ---------- */
+.ladder{
+  display:flex;
+  align-items:center;
+  gap:0.06in;
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.ladder .node{
+  flex:1;
+  background:var(--blue-mid);
+  color:#fff;
+  text-align:center;
+  padding:0.12in 0.06in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.ladder .node.current{
+  background:var(--red);
+  box-shadow:0 0 0 2px #fff,0 0 0 4px var(--red);
+}
+.ladder .chev{
+  color:var(--blue-mid);
+  font-size:13pt;
+  font-weight:700;
+  flex:0 0 auto;
+}
+
+/* ---------- semantic map ---------- */
+.semantic-map{
+  margin:0.14in 0;
+  page-break-inside:avoid;
+}
+.semantic-map .sm-row{
+  display:flex;
+  align-items:center;
+  gap:0.08in;
+  margin:0.07in 0;
+}
+.semantic-map .sm-node{
+  background:var(--blue-mid);
+  color:#fff;
+  padding:0.09in 0.14in;
+  border-radius:6px;
+  font-size:8.5pt;
+  font-weight:600;
+  white-space:nowrap;
+}
+.semantic-map .sm-node.current{background:var(--red);}
+.semantic-map .sm-node.leaf{background:var(--blue-pale);color:var(--blue-navy);font-weight:500;}
+.semantic-map .sm-conn{color:var(--blue-mid);font-weight:700;}
+.semantic-map .sm-branch{
+  margin-left:0.5in;
+  display:flex;
+  flex-direction:column;
+  gap:0.06in;
+}
+.semantic-map .fn{
+  font-size:6.5pt;
+  color:var(--ink-faint);
+  margin-top:0.06in;
+}
+.semantic-map .fn sup{color:var(--blue-mid);}
+
+/* ---------- charts ---------- */
+.chart-frame{
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.12in;
+  margin:0.12in 0;
+  background:#fff;
+  page-break-inside:avoid;
+}
+.chart-frame .c-title{
+  font-weight:700;
+  font-size:10.5pt;
+  color:var(--blue-navy);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:0.06in;
+}
+.chart-frame svg{width:100%;height:auto;}
+.chart-frame .placeholder{
+  border:1.5px dashed var(--rule);
+  border-radius:4px;
+  padding:0.3in 0.2in;
+  text-align:center;
+  color:var(--ink-faint);
+  font-size:8.5pt;
+  background:var(--blue-paler);
+}
+.chart-frame .placeholder .ph-title{font-weight:700;color:var(--ink-soft);margin-bottom:0.05in;}
+.chart-frame .caption{font-size:7.5pt;color:var(--ink-faint);margin-top:0.05in;}
+
+/* ---------- SWOT ---------- */
+.swot-wrap{position:relative;margin:0.16in 0;page-break-inside:avoid;}
+.swot-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:0.14in;
+}
+.swot-quad{
+  border-radius:8px;
+  padding:0.16in 0.18in;
+  min-height:1.7in;
+}
+.swot-quad.s{background:var(--blue-paler);border-top:4px solid var(--blue-mid);}
+.swot-quad.w{background:#f4f6f8;border-top:4px solid var(--ink-faint);}
+.swot-quad.o{background:var(--blue-paler);border-top:4px solid var(--blue);}
+.swot-quad.t{background:#f4f6f8;border-top:4px solid var(--red);}
+.swot-quad h4{
+  font-size:10pt;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:0.07in;
+}
+.swot-quad.s h4{color:var(--blue-mid);}
+.swot-quad.w h4{color:var(--ink-soft);}
+.swot-quad.o h4{color:var(--blue);}
+.swot-quad.t h4{color:var(--red);}
+.swot-quad ul{margin-left:0.2in;}
+.swot-quad li{font-size:8.8pt;margin:0.04in 0;color:var(--ink);}
+.swot-badge{
+  position:relative;
+  width:2.35in;height:0.62in;
+  margin:0 auto 0.14in;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid var(--blue-mid);
+  display:flex;
+  flex-direction:row;
+  gap:0.1in;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(22,50,79,0.18);
+  z-index:2;
+}
+.swot-badge .b-k{
+  font-size:6pt;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.swot-badge .b-v{
+  font-size:9pt;
+  font-weight:700;
+  color:var(--blue-navy);
+  line-height:1.15;
+}
+
+/* ---------- appendices ---------- */
+.appendix p{font-size:9pt;color:var(--ink);margin:0.07in 0;}
+.appendix ul{margin:0.07in 0 0.07in 0.22in;}
+.appendix li{font-size:9pt;margin:0.04in 0;}
+.appendix a{color:var(--blue-mid);}
+
+/* ---------- buffer pages ---------- */
+.buffer{min-height:8in;}
+</style>
+</head>
+<body>
+
+
+
+<!-- watermark -->
+<div class="watermark"><div class="watermark-text">CONFIDENTIAL</div></div>
+
+<!-- running footer: rendered via @page margin boxes (see @page rule) -->
+
+<!-- ============ COVER ============ -->
+<div class="page cover">
+  <div class="cover-brand">
+    <div class="cover-logo">invention<svg width="0.6em" height="0.6em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="vertical-align:middle;margin-left:0.06em;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>evaluat<span class="reg">®</span>r</div>
+    <div class="cover-tagline">objective idea analysis</div>
+  </div>
+  <div class="cover-meta">
+    <div class="row"><span class="k">Invention Name:</span> <span class="v">report-us7153242b2-v17</span></div>
+    <div class="row"><span class="k">Submitted By:</span> <span class="v">Structured submission</span></div>
+    <div class="row"><span class="k">Invention ID:</span> <span class="v">US7153242B2</span></div>
+    <div class="row"><span class="k">Date of Report:</span> <span class="v">2026-08-16</span></div>
+  </div>
+  <div class="cover-legal">
+    This report was generated by the inventionevaluator report-automation platform from the
+    Invention Evaluation Engine v1.6 pipeline (evidence sufficiency architecture). It compiles
+    established findings, analytical conclusions, and an operational audit produced by the
+    nine-phase evaluation. Scores shown are derived executive summaries of the underlying
+    findings — they are presentation-layer derivations, not new evidence, and do not constitute
+    an overall patentability label. This document is not legal advice.
+  </div>
+  <div class="cover-disclaimer"></div>
+</div>
+
+<!-- ============ TOC ============ -->
+<div class="page toc">
+  <h2>Table of Contents</h2>
+  <ul id="toc-list">
+    <li class="" data-target="executive-summary"><span class="t">Executive Summary</span><span class="dots"></span><span class="pg">3</span></li>
+<li class="" data-target="2-technology-analysis"><span class="t">Technology Analysis</span><span class="dots"></span><span class="pg">4</span></li>
+<li class="" data-target="3-patent-landscape-analysis"><span class="t">Patent Landscape Analysis</span><span class="dots"></span><span class="pg">5</span></li>
+<li class="" data-target="4-ip-novelty-analysis"><span class="t">IP / Novelty Analysis</span><span class="dots"></span><span class="pg">6</span></li>
+<li class="" data-target="5-literature-analysis"><span class="t">Literature Analysis</span><span class="dots"></span><span class="pg">7</span></li>
+<li class="" data-target="6-market-analysis"><span class="t">Market Analysis</span><span class="dots"></span><span class="pg">8</span></li>
+<li class="" data-target="7-potential-partners"><span class="t">Potential Partners</span><span class="dots"></span><span class="pg">9</span></li>
+<li class="" data-target="8-operational-audit"><span class="t">Operational Audit</span><span class="dots"></span><span class="pg">10</span></li>
+<li class="" data-target="9-evidence-recovery-record"><span class="t">Evidence Recovery Record</span><span class="dots"></span><span class="pg">11</span></li>
+<li class="" data-target="swot-analysis"><span class="t">SWOT Analysis</span><span class="dots"></span><span class="pg">12</span></li>
+<li class="" data-target="landscape-market-data"><span class="t">Landscape &amp; Market Data</span><span class="dots"></span><span class="pg">13</span></li>
+  </ul>
+</div>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<div class="page">
+  <h2 class="sec">Executive Summary</h2>
+  <p class="small">Derived executive summary — constrained to Established Findings + Analytical Conclusions (Executive Summary ⊆ findings + conclusions). Gauge and bar scores are presentation-layer derivations from the findings; basis proposition_ids are listed in the scores manifest.</p>
+
+  <div class="legend">
+    <span><span class="sw" style="background:var(--tier-1)"></span>Very Limited</span>
+    <span><span class="sw" style="background:var(--tier-2)"></span>Limited</span>
+    <span><span class="sw" style="background:var(--tier-3)"></span>Limited-Moderate</span>
+    <span><span class="sw" style="background:var(--tier-4)"></span>Moderate</span>
+    <span><span class="sw" style="background:var(--tier-5)"></span>Moderate-Strong</span>
+    <span><span class="sw" style="background:var(--tier-6)"></span>Strong</span>
+  </div>
+
+  <div class="gauge-row">
+    <div class="gauge-card"><div class="g-title">Technology</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="24" y="121" font-size="6.5" fill="#7a8590" text-anchor="start">Very Limited</text><text x="176" y="121" font-size="6.5" fill="#7a8590" text-anchor="end">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">IP</div><svg viewBox="0 0 200 150" role="img" aria-label="Limited-Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="86.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="24" y="121" font-size="6.5" fill="#7a8590" text-anchor="start">Very Limited</text><text x="176" y="121" font-size="6.5" fill="#7a8590" text-anchor="end">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Limited-Moderate</text></svg><div class="g-tier">Limited-Moderate</div></div>
+    <div class="gauge-card"><div class="g-title">Market</div><svg viewBox="0 0 200 150" role="img" aria-label="Moderate gauge"><path d="M 32.5 61.0 A 78 78 0 0 1 22.0 100.0" fill="none" stroke="#dbe7f4" stroke-width="16" stroke-linecap="butt"/><path d="M 61.0 32.5 A 78 78 0 0 1 32.5 61.0" fill="none" stroke="#b9d2ec" stroke-width="16" stroke-linecap="butt"/><path d="M 100.0 22.0 A 78 78 0 0 1 61.0 32.5" fill="none" stroke="#97bde4" stroke-width="16" stroke-linecap="butt"/><path d="M 139.0 32.5 A 78 78 0 0 1 100.0 22.0" fill="none" stroke="#75a8dc" stroke-width="16" stroke-linecap="butt"/><path d="M 167.5 61.0 A 78 78 0 0 1 139.0 32.5" fill="none" stroke="#5393d4" stroke-width="16" stroke-linecap="butt"/><path d="M 178.0 100.0 A 78 78 0 0 1 167.5 61.0" fill="none" stroke="#317ecc" stroke-width="16" stroke-linecap="butt"/><line x1="100" y1="100" x2="114.0" y2="47.8" stroke="#16324f" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#16324f"/><text x="24" y="121" font-size="6.5" fill="#7a8590" text-anchor="start">Very Limited</text><text x="176" y="121" font-size="6.5" fill="#7a8590" text-anchor="end">Strong</text><text x="100" y="134" font-size="13" font-weight="700" fill="#16324f" text-anchor="middle">Moderate</text></svg><div class="g-tier">Moderate</div></div>
+  </div>
+
+  <div class="bar-row">
+    <div class="bar-card"><div class="b-title">Technology</div><svg viewBox="0 0 260 150" role="img" aria-label="Technology sub-factors"><rect x="8" y="12" width="244" height="126" fill="#f8fafc" stroke="#cbd5e1"/><text x="130" y="78" font-size="11" fill="#64748b" text-anchor="middle">Data not established</text></svg></div>
+    <div class="bar-card"><div class="b-title">IP</div><svg viewBox="0 0 260 150" role="img" aria-label="IP sub-factors"><rect x="8" y="12" width="244" height="126" fill="#f8fafc" stroke="#cbd5e1"/><text x="130" y="78" font-size="11" fill="#64748b" text-anchor="middle">Data not established</text></svg></div>
+    <div class="bar-card"><div class="b-title">Market</div><svg viewBox="0 0 260 150" role="img" aria-label="Market sub-factors"><rect x="8" y="12" width="244" height="126" fill="#f8fafc" stroke="#cbd5e1"/><text x="130" y="78" font-size="11" fill="#64748b" text-anchor="middle">Data not established</text></svg></div>
+  </div>
+
+  <div class="commercial-panel">
+    <h3>Commercialization Summary</h3>
+    <p></p>
+  </div>
+
+  <h3 class="sub">Evidence trace</h3>
+  <p class="small">The proposition register below is extracted from the compiled report so every score basis can be checked against visible report content.</p>
+  <div class="evidence-id-line">
+    
+  </div>
+  <div class="v17-control-panel"><strong>v1.7 inference controls:</strong> legal status=UNKNOWN; bridge=not loaded; evidence debt=4 items; constraints=5; executions=16; recovery strategies=5; gate decisions=4; phases=8. Downstream conclusions inherit these unresolved dependencies.</div>
+</div>
+
+<!-- ============ SECTION DIVIDERS + BODY ============ -->
+<div class="page"><h2 class="sec">Technology Analysis</h2><p class='body'>_No phase artifact was produced._</p></div>
+<div class="page"><h2 class="sec">Patent Landscape Analysis</h2><h3 class="sub">Patent Landscape Analysis</h3><ul class="bullets"><li>Execution ID: <code>EX-03-00001</code></li><li>Source: https://patents.google.com/patent/US7153242B2/en</li><li>Execution status: <code>COMPLETE</code></li><li>Result count: <code>1</code></li></ul><p class='body'>The primary patent record was retrieved live. Family, continuity, claim mapping, and normalized landscape analysis remain evidence-debt items.</p></div>
+<div class="page"><h2 class="sec">IP / Novelty Analysis</h2><p class='body'>_No phase artifact was produced._</p></div>
+<div class="page"><h2 class="sec">Literature Analysis</h2><h3 class="sub">Literature Analysis</h3><ul class="bullets"><li>Execution ID: <code>EX-04-00001</code></li><li>Source: https://api.crossref.org/works?query=locomotion+assisting+exoskeleton+ground+force+sensors&amp;rows=5</li><li>Execution status: <code>COMPLETE</code></li><li>Result count: <code>None</code></li></ul><p class='body'>Crossref literature retrieval was executed live. Returned records require identity, relevance, date, and proposition-level verification.</p></div>
+<div class="page"><h2 class="sec">Market Analysis</h2><h3 class="sub">Market Analysis</h3><ul class="bullets"><li>Execution ID: <code>EX-06-00001</code></li><li>Source: https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json</li><li>Execution status: <code>COMPLETE</code></li><li>Result count: <code>None</code></li></ul><p class='body'>A public population proxy was retrieved live. It is not a market-size finding and requires bounded patient, procedure, reimbursement, and adoption modeling.</p></div>
+<div class="page"><h2 class="sec">Potential Partners</h2><h3 class="sub">Potential Partners</h3><ul class="bullets"><li>Execution ID: <code>EX-07-00001</code></li><li>Source: https://patents.google.com/?q=exoskeleton+locomotion+assisting+device</li><li>Execution status: <code>COMPLETE</code></li><li>Result count: <code>None</code></li></ul><p class='body'>A live adjacent-technology search was executed. Organization-specific partner fit remains unverified.</p></div>
+<div class="page"><h2 class="sec">Operational Audit</h2><h3 class="sub">Avenue Ledger</h3><p class='body'>No upstream phase artifacts were supplied. Live phase execution is required.</p></div>
+<div class="page"><h2 class="sec">Evidence Recovery Record</h2><p class='body'>Recovery evidence is recorded in the execution and avenue ledgers.</p></div>
+<div class="page"><h2 class="sec">SWOT Analysis</h2><div class="swot-wrap"><div class="swot-grid"><div class="swot-quad s"><h4>Strengths</h4><ul></ul></div><div class="swot-quad w"><h4>Weaknesses</h4><ul></ul></div><div class="swot-quad o"><h4>Opportunities</h4><ul></ul></div><div class="swot-quad t"><h4>Threats</h4><ul></ul></div></div><div class="swot-badge"><span class="b-k">Commercial Opportunity</span><span class="b-v"></span></div></div><p class="small">SWOT content is derived from Established Findings and Analytical Conclusions (see scores manifest for proposition_id basis).</p></div>
+<div class="page"><h2 class="sec">Landscape &amp; Market Data</h2><div class="chart-frame"><div class="c-title">Patent Applications by Region</div><div class="placeholder"><div class="ph-title">Data not established in this run</div>See Operational Audit — region split not established from completed evidence protocol.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Patent Applications by Main Applicants</div><div class="placeholder"><div class="ph-title">Data not established in this run</div>See Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Patent Activity Trend</div><div class="placeholder"><div class="ph-title">Yearly series not established in this run</div>No defensible yearly series was established in this run; see Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Industry Metrics</div><div class="placeholder"><div class="ph-title">Time series not established in this run</div>No invention-specific industry metrics were established in this run; see Operational Audit.</div></div></div>
+<div class="page"><div class="chart-frame"><div class="c-title">Establishments by Employee-Size Bracket</div><div class="placeholder"><div class="ph-title">Bracket data not established in this run</div>See Operational Audit.</div></div></div>
+
+<!-- ============ APPENDICES ============ -->
+<!-- Appendix content is rendered from the compiled report's actual section 11. -->
+
+</body>
+</html>

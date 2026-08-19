@@ -166,3 +166,35 @@ def test_transition_lattice_terminal_exhaustion():
         a.execution_id = rec.execution_id
     assert transition_lattice(p, attempts, ledger) == (
         EpistemicState.NOT_ESTABLISHED, RecoveryState.EXHAUSTED)
+
+
+# --- Task A4: evidence debt = recoverable items only ---
+
+from engine_v17.constraints import calculate_evidence_debt
+
+
+def test_evidence_debt_excludes_unavailable_by_constraint():
+    props = [
+        Proposition(id="P-08-005d", claim="royalty",
+                    epistemic_state=EpistemicState.NOT_ESTABLISHED,
+                    recovery_state=RecoveryState.UNAVAILABLE_BY_CONSTRAINT),
+        Proposition(id="P-03-003", claim="yield",
+                    epistemic_state=EpistemicState.NOT_ESTABLISHED,
+                    recovery_state=RecoveryState.ESCALATION_REQUIRED),
+        Proposition(id="P-03-001", claim="3D array",
+                    epistemic_state=EpistemicState.ESTABLISHED,
+                    recovery_state=RecoveryState.NONE_REQUIRED),
+    ]
+    debt = calculate_evidence_debt(props)
+    ids = {d.proposition_id for d in debt}
+    assert ids == {"P-03-003"}
+
+
+def test_evidence_debt_includes_search_pending():
+    props = [
+        Proposition(id="P-06-005", claim="market share",
+                    epistemic_state=EpistemicState.PARTIALLY_ESTABLISHED,
+                    recovery_state=RecoveryState.SEARCH_PENDING),
+    ]
+    debt = calculate_evidence_debt(props)
+    assert [d.proposition_id for d in debt] == ["P-06-005"]

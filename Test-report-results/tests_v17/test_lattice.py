@@ -198,3 +198,25 @@ def test_evidence_debt_includes_search_pending():
     ]
     debt = calculate_evidence_debt(props)
     assert [d.proposition_id for d in debt] == ["P-06-005"]
+
+
+# --- Task A6: migrate_v18_ledger ---
+
+from engine_v17.migration import migrate_v18_ledger
+
+
+def test_migrate_v18_ledger_adds_lattice_fields():
+    ledger = {"proposition_ledger": {
+        "P-03-003": {"claim": "yield", "status": "ESCALATION_REQUIRED"},
+        "P-08-005d": {"claim": "royalty", "status": "NOT_ESTABLISHED",
+                      "recovery_state": "UNAVAILABLE_BY_CONSTRAINT"},
+    }}
+    out = migrate_v18_ledger(ledger)
+    p3 = out["proposition_ledger"]["P-03-003"]
+    assert p3["epistemic_state"] == "NOT_ESTABLISHED"
+    assert p3["recovery_state"] == "ESCALATION_REQUIRED"
+    assert p3["scope"] == "TARGET_PATENT"
+    assert p3["status"] == "ESCALATION_REQUIRED"  # legacy kept
+    d = out["proposition_ledger"]["P-08-005d"]
+    assert d["recovery_state"] == "UNAVAILABLE_BY_CONSTRAINT"
+    assert d["epistemic_state"] == "NOT_ESTABLISHED"

@@ -11,6 +11,10 @@
 
 ---
 
+![Invention Evaluation Framework Cover](Assets/invention-evaluation-cover.png)
+
+---
+
 ## Overview
 
 The **Invention Evaluation Framework** is an evidence-constrained evaluation engine for analyzing inventions and intellectual property across the dimensions that actually matter when deciding whether an invention is worth developing, licensing, investing in, commercializing, researching further, or abandoning.

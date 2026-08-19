@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from enum import Enum
 from typing import Any
 
 
@@ -226,24 +227,49 @@ class EvidenceItem:
 
 @dataclass
 class EpistemicState:
-    """Multi-dimensional epistemic state for propositions."""
-    # Primary states
-    ESTABLISHED = "ESTABLISHED"          # Evidence-backed fact
-    PARTIAL = "PARTIALLY_ESTABLISHED"    # Some evidence
-    INFERRED = "INFERRED"                # LLM reasoning, no direct evidence
-    NOT_LOADED = "NOT_LOADED"            # No data fetched
-    UNKNOWN = "UNKNOWN"                  # Insufficient evidence
-    
-    # Confidence levels
+    """Canonical v1.9 epistemic states (what we know)."""
+    ESTABLISHED = "ESTABLISHED"
+    PARTIALLY_ESTABLISHED = "PARTIALLY_ESTABLISHED"
+    NOT_ESTABLISHED = "NOT_ESTABLISHED"
+    CONTRADICTED = "CONTRADICTED"
+
+    # Legacy aliases (v1.7/v1.8 vocabulary) — kept so old ledgers and
+    # report text still validate.
+    PARTIAL = PARTIALLY_ESTABLISHED
+    INFERRED = NOT_ESTABLISHED
+    NOT_LOADED = NOT_ESTABLISHED
+    UNKNOWN = NOT_ESTABLISHED
+
+    # Confidence levels (unchanged)
     HIGH = "HIGH"
     MODERATE = "MODERATE"
     LOW = "LOW"
-    
-    # Source types
+
+    # Source types (unchanged)
     DIRECT_EVIDENCE = "DIRECT_EVIDENCE"
     DERIVED = "DERIVED"
     BENCHMARK = "BENCHMARK"
     ASSUMPTION = "ASSUMPTION"
+
+
+class RecoveryState(str, Enum):
+    """Canonical v1.9 recovery states (what can still be done)."""
+    NONE_REQUIRED = "NONE_REQUIRED"
+    SEARCH_PENDING = "SEARCH_PENDING"
+    ESCALATION_REQUIRED = "ESCALATION_REQUIRED"
+    EXHAUSTED = "EXHAUSTED"
+    UNAVAILABLE_BY_CONSTRAINT = "UNAVAILABLE_BY_CONSTRAINT"
+
+
+class Scope(str, Enum):
+    """What entity a proposition refers to."""
+    TARGET_PATENT = "TARGET_PATENT"
+    PATENT_FAMILY = "PATENT_FAMILY"
+    TECHNOLOGY_LINEAGE = "TECHNOLOGY_LINEAGE"
+    COMMERCIAL_PRODUCT = "COMMERCIAL_PRODUCT"
+    ASSIGNEE_PORTFOLIO = "ASSIGNEE_PORTFOLIO"
+    MARKET = "MARKET"
+    REGULATORY = "REGULATORY"
 
 
 # ---------------------------------------------------------------------------
@@ -287,6 +313,8 @@ class Proposition:
     evidence: tuple = ()
     children: tuple = ()                # atomic decomposition (e.g. P-08-005a..f)
     debt: tuple = ()                    # EvidenceDebt records
+    recovery_state: str = RecoveryState.NONE_REQUIRED
+    scope: str = Scope.TARGET_PATENT
 
     @property
     def is_established(self) -> bool:
@@ -295,6 +323,11 @@ class Proposition:
     @property
     def is_atomic(self) -> bool:
         return bool(self.children)
+
+    @property
+    def is_recoverable_debt(self) -> bool:
+        return self.recovery_state in (RecoveryState.SEARCH_PENDING,
+                                       RecoveryState.ESCALATION_REQUIRED)
 
 
 class PropositionRegistry:
@@ -333,12 +366,14 @@ class PropositionRegistry:
             self._props[pid] = Proposition(
                 proposition_id=pid,
                 claim=entry.get("claim", ""),
-                state=entry.get("status", entry.get("state", EpistemicState.UNKNOWN)),
+                state=_canonical_state(entry),
                 phase=entry.get("phase", ""),
                 version=entry.get("version", "v2"),
                 evidence=tuple(entry.get("evidence", ())),
                 children=children,
                 debt=debt,
+                recovery_state=_canonical_recovery(entry),
+                scope=entry.get("scope", Scope.TARGET_PATENT),
             )
 
     @classmethod
@@ -427,14 +462,13 @@ class PropositionRegistry:
             for m in pat.finditer(report_md):
                 claimed = m.group(1)
                 canonical = prop.state
-                # NOT_ESTABLISHED is the display form of UNKNOWN/NOT_LOADED
-                claimed_canon = {
-                    "NOT_ESTABLISHED": EpistemicState.UNKNOWN,
-                }.get(claimed, claimed)
-                canonical_canon = {
-                    EpistemicState.NOT_LOADED: EpistemicState.UNKNOWN,
-                    "NOT_ESTABLISHED": EpistemicState.UNKNOWN,
-                }.get(canonical, canonical)
+                # Normalize BOTH sides to the canonical epistemic vocabulary
+                # before comparing. The report text may use the legacy
+                # ResolutionState vocabulary (ESCALATION_REQUIRED,
+                # SEARCH_EXHAUSTED, UNRESOLVED, BLOCKED, MIGRATION_REQUIRED)
+                # which all map to NOT_ESTABLISHED in the v1.9 lattice.
+                claimed_canon = _LEGACY_TO_CANONICAL.get(claimed, claimed)
+                canonical_canon = _LEGACY_TO_CANONICAL.get(canonical, canonical)
                 if claimed_canon != canonical_canon:
                     errors.append(ContractError(
                         "Proposition Consistency",
@@ -783,3 +817,62 @@ SPECIAL_RENDER_TITLES = (
     "SWOT Analysis",
     "Landscape & Market Data",
 )
+
+_LEGACY_TO_CANONICAL = {
+    "ESTABLISHED": EpistemicState.ESTABLISHED,
+    "PARTIALLY_ESTABLISHED": EpistemicState.PARTIALLY_ESTABLISHED,
+    "PARTIAL": EpistemicState.PARTIALLY_ESTABLISHED,
+    "CONTRADICTED": EpistemicState.CONTRADICTED,
+    # Legacy ResolutionState vocabulary — all of these map to NOT_ESTABLISHED
+    # in the v1.9 lattice (see engine_v17.models.LEGACY_STATE_MAP).
+    "UNRESOLVED": EpistemicState.NOT_ESTABLISHED,
+    "ESCALATION_REQUIRED": EpistemicState.NOT_ESTABLISHED,
+    "SEARCH_EXHAUSTED": EpistemicState.NOT_ESTABLISHED,
+    "BLOCKED": EpistemicState.NOT_ESTABLISHED,
+    "MIGRATION_REQUIRED": EpistemicState.NOT_ESTABLISHED,
+    "NOT_ESTABLISHED": EpistemicState.NOT_ESTABLISHED,
+    "UNKNOWN": EpistemicState.NOT_ESTABLISHED,
+    "INFERRED": EpistemicState.NOT_ESTABLISHED,
+    "NOT_LOADED": EpistemicState.NOT_ESTABLISHED,
+}
+
+
+def _canonical_state(entry: dict) -> str:
+    """Map a ledger entry's state vocabulary to canonical v1.9 epistemic states.
+
+    Prefers an explicit ``epistemic_state`` field; falls back to the legacy
+    ``status``/``state`` vocabulary.
+    """
+    if "epistemic_state" in entry:
+        return str(entry["epistemic_state"]).upper()
+    raw = str(entry.get("status", entry.get("state", EpistemicState.UNKNOWN))).upper()
+    if raw in ("ESTABLISHED",):
+        return EpistemicState.ESTABLISHED
+    if raw in ("PARTIALLY_ESTABLISHED", "PARTIAL"):
+        return EpistemicState.PARTIALLY_ESTABLISHED
+    if raw in ("CONTRADICTED",):
+        return EpistemicState.CONTRADICTED
+    return EpistemicState.NOT_ESTABLISHED
+
+
+_LEGACY_RECOVERY_MAP = {
+    "ESTABLISHED": RecoveryState.NONE_REQUIRED,
+    "UNRESOLVED": RecoveryState.SEARCH_PENDING,
+    "ESCALATION_REQUIRED": RecoveryState.ESCALATION_REQUIRED,
+    "SEARCH_EXHAUSTED": RecoveryState.EXHAUSTED,
+    "BLOCKED": RecoveryState.ESCALATION_REQUIRED,
+    "MIGRATION_REQUIRED": RecoveryState.SEARCH_PENDING,
+}
+
+
+def _canonical_recovery(entry: dict) -> str:
+    """Derive the recovery state from a ledger entry.
+
+    Prefers an explicit ``recovery_state`` field; falls back to the legacy
+    ``status``/``state`` vocabulary via the same lattice mapping the engine
+    uses (see engine_v17.models.LEGACY_STATE_MAP).
+    """
+    if "recovery_state" in entry:
+        return str(entry["recovery_state"]).upper()
+    raw = str(entry.get("status", entry.get("state", "UNRESOLVED"))).upper()
+    return _LEGACY_RECOVERY_MAP.get(raw, RecoveryState.SEARCH_PENDING).value

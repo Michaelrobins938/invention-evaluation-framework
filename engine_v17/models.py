@@ -28,6 +28,67 @@ class ResolutionState(str, Enum):
     MIGRATION_REQUIRED = "migration_required"
 
 
+class EpistemicState(str, Enum):
+    """What we know about a proposition. Orthogonal to RecoveryState."""
+    ESTABLISHED = "ESTABLISHED"
+    PARTIALLY_ESTABLISHED = "PARTIALLY_ESTABLISHED"
+    NOT_ESTABLISHED = "NOT_ESTABLISHED"
+    CONTRADICTED = "CONTRADICTED"
+
+
+class RecoveryState(str, Enum):
+    """What can still be done about a proposition. Orthogonal to EpistemicState."""
+    NONE_REQUIRED = "NONE_REQUIRED"
+    SEARCH_PENDING = "SEARCH_PENDING"
+    ESCALATION_REQUIRED = "ESCALATION_REQUIRED"
+    EXHAUSTED = "EXHAUSTED"
+    UNAVAILABLE_BY_CONSTRAINT = "UNAVAILABLE_BY_CONSTRAINT"
+
+
+class Scope(str, Enum):
+    """What entity a proposition refers to. Prevents cross-entity contamination
+    (e.g. US5215088 claims vs Neuralace claims)."""
+    TARGET_PATENT = "TARGET_PATENT"
+    PATENT_FAMILY = "PATENT_FAMILY"
+    TECHNOLOGY_LINEAGE = "TECHNOLOGY_LINEAGE"
+    COMMERCIAL_PRODUCT = "COMMERCIAL_PRODUCT"
+    ASSIGNEE_PORTFOLIO = "ASSIGNEE_PORTFOLIO"
+    MARKET = "MARKET"
+    REGULATORY = "REGULATORY"
+
+
+# v1.9: legacy single-axis state -> (epistemic, recovery) lattice.
+LEGACY_STATE_MAP: dict[ResolutionState, tuple[EpistemicState, RecoveryState]] = {
+    ResolutionState.ESTABLISHED: (EpistemicState.ESTABLISHED, RecoveryState.NONE_REQUIRED),
+    ResolutionState.UNRESOLVED: (EpistemicState.NOT_ESTABLISHED, RecoveryState.SEARCH_PENDING),
+    ResolutionState.ESCALATION_REQUIRED: (EpistemicState.NOT_ESTABLISHED, RecoveryState.ESCALATION_REQUIRED),
+    ResolutionState.SEARCH_EXHAUSTED: (EpistemicState.NOT_ESTABLISHED, RecoveryState.EXHAUSTED),
+    ResolutionState.BLOCKED: (EpistemicState.NOT_ESTABLISHED, RecoveryState.ESCALATION_REQUIRED),
+    ResolutionState.MIGRATION_REQUIRED: (EpistemicState.NOT_ESTABLISHED, RecoveryState.SEARCH_PENDING),
+}
+
+# Reverse map for the backward-compat `state` property.
+# Multiple legacy states can map to the same lattice point (e.g. ESCALATION_REQUIRED
+# and BLOCKED both -> (NOT_ESTABLISHED, ESCALATION_REQUIRED)). We give precedence
+# to the "primary" epistemic state: ESCALATION_REQUIRED wins over BLOCKED,
+# UNRESOLVED wins over MIGRATION_REQUIRED.
+_LATTICE_TO_LEGACY: dict[tuple[EpistemicState, RecoveryState], ResolutionState] = {
+    (EpistemicState.ESTABLISHED, RecoveryState.NONE_REQUIRED): ResolutionState.ESTABLISHED,
+    (EpistemicState.NOT_ESTABLISHED, RecoveryState.SEARCH_PENDING): ResolutionState.UNRESOLVED,
+    (EpistemicState.NOT_ESTABLISHED, RecoveryState.ESCALATION_REQUIRED): ResolutionState.ESCALATION_REQUIRED,
+    (EpistemicState.NOT_ESTABLISHED, RecoveryState.EXHAUSTED): ResolutionState.SEARCH_EXHAUSTED,
+    (EpistemicState.NOT_ESTABLISHED, RecoveryState.UNAVAILABLE_BY_CONSTRAINT): ResolutionState.UNRESOLVED,
+}
+
+
+def lattice_from_legacy(state: ResolutionState) -> tuple[EpistemicState, RecoveryState]:
+    return LEGACY_STATE_MAP.get(state, (EpistemicState.NOT_ESTABLISHED, RecoveryState.SEARCH_PENDING))
+
+
+def legacy_from_lattice(epistemic: EpistemicState, recovery: RecoveryState) -> ResolutionState:
+    return _LATTICE_TO_LEGACY.get((epistemic, recovery), ResolutionState.UNRESOLVED)
+
+
 class FailureClass(str, Enum):
     """The *operational* cause of a recovery failure.
 
@@ -184,7 +245,15 @@ class EvidenceLeverage:
 class Proposition:
     id: str
     claim: str = ""
+    # Legacy field — kept at position 3 for backward-compat positional
+    # construction (orchestrator and existing tests pass `state=` as the
+    # 3rd positional arg). In v1.9 the canonical view is the lattice, but
+    # `state` remains the serialization shim.
     state: ResolutionState = ResolutionState.UNRESOLVED
+    # v1.9 canonical lattice fields (orthogonal axes + scope).
+    epistemic_state: EpistemicState = EpistemicState.NOT_ESTABLISHED
+    recovery_state: RecoveryState = RecoveryState.SEARCH_PENDING
+    scope: Scope = Scope.TARGET_PATENT
     evidence_state: EvidenceState = EvidenceState.WORK_QUEUE
     unknown_type: UnknownType | None = None
     search_completeness: str = "incomplete"
@@ -201,17 +270,33 @@ class Proposition:
     def from_dict(cls, data: dict[str, Any]) -> "Proposition":
         raw_state = str(data.get("state", ResolutionState.UNRESOLVED.value)).lower()
         if raw_state == "exhausted":
-            state = ResolutionState.MIGRATION_REQUIRED
+            # v1.7 quirk: "exhausted" was migrated to MIGRATION_REQUIRED.
+            # Preserve that behavior for backward compat with existing ledgers.
+            legacy = ResolutionState.MIGRATION_REQUIRED
             migration = dict(data.get("migration_metadata", {}))
             migration["legacy_state"] = "EXHAUSTED"
         else:
-            state = _resolution(raw_state) or ResolutionState.UNRESOLVED
+            legacy = _resolution(raw_state) or ResolutionState.UNRESOLVED
             migration = dict(data.get("migration_metadata", {}))
+
+        # Lattice fields take precedence when explicitly present in the data.
+        if "epistemic_state" in data or "recovery_state" in data:
+            epistemic = _epistemic(data.get("epistemic_state")) or EpistemicState.NOT_ESTABLISHED
+            recovery = _recovery(data.get("recovery_state")) or RecoveryState.SEARCH_PENDING
+            # Derive the legacy shim from the lattice so `state` is always
+            # consistent with the canonical fields.
+            legacy = legacy_from_lattice(epistemic, recovery)
+        else:
+            epistemic, recovery = lattice_from_legacy(legacy)
+
         raw_unknown = data.get("unknown_type")
         return cls(
             id=data["id"],
             claim=data.get("claim", ""),
-            state=state,
+            state=legacy,
+            epistemic_state=epistemic,
+            recovery_state=recovery,
+            scope=_scope(data.get("scope")) or Scope.TARGET_PATENT,
             evidence_state=_evidence(data.get("evidence_state")),
             unknown_type=_unknown(raw_unknown),
             search_completeness=data.get("search_completeness", "incomplete"),
@@ -230,6 +315,9 @@ class Proposition:
             "id": self.id,
             "claim": self.claim,
             "state": self.state.value,
+            "epistemic_state": self.epistemic_state.value,
+            "recovery_state": self.recovery_state.value,
+            "scope": self.scope.value,
             "evidence_state": self.evidence_state.value,
             "unknown_type": self.unknown_type.value if self.unknown_type else None,
             "search_completeness": self.search_completeness,
@@ -272,3 +360,30 @@ def _evidence(value: Any) -> EvidenceState:
         if state.value == normalized:
             return state
     return EvidenceState.WORK_QUEUE
+
+
+def _epistemic(value: Any) -> EpistemicState | None:
+    if value is None:
+        return None
+    try:
+        return EpistemicState(str(value).upper())
+    except ValueError:
+        return None
+
+
+def _recovery(value: Any) -> RecoveryState | None:
+    if value is None:
+        return None
+    try:
+        return RecoveryState(str(value).upper())
+    except ValueError:
+        return None
+
+
+def _scope(value: Any) -> Scope | None:
+    if value is None:
+        return None
+    try:
+        return Scope(str(value).upper())
+    except ValueError:
+        return None

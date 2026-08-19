@@ -6,14 +6,17 @@ from dataclasses import dataclass, field
 from typing import Iterable
 
 from .models import (
+    EpistemicState,
     EvidenceLeverage,
     FailureClass,
     Proposition,
+    RecoveryState,
     ResolutionState,
     ResearchExhaustion,
     SOURCE_UNAVAILABLE_REASONS,
     TRANSIENT_REASONS,
     UnknownType,
+    lattice_from_legacy,
 )
 from .execution import ExecutionLedger
 
@@ -190,6 +193,22 @@ def validate_search_exhaustion(proposition: Proposition) -> list[str]:
     if not proposition.recovery:
         return ["recovery"]
     return proposition.recovery.validate()
+
+
+def transition_lattice(
+    proposition: Proposition,
+    attempts: list[RecoveryAttempt],
+    execution_ledger: ExecutionLedger | None = None,
+) -> tuple[EpistemicState, RecoveryState]:
+    """v1.9 canonical transition: returns (epistemic, recovery) separately.
+
+    The legacy single-axis state conflated 'what we know' with 'what we can
+    still do'. This function keeps the two axes distinct:
+      - epistemic: ESTABLISHED / PARTIALLY_ESTABLISHED / NOT_ESTABLISHED / CONTRADICTED
+      - recovery:  NONE_REQUIRED / SEARCH_PENDING / ESCALATION_REQUIRED / EXHAUSTED / UNAVAILABLE_BY_CONSTRAINT
+    """
+    legacy = transition_state(proposition, attempts, execution_ledger)
+    return lattice_from_legacy(legacy)
 
 
 def transition_state(

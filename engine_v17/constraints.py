@@ -3,7 +3,7 @@
 from dataclasses import dataclass, field
 from typing import Any
 
-from .models import Proposition, ResolutionState
+from .models import Proposition, RecoveryState, ResolutionState
 
 
 @dataclass
@@ -41,9 +41,17 @@ def propagate_constraints(propositions: list[Proposition]) -> list[Constraint]:
 
 
 def calculate_evidence_debt(propositions: list[Proposition]) -> list[EvidenceDebtItem]:
+    """Evidence debt = recoverable items only.
+
+    v1.9: a proposition is debt iff its recovery state is SEARCH_PENDING or
+    ESCALATION_REQUIRED. ESTABLISHED (NONE_REQUIRED) and
+    UNAVAILABLE_BY_CONSTRAINT propositions are NOT debt — the latter cannot
+    be recovered by any admissible search and must not be counted as if they
+    could.
+    """
     items = []
     for p in propositions:
-        if p.state == ResolutionState.ESTABLISHED:
+        if p.recovery_state in (RecoveryState.NONE_REQUIRED, RecoveryState.UNAVAILABLE_BY_CONSTRAINT):
             continue
         score = 100 if any(t in p.id for t in ("P-05", "P-02")) else 60
         items.append(EvidenceDebtItem(

@@ -20,6 +20,18 @@ from .domain_parsers import (
     parse_patent_metadata,
 )
 
+# EPO OPS — primary NPL source (optional; falls back gracefully if not configured)
+try:
+    from .epo_ops import (
+        CitationBundle,
+        EpoOpsClient,
+        build_npl_evidence_records,
+        retrieve_citations,
+    )
+    _EPO_OPS_AVAILABLE = True
+except ImportError:
+    _EPO_OPS_AVAILABLE = False
+
 
 Fetcher = Callable[[str], bytes]
 
@@ -100,6 +112,69 @@ def run_live_phase_adapters(
     )
     patent_metadata = parse_patent_metadata(patent_raw.read_text(encoding="utf-8", errors="ignore"), normalized)
     target_claims = parse_patent_claims(patent_raw.read_text(encoding="utf-8", errors="ignore"))
+
+    # ── EPO OPS citation retrieval (primary NPL source) ─────────────────────
+    epo_citation_bundle: CitationBundle | None = None
+    epo_npl_records: list[NplEvidenceRecord] = []
+    epo_citation_record = None
+    epo_npl_record = None
+    epo_citation_raw: Path | None = None
+    epo_npl_raw: Path | None = None
+    if _EPO_OPS_AVAILABLE:
+        try:
+            epo_client = EpoOpsClient()
+            epo_citation_bundle = retrieve_citations(normalized, epo_client, use_cache=True)
+            total_citations = len(epo_citation_bundle.patcit) + len(epo_citation_bundle.nplcit)
+
+            # Only persist and record when EPO OPS returned actual citation data
+            if total_citations > 0:
+                epo_citation_raw = output_dir / f"epo-ops-citations-{normalized.lower()}.json"
+                epo_citation_raw.write_text(
+                    json.dumps(epo_citation_bundle.to_dict(), indent=2, default=str) + "\n",
+                    encoding="utf-8",
+                )
+                epo_citation_record = adapter.fetch(
+                    ledger,
+                    phase_id="03",
+                    action_type="epo_ops_citation_retrieval",
+                    source="EPO OPS",
+                    url=epo_client._url(f"/published-data/publication/epodoc/{normalized}/biblio"),
+                    query=normalized,
+                    artifact_path=epo_citation_raw,
+                    result_count=total_citations,
+                )
+
+            # Resolve NPL citations (XP documents) via citing-patent strategy
+            xp_numbers = [cit.xp_number for cit in epo_citation_bundle.nplcit if cit.xp_number]
+            if xp_numbers:
+                for xp_num in xp_numbers[:5]:  # limit to first 5 XP refs
+                    xp_records = build_npl_evidence_records(xp_num, epo_client, use_cache=True)
+                    epo_npl_records.extend(xp_records)
+
+                if epo_npl_records:
+                    epo_npl_raw = output_dir / f"epo-ops-npl-{normalized.lower()}.json"
+                    epo_npl_raw.write_text(
+                        json.dumps(
+                            {"xp_resolutions": [r.to_dict() for r in epo_npl_records]},
+                            indent=2, default=str,
+                        )
+                        + "\n",
+                        encoding="utf-8",
+                    )
+                    epo_npl_record = adapter.fetch(
+                        ledger,
+                        phase_id="04",
+                        action_type="epo_ops_npl_resolution",
+                        source="EPO OPS NPL",
+                        url=epo_client._url("/published-data/search"),
+                        query=f"XP citations for {normalized}",
+                        artifact_path=epo_npl_raw,
+                        result_count=len(epo_npl_records),
+                    )
+        except Exception as _exc:
+            # EPO OPS unavailable — continue without it; existing Google Patents
+            # flow remains the primary patent source.
+            pass
 
     literature_query = "locomotion assisting exoskeleton ground force sensors"
     literature_url = "https://api.crossref.org/works?query=" + quote_plus(literature_query) + "&rows=5"
@@ -275,6 +350,39 @@ def run_live_phase_adapters(
             proposition_support=None,
             temporal_relevance=False,
         ),
+        # EPO OPS citation evidence decisions
+        *(
+            [
+                apply_evidence_sufficiency_gate(
+                    proposition_id="P-03-002",
+                    schema_id="patent_citations",
+                    source=SourceObject(
+                        "EPO OPS",
+                        "epo_ops_citation",
+                        epo_citation_record.query if epo_citation_record else "",
+                        epo_citation_record.execution_id if epo_citation_record else "",
+                        str(epo_citation_raw) if epo_citation_raw else "",
+                    ),
+                    proposition_support=None,
+                    temporal_relevance=True,
+                ),
+                apply_evidence_sufficiency_gate(
+                    proposition_id="P-04-002",
+                    schema_id="npl_citations",
+                    source=SourceObject(
+                        "EPO OPS NPL",
+                        "epo_ops_npl",
+                        epo_npl_record.query if epo_npl_record else "",
+                        epo_npl_record.execution_id if epo_npl_record else "",
+                        str(epo_npl_raw) if epo_npl_raw else "",
+                    ),
+                    proposition_support=None,
+                    temporal_relevance=True,
+                ),
+            ]
+            if epo_citation_record is not None
+            else []
+        ),
     ]
     evidence_path = output_dir / "adapter-evidence-decisions.json"
     evidence_path.write_text(json.dumps([decision.to_dict() for decision in evidence_decisions], indent=2) + "\n", encoding="utf-8")
@@ -284,6 +392,26 @@ def run_live_phase_adapters(
         "literature": parse_crossref_literature(literature_raw.read_bytes()),
         "market": parse_market_proxy(market_raw.read_bytes()),
         "partners": parse_partner_candidates(partner_raw.read_bytes()),
+        **(
+            {
+                "epo_ops_citations": (
+                    epo_citation_bundle.to_dict() if epo_citation_bundle else {}
+                ),
+                "epo_ops_npl": {
+                    "xp_resolutions": [r.to_dict() for r in epo_npl_records],
+                    "xp_numbers_found": [
+                        r.xp_number for r in epo_npl_records if r.xp_number
+                    ],
+                    "metadata_completeness": {
+                        r.xp_number: r.metadata_completeness.value
+                        for r in epo_npl_records
+                        if r.xp_number
+                    },
+                },
+            }
+            if epo_citation_bundle is not None
+            else {}
+        ),
     }
     parsed_path = output_dir / "parsed-domain-evidence.json"
     parsed_path.write_text(json.dumps(parsed_domains, indent=2) + "\n", encoding="utf-8")

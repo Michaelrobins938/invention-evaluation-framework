@@ -1,2368 +1,651 @@
 # Invention Evaluation Framework
 
-> **Evidence-constrained AI evaluation of inventions, patents, technology, intellectual property, commercialization potential, and market opportunity.**
+> **Evidence-governed multi-agent intelligence for evaluating inventions, patents, technology, intellectual property, commercialization potential, and market opportunity.**
 
 [![Framework](https://img.shields.io/badge/framework-Invention%20Evaluation-blue)](#)
 [![Evidence](https://img.shields.io/badge/evidence-constrained-green)](#)
-[![Patent Analysis](https://img.shields.io/badge/patent-analysis-orange)](#)
-[![Commercial Analysis](https://img.shields.io/badge/commercial-analysis-purple)](#)
+[![Autoprompt](https://img.shields.io/badge/execution-Autoprompt%201.0.3-orange)](#)
+[![Tests](https://img.shields.io/badge/tests-214%20passing-brightgreen)](#)
 
-**Repository:** [Michaelrobins938/invention-evaluation-framework](https://github.com/Michaelrobins938/invention-evaluation-framework?utm_source=chatgpt.com)
-
----
+**Repository:** [Michaelrobins938/invention-evaluation-framework](https://github.com/Michaelrobins938/invention-evaluation-framework)
+**Status:** Engineering Operational · Autoprompt Integration Complete · Validation Corpus Expanding
 
 ![Invention Evaluation Framework Cover](Assets/invention-evaluation-cover.png)
 
 ---
 
-## Overview
+## What This Is
 
-The **Invention Evaluation Framework** is an evidence-constrained evaluation engine for analyzing inventions and intellectual property across the dimensions that actually matter when deciding whether an invention is worth developing, licensing, investing in, commercializing, researching further, or abandoning.
+The system does not merely ask an LLM to write an evaluation.
 
-It combines:
+It **decomposes an invention into propositions, dispatches specialized research workers, gathers and classifies evidence, evaluates evidence sufficiency, performs independent review and blind fresh verification, and generates an auditable decision-support report.**
 
-* invention and patent extraction
-* claim-domain decomposition
-* prior-art analysis
-* novelty and anticipation assessment
-* obviousness analysis
-* patent-family and rights analysis
-* patent-landscape analysis
-* scientific literature analysis
-* technology maturity assessment
-* commercialization analysis
-* market opportunity analysis
-* competitive analysis
-* potential partner identification
-* evidence sufficiency assessment
-* uncertainty decomposition
-* evidence recovery
-* constraint propagation
-* confidence classification
-* operational auditing
-* consumer-facing report generation
+```
+Input                              Processing                          Output
+─────────────────  ───────────────────────────────────────────  ───────────────────────────
+invention          extraction → claim decomposition →         evidence-traceable
+patent             proposition generation → research →         invention evaluation
+technical          evidence collection → sufficiency →        with explicit uncertainty
+submission         rights / prior-art / market analysis →     and evidence debt
+                   review → verification → arbitration →
+                   decision state → report
+```
+
+> **The system can say "we don't know" without treating that as a failure.**
+
+Evidence insufficiency is a valid result:
+
+```text
+Evidence insufficient
+        ↓
+E3 FAILED
+        ↓
+WORK QUEUE / ESCALATION_REQUIRED
+        ↓
+No unsupported conclusion
+```
+
+That is epistemic containment, not failure.
+
+### What happens when I submit an invention?
+
+```
+INPUT: invention / patent / technical submission
+  ↓
+1. understand the submission (disclosure dates captured, even if "none")
+2. analyze the technology (feature→benefit, IPC/CPC candidates, regulatory)
+3. search prior art / literature (patent landscape, literature, novelty claim mapping)
+4. evaluate market opportunity (bounded model, not NAICS alone)
+5. identify potential partners (fit: sells/buys/need/mapping)
+6. map claims/elements (deterministic claim-mapping.json, WORK QUEUE if incomplete)
+7. construct evidence graph (debt + constraints downstream of propositions)
+8. test propositions (E0-E9 epistemic gates, coverage gates)
+9. independently review (ap-reviewer, per-proposition)
+10. blind verify (ap-fresh-verifier, per-proposition, is_blind=true)
+11. produce decision report (Markdown → HTML → PDF, provenance preserved)
+```
+
+The system can legitimately return:
+
+- `Established` · `Not established` · `Insufficient evidence` · `Work Queue` · `Escalation Required` · `Search Exhausted` · `Blocked`
+
+> **Insufficient evidence is a result, not a hallucination.**
+
+---
+
+## Architecture
+
+**Autoprompt orchestrates the work. IEF governs what the evidence is allowed to establish.**
+
+```
+                         INVENTION / PATENT
+                                │
+                                ▼
+                       EVALUATION MISSION  (mission.py, mission hash)
+                                │
+                                ▼
+                         AUTOPROMPT
+                      ORCHESTRATION LAYER  (opencode provider, 25 personas)
+                                │
+                ┌───────────────┼───────────────┐
+                ▼               ▼               ▼
+             PATENTS        LITERATURE        MARKET
+             WORKERS         WORKERS          WORKERS
+                │               │               │
+                └───────────────┼───────────────┘
+                                ▼
+                       IEF EVIDENCE LAYER
+                                │
+                 ┌──────────────┼──────────────┐
+                 ▼              ▼              ▼
+             PROPOSITIONS    CLAIMS        RIGHTS
+                 │              │              │
+                 └──────────────┼──────────────┘
+                                ▼
+                            E0 → E9
+                       EPISTEMIC CONTROLLER  (epistemic_gates.py)
+                                │
+                 ┌──────────────┴──────────────┐
+                 ▼                             ▼
+          INDEPENDENT REVIEW             BLIND VERIFICATION
+            ap-reviewer                  ap-fresh-verifier
+                 │                             │
+                 └──────────────┬──────────────┘
+                                ▼
+                           ARBITRATION  (ap-arbiter)
+                                │
+                                ▼
+                        DECISION / REPORT
+                     Markdown · HTML · PDF
+```
+
+**Separation of responsibilities:**
+
+| Layer | Owns |
+|-------|------|
+| **Autoprompt** | task decomposition, worker orchestration, parallel execution, persona dispatch, retries, collection |
+| **IEF** | proposition model, evidence model, source provenance, evidence sufficiency, E0-E9, rights/claim relationships, uncertainty, review, verification, final decision state |
+| **Evidence Controller** | whether evidence supports a proposition; prevents unsupported conclusions |
+| **Report Renderer** | faithful, evidence-preserving presentation |
+
+---
+
+## Multi-Agent Execution
+
+| IEF DAG Node | Autoprompt Persona | Phase |
+|--------------|--------------------|-------|
+| `gather-submission` | `ap-scribe` | 02 |
+| `analyze-technology` | `ap-scoper` | 03 |
+| `patent-landscape` | `ap-researcher` | 04 |
+| `literature-search` | `ap-researcher` | 04 (parallel) |
+| `market-opportunity` | `ap-researcher` | 06 (parallel) |
+| `novelty-search` | `ap-researcher` | 05 |
+| `identify-partners` | `ap-researcher` | 07 |
+| `compile-report` | `ap-synthesizer` | 08 |
+| `render-report` | `ap-scribe` | 09 |
+| `independent review` | `ap-reviewer` | E7 |
+| `fresh verification` | `ap-fresh-verifier` | E8 (blind) |
+| `disagreement` | `ap-arbiter` | arbitration |
+
+Research lanes execute according to the DAG — independent lanes dispatch in parallel where dependencies allow (`spawn-all-then-collect`, max 6 concurrent, bounded retry). The integrated path uses `REAL_AUTOPROMPT` and does **not** silently fall back to the legacy orchestrator (`LEGACY_FALLBACK` exists only as explicit compatibility/benchmark mode). No recursive orchestration: `skill: deny` + `permission.task: {"*":"deny","ap-*":"allow"}` on every persona.
+
+---
+
+## DAG Execution
+
+**Launch groups** (`engine_v17/dag.py:112`):
+
+```
+GROUP 0  gather-submission
+GROUP 1  analyze-technology
+GROUP 2  patent-landscape · literature-search · market-opportunity  (parallel)
+GROUP 3  novelty-search · identify-partners
+GROUP 4  compile-report
+GROUP 5  render-report
+GROUP 6  independent review + fresh verification  (concurrent, blind)
+GROUP 7  arbitration if disagreement
+```
+
+- `spawn-all-then-collect` within each group
+- Dependency-aware (hard deps must be satisfied; soft deps may degrade)
+- Bounded retries (max 2, exponential backoff, 60s timeout per `autoprompt/ief.json`)
+- No recursion (single top-level authority per run)
+
+---
+
+## Evidence Architecture
+
+```
+External Source
+      ↓
+SourceObject  (source_identity + locator + execution_id + independence_lineage_id)
+      ↓
+Evidence Item  (typed per schemas/evidence-contract, SCHEMAS registry)
+      ↓
+Worker Interpretation  (ap-* persona output, not evidence)
+      ↓
+Proposition  (stable id + version, atomic)
+      ↓
+Review  (ap-reviewer, independent)
+      ↓
+Decision  (E0-E9 gates, premise-mapped)
+```
+
+**Crucial distinction:**
+
+```text
+SOURCE          ≠  DERIVED WORKER OUTPUT  ≠  PROVENANCE / LEDGER
+
+patent HTML          ap-synthesizer markdown      execution-ledger.json
+Crossref JSON        ap-scribe HTML               review-ledger.json
+WorldBank JSON       claim-mapping synthesis      run-manifest.json
+EPO OPS bundle       scores synthesis             combined-status.json
+```
+
+`E1` counts **external/primary sources** (7 in the US8527057 validation run), not derived artifacts (3 `ap-synthesizer`/`ap-scribe`/ledger not counted). This prevents fake source diversity.
+
+---
+
+## E0–E9 Epistemic Gates
+
+From `engine_v17/epistemic_gates.py:49`:
+
+| Gate | Name | Question | Blocks |
+|------|------|----------|--------|
+| **E0** | Intake validity | Can we establish what is being evaluated? | submission missing |
+| **E1** | Source integrity | Are external sources valid, readable, correctly identified, complete? | source_unavailable / insufficient_identity |
+| **E2** | Proposition integrity | Have material conclusions been decomposed into atomic propositions with stable IDs? | scope_mismatch / duplicate IDs |
+| **E3** | Evidence sufficiency | Does each proposition pass the Sufficiency Gate (SCHEMAS + corroboration)? | insufficient_corroboration |
+| **E4** | Temporal validity | Is evidence valid for the relevant date/time (critical date)? | insufficient_temporal_match |
+| **E5** | Contradiction check | Is conflicting evidence reconciled? | unresolved_conflict |
+| **E6** | Analytical validity | Does conclusion follow from evidence (premise-mapped, no orphan)? | orphan conclusion / work-state premise |
+| **E7** | Independent review | Can an independent reviewer reproduce/validate? | review blocked/failed |
+| **E8** | Fresh verification | Can a blind fresh verifier independently validate? | verification blocked/failed |
+| **E9** | Report integrity | Does report preserve evidence status, uncertainty, limitations? | missing sections / dropped nodes |
+
+**Evidence sufficiency gate** (`engine_v17/evidence_gate.py:93`): the only path for a proposition into findings — schema-driven, atomic (`SCHEMAS`: `prior_art_disclosure`, `literature_disclosure`, `market_sizing`, `commercial_adoption`, `partner_fit`), with `independence_lineage_id` for corroboration. `E3 FAILED` does **not** mean pipeline failure — it can mean `EXECUTION COMPLETED_WITH_EVIDENCE_DEBT / EVIDENCE INSUFFICIENT`, a valid epistemic result.
+
+---
+
+## Evidence Debt
+
+```text
+missing evidence  ≠  negative evidence
+retrieval failure ≠  evidence of absence
+model confidence  ≠  evidence confidence
+```
+
+When evidence is insufficient, the system preserves:
+
+- `WORK QUEUE` — evidence sufficiency incomplete
+- `ESCALATION_REQUIRED` — avenues remain
+- `SEARCH_EXHAUSTED` / `EXHAUSTED` — all avenues dispositioned, not evidence
+- `UNAVAILABLE_BY_CONSTRAINT` — inherently inaccessible (e.g., confidential license terms)
+- `BLOCKED` (avenue-level) — source cannot be executed
+
+Debt becomes a structured `ap-researcher`/`ap-sweeper` task (bounded retry) or `ap-arbiter` escalation, not a hallucinated answer. `missing evidence ≠ negative evidence` is an invariant.
+
+---
+
+## Proposition-Level Review
+
+Every material proposition is classified and reviewed:
+
+- All 5 propositions in the US8527057 validation run were reviewed
+- Every material proposition receives **independent review** (`ap-reviewer`) — reads evidence, not author's verdict
+- Every material proposition receives **blind fresh verification** (`ap-fresh-verifier`) — re-derives without reading reviewer verdict
+- Missing coverage **blocks** E7/E8 (not silently PASSED)
+- Results persisted to `proposition-review-matrix.json` + `review-ledger.json`
+
+```
+Proposition Ledger (5 props)
+       │
+       ├── P-02-001 → reviewer → verifier → PASSED
+       ├── P-05-001 → reviewer → verifier → PASSED
+       ├── P-05-002 → reviewer → verifier → PASSED
+       ├── P-07-001 → reviewer → verifier → PASSED
+       └── P-08-001 → reviewer → verifier → PASSED
+                     │
+                     ▼
+            Proposition Review Matrix (5 entries, criticality=critical)
+                     │
+                     ▼
+                E7 / E8  (require all critical propositions covered)
+```
+
+**Artifacts:** `proposition-review-matrix.json` (per-proposition `reviewer_verdict`/`verifier_verdict`/`criticality`), `review-ledger.json` (10 records: 5×2, `is_blind`, `is_independent`, `evidence_refs`). No self-review: `independent_review` raises `ValueError: fake independence` if reviewer == author.
+
+---
+
+## Claim Mapping
+
+Claim mapping is a **deterministic analytical contract**, not a retrieval side-effect:
+
+```text
+ _ensure_claim_mapping()
+      ▲
+      │
+live path ──────┘
+      ▲
+      │
+ingestion path ─┘
+```
+
+`engine_v17/workers.py:112` ensures `claim-mapping.json` is produced regardless of whether patent evidence came from live retrieval, existing artifact, or hermetic test source. Incomplete mappings remain:
+
+```json
+{"target_patent":"US8527057","target_claim":{…},"references":[],"state":"WORK QUEUE","analytical_contract":"deterministic"}
+```
+
+rather than fabricated. Retrieval method changes; analytical contract doesn't.
+
+---
+
+## Rights / Family Reasoning
+
+```
+target patent status  ≠  family status  ≠  portfolio status  ≠  freedom to operate
+```
+
+An expired patent does not automatically mean the technology is free of IP constraints. The framework treats patent relationships as a graph (priority → parent/CIP → continuations, `engine_v17/rights_graph.py:25`), reasoning about expired parents, active descendants, assignments (`Second Sight → Vivani 2022 → Cortigent 2023`), and surviving asset layers (`know_how`, `regulatory_assets`, `clinical_data`). Target-patent lapse blocks standalone patent licensing; family/portfolio diligence is required (see `US8527057` evaluation: `EXPIRED 2025-09-03` but `US7881799B2 ACTIVE 2028-03-14`, `US8473048B2 ACTIVE 2028-06-25`).
+
+---
+
+## Consumer-Friendly Reporting
+
+Progressive disclosure:
+
+```
+Bottom Line
+     ↓
+What It Means
+     ↓
+What To Do
+     ↓
+Why
+     ↓
+Technical Detail
+     ↓
+Audit Trail
+```
+
+The executive reader should not need `P-03-004`, `E7`, or `evidence_graph.json` to understand the recommendation; those remain in the audit layer. Reports are evidence-governed translations, not pretty hallucinations.
+
+---
+
+## Validation Status
+
+**Engineering Operational · Autoprompt Integration Complete · Evidence Controller Operational · Real Multi-Agent Execution Proven**
+
+**Tests:** 214 passed
+
+| Suite | Count | What it proves |
+|-------|-------|----------------|
+| Real dispatch | 11 | `REAL_AUTOPROMPT` lanes, DAG parallel, E0-E9 real, scores provenance, E7/E8 5/5, hermetic live chain, A/B provenance, no fallback, multi-run, no recursion |
+| Integration + failure modes | 27 | mission/DAG, status separation, E1-E3 gates, coverage, review independence, no recursion, 15 failure modes (unavailable, rate-limited, malformed, incomplete, contradictory, insufficient, timeout, worker failure, retry exhaustion, verifier/reviewer disagreement, unsupported conclusion, duplicate mapping, partial pipeline, report failure) |
+| Existing IEF | 113 | claim graph, constraints, coverage, domain parsers, evidence gate, execution ledger, provenance |
+| Renderer | 63 | contract, visual QA, lattice, contamination |
+
+**Multi-run reliability (3× US8527057 real Autoprompt):**
+
+```text
+Run 1 → REAL_AUTOPROMPT / FULL_CONTROLLER / INDEPENDENT / BLIND_FRESH | 9 lanes | 10 reviews | INSUFFICIENT | no recursion
+Run 2 → REAL_AUTOPROMPT / FULL_CONTROLLER / INDEPENDENT / BLIND_FRESH | 9 lanes | 10 reviews | INSUFFICIENT | no recursion
+Run 3 → REAL_AUTOPROMPT / FULL_CONTROLLER / INDEPENDENT / BLIND_FRESH | 9 lanes | 10 reviews | INSUFFICIENT | no recursion
+```
+
+Consistent `INSUFFICIENT` is correct on this evidence-incomplete fixture — the framework correctly refuses to overclaim.
+
+---
+
+## Benchmark Results
+
+**Provenance (P4 hardened):**
+
+| Variant | Execution | Epistemic | Review | Verification | Completion | Evidence Coverage | Unsupported Inference | Overclaim |
+|---------|-----------|-----------|--------|--------------|------------|-------------------|---------------------|-----------|
+| **A** | LEGACY_FALLBACK | LEGACY | LEGACY | LEGACY | 0.88 | 0.20 | 0.20 | 0.20 |
+| **B** | REAL_AUTOPROMPT | IEF_STANDARD | STANDARD | STANDARD | **1.00** | 0.20 | 0.20 | 0.20 |
+| **C** | REAL_AUTOPROMPT | FULL_CONTROLLER | INDEPENDENT | BLIND_FRESH | **1.00** | 0.20 | 0.20 | 0.20 |
+
+`PYTHONPATH=. python3 benchmarks/harness.py --evaluation-id US8527057 --evaluation-dir evaluations/us8527057 --output-base /tmp/bench`
+
+**Interpretation:** Autoprompt increased completion 0.88 → 1.00 on this validation benchmark **without increasing measured unsupported inference or overclaim** (both 0.20 steady, `overclaim gate PASS`). This demonstrates improved execution completeness without epistemic regression on the tested case. Broader validation requires an expanded corpus — do not read as universal quality improvement.
+
+---
+
+## Overclaim Metric
+
+```text
+overclaim_rate = |{debt p: p in Established Findings with confirmed language}| / |debt|
+debt = {p | p.state ∈ {escalation_required, SEARCH_EXHAUSTED, BLOCKED, EXHAUSTED}}
+```
+
+A finding that **correctly** describes evidence debt in the Operational Audit is **not** an overclaim. Previous implementation counted any mention of debt as overclaim (1.00 everywhere); corrected in `benchmarks/harness.py:56` to count only debt presented as `CONFIRMED PRESENT` in findings. **0 = no overclaim, 1 = every debt overclaimed.**
+
+---
+
+## Repository Map
+
+```
+invention-evaluation-framework/
+├── IEF_EXECUTION_CONTRACT.md          execution contract (mission lifecycle, DAG, E0-E9, status)
+├── schemas/
+│   ├── evaluation-mission.schema.json
+│   ├── skill-contract.schema.json
+│   ├── evidence-contract.schema.json
+│   └── skill_registry.json            9 skills machine-readable
+├── autoprompt/ief.json                IEF-for-Autoprompt config (skill paths, state, review, concurrency 6, retry 2)
+├── engine_v17/
+│   ├── mission.py                     EvaluationMission + hash
+│   ├── dag.py                         DAG + launch groups + DAG_DIAGRAM
+│   ├── status.py                      CombinedStatus(execution, evidence)
+│   ├── epistemic_gates.py             E0-E9
+│   ├── review.py                      independent_review / fresh_verification / arbitrate
+│   ├── workers.py                     9 DAG workers + _ensure_claim_mapping (P3)
+│   ├── hermetic_fetcher.py            4-type mocked source payloads
+│   ├── orchestrator.py                legacy run / run_generic (preserved)
+│   └── orchestrator_autoprompt.py     REAL dispatch (spawn-all-then-collect, E7/E8 5/5, provenance 4-tuple)
+├── skills/
+│   ├── SKILL-Orchestrator.md          domain-policy router (Autoprompt is execution, IEF is policy)
+│   ├── skill-02-gather-invention-submission/
+│   ├── skill-03-analyze-technology-fundamentals/  … up to skill-10-render-report
+│   ├── DIGEST.md · GLOSSARY.md · INDEX.md · PIPELINE_STATE.md
+│   └── superpowers/                   sdd/ harness tasks
+├── benchmarks/harness.py              A/B/C harness (14 metrics, 4-mode provenance)
+├── tests/
+│   ├── test_real_dispatch.py          11 real-dispatch tests (P1-P4)
+│   ├── test_autoprompt_integration.py 11 integration tests
+│   └── test_failure_modes.py          15 failure-mode tests
+├── report-renderer/
+│   ├── render_report.py · contract.py · visual_qa.py · template.html
+│   └── tests/
+├── evaluations/
+│   ├── us8527057/                     US 8,527,057 (validation case, 9 lanes, 5/5 reviews)
+│   ├── 7149534/ · 7153242/ · 8905955/  additional cases
+│   └── us8527057-v17(Complete-pass)/  legacy fixture
+├── docs/
+│   ├── ARCHITECTURE.md                detailed execution model
+│   ├── INTEGRATION-AUTOPROMPT.md      Phase 1-3 integration report
+│   └── GLOSSARY.md                    terminology (Autoprompt, E0-E9, REAL_AUTOPROMPT, etc.)
+├── CHANGELOG.md                       Phase 3 Hardening entry
+├── verify.sh                          install verifier (pre-existing semantic scan note see P5)
+├── .gitignore                         .ief-runs/, PROMPTS.txt, ROADMAP.md, GATELOG.md, .autoprompt/
+└── Assets/invention-evaluation-cover.png
+```
+
+---
+
+## Quick Start
+
+```bash
+# 1. Clone
+git clone https://github.com/Michaelrobins938/invention-evaluation-framework
+cd invention-evaluation-framework
+
+# 2. Install Autoprompt (execution OS) — opencode provider
+bash /tmp/autoprompt_extract/autoprompt-skill-main/scripts/install/install.sh opencode
+# → ~/.config/opencode/skills/autoprompt/SKILL.md (v1.0.3, 25 personas)
+# → ~/.config/opencode/agents/ap-*.md
+# → ~/.config/opencode/autoprompt.opencode.json
+
+# 3. Install Python deps
+pip install -r requirements.txt  # or: pip install pyyaml jsonschema
+# Optional: chromium (PDF), poppler-utils (pdftotext for TOC page numbers)
+
+# 4. Run tests
+python3 -m pytest tests/test_real_dispatch.py -v          # real dispatch (P1-P4)
+python3 -m pytest tests/test_autoprompt_integration.py tests/test_failure_modes.py -v
+python3 -m pytest Test-report-results/tests_v17 -q          # 113 existing
+python3 -m pytest report-renderer/tests -q                  # 63 renderer
+bash verify.sh  # includes semantic scan note: see docs/ARCHITECTURE.md#validation
+
+# 5. Run an evaluation (REAL Autoprompt path)
+PYTHONPATH=. python3 -c "
+from pathlib import Path
+from engine_v17.orchestrator_autoprompt import run_with_autoprompt
+run_with_autoprompt(
+  'US8527057','evaluations/us8527057/source/US8527057.pdf',
+  Path('evaluations/us8527057-output'), Path('evaluations/us8527057'),
+  hermetic=True, execution_mode='REAL_AUTOPROMPT',
+  epistemic_mode='FULL_CONTROLLER', review_mode='INDEPENDENT', verification_mode='BLIND_FRESH')
+"
+
+# 6. Inspect artifacts
+ls evaluations/us8527057-output/
+# evaluation-mission.json  execution-plan.json  run-manifest.json  execution-ledger.json
+# proposition-ledger.json  evidence-graph.json  claim-graph.json  rights-graph.json  claim-mapping.json
+# epistemic-gate-report.json  proposition-review-matrix.json  review-ledger.json  combined-status.json
+# scores-manifest.json  report-*.md  report-*.html  report-*.pdf
+
+# 7. Benchmark A/B/C
+PYTHONPATH=. python3 benchmarks/harness.py --evaluation-id US8527057 --evaluation-dir evaluations/us8527057 --output-base /tmp/bench
+cat /tmp/bench/benchmark-report.md
+```
+
+---
+
+## Evaluation Output Artifacts
+
+| Artifact | Represents |
+|----------|------------|
+| `evaluation-mission.json` | Typed mission + hash + bytes + nonce (immutable) |
+| `execution-plan.json` | DAG nodes, edges, topological order, launch groups, diagram |
+| `run-manifest.json` | Unified ledger: mission, plan, `execution_mode`, `epistemic_mode`, `review_mode`, `verification_mode`, `lane_dispatch_log`, `all_lanes_real`, gates, combined status |
+| `execution-ledger.json` | Per-lane `ExecutionRecord` (phase, persona, `source_type`, `result_artifact`, `evidence_sufficiency`) |
+| `proposition-ledger.json` | 5 propositions with `state`, `epistemic_state`, `recovery_state`, `blockers` |
+| `evidence-graph.json` | Evidence debt + constraints downstream of propositions |
+| `claim-graph.json` | Claim domains (retinal, mechanical, packaging, interconnect, power) |
+| `rights-graph.json` | Patent family, status (`EXPIRED` vs surviving `ACTIVE`), assignments |
+| `claim-mapping.json` | Target claim vs references, `state WORK QUEUE`, deterministic contract |
+| `epistemic-gate-report.json` | E0-E9 verdicts + basis + barrier_type |
+| `proposition-review-matrix.json` | Per-proposition `criticality`, `reviewer_verdict`, `verifier_verdict` |
+| `review-ledger.json` | 10 review records (`is_blind`, `is_independent`, `evidence_refs`) + arbitrations |
+| `combined-status.json` | `CombinedStatus(execution, evidence)` — never collapsed to SUCCESS |
+| `coverage-report.json` | Coverage gate results + blocking gates |
+| `scores-manifest.json` | `target_patent`, `evidence_items`, `gauges` (basis `proposition_id`) |
+| `report-*.md` / `.html` / `.pdf` | Compiled report + styled deliverable (TOC accurate, footer, watermark) |
+
+Not every evaluation contains every artifact unless the code guarantees it — missing evidence yields `WORK QUEUE`/`ESCALATION_REQUIRED`, not fabricated files.
+
+---
+
+## What This Is Not
+
+This framework provides automated research and analytical **decision support**. It does **not** constitute:
+
+- legal advice · patent prosecution advice · patent validity opinion · infringement opinion · freedom-to-operate opinion · investment advice · medical advice · regulatory advice · valuation certification
+
+Patent status, ownership, licensing, infringement, validity, and enforceability should be independently verified by qualified professionals where material decisions depend on them.
+
+It is **evidence-based decision support**. An `INSUFFICIENT` result is a successful epistemic outcome — the system refusing to overclaim.
+
+---
+
+## Project Status
+
+**Engineering Operational · Evidence-Governed Evaluation Pipeline · Validation In Progress**
+
+Individual evaluations may remain evidence-incomplete — that is the framework working correctly, not a product defect.
+
+| Dimension | Status |
+|-----------|--------|
+| Engineering | Operational |
+| Autoprompt Integration | Complete (REAL dispatch proven, no fallback, no recursion) |
+| Epistemic Controller | Operational (E0-E9, 5/5 review matrix, blind verification) |
+| Real Multi-Agent Execution | Proven (9 DAG worker lanes + 3 review/verification lanes = 12 active personas; 25 installed Ap personas; 5/5 propositions reviewed) |
+| Validation Corpus | Expanding |
+| Overall Product | Research / Decision-Support Platform (not a finished commercial due-diligence product) |
+| Evaluation Status | May be `COMPLETE`, `COMPLETED_WITH_EVIDENCE_DEBT`, `INSUFFICIENT`, `BLOCKED`, or `PARTIAL` — `COMPLETED_WITH_EVIDENCE_DEBT` is success with debt, not failure |
+
+### Known Limitations (evidence-governed honesty)
+
+| Layer | Status |
+|-------|--------|
+| Autoprompt integration | **Operational** |
+| Real multi-agent execution | **Proven** (9 DAG lanes, `spawn-all-then-collect`, max 6, `all_lanes_real=true`) |
+| Evidence controller | **Operational** |
+| E0-E9 | **Operational** |
+| Independent review | **5/5 proven** (`proposition-review-matrix.json`, `E7 PASSED`) |
+| Blind verification | **5/5 proven** (`proposition-review-matrix.json`, `E8 PASSED`, `is_blind=true`) |
+| Claim mapping | **Deterministic** (`claim-mapping.json` regardless of retrieval method) |
+| 214 tests | **Passing** (11 real dispatch + 27 integration/failure + 113 IEF + 63 renderer) |
+| US8527057 real run | **Proven** (`REAL_AUTOPROMPT/FULL_CONTROLLER/INDEPENDENT/BLIND_FRESH`, 7 external sources) |
+| Benchmark | **Passing** (A 0.88 → B/C 1.00, overclaim 0.20 steady, no regression) |
+| New-run renderer | **Passing** (74K HTML + 509K PDF, target_patent provenance) |
+| `verify.sh` legacy fixture semantic scan | **Known limitation** — `Executive Summary|v1.7 Control State|Original Submission not emitted (88 nodes)` against legacy fixture/template expectations; first-layer contamination fixed (`target_patent=US8527057B2`), second layer pre-existing and hidden previously by early abort. New integrated runs render successfully. |
+| EPO OPS live credentials | **Required for non-hermetic live use** (hermetic `hermetic_fetcher.py` covers testing) |
+
+---
+
+## Roadmap
+
+**Completed:** Autoprompt integration, real worker dispatch, DAG execution (6 groups, max 6), evidence provenance (external vs derived), E0-E9, proposition review matrix (5/5), blind verification, arbitration, deterministic claim mapping, benchmark 4-mode provenance, hermetic adapters, multi-run validation, renderer fixture provenance fix, 214 tests.
+
+**Next — Validation Corpus:**
+- Expanded invention corpus (obvious novelty / obvious prior art / ambiguous / sparse / misleading / conflicting / retrieval failure / contamination)
+- Golden evidence sets, known-prior-art cases
+
+**Next — Evaluation Science (A/B/C across corpus):**
+- Baseline vs Autoprompt vs Autoprompt+Controller comparison
+- Claim-mapping accuracy, evidence-sufficiency accuracy, review/verifier agreement, arbitration rate, reproducibility, runtime, token/cost
+
+**Next — Product:**
+- Executive-first reports, progressive disclosure, interactive evidence graph, decision dashboard, consumer-facing evaluation experience
+
+---
+
+## Research Question
+
+> **How can a multi-agent AI system perform complex invention evaluation while maintaining an explicit boundary between what the evidence establishes, what can reasonably be inferred, and what remains unknown?**
+
+The current architecture is designed to test this question empirically: Autoprompt generates work, IEF evaluates evidence, epistemic gates control claims, independent review and blind verification control whether conclusions survive scrutiny — across an expanding validation corpus.
+
+---
+
+## Overview (preserved)
+
+The Invention Evaluation Framework combines:
+
+* invention and patent extraction · claim-domain decomposition · prior-art analysis · novelty and anticipation assessment · obviousness analysis · patent-family and rights analysis · patent-landscape analysis · scientific literature analysis · technology maturity assessment · commercialization analysis · market opportunity analysis · competitive analysis · potential partner identification · evidence sufficiency assessment · uncertainty decomposition · evidence recovery · constraint propagation · confidence classification · operational auditing · consumer-facing report generation
 
 The system is designed around a simple principle:
 
 > **An evaluation should never appear more certain than the evidence supporting it.**
 
-That means the framework does not treat an LLM-generated statement as a fact merely because the statement sounds plausible.
+---
 
-Instead, propositions are decomposed, sourced, classified, challenged, recovered where possible, and explicitly marked when evidence remains insufficient or unavailable.
+## Why Evidence-Constrained Matters
+
+Large language models can produce extremely convincing unsupported claims. In an invention evaluation, consider:
+
+> "The patent expired." — high confidence, filing-date evidence  
+> "The company has an exclusive license." — requires license record + exclusivity + field of use  
+> "The market is worth $3.25B." — requires bounded model, geography, period, derivation
+
+These have radically different evidentiary requirements. The framework treats them as different propositions (`P-02-001` vs `P-07-001`, etc.), each with its own `SourceObject` and sufficiency gate. Forward-citation counts are a neutral historical signal, not patentability evidence. An expired parent does not imply the technology is free of IP constraints — family graph distinguishes target vs surviving family vs portfolio.
 
 ---
 
-# Why This Exists
+## Report Design Principles
 
-Most AI-generated invention evaluations have a fundamental problem.
+1. **Answer before explaining** — conclusion before machinery
+2. **Plain English before jargon** — "The original patent has expired" before ``Legal status = EXPIRED``
+3. **Explain every important uncertainty** — `PARTIALLY_ESTABLISHED` + why
+4. **Separate evidence from inference** — never present inference as established fact
+5. **Progressive disclosure** — complex evidence available without dominating primary experience
+6. **Preserve traceability** — every important conclusion traceable to evidence
+7. **Never manufacture precision** — `$3.25B` does not imply same certainty as verified expiration date
 
-They are very good at producing something that **looks like an evaluation**.
-
-They are much worse at determining whether the evaluation is actually supported.
-
-A conventional AI-generated report might say:
-
-> "The market is worth $3.2 billion and growing at 14.5% CAGR."
-
-But where did those numbers come from?
-
-A model might say:
-
-> "The patent is novel."
-
-But novel relative to which references?
-
-It might say:
-
-> "The company has an exclusive license."
-
-But does the source establish the license itself, the exclusivity, the field of use, and the financial terms?
-
-Those are different propositions.
-
-The Invention Evaluation Framework treats them as different propositions.
+Rendering correctness is part of evaluation correctness.
 
 ---
 
-# Core Philosophy
+## Security & Trust
 
-The framework is built around **evidence-constrained reasoning** rather than narrative generation.
+Because evaluations may contain confidential IP, deployments should assume submissions can be sensitive: do not expose private drafts unnecessarily, protect uploaded invention documents, avoid logging confidential source text, protect API credentials, separate user submissions from public research sources, preserve provenance, avoid publishing confidential evaluations.
 
-### Traditional AI report generation
+---
 
-```text
-SOURCE
-  ↓
-LLM
-  ↓
-Narrative
+## License
+
+[MIT](LICENSE)
+
+---
+
+ # What is this invention actually worth pursuing, why, how certain are we, and what should happen next?
+
+The goal is not to make AI sound certain.
+
+The goal is to make complex technology decisions more traceable, more transparent, and more honest about what is known.
+
+```
+WHAT IS THE INVENTION?
+WHAT IS ACTUALLY EVIDENCED?
+WHAT REMAINS UNKNOWN?
+WHAT RIGHTS EXIST?
+WHERE IS THE OPPORTUNITY?
+WHAT COULD GO WRONG?
+WHAT SHOULD HAPPEN NEXT?
 ```
 
-This makes it extremely easy for unsupported assumptions to become indistinguishable from established facts.
-
-### Invention Evaluation Framework
-
-```text
-                         SOURCE MATERIAL
-                               │
-                               ▼
-                       ┌─────────────────┐
-                       │ SOURCE EXTRACTION│
-                       └────────┬────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │ CLAIM / DOMAIN  │
-                       │ DECOMPOSITION   │
-                       └────────┬────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │ PROPOSITION      │
-                       │ REGISTRY         │
-                       └────────┬────────┘
-                                │
-                    ┌───────────┴───────────┐
-                    ▼                       ▼
-             ┌──────────────┐       ┌──────────────┐
-             │ EVIDENCE      │       │ CONSTRAINTS  │
-             │ RETRIEVAL     │       │ & RIGHTS     │
-             └──────┬───────┘       └──────┬───────┘
-                    │                       │
-                    └───────────┬───────────┘
-                                ▼
-                       ┌─────────────────┐
-                       │ EVIDENCE         │
-                       │ SUFFICIENCY      │
-                       │ CONTROLLER       │
-                       └────────┬────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │ ANALYTICAL       │
-                       │ LAYERS           │
-                       └────────┬────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │ DECISION MODEL   │
-                       └────────┬────────┘
-                                │
-                                ▼
-                       ┌─────────────────┐
-                       │ HUMAN-FRIENDLY   │
-                       │ REPORT           │
-                       └─────────────────┘
-```
-
-The result is not merely a generated report.
-
-It is an **auditable evaluation artifact**.
-
----
-
-# What the Framework Evaluates
-
-An invention is not a single question.
-
-The framework separates evaluation into multiple domains.
-
-## 1. Technology
-
-Questions include:
-
-* What does the invention actually do?
-* What is the underlying mechanism?
-* What technical problem does it solve?
-* What are the essential technical components?
-* What differentiates it from known approaches?
-* How mature is the technology?
-* Has it been demonstrated?
-* Has it been commercialized?
-* What manufacturing requirements exist?
-* What scalability limitations exist?
-* What technical failure modes exist?
-
----
-
-## 2. Intellectual Property
-
-Questions include:
-
-* What patent protects the invention?
-* Is the patent active?
-* Has it expired?
-* What is the filing date?
-* What is the priority chain?
-* Are continuations or related patents active?
-* What is the current family-level IP position?
-* Is there meaningful portfolio depth?
-* Does the target patent still provide exclusivity?
-* Are there blocking patents?
-* Is freedom-to-operate likely to be constrained?
-
-The framework deliberately distinguishes:
-
-```text
-TARGET PATENT STATUS
-        ≠
-FAMILY STATUS
-        ≠
-PORTFOLIO STATUS
-        ≠
-FREEDOM TO OPERATE
-```
-
-An expired patent does not automatically mean the technology is free of IP constraints.
-
----
-
-# 3. Novelty & Prior Art
-
-The system analyzes individual claim limitations rather than simply asking an LLM:
-
-> "Is this patent novel?"
-
-A claim can be represented as:
-
-```text
-CLAIM
- ├── limitation A
- ├── limitation B
- ├── limitation C
- ├── limitation D
- └── limitation E
-```
-
-Each reference is then mapped against those limitations.
-
-Example:
-
-| Claim limitation | Prior Art A | Prior Art B | Target |
-| ---------------- | ----------: | ----------: | -----: |
-| Feature A        |           ✓ |           ✓ |      ✓ |
-| Feature B        |           ✓ |           ✗ |      ✓ |
-| Feature C        |           ✗ |           ✓ |      ✓ |
-| Feature D        |           ✗ |           ✗ |      ✓ |
-
-This allows the engine to distinguish:
-
-### Anticipation
-
-A single prior-art reference contains all necessary claim limitations.
-
-from:
-
-### Combination / obviousness exposure
-
-Multiple references may collectively suggest the claimed combination.
-
-Those are not the same legal question.
-
----
-
-# 4. Obviousness
-
-The framework does not treat:
-
-> "Nobody found an identical document"
-
-as equivalent to:
-
-> "The invention was non-obvious."
-
-Instead it evaluates factors such as:
-
-* motivation to combine
-* technological proximity
-* mechanism displacement
-* known problem/known solution relationships
-* bridge evidence
-* combination evidence
-* temporal ordering
-* whether the specific combination is actually evidenced
-
-A particularly important concept is the **bridge**.
-
-```text
-KNOWN TECHNOLOGY A
-        │
-        │ ?
-        ▼
-CLAIMED TECHNOLOGY B
-```
-
-If the evidence does not establish the path from A to B, the system should not fabricate one.
-
----
-
-# 5. Literature Analysis
-
-Scientific literature provides a different evidence layer from patent literature.
-
-The framework can evaluate:
-
-* state of the art
-* technological adoption
-* performance
-* clinical validation
-* safety
-* limitations
-* competing architectures
-* citation activity
-* experimental evidence
-* long-term performance
-* commercialization signals
-
-This is especially important for inventions where patent documents alone cannot establish whether the underlying technology actually works in practice.
-
----
-
-# 6. Market Analysis
-
-The framework evaluates:
-
-* market need
-* target customers
-* market segments
-* industry structure
-* competitive environment
-* growth signals
-* commercialization barriers
-* regulatory burden
-* purchasing behavior
-* potential applications
-* market-entry constraints
-* potential partners
-
-But there is an important distinction:
-
-> **A market estimate is not automatically a market fact.**
-
-The system therefore distinguishes between:
-
-### Established
-
-Supported by structured or authoritative evidence.
-
-### Partially established
-
-Directionally supported but lacking sufficient precision.
-
-### Inferred
-
-Generated from available evidence or industry benchmarks.
-
-### Not established
-
-The evidence is insufficient.
-
-### Unavailable by constraint
-
-The information may exist but cannot reasonably be recovered, such as confidential licensing terms.
-
----
-
-# 7. Commercialization
-
-The framework asks a more useful question than:
-
-> "Is this invention valuable?"
-
-It asks:
-
-> **"Where does the value actually reside?"**
-
-Possible answers include:
-
-* the original patent
-* active continuation patents
-* manufacturing know-how
-* regulatory approvals
-* clinical validation
-* customer relationships
-* installed base
-* proprietary materials
-* specialized fabrication
-* data
-* complementary IP
-* brand
-* distribution
-* network effects
-* specific applications
-
-This distinction is critical for expired patents.
-
----
-
-# 8. Partner Analysis
-
-Potential partners can be classified by role:
-
-### Current licensee
-
-Existing commercialization relationship.
-
-### IP owner
-
-Current rights holder.
-
-### Potential licensee
-
-Organization that could potentially commercialize the technology.
-
-### Technology partner
-
-Organization providing complementary capabilities.
-
-### Manufacturing partner
-
-Organization capable of producing the technology.
-
-### Clinical partner
-
-Organization capable of supporting validation or deployment.
-
-The framework is designed to avoid treating a company name as automatically meaning:
-
-> "This company is interested in this invention."
-
-A potential partner is an **analytical recommendation**, not evidence of commercial intent.
-
----
-
-# Evidence Architecture
-
-The central architectural concept is the **proposition**.
-
-Every important conclusion can be decomposed into smaller claims.
-
-For example:
-
-```text
-P-08-005
-Licensing Terms
-│
-├── P-08-005a
-│   Exclusive licensee = Blackrock Neurotech
-│
-├── P-08-005b
-│   License type = exclusive commercial
-│
-├── P-08-005c
-│   Field of use = neural interfaces / BCI
-│
-├── P-08-005d
-│   Royalty rate
-│
-├── P-08-005e
-│   Upfront payment
-│
-└── P-08-005f
-    Milestones
-```
-
-This matters because different parts can have different evidence states.
-
-For example:
-
-```text
-P-08-005a  ESTABLISHED
-P-08-005b  ESTABLISHED
-P-08-005c  ESTABLISHED
-P-08-005d  NOT_ESTABLISHED
-P-08-005e  NOT_ESTABLISHED
-P-08-005f  NOT_ESTABLISHED
-```
-
-The parent proposition therefore cannot honestly be represented as completely established.
-
----
-
-# Evidence States
-
-The framework uses evidence states to prevent false certainty.
-
-Typical states include:
-
-| State                       | Meaning                                                            |
-| --------------------------- | ------------------------------------------------------------------ |
-| `ESTABLISHED`               | Sufficient supporting evidence exists                              |
-| `PARTIALLY_ESTABLISHED`     | Some components are supported, but the complete proposition is not |
-| `NOT_ESTABLISHED`           | Evidence is insufficient                                           |
-| `ESCALATION_REQUIRED`       | Additional investigation is required                               |
-| `UNAVAILABLE_BY_CONSTRAINT` | Information cannot reasonably be recovered                         |
-| `INFERRED`                  | Analytical inference rather than directly established fact         |
-| `CONFIRMED_PRESENT`         | Evidence confirms the relevant condition exists                    |
-
-The exact state vocabulary can evolve with framework versions.
-
----
-
-# Evidence Debt
-
-A key concept in the framework is **evidence debt**.
-
-Evidence debt occurs when a conclusion cannot yet be responsibly classified because supporting evidence is missing.
-
-For example:
-
-```text
-Market Size
-    ↓
-$3.25B
-    ↓
-Source quality insufficient
-    ↓
-PARTIALLY_ESTABLISHED
-    ↓
-Evidence Recovery Queue
-```
-
-The system should not silently convert the number into a fact.
-
-Instead it records the debt.
-
----
-
-# Evidence Recovery Controller
-
-The Evidence Recovery Controller determines whether unresolved propositions should be:
-
-1. researched further
-2. escalated
-3. decomposed
-4. downgraded
-5. classified as unavailable by constraint
-
-This prevents a common failure mode in automated research:
-
-```text
-SEARCH FAILED
-    ↓
-MODEL GUESSES
-    ↓
-GUESS BECOMES FACT
-```
-
-The intended behavior is:
-
-```text
-SEARCH FAILED
-    ↓
-RECORD FAILURE
-    ↓
-CLASSIFY MISSINGNESS
-    ↓
-ATTEMPT RECOVERY
-    ↓
-IF RECOVERY FAILS
-    ↓
-EXPLICITLY PRESERVE UNCERTAINTY
-```
-
----
-
-# Constraint Propagation
-
-Not every proposition is independently researchable.
-
-Some constraints propagate through the evaluation.
-
-For example:
-
-```text
-Patent expired
-      │
-      ├── Target patent exclusivity = unavailable
-      │
-      └── Family-level analysis still required
-                    │
-                    ▼
-             Active continuations
-                    │
-                    ▼
-            FTO risk remains
-```
-
-The system therefore distinguishes between:
-
-**"This patent is expired."**
-
-and:
-
-**"The technology is free to commercialize."**
-
-The first may be established.
-
-The second does not automatically follow.
-
----
-
-# Rights & Family Graph
-
-The framework treats patent relationships as a graph rather than a flat list.
-
-Conceptually:
-
-```text
-                    ┌────────────────┐
-                    │ Priority /      │
-                    │ Filing Origin   │
-                    └───────┬────────┘
-                            │
-                  ┌─────────┴─────────┐
-                  ▼                   ▼
-             Parent Patent       CIP / Continuation
-                  │                   │
-                  ▼                   ▼
-              Expired             Active
-                                      │
-                             ┌────────┴────────┐
-                             ▼                 ▼
-                         Continuation      Improvement
-```
-
-This allows the evaluation to reason about:
-
-* expired parents
-* active descendants
-* continuations
-* continuation-in-part relationships
-* related portfolios
-* rights holders
-* licensing relationships
-
-rather than stopping at the target patent.
-
----
-
-# Claim-Domain Decomposition
-
-Patent claims often contain multiple technical domains.
-
-A claim may simultaneously involve:
-
-* mechanical structure
-* materials
-* electronics
-* software
-* manufacturing
-* chemistry
-* biological interaction
-
-The framework decomposes those domains before conducting evidence searches.
-
-This improves retrieval because the search space becomes:
-
-```text
-CLAIM
- ├── STRUCTURE
- ├── MATERIAL
- ├── FUNCTION
- ├── MANUFACTURING
- ├── SIGNAL PATH
- └── APPLICATION
-```
-
-rather than one enormous natural-language query.
-
----
-
-# Search Exhaustion
-
-The framework does **not** treat:
-
-> "The search returned nothing"
-
-as:
-
-> "No evidence exists."
-
-Instead, research exhaustion requires an explicit exhaustion proof.
-
-Conceptually:
-
-```text
-No result
-   ≠
-No evidence
-```
-
-The system therefore maintains a distinction between:
-
-* search attempted
-* search incomplete
-* source unavailable
-* source inaccessible
-* evidence not found
-* evidence contradicted
-* evidence exhausted
-
-This is particularly important in patent landscapes.
-
----
-
-# Patent Landscape Analysis
-
-The landscape layer examines:
-
-* patent families
-* applicants
-* assignees
-* jurisdictions
-* filing periods
-* technology clusters
-* portfolio concentration
-* active versus expired rights
-* potential blocking positions
-
-The output is intended to answer:
-
-> **"Who controls this technical territory?"**
-
-rather than merely:
-
-> "What patents exist?"
-
----
-
-# Commercial Scoring
-
-The framework produces high-level scores for dimensions such as:
-
-## Technology
-
-Factors can include:
-
-* clinical validation
-* fabrication maturity
-* scalability
-* biocompatibility
-* technical differentiation
-* development maturity
-
-## IP
-
-Factors can include:
-
-* original patent status
-* continuation depth
-* portfolio depth
-* expiration impact
-* active family members
-* blocking risk
-
-## Market
-
-Factors can include:
-
-* market size
-* growth
-* competition
-* regulatory barriers
-* customer need
-* commercialization accessibility
-
-Scores are intended as **decision-support signals**, not objective universal valuations.
-
-A score of `5/6` does not mean:
-
-> "This technology is 83.3% good."
-
-It means the evaluated factors collectively indicate a strong position within the framework's scoring model.
-
----
-
-# The Human Layer
-
-One of the framework's most important architectural directions is the separation between:
-
-## Evidence representation
-
-What the system knows and how it knows it.
-
-and:
-
-## Human representation
-
-How the system explains what that information means.
-
-The framework therefore aims to produce reports at multiple levels.
-
-### Executive Layer
-
-> What is this?
-
-> Does it work?
-
-> Is it protected?
-
-> Is there a market?
-
-> What is the biggest risk?
-
-> What should I do?
-
-### Commercial Layer
-
-> Who buys it?
-
-> What applications matter?
-
-> Who controls the IP?
-
-> Who are the competitors?
-
-> What are the commercialization paths?
-
-### Technical Layer
-
-> What does Claim 1 actually require?
-
-> Which references disclose each limitation?
-
-> What evidence supports the conclusion?
-
-> Where is the obviousness bridge?
-
-### Audit Layer
-
-> Which propositions remain unresolved?
-
-> What searches were performed?
-
-> Which constraints prevented recovery?
-
-> Which conclusions were inferred?
-
-The framework should **not force an executive to read the audit trail to understand the opportunity.**
-
-The audit trail exists for those who need it.
-
----
-
-# Consumer-Friendly Reporting
-
-A major design objective is that the final report should be understandable to someone who is **not** a patent attorney, scientist, engineer, or data scientist.
-
-The report therefore follows a progressive-disclosure model.
-
-```text
-                 THE BOTTOM LINE
-                       │
-                       ▼
-                WHAT IT MEANS
-                       │
-                       ▼
-                 WHAT TO DO
-                       │
-                       ▼
-               WHY WE BELIEVE IT
-                       │
-                       ▼
-                TECHNICAL DETAIL
-                       │
-                       ▼
-                 AUDIT TRAIL
-```
-
-The system should not dumb down the analysis.
-
-It should **translate it**.
-
-For example:
-
-### Internal representation
-
-```text
-P-06-005:
-PARTIALLY_ESTABLISHED
-
-Human use duration = 30,000+ aggregate days
-SAE = 0
-Maximum longevity = 9+ years
-Chronic yield = <25%
-Yield decay = ~2% / month
-```
-
-### Human representation
-
-> **The technology has a strong human safety record, but long-term functional stability is more complicated.**
->
-> Human use and safety evidence are strong, while electrode performance can decline over time. The evaluation therefore separates **safety** from **long-term recording performance** rather than treating them as one claim.
-
-Same evidence.
-
-Better communication.
-
----
-
-# Report Design Principles
-
-Generated reports should follow these rules.
-
-## 1. Answer before explaining
-
-The reader should know the conclusion before seeing the supporting machinery.
-
-## 2. Plain English before jargon
-
-Use:
-
-> "The original patent has expired."
-
-before:
-
-> `Legal status = EXPIRED`
-
-## 3. Explain every important uncertainty
-
-Do not merely say:
-
-> `PARTIALLY_ESTABLISHED`
-
-Explain **why**.
-
-## 4. Separate evidence from inference
-
-Never present an inference using the visual language of an established fact.
-
-## 5. Progressive disclosure
-
-Complex evidence should be available without dominating the primary experience.
-
-## 6. Preserve traceability
-
-Every important conclusion should remain traceable back to evidence.
-
-## 7. Never manufacture precision
-
-A market estimate of `$3.25B` should not visually imply the same certainty as a verified patent expiration date.
-
----
-
-# Example Evaluation
-
-One representative evaluation is the analysis of:
-
-## US 5,215,088 — Three-Dimensional Electrode Device
-
-The evaluation identified a technology that became the foundation of the **Utah Array** neural interface platform.
-
-The original patent is expired, but the surrounding intellectual-property portfolio contains later active patents.
-
-The evaluation therefore demonstrates a central principle of the framework:
-
-> **An expired patent can still represent commercially important technology without the expired patent itself providing current exclusivity.**
-
-The report distinguishes:
-
-```text
-ORIGINAL PATENT
-     ↓
-EXPIRED
-
-TECHNOLOGY
-     ↓
-COMMERCIALIZED
-
-FAMILY / PORTFOLIO
-     ↓
-ACTIVE RIGHTS REMAIN
-
-MARKET
-     ↓
-REAL COMMERCIAL ACTIVITY
-
-LICENSING
-     ↓
-STRUCTURE ESTABLISHED
-FINANCIAL TERMS UNKNOWN
-```
-
-This is precisely the kind of distinction the framework is designed to preserve.
-
----
-
-# What the Framework Is Not
-
-The framework is **not**:
-
-* a substitute for patent counsel
-* a legal opinion
-* a formal patent validity opinion
-* a freedom-to-operate opinion
-* a valuation by a certified valuation professional
-* a regulatory determination
-* a guarantee of commercialization success
-* a substitute for clinical review
-* a substitute for independent market research
-
-It is an **evidence-based decision-support system**.
-
-The distinction is deliberate.
-
----
-
-# Why Evidence-Constrained Matters
-
-Large language models are extremely capable of synthesizing information.
-
-They are also capable of producing extremely convincing unsupported claims.
-
-In an invention evaluation, that is dangerous.
-
-Consider these statements:
-
-> "The patent expired."
-
-> "The patent is commercially valuable."
-
-> "The company has an exclusive license."
-
-> "The license generates 5% royalties."
-
-> "The market is worth $3.25B."
-
-These have radically different evidentiary requirements.
-
-The framework treats them separately.
-
----
-
-# Evidence Hierarchy
-
-The system favors evidence according to its relevance and authority.
-
-Typical evidence categories include:
-
-```text
-PRIMARY / AUTHORITATIVE
-    Patent records
-    Government records
-    Regulatory records
-    Court records
-    Original scientific papers
-    Corporate filings
-    Official institutional records
-
-SECONDARY
-    Peer-reviewed reviews
-    Established databases
-    Industry reports
-    Reputable technical publications
-
-TERTIARY
-    News
-    Market summaries
-    Aggregators
-    Search results
-
-INFERENCE
-    Model-generated estimates
-    Derived calculations
-    Industry benchmarks
-    Analytical conclusions
-```
-
-The framework should preserve the distinction between these categories.
-
----
-
-# Confidence Is Not the Same as Importance
-
-An important conclusion may have low confidence.
-
-A minor conclusion may have extremely high confidence.
-
-For example:
-
-```text
-Patent expiration date
-HIGH confidence
-HIGH importance
-
-Exact market size
-LOW confidence
-HIGH importance
-
-Potential partner
-MODERATE confidence
-MODERATE importance
-```
-
-The framework therefore avoids collapsing everything into one generic confidence score.
-
----
-
-# Evidence Sufficiency
-
-A proposition is evaluated based on whether the available evidence is sufficient for the **specific proposition being asserted**.
-
-This prevents scope creep.
-
-For example:
-
-### Evidence supports:
-
-> "Blackrock is an exclusive licensee."
-
-That does not automatically support:
-
-> "Blackrock pays 5% royalties."
-
-And it certainly does not support:
-
-> "Blackrock pays $2 million upfront."
-
-Each requires its own evidence.
-
----
-
-# Evidence Debt vs. Unavailable Information
-
-These are intentionally different.
-
-## Evidence debt
-
-Information should theoretically be recoverable.
-
-Example:
-
-> A performance study exists, but the system has not yet retrieved or verified it.
-
-Action:
-
-**Research further.**
-
-## Unavailable by constraint
-
-The information is inherently inaccessible.
-
-Example:
-
-> Confidential royalty terms in a private license agreement.
-
-Action:
-
-**Record the limitation and stop pretending the answer is known.**
-
-This distinction prevents endless research loops.
-
----
-
-# Operational Audit
-
-Every evaluation should have an operational audit layer.
-
-The audit can record:
-
-* pipeline stages executed
-* source acquisition
-* extraction status
-* search status
-* evidence recovery
-* unresolved propositions
-* constraints
-* rights analysis
-* claim mapping
-* landscape coverage
-* rendering status
-* report generation status
-
-This makes debugging and quality assurance possible.
-
----
-
-# Control State
-
-Each evaluation maintains a control state describing the current epistemic condition of the run.
-
-Example:
-
-```text
-Run:
-RUN-US5215088-v18-20260819120000
-
-Legal Status:
-EXPIRED
-
-Bridge:
-PARTIALLY_GROUNDED
-
-Evidence Recovery:
-ACTIVE
-
-Unestablished Propositions:
-4
-
-Constraints:
-0
-```
-
-The control state exists so the report cannot accidentally imply that the evaluation is more complete than it actually is.
-
----
-
-# Reproducibility
-
-An evaluation should produce enough metadata to reconstruct:
-
-* what was evaluated
-* when it was evaluated
-* which framework version was used
-* what source material was used
-* which evidence was recovered
-* which propositions were unresolved
-* which constraints were active
-* what report version was rendered
-
-Example:
-
-```text
-Invention:
-US5215088
-
-Framework:
-v1.7
-
-Run:
-RUN-US5215088-v18-20260819120000
-
-Evaluation Date:
-2026-08-19
-```
-
-This makes historical comparisons possible when the framework itself evolves.
-
----
-
-# Versioning
-
-Framework versions should represent **behavioral changes**, not merely cosmetic changes.
-
-Examples of meaningful version changes:
-
-```text
-v1.0
-Initial evaluation pipeline
-
-v1.5
-Evidence sufficiency architecture
-
-v1.6
-Evidence recovery and proposition decomposition
-
-v1.7
-Control-state and uncertainty improvements
-```
-
-Future releases may introduce:
-
-* improved claim decomposition
-* stronger evidence recovery
-* expanded patent-family reasoning
-* improved market evidence controls
-* better commercial reasoning
-* consumer-layer report generation
-* improved visual reporting
-* benchmark suites
-* regression testing
-
----
-
-# Suggested Architecture
-
-At a conceptual level:
-
-```text
-┌───────────────────────────────────────────────┐
-│                 INPUT LAYER                   │
-│                                               │
-│ PDF / Patent / Invention Submission / URLs    │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│               EXTRACTION LAYER                │
-│                                               │
-│ Text extraction                               │
-│ Metadata extraction                           │
-│ Claim extraction                              │
-│ Technical element extraction                  │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│             STRUCTURAL ANALYSIS               │
-│                                               │
-│ Claim-domain decomposition                    │
-│ Technical decomposition                       │
-│ Proposition generation                        │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│                RESEARCH LAYER                 │
-│                                               │
-│ Patent search                                 │
-│ Prior art                                     │
-│ Literature                                    │
-│ Market evidence                               │
-│ Corporate / licensing evidence                │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│              EVIDENCE LAYER                   │
-│                                               │
-│ Evidence mapping                              │
-│ Confidence                                    │
-│ Missingness                                   │
-│ Evidence debt                                 │
-│ Recovery                                      │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│             REASONING LAYER                   │
-│                                               │
-│ Novelty                                       │
-│ Anticipation                                  │
-│ Obviousness                                   │
-│ Rights                                        │
-│ Commercialization                             │
-│ Market                                        │
-│ Competition                                   │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│             DECISION LAYER                    │
-│                                               │
-│ Opportunity                                   │
-│ Risk                                          │
-│ Commercial actionability                      │
-│ Recommended next steps                        │
-└───────────────────────┬───────────────────────┘
-                        │
-                        ▼
-┌───────────────────────────────────────────────┐
-│              PRESENTATION LAYER               │
-│                                               │
-│ Executive report                              │
-│ Commercial report                             │
-│ Technical report                              │
-│ Evidence audit                                │
-└───────────────────────────────────────────────┘
-```
-
----
-
-# Design Principle: One Evidence Model, Many Views
-
-The system should not maintain separate truth models for:
-
-* executive reports
-* technical reports
-* HTML
-* Markdown
-* JSON
-* dashboards
-
-Instead:
-
-```text
-                    EVIDENCE GRAPH
-                         │
-           ┌─────────────┼─────────────┐
-           ▼             ▼             ▼
-       Executive     Commercial     Technical
-         View          View           View
-           │             │             │
-           └─────────────┼─────────────┘
-                         ▼
-                    Audit Trail
-```
-
-This prevents the executive summary from drifting away from the underlying evidence.
-
----
-
-# Recommended Output Model
-
-A future standardized evaluation object could resemble:
-
-```json
-{
-  "invention": {
-    "id": "US5215088",
-    "title": "Three-Dimensional Electrode Device"
-  },
-  "control_state": {
-    "legal_status": "EXPIRED",
-    "bridge": "PARTIALLY_GROUNDED",
-    "evidence_recovery": "ACTIVE"
-  },
-  "scores": {
-    "technology": 5,
-    "ip": 3,
-    "market": 3
-  },
-  "findings": [],
-  "propositions": [],
-  "evidence": [],
-  "risks": [],
-  "opportunities": [],
-  "recommendations": []
-}
-```
-
-The actual implementation may differ.
-
-The important principle is that **the report should be downstream of structured evaluation state**, rather than being the primary data structure.
-
----
-
-# Recommended Report Contract
-
-Every generated report should answer these questions.
-
-## The invention
-
-**What is it?**
-
-## The technology
-
-**How does it work?**
-
-## The problem
-
-**What problem does it solve?**
-
-## The differentiation
-
-**What makes it different?**
-
-## The evidence
-
-**Does it actually work?**
-
-## The IP
-
-**Is it protected?**
-
-## The landscape
-
-**Who else controls this space?**
-
-## The market
-
-**Who would pay for it?**
-
-## The competition
-
-**What alternatives exist?**
-
-## The risks
-
-**What could kill the opportunity?**
-
-## The opportunity
-
-**Where is the strongest commercial path?**
-
-## The decision
-
-**What should happen next?**
-
----
-
-# Five Decision Questions
-
-The entire framework can ultimately be reduced to five executive questions:
-
-### 1. Is it real?
-
-Does the underlying technology work?
-
-### 2. Is it differentiated?
-
-Does it meaningfully differ from existing technology?
-
-### 3. Is it protectable?
-
-Is there meaningful IP protection available?
-
-### 4. Is it valuable?
-
-Is there a customer, market, or strategic application?
-
-### 5. Is it actionable?
-
-Can someone realistically do something with the opportunity?
-
-These questions provide the human-facing spine of the report.
-
-The detailed technical machinery exists to answer them responsibly.
-
----
-
-# Example: Expired Patent
-
-An expired patent should not automatically produce:
-
-> **Opportunity = Low**
-
-Nor should commercialization automatically produce:
-
-> **Opportunity = High**
-
-Instead:
-
-```text
-Patent expired
-      │
-      ▼
-Original exclusivity gone
-      │
-      ├──────────────┐
-      ▼              ▼
-Technology       Active family
-validated        members
-      │              │
-      └──────┬───────┘
-             ▼
-      Commercial value
-             │
-             ▼
-       FTO analysis
-             │
-             ▼
-     Application-specific
-        opportunity
-```
-
-This is the kind of reasoning the framework is designed to automate.
-
----
-
-# Regulatory Analysis
-
-For regulated technologies, the framework can identify:
-
-* regulatory classification
-* approval pathways
-* investigational pathways
-* clinical requirements
-* safety requirements
-* manufacturing requirements
-* biocompatibility requirements
-* jurisdiction-specific barriers
-
-However:
-
-> Regulatory information is decision support, not regulatory advice.
-
-The system should explicitly distinguish:
-
-```text
-FDA clearance
-≠
-FDA approval
-≠
-FDA authorization for every use
-≠
-Commercial freedom
-```
-
----
-
-# SWOT
-
-SWOT analysis is generated downstream of established findings and analytical conclusions.
-
-It should not be a generic LLM brainstorming exercise.
-
-For example:
-
-### Strength
-
-Must trace to evidence.
-
-### Weakness
-
-Must trace to evidence or explicitly identified technical limitation.
-
-### Opportunity
-
-Should connect to a market or application.
-
-### Threat
-
-Should connect to a competitor, technology, regulatory barrier, IP constraint, or other identifiable risk.
-
----
-
-# Opportunity Assessment
-
-The framework can express opportunities in structured form:
-
-| Field                | Description                 |
-| -------------------- | --------------------------- |
-| Sector               | Broad industry              |
-| Sub-sector           | Specific market             |
-| Industry             | Commercial classification   |
-| Product / Service    | What would be sold          |
-| Market Need          | Problem being solved        |
-| Purchaser            | Who buys                    |
-| Distribution         | How it reaches them         |
-| Estimated Market     | Evidence-qualified estimate |
-| Commercial Barrier   | Key constraint              |
-| Opportunity Strength | Framework assessment        |
-
-This turns the report from a patent summary into a **commercial decision tool**.
-
----
-
-# Competitive Landscape
-
-Competition should be evaluated across technology architectures rather than company names alone.
-
-For example:
-
-```text
-INTRACORTICAL
-    │
-    ├── Rigid penetrating arrays
-    │
-    ├── Flexible penetrating arrays
-    │
-    └── High-density arrays
-
-CORTICAL SURFACE
-    │
-    ├── ECoG
-    ├── µECoG
-    └── Flexible cortical arrays
-
-MINIMALLY INVASIVE
-    │
-    └── Endovascular interfaces
-```
-
-This makes technological substitution visible.
-
-A competitor does not necessarily need to make the same product.
-
-They may solve the same customer problem through a different architecture.
-
----
-
-# Failure Modes
-
-The framework is explicitly designed to catch several common AI-analysis failures.
-
-## Hallucinated evidence
-
-A model claims a source establishes something it does not.
-
-### Mitigation
-
-Evidence-level proposition mapping.
-
----
-
-## Unsupported precision
-
-A market is reported as exactly `$3.25B` despite weak evidence.
-
-### Mitigation
-
-Epistemic classification and market-source qualification.
-
----
-
-## Legal-status confusion
-
-An expired parent is interpreted as an unencumbered technology.
-
-### Mitigation
-
-Rights/family graph and constraint propagation.
-
----
-
-## Search failure interpreted as absence
-
-No prior art is found, therefore no prior art exists.
-
-### Mitigation
-
-Search exhaustion controls.
-
----
-
-## Citation laundering
-
-A citation is attached to a paragraph even though the source supports only one sentence.
-
-### Mitigation
-
-Atomic propositions and evidence mapping.
-
----
-
-## Executive-summary drift
-
-The report's opening claims become stronger than the underlying analysis.
-
-### Mitigation
-
-Generate human-facing language downstream from established findings.
-
----
-
-## Renderer data loss
-
-The underlying analysis contains information that disappears during report generation.
-
-### Mitigation
-
-Structured report contracts and renderer validation.
-
----
-
-# Renderer Philosophy
-
-The renderer is not merely a document formatter.
-
-It is a **semantic presentation layer**.
-
-It must preserve:
-
-* hierarchy
-* evidence state
-* confidence
-* source attribution
-* uncertainty
-* section relationships
-* tables
-* claims
-* recommendations
-
-A beautiful report that silently drops evidence is worse than an ugly report that preserves it.
-
-Therefore:
-
-> **Rendering correctness is part of evaluation correctness.**
-
----
-
-# Validation
-
-The framework should validate both:
-
-## Analytical correctness
-
-Did the engine reach a defensible conclusion?
-
-and:
-
-## Presentation correctness
-
-Did the final report faithfully represent the conclusion?
-
-These are separate tests.
-
-```text
-SOURCE
-  ↓
-ANALYSIS
-  ↓
-STRUCTURED RESULT
-  ↓
-RENDERER
-  ↓
-FINAL REPORT
-```
-
-A failure at any stage can corrupt the final product.
-
----
-
-# Testing Strategy
-
-The framework should support several classes of tests.
-
-## Unit Tests
-
-Test individual components:
-
-* claim extraction
-* proposition generation
-* status classification
-* evidence mapping
-* score calculation
-* report transformation
-
-## Integration Tests
-
-Test interactions:
-
-```text
-Patent
- → Extraction
- → Claim Mapping
- → Evidence
- → Evaluation
- → Report
-```
-
-## Regression Tests
-
-Run known inventions through newer framework versions.
-
-This is particularly important because improvements to evidence handling can unintentionally alter previously correct conclusions.
-
-## Evidence Tests
-
-Verify that:
-
-* unsupported claims are downgraded
-* missing evidence is recorded
-* citations map to the correct propositions
-* constraints propagate
-* unavailable information is not fabricated
-
-## Renderer Tests
-
-Verify:
-
-* all expected sections appear
-* evidence tables render
-* headings preserve hierarchy
-* page breaks work
-* tables do not disappear
-* executive summaries contain the correct findings
-* appendix information remains available
-
----
-
-# Benchmarking
-
-The framework should eventually maintain a benchmark corpus of inventions with known evaluation characteristics.
-
-Possible benchmark dimensions:
-
-| Benchmark            | What it tests          |
-| -------------------- | ---------------------- |
-| Prior-art retrieval  | Search quality         |
-| Claim mapping        | Element-level accuracy |
-| Novelty              | Anticipation reasoning |
-| Obviousness          | Combination reasoning  |
-| Legal status         | Rights accuracy        |
-| Evidence sufficiency | Epistemic discipline   |
-| Market evidence      | Source quality         |
-| Commercialization    | Business reasoning     |
-| Report fidelity      | Renderer correctness   |
-
-The objective is not merely:
-
-> "Did the LLM produce a good report?"
-
-It is:
-
-> **"Did the system preserve the boundary between evidence and inference?"**
-
----
-
-# Security & Trust
-
-Because invention evaluations may contain confidential intellectual property, deployments should assume that submissions can contain sensitive information.
-
-Important operational considerations include:
-
-* do not expose private patent drafts unnecessarily
-* protect uploaded invention documents
-* avoid logging confidential source text
-* protect API credentials
-* separate user submissions from public research sources
-* preserve provenance
-* avoid publishing confidential evaluations unintentionally
-
----
-
-# Legal Disclaimer
-
-This framework provides automated research and analytical decision support.
-
-It does **not** constitute:
-
-* legal advice
-* patent prosecution advice
-* patent validity opinion
-* infringement opinion
-* freedom-to-operate opinion
-* investment advice
-* medical advice
-* regulatory advice
-* valuation certification
-
-Patent status, ownership, licensing, infringement, validity, and enforceability should be independently verified by qualified professionals where material decisions depend on them.
-
----
-
-# Intended Users
-
-The framework is designed for:
-
-### Inventors
-
-Determine whether an invention has meaningful technical and commercial potential.
-
-### Universities
-
-Evaluate technology-transfer opportunities.
-
-### Technology Transfer Offices
-
-Prioritize inventions for licensing and commercialization.
-
-### Patent Professionals
-
-Accelerate technical and landscape research.
-
-### Corporate R&D
-
-Evaluate external inventions and emerging technologies.
-
-### Investors
-
-Screen technology opportunities before deeper diligence.
-
-### Founders
-
-Determine whether an invention can support a commercial product.
-
-### Researchers
-
-Understand the state of the art and competitive landscape.
-
-### Analysts
-
-Produce structured, evidence-traceable technology evaluations.
-
----
-
-# Strategic Use Cases
-
-The framework can support decisions such as:
-
-```text
-Should we patent this?
-        ↓
-Should we license this?
-        ↓
-Should we build this?
-        ↓
-Should we invest in this?
-        ↓
-Should we acquire this?
-        ↓
-Should we partner with this organization?
-        ↓
-Should we abandon this opportunity?
-```
-
----
-
-# What Makes This Different
-
-The framework is not primarily differentiated by:
-
-> "It uses AI."
-
-AI is the implementation mechanism.
-
-The important differentiation is the **evaluation architecture**.
-
-### 1. Proposition-level reasoning
-
-Complex conclusions are decomposed into atomic claims.
-
-### 2. Evidence sufficiency
-
-The system tracks whether evidence actually supports each claim.
-
-### 3. Explicit uncertainty
-
-Unknowns remain unknown.
-
-### 4. Evidence recovery
-
-Missing evidence becomes a research task rather than a hallucination opportunity.
-
-### 5. Rights-aware reasoning
-
-Expired patents, active family members, and licensing constraints are separated.
-
-### 6. Claim-level prior-art mapping
-
-Novelty analysis occurs at the limitation level.
-
-### 7. Human translation
-
-Technical analysis is converted into understandable decision support.
-
-### 8. Auditability
-
-The path from source → proposition → conclusion remains inspectable.
-
----
-
-# The Core Mental Model
-
-The framework can be summarized as:
-
-```text
-                  INVENTION
-                     │
-                     ▼
-              WHAT IS CLAIMED?
-                     │
-                     ▼
-             WHAT IS EVIDENCED?
-                     │
-                     ▼
-             WHAT IS STILL UNKNOWN?
-                     │
-                     ▼
-              WHAT RIGHTS EXIST?
-                     │
-                     ▼
-             WHAT MARKET EXISTS?
-                     │
-                     ▼
-             WHAT COULD GO WRONG?
-                     │
-                     ▼
-              WHAT IS THE UPSIDE?
-                     │
-                     ▼
-              WHAT SHOULD WE DO?
-```
-
-That is the product.
-
-Everything else is implementation.
-
----
-
-# Roadmap
-
-The framework is actively evolving.
-
-## Evidence Architecture
-
-* [x] Proposition decomposition
-* [x] Evidence-state classification
-* [x] Evidence recovery controller
-* [x] Evidence debt tracking
-* [x] Constraint propagation
-* [x] Rights/family graph
-* [ ] More automated evidence contradiction detection
-* [ ] Cross-source evidence triangulation
-* [ ] Evidence provenance graph visualization
-* [ ] Automated evidence-quality scoring
-
-## Patent Analysis
-
-* [x] Claim extraction
-* [x] Claim-domain decomposition
-* [x] Prior-art mapping
-* [x] Anticipation assessment
-* [x] Obviousness analysis
-* [x] Patent family analysis
-* [ ] Expanded jurisdictional analysis
-* [ ] Improved FTO-oriented analysis
-* [ ] Automated claim-chart generation
-
-## Commercial Analysis
-
-* [x] Market analysis
-* [x] Competitive landscape
-* [x] Opportunity assessment
-* [x] Partner identification
-* [ ] Structured market-data providers
-* [ ] Better pricing evidence
-* [ ] TAM/SAM/SOM evidence architecture
-* [ ] Commercial scenario modeling
-* [ ] Revenue opportunity modeling
-
-## Reporting
-
-* [x] Markdown reports
-* [x] HTML reports
-* [x] Evidence tables
-* [x] Operational audit
-* [x] Confidence indicators
-* [ ] Executive-first report architecture
-* [ ] Consumer-friendly language layer
-* [ ] Progressive disclosure
-* [ ] Interactive evidence exploration
-* [ ] Decision dashboards
-* [ ] Report quality validation
-
-## Benchmarking
-
-* [x] Real-world invention evaluations
-* [x] Regression evaluation
-* [ ] Formal benchmark corpus
-* [ ] Golden evidence sets
-* [ ] Claim-mapping accuracy benchmarks
-* [ ] Evidence-sufficiency benchmarks
-* [ ] Cross-model evaluation
-
----
-
-# Current Development Direction
-
-The project is moving from:
-
-> **AI-generated invention reports**
-
-toward:
-
-> **An evidence-constrained invention intelligence system.**
-
-That distinction matters.
-
-The goal is not simply to generate longer reports.
-
-The goal is to build a system where:
-
-```text
-MORE DATA
-      ↓
-BETTER EVIDENCE
-      ↓
-BETTER STRUCTURED REASONING
-      ↓
-BETTER DECISION SUPPORT
-```
-
-while maintaining:
-
-```text
-UNKNOWN
-  ↓
-UNKNOWN
-```
-
-instead of:
-
-```text
-UNKNOWN
-  ↓
-LLM GUESS
-  ↓
-CONFIDENT PARAGRAPH
-```
-
----
-
-# Design Principles
-
-The project follows several non-negotiable principles.
-
-### Evidence before confidence.
-
-Never increase confidence merely because the narrative sounds convincing.
-
-### Atomic propositions before synthesis.
-
-Break complex claims apart before evaluating them.
-
-### Unknown is a valid result.
-
-The system must be able to say:
-
-> "We don't know."
-
-### Search failure is not evidence of absence.
-
-An incomplete search cannot prove that something does not exist.
-
-### Expiration is not freedom-to-operate.
-
-An expired patent can coexist with active continuation and improvement rights.
-
-### Commercialization is evidence of value, not proof of future value.
-
-Past adoption matters, but it does not guarantee future commercial success.
-
-### Market estimates must carry epistemic labels.
-
-A model-generated estimate should never masquerade as verified market data.
-
-### Legal conclusions require appropriate caution.
-
-The system supports legal research. It does not replace legal counsel.
-
-### The report should explain, not intimidate.
-
-Technical rigor and human readability are not competing objectives.
-
----
-
-# Philosophy of the Output
-
-A good invention evaluation should leave the reader knowing:
-
-> **What this invention is.**
-
-> **Why it matters.**
-
-> **What evidence supports it.**
-
-> **What remains uncertain.**
-
-> **Who controls the relevant IP.**
-
-> **Where the commercial opportunity exists.**
-
-> **What could destroy that opportunity.**
-
-> **And what should happen next.**
-
-If the reader finishes the report and still has to ask:
-
-> "Okay, but what does this actually mean?"
-
-then the evaluation is not finished.
-
----
-
-# Contributing
-
-Contributions are welcome in areas including:
-
-* evidence architecture
-* patent analysis
-* scientific literature retrieval
-* market research
-* claim mapping
-* uncertainty modeling
-* evaluation benchmarks
-* report generation
-* visualization
-* renderer validation
-* testing
-* documentation
-
-When contributing, prioritize **correctness and traceability over impressive-looking output**.
-
-A smaller system that correctly identifies uncertainty is more valuable than a larger system that confidently invents answers.
-
----
-
-# Research Contributions
-
-The framework is intended to contribute to a broader class of problems involving:
-
-* AI-assisted intellectual-property analysis
-* evidence-constrained reasoning
-* automated technology assessment
-* proposition-level uncertainty
-* AI research provenance
-* automated commercialization analysis
-* structured patent intelligence
-* human-readable scientific decision support
-
-The central research question is:
-
-> **How can an AI system perform complex invention evaluation while maintaining an explicit boundary between what the evidence establishes, what can reasonably be inferred, and what remains unknown?**
-
----
-
-# Project Status
-
-**Active development**
-
-Current framework line:
-
-**Invention Evaluation Engine v1.7**
-
-The architecture is undergoing continued refinement around:
-
-* evidence sufficiency
-* evidence recovery
-* patent-family reasoning
-* claim-domain decomposition
-* market evidence qualification
-* report fidelity
-* consumer-facing presentation
-* operational auditing
-
-The system should be considered a research and decision-support platform rather than a finished legal or commercial due-diligence product.
-
----
-
-# Author
-
-**Michael F. Robinson**
-
-Marketing Science Engineer · AI Systems Architect · Data Pipeline Engineer
-
-Founder, Forsythe Publishing & Marketing
-
-Creator of the Invention Evaluation Framework.
-
----
-
-# License
-
-See [`LICENSE`](LICENSE) for the applicable license.
-
----
-
-# Final Perspective
-
-The Invention Evaluation Framework is built around a deceptively simple idea:
-
-> **An invention is not valuable because an AI says it is valuable.**
-
-Its value emerges from the intersection of:
-
-```text
-                 TECHNOLOGY
-                     │
-                     ▼
-                 EVIDENCE
-                     │
-                     ▼
-             INTELLECTUAL PROPERTY
-                     │
-                     ▼
-                  MARKET
-                     │
-                     ▼
-              COMMERCIAL PATH
-                     │
-                     ▼
-                  ACTION
-```
-
-The job of the framework is to make those relationships explicit.
-
-Not to manufacture certainty.
-
-Not to turn every invention into an opportunity.
-
-Not to bury the reader under an avalanche of P-03-001 identifiers and six-point gauges.
-
-But to answer the question that ultimately matters:
-
-# **What is this invention actually worth pursuing, why, how certain are we, and what should happen next?**

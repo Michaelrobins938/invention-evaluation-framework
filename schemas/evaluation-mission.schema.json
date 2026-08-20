@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://invention-evaluation-framework/schemas/evaluation-mission.schema.json",
+  "title": "EvaluationMission",
+  "description": "First-class evaluation mission artifact. Autoprompt receives the mission and turns it into an execution plan; IEF determines domain-specific requirements. Workers may not redefine the global mission.",
+  "type": "object",
+  "required": ["evaluation_id", "target", "target_type", "mission", "scope", "framework_version", "execution_version", "evidence_policy", "required_domains", "success_criteria", "output_contract"],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]+$",
+      "description": "Canonical normalized invention/patent ID, e.g. US8527057"
+    },
+    "target": {
+      "type": "string",
+      "description": "Absolute or evaluation-relative path to source artifact"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": ["patent", "publication", "submission", "mixed"],
+      "description": "Type of primary source"
+    },
+    "mission": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Exact natural-language mission text, immutable after dispatch"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["full-pipeline", "landscape-only", "novelty-only", "market-only", "custom"],
+      "description": "Scope determines required_domains and DAG slice"
+    },
+    "framework_version": {
+      "type": "string",
+      "pattern": "^v[0-9]+\\.[0-9]+.*$",
+      "description": "IEF framework version, e.g. v1.7"
+    },
+    "execution_version": {
+      "type": "string",
+      "description": "Autoprompt execution version, e.g. autoprompt-1.0.3-opencode"
+    },
+    "evidence_policy": {
+      "type": "object",
+      "description": "Reference to evidence contract governing sufficiency, corroboration, temporal validity",
+      "properties": {
+        "schema_ref": { "type": "string", "default": "schemas/evidence-contract.schema.json" },
+        "corroboration_required": { "type": "boolean", "default": true },
+        "minimum_independent_sources": { "type": "integer", "minimum": 1, "default": 2 },
+        "temporal_policy": { "type": "string", "enum": ["pre_filing", "in_period", "any"], "default": "pre_filing" }
+      }
+    },
+    "required_domains": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Skill IDs from skill_registry.json, e.g. patent-landscape, novelty-search"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Derived from DAG; human may override but must validate against DAG"
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterion", "threshold"],
+        "properties": {
+          "criterion": { "type": "string", "enum": ["execution_completion", "evidence_coverage", "proposition_coverage", "claim_mapping_accuracy", "contradiction_detection", "overclaim_rate"] },
+          "threshold": { "type": "string" }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "max_retries": { "type": "integer", "minimum": 0, "default": 2 },
+        "timeout_seconds": { "type": "integer", "minimum": 1, "default": 60 },
+        "concurrency": { "type": "string", "enum": ["tokensaver", "wide", "custom"], "default": "tokensaver" },
+        "max_subs": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "temporal_scope": {
+      "type": "object",
+      "properties": {
+        "filing_date": { "type": "string", "format": "date" },
+        "priority_date": { "type": "string", "format": "date" },
+        "critical_date": { "type": "string", "format": "date" },
+        "jurisdiction": { "type": "string" }
+      }
+    },
+    "required_verification": {
+      "type": "object",
+      "properties": {
+        "independent_review": { "type": "boolean", "default": true },
+        "fresh_verification": { "type": "boolean", "default": true },
+        "arbitration": { "type": "boolean", "default": true }
+      }
+    },
+    "escalation_rules": {
+      "type": "object",
+      "description": "Evidence-debt escalation policy per skill",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "avenues": { "type": "array", "items": { "type": "string" } },
+          "max_retries": { "type": "integer" },
+          "on_exhaustion": { "type": "string", "enum": ["exclude", "escalate", "record_unavailable"] }
+        }
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "required": ["evaluation_dir"],
+      "properties": {
+        "evaluation_dir": { "type": "string", "description": "Absolute path to evaluation output directory" },
+        "required_artifacts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["report.md", "report.html", "report.pdf", "run-manifest.json", "execution-ledger.json", "evidence-graph.json", "proposition-ledger.json"]
+        }
+      }
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Canonical run identifier, e.g. RUN-US8527057-20260820000000"
+    },
+    "execution_budget": {
+      "type": "object",
+      "properties": {
+        "max_runtime_minutes": { "type": "integer" },
+        "max_tokens": { "type": "integer" }
+      }
+    }
+  }
+}

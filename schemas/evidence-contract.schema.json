@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://invention-evaluation-framework/schemas/evidence-contract.schema.json",
+  "title": "EvidenceContract",
+  "description": "Evidence sufficiency, proposition registry, and epistemic gate contract. Governs whether evidence supports a proposition.",
+  "type": "object",
+  "required": ["proposition_id", "proposition", "evidence_schema"],
+  "properties": {
+    "proposition_id": {
+      "type": "string",
+      "pattern": "^P-[0-9]+-[0-9]+[a-z]?$",
+      "description": "Stable proposition identifier, e.g. P-05-001"
+    },
+    "proposition_version": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1
+    },
+    "proposition": {
+      "type": "string",
+      "description": "Exact proposition text, atomic and scoped"
+    },
+    "proposition_scope": {
+      "type": "object",
+      "properties": {
+        "entity": { "type": "string" },
+        "jurisdiction": { "type": "string" },
+        "technology_identity": { "type": "string" },
+        "claim_reference": { "type": "string" },
+        "temporal_window": { "type": "string" }
+      }
+    },
+    "evidence_schema": {
+      "type": "string",
+      "description": "SCHEMAS key from engine_v17/evidence_gate.py, e.g. prior_art_disclosure, market_sizing"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_identity", "source_type", "locator", "execution_id", "raw_artifact"],
+        "properties": {
+          "source_identity": { "type": "string" },
+          "source_type": { "type": "string" },
+          "locator": { "type": "string" },
+          "execution_id": { "type": "string" },
+          "raw_artifact": { "type": "string" },
+          "independence_lineage_id": { "type": "string" }
+        }
+      }
+    },
+    "epistemic_status": {
+      "type": "string",
+      "enum": ["SUFFICIENT", "PARTIALLY_SUFFICIENT", "INSUFFICIENT", "CONTRADICTED", "UNAVAILABLE", "ESCALATED"],
+      "description": "Evidence status orthogonal to execution status"
+    },
+    "evidence_state": {
+      "type": "string",
+      "enum": ["CONFIRMED PRESENT", "CONFIRMED ABSENT", "WORK QUEUE", "EXCLUDED"]
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "independent_review": { "type": "string", "enum": ["pending", "passed", "failed", "not_required"] },
+        "fresh_verification": { "type": "string", "enum": ["pending", "passed", "failed", "not_required"] },
+        "arbiter": { "type": "string", "enum": ["pending", "passed", "failed", "not_required"] }
+      }
+    },
+    "epistemic_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "status"],
+        "properties": {
+          "gate": { "type": "string", "enum": ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9"] },
+          "status": { "type": "string", "enum": ["passed", "failed", "pending", "not_applicable"] },
+          "basis": { "type": "string" }
+        }
+      }
+    },
+    "evidence_debt": {
+      "type": "object",
+      "properties": {
+        "is_debt": { "type": "boolean" },
+        "missingness": { "type": "string", "enum": ["recoverable", "ambiguous", "unavailable_by_constraint"] },
+        "barrier_type": { "type": "string", "enum": ["source_unavailable", "insufficient_identity", "insufficient_corroboration", "unresolved_conflict", "insufficient_temporal_match", "scope_mismatch", "insufficient_technical_demonstration", "insufficient_search_completion"] },
+        "recovery_task_id": { "type": "string" }
+      }
+    },
+    "temporal_validity": {
+      "type": "object",
+      "properties": {
+        "evidence_date": { "type": "string", "format": "date" },
+        "critical_date": { "type": "string", "format": "date" },
+        "valid": { "type": "boolean" }
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "inference": {
+      "type": "object",
+      "properties": {
+        "statement": { "type": "string" },
+        "strength": { "type": "string", "enum": ["weak", "moderate", "strong"] },
+        "rule_applied": { "type": "string" }
+      }
+    }
+  }
+}

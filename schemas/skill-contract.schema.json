@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://invention-evaluation-framework/schemas/skill-contract.schema.json",
+  "title": "SkillContract",
+  "description": "Machine-readable execution metadata for each IEF domain skill. Single source of truth is schemas/skill_registry.json; this schema validates each entry.",
+  "type": "object",
+  "required": ["skill_id", "purpose", "inputs", "outputs", "dependencies", "evidence_requirements", "verification_requirements", "completion_criteria"],
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Stable skill identifier, e.g. patent-landscape, novelty-search"
+    },
+    "legacy_skill_dir": {
+      "type": "string",
+      "description": "Existing skills/ directory, e.g. skill-04-conduct-patent-landscape"
+    },
+    "purpose": { "type": "string" },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Required input artifact types or proposition IDs"
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Output artifact types or evidence records produced"
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "hard": { "type": "array", "items": { "type": "string" } },
+        "soft": { "type": "array", "items": { "type": "string" } },
+        "blocks": { "type": "array", "items": { "type": "string" }, "description": "Skills blocked until this completes" }
+      }
+    },
+    "evidence_requirements": {
+      "type": "object",
+      "properties": {
+        "schemas": { "type": "array", "items": { "type": "string" }, "description": "SCHEMAS keys from engine_v17/evidence_gate.py, e.g. prior_art_disclosure" },
+        "corroboration_required": { "type": "boolean" },
+        "minimum_independent_sources": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "required_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "External tools/APIs/databases required"
+    },
+    "required_data": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failure_states": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["BLOCKED", "FAILED", "PARTIAL", "TIMEOUT", "ESCALATION_REQUIRED"] }
+    },
+    "retry_behavior": {
+      "type": "object",
+      "properties": {
+        "max_retries": { "type": "integer", "minimum": 0 },
+        "backoff": { "type": "string", "enum": ["none", "linear", "exponential"] },
+        "on_exhaustion": { "type": "string", "enum": ["exclude", "escalate", "record_unavailable"] }
+      }
+    },
+    "verification_requirements": {
+      "type": "object",
+      "properties": {
+        "independent_review": { "type": "boolean" },
+        "fresh_verification": { "type": "boolean" },
+        "arbiter": { "type": "boolean" }
+      }
+    },
+    "downstream_consumers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "completion_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "epistemic_gates": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9"] },
+      "description": "Which E-gates apply to this skill's outputs"
+    },
+    "coverage_gate": {
+      "type": "string",
+      "description": "Coverage gate name from engine_v17/coverage.py, e.g. patent_coverage"
+    }
+  }
+}

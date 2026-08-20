@@ -25,7 +25,20 @@ evaluations/*/source/*.html
 report-renderer/*.pdf
 report-renderer/*.png
 
+# Autoprompt transient run-state / governance (never versioned)
+.ief-runs/
+.ief-runs
+PROMPTS.txt
+ROADMAP.md
+GATELOG.md
+*.autoprompt.tmp
+.autoprompt/
+
+# Autoprompt local execution state outside repo (preferred)
+# transient state lives in ~/.ief-runs/<evaluation-id>/ and evaluations/<id>/ — governance artifacts PROMPTS.txt etc. must never appear in diff
+
 # Build / dist
 dist/
 build/
 *.egg-info/
+skills/autoprompt-skill-main.zip

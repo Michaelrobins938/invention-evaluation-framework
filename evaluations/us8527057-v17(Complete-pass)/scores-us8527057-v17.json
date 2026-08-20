@@ -289,5 +289,22 @@
     ],
     "current": "Proof of Concept",
     "basis": "Patent-level engineering disclosure is present, but prototype, validation, production, and sales evidence are not established from this intake."
-  }
+  },
+  "target_patent": {
+    "publication_number": "US8527057B2",
+    "title": "Retinal Prosthesis and Method of Manufacturing a Retinal Prosthesis",
+    "inventors": [
+      "Robert J. Greenberg",
+      "Jerry Ok",
+      "Jordan Neysmith",
+      "Kevin Wilkins",
+      "Neil Hamilton Talbot",
+      "Da-Yu Chang"
+    ],
+    "assignee": "Second Sight Medical Products, Inc.",
+    "filing_date": "2006-03-20",
+    "grant_date": "2013-09-03",
+    "expiration_date": "2025-10-06"
+  },
+  "evidence_items": []
 }

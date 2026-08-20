@@ -1,0 +1,60 @@
+{
+  "project": "invention-evaluation-framework",
+  "framework_version": "v1.7",
+  "execution_version": "autoprompt-1.0.3-opencode",
+  "provider": "opencode",
+  "skill_discovery": {
+    "ief_skill_paths": ["skills/skill-*/SKILL.md", "skills/SKILL-Orchestrator.md"],
+    "autoprompt_skill_path": "~/.config/opencode/skills/autoprompt/SKILL.md",
+    "autoprompt_agents_path": "~/.config/opencode/agents",
+    "activation_profile": "~/.config/opencode/autoprompt.opencode.json",
+    "registry": "schemas/skill_registry.json"
+  },
+  "execution_state": {
+    "governance_root": "~/.ief-runs/<evaluation-id>",
+    "evaluation_output": "evaluations/<normalized-id>/",
+    "fallback_governance_root": ".ief-runs/<evaluation-id>",
+    "ledger_files": ["run-manifest.json", "execution-ledger.json", "execution-plan.json", "evaluation-mission.json", "review-ledger.json"]
+  },
+  "evaluation_output": {
+    "required_artifacts": ["report.md", "report.html", "report.pdf", "run-manifest.json", "execution-ledger.json", "evidence-graph.json", "proposition-ledger.json"]
+  },
+  "logging": {
+    "level": "info",
+    "ledger_append_only": true
+  },
+  "review_verifier": {
+    "independent_review": true,
+    "fresh_verification": true,
+    "arbitration": true,
+    "reviewer_persona": "ap-reviewer",
+    "verifier_persona": "ap-fresh-verifier",
+    "arbiter_persona": "ap-arbiter"
+  },
+  "model": {
+    "provider": "opencode",
+    "effort": "inherited-only",
+    "note": "OpenCode subagents inherit the runtime model; no selectable effort"
+  },
+  "tool_access": {
+    "allowed": ["read", "edit", "bash", "glob", "grep", "task:ap-*"],
+    "denied": ["skill"]
+  },
+  "concurrency": {
+    "mode": "tokensaver",
+    "max_subs": 6,
+    "launch_groups_from_dag": true,
+    "spawn_all_then_collect": true
+  },
+  "retry": {
+    "max_retries": 2,
+    "backoff": "exponential",
+    "timeout_seconds": 60,
+    "evidence_debt_is_structured_task": true
+  },
+  "evidence_policy": {
+    "schema_ref": "schemas/evidence-contract.schema.json",
+    "corroboration_required": true,
+    "minimum_independent_sources": 2
+  }
+}

@@ -783,3 +783,35 @@ Do **not** collapse the pipeline result into a single compressed label such as "
 | Market sizing | Established / Not established (see Operational Audit) |
 
 **v1.5 rule:** there is **no "Overall patentability" row in the default output.** The per-gate table above is the only conclusion the pipeline produces. An executive score ("Indeterminate-to-[level]") may be derived **only if the user explicitly requests an executive summary score**; when derived it must be labeled as a derived executive summary (not a pipeline output), produced by the report compiler using "Indeterminate-to-[level]" as the derivation rule, and always accompanied by the full per-gate table. Never let an unresolved gate read as a resolved one.
+
+---
+
+## Autoprompt Integration — E0-E9 Hardening (v1.7 + Autoprompt 1.0.3)
+
+| Term | Definition |
+|---|---|
+| **Autoprompt** | Execution/orchestration substrate (L0 conductor → L1 coordinators → L2 manager → L3 executors → L4 leaves, 25 personas, `subagent_depth=4`, `share=disabled`, `permission.task: ap-* allow`, `skill: deny`). Owns task decomposition, worker orchestration, parallel lanes, retries, collection. Never the epistemic authority. |
+| **IEF** | Evidence/epistemic control system (proposition model, evidence model, source provenance, sufficiency gate, E0-E9, rights/claim graphs, uncertainty, review/verification, decision state). Controls what work is allowed to establish. |
+| **Evaluation Mission** | Typed, immutable mission artifact (`engine_v17/mission.py`, `schemas/evaluation-mission.schema.json`) with `mission_hash` (sha256), `run_id`, `required_domains`, `output_contract`. Workers verify hash before acting. |
+| **DAG** | Dependency graph of 9 IEF skills (`engine_v17/dag.py`), 13 hard edges, sliced to mission's `required_domains`, launch groups = topological rank, `spawn-all-then-collect` max 6. |
+| **Worker** | IEF domain skill executed by an Autoprompt persona (`engine_v17/workers.py:WORKER_PERSONA`: `gather-submission→ap-scribe`, `analyze-technology→ap-scoper`, `patent-landscape/literature/novelty/market/partners→ap-researcher`, `compile→ap-synthesizer`, `render→ap-scribe`, `review→ap-reviewer`, `verification→ap-fresh-verifier`). |
+| **Proposition** | Atomic, stable `id`+`version` (e.g., `P-05-001`) that may enter findings only via Evidence Sufficiency Gate. |
+| **Evidence** | Typed per `SCHEMAS` registry (`prior_art_disclosure`, `literature_disclosure`, `market_sizing`, `commercial_adoption`, `partner_fit`) with `SourceObject` + `independence_lineage_id`. |
+| **SourceObject** | Durable source identity (`source_identity`, `source_type`, `locator`, `execution_id`, `raw_artifact`, `independence_lineage_id`). |
+| **Evidence Debt** | Missing evidence as work queue, not answer: `WORK QUEUE`, `ESCALATION_REQUIRED`, `SEARCH_EXHAUSTED`, `UNAVAILABLE_BY_CONSTRAINT`, `BLOCKED` (avenue-level). Debt becomes a structured `ap-researcher`/`ap-sweeper` task, not hallucinated. |
+| **E0-E9** | Epistemic gates (`engine_v17/epistemic_gates.py:49`): E0 intake, E1 source integrity (external only, 7 verified in US8527057), E2 proposition integrity, E3 sufficiency, E4 temporal, E5 contradiction, E6 analytical validity, E7 independent review, E8 blind fresh verification, E9 report integrity. |
+| **E3 Evidence Sufficiency** | Schema-driven, atomic, proposition-identity firewall; only admission path to findings. |
+| **E7 Independent Review** | `ap-reviewer` reads evidence, not author's verdict; `is_independent` must hold (raises `fake independence` if reviewer==author). |
+| **E8 Fresh Verification** | `ap-fresh-verifier`, blind (`is_blind=true`), re-derives without reading reviewer verdict. |
+| **Arbitration** | `ap-arbiter` decides reviewer/verifier disagreement; never waives coverage/verification failures. |
+| **Claim Mapping** | Deterministic analytical contract (`engine_v17/workers.py:_ensure_claim_mapping`, `claim-mapping.json`, `state WORK QUEUE` if incomplete), not retrieval side-effect. |
+| **Rights Graph** | Patent family graph (`engine_v17/rights_graph.py`), distinguishes target vs family vs portfolio vs FTO. |
+| **Execution Provenance** | 4-tuple in `run-manifest.json`: `execution_mode` (`REAL_AUTOPROMPT` vs `LEGACY_FALLBACK`), `epistemic_mode` (`FULL_CONTROLLER` vs `LEGACY`), `review_mode` (`INDEPENDENT`), `verification_mode` (`BLIND_FRESH`). |
+| **Epistemic Mode** | `LEGACY` (baseline), `IEF_STANDARD` (Autoprompt without full controller), `FULL_CONTROLLER` (E0-E9 enforced). |
+| **Review Mode** | `LEGACY`, `STANDARD`, `INDEPENDENT` (ap-reviewer). |
+| **Verification Mode** | `LEGACY`, `STANDARD`, `BLIND_FRESH` (ap-fresh-verifier blind). |
+| **REAL_AUTOPROMPT** | Integrated path: `EvaluationMission` → `ExecutionPlan` → DAG lanes via `ap-*` → evidence controller → E7/E8 → report; `all_lanes_real=true`, no `LEGACY_FALLBACK`. |
+| **LEGACY_FALLBACK** | Explicit compatibility/benchmark mode: delegates to `engine_v17/orchestrator.py:run_generic` (bulk, not per-lane). |
+| **WORK QUEUE** | Evidence sufficiency incomplete; proposition not yet in findings. |
+| **INSUFFICIENT** | `EvidenceStatus.INSUFFICIENT` — execution may be `COMPLETED_WITH_EVIDENCE_DEBT` while evidence remains insufficient (valid). |
+| **COMPLETED_WITH_EVIDENCE_DEBT** | `ExecutionStatus` — pipeline finished, debt remains; not a failure, epistemically correct. |

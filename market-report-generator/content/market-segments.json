@@ -1,0 +1,38 @@
+[
+  {
+    "segment": "UV disinfection equipment — municipal & industrial",
+    "definition": "Stationary UV reactor systems sold into water treatment plants",
+    "figure": "Multiple public publisher summaries place the global market in the low-single-digit USD billions with mid-single-digit CAGR",
+    "year": "2024–2032 outlooks typical",
+    "source": "Publisher summary pages of major market-research houses (see Appendix C rows S1–S3)",
+    "grade": "summary-verified",
+    "limitation": "Full reports paywalled; methodology and segmentation not reviewed; publishers differ on inclusion boundaries"
+  },
+  {
+    "segment": "Ultraviolet water treatment systems (incl. residential)",
+    "definition": "All UV water treatment units incl. point-of-use/entry consumer devices",
+    "figure": "Larger than municipal-only segment because consumer volume is included; exact figure varies by publisher",
+    "year": "2024–2030 outlooks typical",
+    "source": "Publisher summary pages (Appendix C row S4)",
+    "grade": "summary-verified",
+    "limitation": "Consumer inclusion inflates versus HPLEx addressable industrial scope"
+  },
+  {
+    "segment": "Advanced oxidation processes (AOP) water treatment",
+    "definition": "Ozone/UV/H2O2 advanced oxidation installations",
+    "figure": "Smaller but faster-growing adjacent segment per publisher summaries",
+    "year": "2024–2030 outlooks typical",
+    "source": "Publisher summary pages (Appendix C row S5)",
+    "grade": "summary-verified",
+    "limitation": "Boundary with plain UV disinfection inconsistent across publishers; not additive to S1"
+  },
+  {
+    "segment": "Excimer lamp / specialty UV source manufacturing",
+    "definition": "Upstream lamp-source production relevant to HPLEx supply chain",
+    "figure": "No reliable standalone public figure identified within this engagement's bounded search",
+    "year": "n/a",
+    "source": "Absence recorded after searches in research-log RQ-6",
+    "grade": "not established (bounded universe recorded)",
+    "limitation": "Absence is a search result, not evidence of absence; upstream figures may exist behind paywalls"
+  }
+]

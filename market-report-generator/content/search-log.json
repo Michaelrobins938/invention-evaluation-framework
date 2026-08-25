@@ -1,0 +1,80 @@
+[
+  {
+    "question": "RQ-1: How large is the UV water-disinfection equipment market and how fast is it growing?",
+    "query": "\"UV disinfection equipment market\" size forecast",
+    "venue": "Direct official publisher summary pages (market-research house public abstracts) — not Google, not Espacenet, not EPO OPS",
+    "date": "2026-08-25",
+    "scope": "English-language publisher summaries; 2024+ base years",
+    "result_count": "6 distinct publisher summaries surfaced across direct-domain browsing",
+    "reviewed": "All 6 summaries; 3 selected as independent",
+    "included": "Publisher owns the report; figure stated in publicly accessible summary; definition boundary stated or inferable",
+    "excluded": "Aggregator mirrors of other publishers' figures; snippets without a named publisher; figures without a base year",
+    "selected": "Rows S1–S3 of Appendix C",
+    "limitations": "Full reports paywalled — grade capped at summary-verified by definition"
+  },
+  {
+    "question": "RQ-2: Which companies currently sell validated municipal UV reactors (competitive set)?",
+    "query": "Site-official browsing: trojantechnologies.com; xylem.com (WEDECO); atlantium.com product sections",
+    "venue": "Official manufacturer websites only",
+    "date": "2026-08-25",
+    "scope": "Municipal + industrial reactor vendors with English product documentation",
+    "result_count": "7 organizations documented",
+    "reviewed": "Product-family pages for each",
+    "included": "Company currently sells UV water reactors; official page confirms capability",
+    "excluded": "Distributors without own products; defunct brands",
+    "selected": "Competitive Landscape table rows",
+    "limitations": "Specification share (which vendor wins tenders) is not public; competitive positioning reflects portfolio presence, not win rates"
+  },
+  {
+    "question": "RQ-3: Who are credible reactor-integration partners for a new source technology?",
+    "query": "Official EPC/integrator corporate pages: veolia.com; suezwatertechnologies.com; ecolab.com (Nalco Water); pentair.com",
+    "venue": "Official corporate websites",
+    "date": "2026-08-25",
+    "scope": "Organizations that integrate treatment modules into delivered plants or service programs",
+    "result_count": "4 integrator groups + 8 source/channel candidates documented",
+    "reviewed": "Group-level capability statements",
+    "included": "Buys or licenses treatment technology; operates at HPLEx-relevant scale",
+    "excluded": "Generic 'university laser labs' category per spec; trade associations (moved to Associations section); merged groups counted once",
+    "selected": "Potential Partners table (12 independent entries)",
+    "limitations": "None contacted or engaged; integration appetite unverified until conversations occur"
+  },
+  {
+    "question": "RQ-4: Which trade shows reach the buying audience in the next cycle?",
+    "query": "Direct organizer domains: ace.awwa.org; achema.de; ifat.de; iuva.org/events; awwa.org event calendar",
+    "venue": "Official organizer websites exclusively",
+    "date": "2026-08-25",
+    "scope": "Events between 2026-09 and 2028-12 relevant to water treatment / process industries / UV",
+    "result_count": "6 events verified",
+    "reviewed": "Each event's official page",
+    "included": "Confirmed dates on official site OR explicitly marked date-not-confirmed",
+    "excluded": "Aggregated calendar listings; unverifiable third-party dates; prior incorrect combined entry removed",
+    "selected": "Trade Shows table",
+    "limitations": "IUVA World Congress 2027 has no announcement; recorded as date not confirmed rather than estimated"
+  },
+  {
+    "question": "RQ-5: What industry associations should the venture join for credibility and network access?",
+    "query": "Official association domains: iuva.org; awwa.org; wef.org; ioa-pag.org; waterrf.org; germanwaterpartners.de",
+    "venue": "Official organizational websites",
+    "date": "2026-08-25",
+    "scope": "Associations with water-treatment or UV/AOP focus and corporate membership routes",
+    "result_count": "6 associations documented",
+    "reviewed": "Membership pages of each",
+    "included": "Formal membership structure; relevance to HPLEx buyer or validator community",
+    "excluded": "IUVA-as-partner double counting (spec assigns IUVA to associations only)",
+    "selected": "Associations table",
+    "limitations": "Membership costs not surveyed"
+  },
+  {
+    "question": "RQ-6: What is known about upstream excimer-source supply capacity?",
+    "query": "Official manufacturer pages: excelitas.com (Noblelight); uv-technik.com; signify.com UV-C section",
+    "venue": "Official manufacturer websites",
+    "date": "2026-08-25",
+    "scope": "Public pages describing industrial excimer/UV source manufacturing",
+    "result_count": "Capability confirmed at three manufacturers; no standalone market-size figure located",
+    "reviewed": "Product/technology overview pages",
+    "included": "Public evidence of industrial excimer/UV source production",
+    "excluded": "Paywalled component-market reports",
+    "selected": "Appendix C S6 absence record; partner entries",
+    "limitations": "Absence of a public figure is a search result within a bounded universe; capacity pricing requires direct RFQ"
+  }
+]

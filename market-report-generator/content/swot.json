@@ -1,0 +1,26 @@
+{
+  "strengths": [
+    "Mercury-free high-power source addresses a documented regulatory direction (Minamata Convention pressure on mercury lamps).",
+    "Inventor-supplied laboratory results indicate competitive dose performance at reduced footprint (inventor claim — independently unverified).",
+    "Technology Overview language already validated by prior reviewer feedback as plain-language accessible.",
+    "Broad application surface: municipal, industrial process, and commercial building water all theoretically addressable from one source technology."
+  ],
+  "weaknesses": [
+    "No shipping product or field installation; all performance figures are inventor-supplied and independently unverified.",
+    "Lamp lifetime under duty cycling not yet measured by a third party.",
+    "No named reactor-integration partner contacted, qualified, or engaged.",
+    "Upstream excimer-source supply chain at commercial power levels uncharacterized (Appendix C S6)."
+  ],
+  "opportunities": [
+    "Industrial process water as beachhead: fastest validation path, least regulatory drag.",
+    "Reactor-integration licensing into incumbent lines avoids building a reactor company first.",
+    "Third-party validation study via utility research consortium creates citable differentiation.",
+    "European exposure ahead of ACHEMA 2027 / IFAT 2028 cycle."
+  ],
+  "threats": [
+    "Incumbent lamp-lifecycle economics delay switching until replacement cycles open.",
+    "Excelitas consolidation of excimer expertise (Noblelight) may raise component-supply barriers.",
+    "Validation-protocol changes could extend time-to-specification.",
+    "Unresolved upstream supply figures (recorded in Appendix C S6) leave sourcing-cost uncertainty."
+  ]
+}

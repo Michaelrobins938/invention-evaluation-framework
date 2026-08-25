@@ -1,0 +1,75 @@
+[
+  {
+    "event": "AWWA Annual Conference & Exposition (ACE27)",
+    "organizer": "American Water Works Association (AWWA)",
+    "location": "San Diego, California, USA",
+    "dates": "June 13–16, 2027 (confirmed on official AWWA site)",
+    "frequency": "Annual",
+    "relevance": "Largest drinking-water utility audience in North America; primary venue for municipal UV adoption decisions",
+    "objective": "Booth or technical paper; utility and engineering-firm meetings",
+    "url": "https://ace.awwa.org",
+    "accessed": "2026-08-25",
+    "verification": "Confirmed via awwa.org events listing (ACE27 featured card: 'Annual Conference & Expo June 13-16, 2027 San Diego, California')",
+    "note": "Replaces prior incorrect combined entry 'AWEA WINDPOWER / AWWA Annual Conference'"
+  },
+  {
+    "event": "ACHEMA 2027",
+    "organizer": "DECHEMA Ausstellungs-GmbH",
+    "location": "Frankfurt am Main, Germany",
+    "dates": "June 14–18, 2027 (confirmed on official ACHEMA site)",
+    "frequency": "Every 3 years",
+    "relevance": "World forum for process industries incl. water-treatment process technology; strongest European industrial-water audience",
+    "objective": "Exhibit in water-treatment hall; EPC and OEM partnership meetings",
+    "url": "https://www.achema.de",
+    "accessed": "2026-08-25",
+    "verification": "Confirmed via achema.de homepage: '14 – 18 June 2027, Frankfurt am Main, Germany'"
+  },
+  {
+    "event": "IFAT Munich 2028",
+    "organizer": "Messe München GmbH",
+    "location": "Munich, Germany",
+    "dates": "May 29–June 1, 2028 (confirmed on official IFAT site)",
+    "frequency": "Every 2 years",
+    "relevance": "World's leading trade fair for environmental technologies incl. water and wastewater; largest municipal wastewater audience",
+    "objective": "Exhibitor stand; launch European reactor-integration partnerships",
+    "url": "https://www.ifat.de/en/",
+    "accessed": "2026-08-25",
+    "verification": "Confirmed via ifat.de: 'IFAT Munich 2028 May. 29–Jun. 1, 2028'"
+  },
+  {
+    "event": "IUVA World Congress 2027",
+    "organizer": "International Ultraviolet Association",
+    "location": "Not yet announced",
+    "dates": "Date not confirmed — no official announcement exists as of access date",
+    "frequency": "Approximately every 2 years (2023, 2025 editions held)",
+    "relevance": "Core technical community for UV disinfection; ideal scientific-credibility venue",
+    "objective": "Technical presentation once date is announced; monitor iuva.org/events",
+    "url": "https://iuva.org/events",
+    "accessed": "2026-08-25",
+    "verification": "Official IUVA events page lists no 2027 World Congress announcement ('No events available' beyond 2026 regional conferences); estimated 'mid-2027' wording removed per spec"
+  },
+  {
+    "event": "Water Quality Technology Conference (WQTC) 2026",
+    "organizer": "American Water Works Association (AWWA)",
+    "location": "Listed on official AWWA event calendar (confirm city at registration)",
+    "dates": "November 15–19, 2026 (per official AWWA events listing)",
+    "frequency": "Annual",
+    "relevance": "Water-quality research and treatment-technology audience closest to UV process validation topics",
+    "objective": "Attend and present if abstract window permits; scout utility innovation staff",
+    "url": "https://www.awwa.org/event/water-quality-technology/",
+    "accessed": "2026-08-25",
+    "verification": "Dates from official AWWA events listing card"
+  },
+  {
+    "event": "Membrane Technology Conference & Exposition 2027",
+    "organizer": "AWWA / Membrane Technology consortium",
+    "location": "Per official AWWA event page at registration",
+    "dates": "March 22–25, 2027 (per official AWWA events listing)",
+    "frequency": "Biennial",
+    "relevance": "Advanced-treatment audience where UV pairs with membrane processes (reuse trains)",
+    "objective": "Position HPLEx within reuse-process integration discussions",
+    "url": "https://www.awwa.org/event/membrane-technology/",
+    "accessed": "2026-08-25",
+    "verification": "Dates from official AWWA events listing card"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "replacements": {
+    "closest prior art": "a patent identified by the inventors as potentially relevant; not independently analyzed in this market-only report",
+    "potential IP obstacle": "potentially relevant patent holder; legal significance not evaluated",
+    "File patent application": "Consult qualified IP counsel regarding protection and disclosure strategy before public disclosure",
+    "file a patent application": "consult qualified IP counsel regarding protection and disclosure strategy before public disclosure",
+    "patent blocking": "patent of unassessed legal significance (not evaluated in this market-only report)",
+    "freedom to operate": "legal clearance (outside the scope of this market-only report)"
+  },
+  "prohibited_terms": [
+    "anticipates claim",
+    "anticipated by",
+    "obvious over",
+    "blocks freedom",
+    "FTO risk",
+    "infring",
+    "[update this field",
+    "[relevant poc will be linked here]",
+    "[todo",
+    "[insert",
+    "**__"
+  ]
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "organization": "Trojan Technologies (Veralto)",
+    "parent": "Veralto Corporation",
+    "hq": "London, Ontario, Canada",
+    "capability": "Validated municipal UV reactors; regulatory services",
+    "note": "Specification incumbent in North American municipal UV"
+  },
+  {
+    "organization": "Xylem / WEDECO (incl. Evoqua)",
+    "parent": "Xylem Inc.",
+    "hq": "Rye Brook, New York, USA",
+    "capability": "UV + ozone reactor portfolio; global service network",
+    "note": "Single corporate group after 2023 Evoqua acquisition; counted once"
+  },
+  {
+    "organization": "Signify (Philips UV-C)",
+    "parent": "Signify Holding",
+    "hq": "Eindhoven, Netherlands",
+    "capability": "Lamp/module manufacturing at scale",
+    "note": "Source-level competition and potential partner simultaneously"
+  },
+  {
+    "organization": "Excelitas (incl. Heraeus Noblelight)",
+    "parent": "Excelitas Technologies / Roper",
+    "hq": "Pittsburgh, Pennsylvania, USA",
+    "capability": "Excimer & specialty industrial sources after 2024 Noblelight acquisition",
+    "note": "Counted once as one group; upstream source competitor"
+  },
+  {
+    "organization": "Atlantium Technologies",
+    "parent": "Private (Israel)",
+    "hq": "Har Tuv, Israel",
+    "capability": "High-flow compact UV reactors",
+    "note": "Technology-forward challenger brand"
+  },
+  {
+    "organization": "Halma water-quality group (incl. AquiSense)",
+    "parent": "Halma plc",
+    "hq": "Amersham, United Kingdom",
+    "capability": "Niche UV-C acquisitions scaled via group channel",
+    "note": "Consolidator of exactly the niche HPLEx POU variant would occupy"
+  },
+  {
+    "organization": "Calgon Carbon / UV oxidation integrators",
+    "parent": "Kuraray",
+    "hq": "Moon Township, Pennsylvania, USA",
+    "capability": "Activated carbon + UV/AOP process trains",
+    "note": "Adjacent-process competitor in advanced treatment tenders"
+  }
+]

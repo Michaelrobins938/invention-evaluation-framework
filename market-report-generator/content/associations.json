@@ -1,0 +1,56 @@
+[
+  {
+    "name": "International Ultraviolet Association (IUVA)",
+    "coverage": "International",
+    "focus": "UV technology science, engineering, and application professionals; academic-industrial membership",
+    "relevance": "Primary scientific community for UV disinfection; standards guidance documents; credibility venue",
+    "action": "Corporate membership; working-committee participation",
+    "url": "https://iuva.org",
+    "accessed": "2026-08-25"
+  },
+  {
+    "name": "American Water Works Association (AWWA)",
+    "coverage": "North America (sections worldwide)",
+    "focus": "Drinking-water utilities, engineers, manufacturers",
+    "relevance": "Owns validation culture (standards, manuals) that municipal UV products must satisfy; ACE/WQTC host",
+    "action": "Utility/manufacturer membership; standards-committee monitoring",
+    "url": "https://www.awwa.org",
+    "accessed": "2026-08-25"
+  },
+  {
+    "name": "Water Environment Federation (WEF)",
+    "coverage": "Global (HQ USA)",
+    "focus": "Wastewater quality professionals",
+    "relevance": "Wastewater-reuse audience for HPLEx secondary-disinfection positioning; WEFTEC access",
+    "action": "Membership via WEFTEC; technical-practice collaboration",
+    "url": "https://www.wef.org",
+    "accessed": "2026-08-25"
+  },
+  {
+    "name": "International Ozone Association (IOA)",
+    "coverage": "International (regional groups Americas/Europe/Asia-Pacific)",
+    "focus": "Ozone and advanced-oxidation process professionals",
+    "relevance": "Adjacent AOP community; HPLEx may combine with ozone in advanced oxidation trains",
+    "action": "Attend/present at regional conferences",
+    "url": "https://www.ioa-pag.org",
+    "accessed": "2026-08-25"
+  },
+  {
+    "name": "American Water Intelligence / Water Research Foundation (WRF)",
+    "coverage": "US-led international research consortium",
+    "focus": "Utility-funded water research",
+    "relevance": "Tailored-collaboration funding route for independent HPLEx performance studies",
+    "action": "Propose tailored research project with a utility partner",
+    "url": "https://www.waterrf.org",
+    "accessed": "2026-08-25"
+  },
+  {
+    "name": "German Water Partnership (GWP)",
+    "coverage": "Germany / export-oriented network",
+    "focus": "German water-sector companies and institutes",
+    "relevance": "Network entry point toward European reactor integrators ahead of IFAT Munich",
+    "action": "Associate membership; working-group participation",
+    "url": "https://germanwaterpartners.de",
+    "accessed": "2026-08-25"
+  }
+]

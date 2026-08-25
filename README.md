@@ -20,6 +20,82 @@ sources (EPO OPS, Crossref), classifies every artifact as external or derived ev
 routes each conclusion through independent review and blind fresh verification before anything
 reaches the reader.
 
+## Install — fully automatic
+
+One command sets everything up: dependencies, coding-agent detection, skill installation, environment, and verification.
+
+**macOS / Linux**
+
+```bash
+git clone https://github.com/Michaelrobins938/invention-evaluation-framework
+cd invention-evaluation-framework
+bash setup.sh
+```
+
+**Windows (PowerShell)**
+
+```powershell
+git clone https://github.com/Michaelrobins938/invention-evaluation-framework
+cd invention-evaluation-framework
+powershell -ExecutionPolicy Bypass -File setup.ps1
+```
+
+### What setup does automatically
+
+| Step | What happens |
+|------|--------------|
+| **1. Preflight** | Verifies Python 3.10+ and pip are present; prints download links if not |
+| **2. Dependencies** | Installs everything in `requirements.txt` (pdfplumber, python-docx, pyyaml, jsonschema, Pillow) with automatic `--user` fallback |
+| **3. Agent detection** | Scans for installed coding agents and finds their skill directories |
+| **4. Skill install** | Copies the `run-invention-evaluation` skill into every detected agent — with your framework path baked in, so the agent knows exactly what to run |
+| **5. Environment** | Creates `.env` from template; add EPO OPS credentials later for live patent search |
+| **6. Smoke test** | Confirms the CLI loads and ID auto-detection works before declaring success |
+
+### Supported agents
+
+| Agent | Skill installed to | Detected automatically |
+|-------|--------------------|------------------------|
+| Claude Code | `~/.claude/skills/run-invention-evaluation/` | Yes |
+| OpenCode | `~/.config/opencode/skills/run-invention-evaluation/` (+ `~/.opencode/skills`) | Yes |
+| Any tool using `~/.agents/skills` | `~/.agents/skills/run-invention-evaluation/` | Yes |
+
+Force specific agents or skip steps:
+
+```bash
+bash setup.sh --agents claude,opencode   # only these agents
+bash setup.sh --skip-deps                # dependencies already handled
+bash setup.sh --list                     # just show what was detected
+```
+
+No agent detected? The framework still works standalone — see [Quick Start](#quick-start).
+
+### Example output
+
+```text
+== Preflight ==
+  python3: 3.13
+  pip: pip 26.2.1
+
+== Detecting coding agents ==
+  [FOUND] claude -> /home/you/.claude/skills
+  [FOUND] opencode -> /home/you/.config/opencode/skills
+
+== Installing Python dependencies ==
+  [OK] dependencies installed from requirements.txt
+
+== Installing skill: run-invention-evaluation ==
+  [OK] claude -> /home/you/.claude/skills/run-invention-evaluation/SKILL.md
+  [OK] opencode -> /home/you/.config/opencode/skills/run-invention-evaluation/SKILL.md
+
+== Smoke test ==
+  [OK] run.py loads and shows help
+  [OK] ID auto-detection works (8530)
+
+== Setup complete ==
+  NEXT: restart your coding agent, then say:
+        "evaluate this invention folder: /path/to/folder"
+```
+
 ## See It Work (30 seconds)
 
 Real artifacts from a complete evaluation of US8527057B2 — every number in the report traces
@@ -35,32 +111,7 @@ Full artifact sets for additional inventions (including deliberately failed runs
 
 ## Quick Start
 
-### One-click setup
-
-```bash
-# 1. Clone
-git clone https://github.com/Michaelrobins938/invention-evaluation-framework
-cd invention-evaluation-framework
-
-# 2. Run setup — installs dependencies, detects your coding agent,
-#    and installs the evaluation skill into it automatically
-bash setup.sh
-```
-
-Windows (PowerShell):
-
-```powershell
-powershell -ExecutionPolicy Bypass -File setup.ps1
-```
-
-Setup does everything:
-- Verifies Python 3.10+ and pip
-- Installs all Python dependencies (`requirements.txt`)
-- Detects installed coding agents (Claude Code, OpenCode) and installs the `run-invention-evaluation` skill into each, with the framework path baked in
-- Creates `.env` from template (add EPO OPS credentials later for live patent search)
-- Runs a smoke test so you know it works
-
-### Evaluate an invention (one command)
+After [setup](#install--fully-automatic), evaluating an invention is one command:
 
 ```bash
 ./evaluate /path/to/your-invention-folder

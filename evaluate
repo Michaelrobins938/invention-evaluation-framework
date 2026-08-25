@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# One-command invention evaluation.
+# Usage: ./evaluate /path/to/invention-folder
+#        ./evaluate /path/to/invention-folder --id US8527057
+#        ./evaluate /path/to/invention-folder --output ./results
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+exec python3 "$SCRIPT_DIR/run.py" "$@"

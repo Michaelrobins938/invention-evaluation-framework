@@ -35,48 +35,99 @@ Full artifact sets for additional inventions (including deliberately failed runs
 
 ## Quick Start
 
+### One-click setup
+
 ```bash
 # 1. Clone
 git clone https://github.com/Michaelrobins938/invention-evaluation-framework
 cd invention-evaluation-framework
 
-# 2. Install Autoprompt (external execution OS) and wire the IEF profile
-#    In-repo IEF-side config: autoprompt/ief.json, schemas/  → see autoprompt/README.md
-#    Installed skill + 25 worker personas live under ~/.config/opencode/
+# 2. Run setup — installs dependencies, detects your coding agent,
+#    and installs the evaluation skill into it automatically
+bash setup.sh
+```
 
-# 3. Install Python dependencies
-pip install pytest jsonschema Pillow pyyaml
-# Optional for PDF rendering: chromium + poppler-utils
+Windows (PowerShell):
 
-# 4. Run tests (281 total)
+```powershell
+powershell -ExecutionPolicy Bypass -File setup.ps1
+```
+
+Setup does everything:
+- Verifies Python 3.10+ and pip
+- Installs all Python dependencies (`requirements.txt`)
+- Detects installed coding agents (Claude Code, OpenCode) and installs the `run-invention-evaluation` skill into each, with the framework path baked in
+- Creates `.env` from template (add EPO OPS credentials later for live patent search)
+- Runs a smoke test so you know it works
+
+### Evaluate an invention (one command)
+
+```bash
+./evaluate /path/to/your-invention-folder
+```
+
+Or just tell your coding agent:
+
+> evaluate this invention folder: /path/to/folder
+
+Optional arguments:
+- `--id US8527057` — specify the patent/invention ID manually (auto-detected from filenames/folder name if omitted)
+- `--output ./my-results` — custom output directory
+
+The script scans the folder for PDFs/DOCX/TXT/MD, auto-detects the invention ID, extracts text, creates a submission record, and runs the full pipeline. Without API credentials, patent-search lanes run without live data and report evidence debt — a valid result, never mocked.
+
+### What `run.py` does
+
+```
+Folder of documents
+    ↓  scan for PDFs, DOCX, TXT, MD
+    ↓  auto-detect invention ID from filenames/folder name
+    ↓  extract text from documents
+    ↓  create submission-*.md record
+    ↓  set up evaluations/{id}/ directory
+    ↓  run full IEF pipeline (E0-E9, review, verification, report)
+    ↓
+Output: evaluations/{id}-output/
+    report-*.md / .html / .pdf
+    execution-ledger.json
+    combined-status.json
+    ... (29 artifacts)
+```
+
+### Advanced: Python API
+
+```python
+from pathlib import Path
+from engine_v17.orchestrator_autoprompt import run_with_autoprompt
+
+result = run_with_autoprompt(
+    'US8527057', 'evaluations/us8527057/source/US8527057.pdf',
+    Path('evaluations/us8527057-output'), Path('evaluations/us8527057'),
+    execution_mode='REAL_AUTOPROMPT',
+    epistemic_mode='FULL_CONTROLLER',
+    review_mode='INDEPENDENT',
+    verification_mode='BLIND_FRESH',
+)
+```
+
+### Run tests (281 total)
+
+```bash
 python3 -m pytest engine_v17/epo_ops/tests -q               # 66 EPO OPS
 python3 -m pytest tests -q                                   # 38 integration/failure
 python3 -m pytest Test-report-results/tests_v17 -q           # 114 v17 engine
 python3 -m pytest report-renderer/tests -q                   # 63 renderer
 bash verify.sh  # includes semantic scan note: see docs/ARCHITECTURE.md#validation
-
-# 5. Run an evaluation (REAL Autoprompt path)
-PYTHONPATH=. python3 -c "
-from pathlib import Path
-from engine_v17.orchestrator_autoprompt import run_with_autoprompt
-run_with_autoprompt(
-  'US8527057','evaluations/us8527057/source/US8527057.pdf',
-  Path('evaluations/us8527057-output'), Path('evaluations/us8527057'),
-  hermetic=True, execution_mode='REAL_AUTOPROMPT',
-  epistemic_mode='FULL_CONTROLLER', review_mode='INDEPENDENT', verification_mode='BLIND_FRESH')
-"
-
-# 6. Inspect artifacts
-ls evaluations/us8527057-output/
-# evaluation-mission.json  execution-plan.json  run-manifest.json  execution-ledger.json
-# proposition-ledger.json  evidence-graph.json  claim-graph.json  rights-graph.json  claim-mapping.json
-# epistemic-gate-report.json  proposition-review-matrix.json  review-ledger.json  combined-status.json
-# scores-manifest.json  report-*.md  report-*.html  report-*.pdf
-
-# 7. Benchmark A/B/C
-PYTHONPATH=. python3 benchmarks/harness.py --evaluation-id US8527057 --evaluation-dir evaluations/us8527057 --output-base /tmp/bench
-cat /tmp/bench/benchmark-report.md
 ```
+
+### Configure live patent search (optional)
+
+```bash
+cp .env.example .env   # paste EPO OPS credentials from https://developers.epo.org
+python -m engine_v17.epo_ops   # verify credentials work
+```
+
+Without credentials, patent search lanes produce evidence debt artifacts (valid result, not a failure).
 
 ---
 
@@ -457,6 +508,11 @@ A finding that **correctly** describes evidence debt in the Operational Audit is
 
 ```
 invention-evaluation-framework/
+├── run.py                              ONE-COMMAND CLI — point at a folder of documents
+├── evaluate                            shell wrapper for run.py (./evaluate <folder>)
+├── setup.sh                            one-click installer: deps + agent skill install
+├── setup.ps1                           Windows installer mirror
+├── requirements.txt                    Python dependencies
 ├── IEF_EXECUTION_CONTRACT.md          execution contract (mission lifecycle, DAG, E0-E9, status)
 ├── schemas/
 │   ├── evaluation-mission.schema.json
@@ -472,6 +528,7 @@ invention-evaluation-framework/
 │   ├── review.py                      independent_review / fresh_verification / arbitrate
 │   ├── workers.py                     9 DAG workers + _ensure_claim_mapping (P3)
 │   ├── hermetic_fetcher.py            4-type mocked source payloads
+│   ├── pdf_parser.py                  PDF/DOCX/TXT/MD text extraction (for run.py)
 │   ├── orchestrator.py                legacy run / run_generic (preserved)
 │   └── orchestrator_autoprompt.py     REAL dispatch (spawn-all-then-collect, E7/E8 5/5, provenance 4-tuple)
 ├── skills/

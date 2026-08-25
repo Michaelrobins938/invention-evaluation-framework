@@ -1,0 +1,7 @@
+# Invention Evaluation Framework — runtime dependencies
+pdfplumber>=0.10
+pyyaml>=6.0
+jsonschema>=4.17
+Pillow>=9.0
+python-docx>=0.8.11
+pytest>=7.0

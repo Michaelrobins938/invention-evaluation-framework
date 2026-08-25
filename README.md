@@ -127,6 +127,34 @@ Optional arguments:
 
 The script scans the folder for PDFs/DOCX/TXT/MD, auto-detects the invention ID, extracts text, creates a submission record, and runs the full pipeline. Without API credentials, patent-search lanes run without live data and report evidence debt — a valid result, never mocked.
 
+## Client-specified market report (GenIP specification)
+
+For the market-only client deliverable (DOCX + PDF + HTML + MD with an executable acceptance contract), use the regeneration pipeline in [`market-report-generator/`](market-report-generator/):
+
+**Windows** (the primary delivery path — uses Word COM for TOC/field update and PDF export):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File market-report-generator\run-regeneration.ps1 -Root "C:\path\to\invention-evaluation-framework"
+```
+
+**Linux/macOS** (generation + validation only; DOCX→PDF requires Word on Windows):
+
+```bash
+RUN=evaluations/8530-market-only-run4 && mkdir -p $RUN
+python3 market-report-generator/generate_market_report.py \
+  --config-dir market-report-generator/content --out $RUN \
+  --sources-dir 8530 \
+  --prior-tech-overview <prior run's Technology Overview markdown>
+python3 market-report-generator/validate_acceptance.py --run-dir $RUN
+```
+
+The pipeline **refuses to ship a non-compliant report**: `validate_acceptance.py`
+enforces ~30 machine-checked requirements (exact section order, zero markdown
+artifacts, native Word headings and TOC field, ≥10 deduplicated partners,
+≥8 graded sources, verified event dates, market-only language boundary) and
+writes `acceptance-report-…json` into the run directory as evidence. A run
+ships only when it reads `accepted: true`.
+
 ### What `run.py` does
 
 ```

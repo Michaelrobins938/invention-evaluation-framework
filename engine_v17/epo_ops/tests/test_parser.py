@@ -219,3 +219,67 @@ class TestParseSearchXml:
         </ops:world-patent-data>"""
         results = parse_search_xml(empty_xml)
         assert results == []
+
+# ── Live OPS wire shape (captured from ops.epo.org biblio response) ────────
+# Root in ops namespace; document/citation elements inherit the default
+# exchange namespace (http://www.epo.org/exchange); citations live under
+# bibliographic-data/references-cited with attributes directly on <citation>.
+_LIVE_SHAPE_XML = """<?xml version="1.0" encoding="UTF-8"?>
+<ops:world-patent-data xmlns:ops="http://ops.epo.org"
+                       xmlns="http://www.epo.org/exchange">
+  <exchange-documents>
+    <exchange-document system="ops.epo.org" country="US" doc-number="8527057" kind="B2">
+      <bibliographic-data>
+        <publication-reference>
+          <document-id document-id-type="docdb">
+            <country>US</country>
+            <doc-number>8527057</doc-number>
+            <kind>B2</kind>
+          </document-id>
+        </publication-reference>
+        <invention-title lang="en">Retinal prosthesis</invention-title>
+        <references-cited>
+          <citation cited-phase="national-search-report" cited-by="examiner" sequence="1">
+            <patcit dnum-type="publication number" num="1">
+              <document-id document-id-type="epodoc">
+                <doc-number>US5109844</doc-number>
+              </document-id>
+              <document-id document-id-type="docdb">
+                <country>US</country>
+                <doc-number>5109844</doc-number>
+                <kind>A</kind>
+              </document-id>
+            </patcit>
+          </citation>
+          <citation cited-phase="undefined" cited-by="applicant" sequence="2">
+            <nplcit num="2">
+              <text>Smith J. Retinal implants. Nature. 2001.</text>
+            </nplcit>
+          </citation>
+        </references-cited>
+      </bibliographic-data>
+    </exchange-document>
+  </exchange-documents>
+</ops:world-patent-data>
+"""
+
+
+class TestLiveExchangeShape:
+    def test_parses_patcit_from_references_cited(self):
+        bundle = parse_bibliographic_xml(_LIVE_SHAPE_XML, "US.8527057.B2")
+        assert len(bundle.patcit) == 1
+        pat = bundle.patcit[0]
+        assert pat.publication_number == "US5109844"
+        assert pat.cited_by.value == "examiner"
+
+    def test_parses_nplcit_from_references_cited(self):
+        bundle = parse_bibliographic_xml(_LIVE_SHAPE_XML, "US.8527057.B2")
+        assert len(bundle.nplcit) == 1
+        npl = bundle.nplcit[0]
+        assert npl.cited_by.value == "applicant"
+        assert npl.title == "Retinal implants"
+
+    def test_retrieval_metadata_counts(self):
+        bundle = parse_bibliographic_xml(_LIVE_SHAPE_XML, "US.8527057.B2")
+        assert bundle.retrieval_metadata["patcit_count"] == 1
+        assert bundle.retrieval_metadata["nplcit_count"] == 1

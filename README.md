@@ -556,6 +556,18 @@ Individual evaluations may remain evidence-incomplete — that is the framework 
 | `verify.sh` legacy fixture semantic scan | **Known limitation** — `Executive Summary|v1.7 Control State|Original Submission not emitted (88 nodes)` against legacy fixture/template expectations; first-layer contamination fixed (`target_patent=US8527057B2`), second layer pre-existing and hidden previously by early abort. New integrated runs render successfully. |
 | EPO OPS live credentials | **Required for non-hermetic live use** (hermetic `hermetic_fetcher.py` covers testing) |
 
+### Configure EPO OPS credentials
+
+Live patent searches use the EPO Open Patent Services API. Register at
+[developers.epo.org](https://developers.epo.org), then store your consumer
+key/secret locally (never committed):
+
+    cp .env.example .env   # then paste your key/secret into .env
+    python -m engine_v17.epo_ops          # self-check: token + live biblio query
+
+`.env` is gitignored; credentials never appear in logs, reports, or git history.
+Shell-exported `EPO_OPS_CLIENT_ID` / `EPO_OPS_CLIENT_SECRET` override `.env`.
+
 ---
 
 ## Roadmap

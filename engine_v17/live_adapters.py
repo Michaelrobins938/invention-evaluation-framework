@@ -26,6 +26,7 @@ try:
         CitationBundle,
         EpoOpsClient,
         build_npl_evidence_records,
+        normalize_patent_number,
         retrieve_citations,
     )
     _EPO_OPS_AVAILABLE = True
@@ -133,15 +134,17 @@ def run_live_phase_adapters(
                     json.dumps(epo_citation_bundle.to_dict(), indent=2, default=str) + "\n",
                     encoding="utf-8",
                 )
-                epo_citation_record = adapter.fetch(
-                    ledger,
+                # Data was already fetched via the authenticated client — record
+                # it directly instead of re-downloading (anonymous re-fetch = 403).
+                epo_citation_record = ledger.record(
                     phase_id="03",
                     action_type="epo_ops_citation_retrieval",
                     source="EPO OPS",
-                    url=epo_client._url(f"/published-data/publication/epodoc/{normalized}/biblio"),
                     query=normalized,
-                    artifact_path=epo_citation_raw,
                     result_count=total_citations,
+                    result_artifact=str(epo_citation_raw),
+                    outcome="live response retrieved",
+                    candidate_evidence=True,
                 )
 
             # Resolve NPL citations (XP documents) via citing-patent strategy
@@ -161,15 +164,16 @@ def run_live_phase_adapters(
                         + "\n",
                         encoding="utf-8",
                     )
-                    epo_npl_record = adapter.fetch(
-                        ledger,
+                    # Same as citations: authenticated data recorded directly.
+                    epo_npl_record = ledger.record(
                         phase_id="04",
                         action_type="epo_ops_npl_resolution",
                         source="EPO OPS NPL",
-                        url=epo_client._url("/published-data/search"),
                         query=f"XP citations for {normalized}",
-                        artifact_path=epo_npl_raw,
                         result_count=len(epo_npl_records),
+                        result_artifact=str(epo_npl_raw),
+                        outcome="live response retrieved",
+                        candidate_evidence=True,
                     )
         except Exception as _exc:
             # EPO OPS unavailable — continue without it; existing Google Patents

@@ -10,31 +10,31 @@ from .models import CitationBundle, NplEvidenceRecord
 from .parser import parse_bibliographic_xml
 
 
-def _normalize_patent_number(patent_id: str) -> str:
+def normalize_patent_number(patent_id: str) -> str:
     """
-    Normalize a patent ID to EPO publication number format.
+    Normalize a patent ID to EPO OPS dotted publication format.
+
+    OPS v3.2 data endpoints require dot-separated components
+    (CC.NUMBER[.KIND]); compact forms such as "US5215088A" return 404.
 
     Examples:
-        US5215088 -> US5215088A
-        US5215088A -> US5215088A
-        EP1234567 -> EP1234567A1
-        EP1234567B1 -> EP1234567B1
+        US5215088  -> US.5215088
+        US5215088A -> US.5215088.A
+        US8527057B2 -> US.8527057.B2
+        EP1664047  -> EP.1664047
+        EP1664047A1 -> EP.1664047.A1
     """
     normalized = patent_id.strip().upper()
-
-    # US patents: ensure kind code suffix
-    if re.match(r'^US\d+[A-Z]\d*$', normalized):
+    match = re.fullmatch(r"([A-Z]{2})(\d+)([A-Z]\d*)?", normalized)
+    if not match:
         return normalized
-    if re.match(r'^US\d+$', normalized):
-        return f"{normalized}A"
+    country, number, kind = match.groups()
+    if kind:
+        return f"{country}.{number}.{kind}"
+    return f"{country}.{number}"
 
-    # EP patents: ensure kind code
-    if re.match(r'^EP\d+$', normalized):
-        return f"{normalized}A1"
-    if re.match(r'^EP\d+[A-Z]\d*$', normalized):
-        return normalized
 
-    return normalized
+_normalize_patent_number = normalize_patent_number
 
 
 def retrieve_citations(

@@ -34,9 +34,9 @@ class EpoOpsClient:
         EPO_OPS_CLIENT_ID: OAuth2 client ID
         EPO_OPS_CLIENT_SECRET: OAuth2 client secret
         EPO_OPS_CACHE_DIR: Cache directory (default: .epo_ops_cache)
-        EPO_OPS_BASE_URL: API base URL (default: https://ops.epo.org/3.2)
+        EPO_OPS_BASE_URL: API base URL (default: https://ops.epo.org/3.2/rest-services)
     """
-    base_url: str = field(default_factory=lambda: os.environ.get("EPO_OPS_BASE_URL", "https://ops.epo.org/3.2"))
+    base_url: str = field(default_factory=lambda: os.environ.get("EPO_OPS_BASE_URL", "https://ops.epo.org/3.2/rest-services"))
     auth: EpoOpsAuth = field(default_factory=EpoOpsAuth)
     cache: EpoOpsCache = field(default_factory=EpoOpsCache)
     fetcher: Fetcher | None = field(default=None, repr=False)

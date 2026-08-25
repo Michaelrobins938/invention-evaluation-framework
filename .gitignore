@@ -15,6 +15,7 @@ __pycache__/
 # Secrets / credentials
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 
@@ -28,6 +29,7 @@ report-renderer/*.png
 # Autoprompt transient run-state / governance (never versioned)
 .ief-runs/
 .ief-runs
+.epo_ops_cache/
 PROMPTS.txt
 ROADMAP.md
 GATELOG.md

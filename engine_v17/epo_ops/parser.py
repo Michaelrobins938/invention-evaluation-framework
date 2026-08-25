@@ -15,12 +15,26 @@ from .models import (
     PatentCitation,
 )
 
-# EPO OPS XML namespace
+# EPO OPS XML namespaces (elements are matched by LOCAL name — OPS mixes
+# the ops namespace with the default exchange namespace across endpoints)
 _EPO_NS = "{http://www.epo.org/fulltext}"
 _OPS_NS = "{http://ops.epo.org}"
+_EXCHANGE_NS = "{http://www.epo.org/exchange}"
 
 
-def _text(element: ET.Element | None, tag: str, ns: str = _OPS_NS) -> str | None:
+def _strip_namespaces(root: ET.Element) -> ET.Element:
+    """Rewrite all element tags to namespace-free local names in place.
+
+    Live OPS responses mix namespaces (ops root + exchange-ns children);
+    matching on local names makes parsing robust across endpoint variants.
+    """
+    for el in root.iter():
+        if isinstance(el.tag, str) and "}" in el.tag:
+            el.tag = el.tag.split("}", 1)[1]
+    return root
+
+
+def _text(element: ET.Element | None, tag: str, ns: str = "") -> str | None:
     """Extract text from a child element, returning None if missing."""
     if element is None:
         return None
@@ -28,7 +42,7 @@ def _text(element: ET.Element | None, tag: str, ns: str = _OPS_NS) -> str | None
     return (child.text or "").strip() if child is not None and child.text else None
 
 
-def _find_all(parent: ET.Element, tag: str, ns: str = _OPS_NS) -> list[ET.Element]:
+def _find_all(parent: ET.Element, tag: str, ns: str = "") -> list[ET.Element]:
     """Find all child elements with a given tag."""
     return parent.findall(f"{ns}{tag}")
 
@@ -118,18 +132,20 @@ def parse_bibliographic_xml(
     if isinstance(xml_content, bytes):
         xml_content = xml_content.decode("utf-8", errors="replace")
 
-    root = ET.fromstring(xml_content)
+    root = _strip_namespaces(ET.fromstring(xml_content))
 
-    # Find the main patent-document or search-result element
-    doc = root.find(f"{_OPS_NS}patent-document") or root.find(f"{_OPS_NS}search-result")
-    if doc is None:
-        # Try without namespace prefix
-        doc = root
+    # Find the main document element across known OPS shapes
+    doc = (
+        root.find("patent-document")
+        or root.find(".//exchange-document")
+        or root.find("search-result")
+        or root
+    )
 
     bundle = CitationBundle(patent_number=patent_number)
 
-    # Parse citations
-    citations_elem = doc.find(f"{_OPS_NS}citations")
+    # Parse citations (biblio: bibliographic-data/references-cited; legacy: citations)
+    citations_elem = doc.find("citations") or doc.find(".//references-cited")
     if citations_elem is None:
         return bundle
 
@@ -156,13 +172,13 @@ def parse_bibliographic_xml(
         elif "appeal" in cited_phase_raw.lower():
             cited_phase = CitedPhase.APPEAL
 
-        category_raw = citation.findtext(f"{_OPS_NS}category", default="")
+        category_raw = citation.findtext("category", default="")
         categories = _parse_citation_category(category_raw)
 
         # Patent citation
-        patcit_elem = citation.find(f"{_OPS_NS}patcit")
+        patcit_elem = citation.find("patcit")
         if patcit_elem is not None:
-            doc_id = patcit_elem.find(f"{_OPS_NS}document-id")
+            doc_id = patcit_elem.find("document-id")
             pat_citation = PatentCitation(
                 publication_number=_text(doc_id, "doc-number"),
                 priority_date=_text(doc_id, "date") or _text(doc_id, "priority-date"),
@@ -179,7 +195,7 @@ def parse_bibliographic_xml(
             bundle.patcit.append(pat_citation)
 
         # NPL citation
-        nplcit_elem = citation.find(f"{_OPS_NS}nplcit")
+        nplcit_elem = citation.find("nplcit")
         if nplcit_elem is not None:
             raw_text = _text(nplcit_elem, "text") or _text(nplcit_elem, "nplcit")
             parsed = _parse_npl_citation_text(raw_text)
@@ -220,17 +236,17 @@ def parse_search_xml(xml_content: str | bytes) -> list[dict[str, Any]]:
     if isinstance(xml_content, bytes):
         xml_content = xml_content.decode("utf-8", errors="replace")
 
-    root = ET.fromstring(xml_content)
+    root = _strip_namespaces(ET.fromstring(xml_content))
     results = []
 
     for result in _find_all(root, "search-result"):
-        doc_id = result.find(f"{_OPS_NS}publication-reference/{_OPS_NS}document-id")
+        doc_id = result.find("publication-reference/document-id")
         if doc_id is None:
             continue
 
         pub_number = _text(doc_id, "doc-number")
         pub_date = _text(doc_id, "date")
-        title_elem = result.find(f"{_OPS_NS}title")
+        title_elem = result.find("title")
         title = title_elem.text.strip() if title_elem is not None and title_elem.text else None
 
         results.append({

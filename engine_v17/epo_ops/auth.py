@@ -2,12 +2,20 @@
 
 from __future__ import annotations
 
+import base64
 import json
 import os
 import time
 from dataclasses import dataclass, field
-from typing import Any
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+
+
+def _env(name: str) -> str:
+    from .config import ensure_loaded
+
+    ensure_loaded()
+    return os.environ.get(name, "")
 
 
 @dataclass
@@ -16,18 +24,20 @@ class EpoOpsAuth:
     Manages EPO OPS authentication tokens.
 
     EPO OPS uses OAuth2 client-credentials. Credentials are read from
-    environment variables (never hardcoded):
+    environment variables (never hardcoded), optionally populated from a
+    local `.env` file by engine_v17.epo_ops.config:
 
-        EPO_OPS_CLIENT_ID
-        EPO_OPS_CLIENT_SECRET
+        EPO_OPS_CLIENT_ID     consumer key from developers.epo.org
+        EPO_OPS_CLIENT_SECRET consumer secret
 
     Tokens are cached in memory and refreshed before expiry.
     """
-    client_id: str = field(default_factory=lambda: os.environ.get("EPO_OPS_CLIENT_ID", ""))
-    client_secret: str = field(default_factory=lambda: os.environ.get("EPO_OPS_CLIENT_SECRET", ""))
+    client_id: str = field(default_factory=lambda: _env("EPO_OPS_CLIENT_ID"))
+    client_secret: str = field(default_factory=lambda: _env("EPO_OPS_CLIENT_SECRET"))
     token_url: str = "https://ops.epo.org/3.2/auth/accesstoken"
     _token: str | None = field(default=None, repr=False)
     _token_expires_at: float = field(default=0.0, repr=False)
+    last_error: str | None = field(default=None, repr=False)
 
     @property
     def is_authenticated(self) -> bool:
@@ -50,9 +60,7 @@ class EpoOpsAuth:
 
     def _refresh_token(self) -> str | None:
         """Request a new token from EPO OPS."""
-        payload = json.dumps({
-            "grant_type": "client_credentials",
-        }).encode("utf-8")
+        payload = urlencode({"grant_type": "client_credentials"}).encode("utf-8")
 
         request = Request(
             self.token_url,
@@ -69,13 +77,14 @@ class EpoOpsAuth:
                 self._token = body.get("access_token")
                 expires_in = body.get("expires_in", 3600)
                 self._token_expires_at = time.time() + int(expires_in)
+                self.last_error = None
                 return self._token
         except Exception as exc:
-            # Token refresh failed — return None to signal unauthenticated fallback
+            # Token refresh failed — preserve fallback semantics, record cause.
+            self.last_error = f"{type(exc).__name__}: {exc}"
             return None
 
     def _basic_auth_header(self) -> str:
-        import base64
         credentials = f"{self.client_id}:{self.client_secret}"
         encoded = base64.b64encode(credentials.encode("utf-8")).decode("utf-8")
         return f"Basic {encoded}"

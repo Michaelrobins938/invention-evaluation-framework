@@ -16,12 +16,12 @@ Environment variables:
     EPO_OPS_CLIENT_ID: OAuth2 client ID (optional — unauthenticated mode available)
     EPO_OPS_CLIENT_SECRET: OAuth2 client secret
     EPO_OPS_CACHE_DIR: Response cache directory (default: .epo_ops_cache)
-    EPO_OPS_BASE_URL: API base URL (default: https://ops.epo.org/3.2)
+    EPO_OPS_BASE_URL: API base URL (default: https://ops.epo.org/3.2/rest-services)
 """
 
 from .auth import EpoOpsAuth
 from .client import EpoOpsClient
-from .citations import retrieve_citations, retrieve_npl_citations
+from .citations import normalize_patent_number, retrieve_citations, retrieve_npl_citations
 from .models import (
     CitationBundle,
     CitationCategory,
@@ -47,6 +47,7 @@ __all__ = [
     # Citation retrieval
     "retrieve_citations",
     "retrieve_npl_citations",
+    "normalize_patent_number",
     "retrieve_citations_for_patent",
     # NPL resolution
     "build_npl_evidence_records",

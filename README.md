@@ -465,22 +465,31 @@ Debt becomes a structured `ap-researcher`/`ap-sweeper` task (bounded retry) or `
 
 ## Proposition-Level Review
 
-Every material proposition is classified and reviewed:
+Every material proposition receives a review and verification **record** (coverage):
 
-- All 5 propositions in the US8527057 validation run were reviewed
-- Every material proposition receives **independent review** (`ap-reviewer`) — reads evidence, not author's verdict
-- Every material proposition receives **blind fresh verification** (`ap-fresh-verifier`) — re-derives without reading reviewer verdict
+- All 5 propositions in the US8527057 validation run have review + verification records
+- Every material proposition is routed through the review lane (`ap-reviewer` label) and verification lane (`ap-fresh-verifier` label)
 - Missing coverage **blocks** E7/E8 (not silently PASSED)
 - Results persisted to `proposition-review-matrix.json` + `review-ledger.json`
+
+**Honest status of E7/E8 judgment:** coverage is real, computed verdicts are not.
+At the only call site (`orchestrator_autoprompt.py`), the verdict passed to
+`independent_review()`/`fresh_verification()` is the constant
+`ReviewVerdict.PASSED`. No code path today inspects evidence content and could
+return FAILED on its merits — so "5/5 PASSED" certifies that every proposition
+was *routed*, not that an independent evaluation *agreed*. Wiring a genuine
+evidence-consuming evaluator behind E7/E8 (deterministic heuristic first,
+LLM-based later) is the top-priority design task before these gates can be
+trusted unattended.
 
 ```
 Proposition Ledger (5 props)
        │
-       ├── P-02-001 → reviewer → verifier → PASSED
-       ├── P-05-001 → reviewer → verifier → PASSED
-       ├── P-05-002 → reviewer → verifier → PASSED
-       ├── P-07-001 → reviewer → verifier → PASSED
-       └── P-08-001 → reviewer → verifier → PASSED
+       ├── P-02-001 → reviewer → verifier → PASSED   ← coverage record;
+       ├── P-05-001 → reviewer → verifier → PASSED     PASS is currently
+       ├── P-05-002 → reviewer → verifier → PASSED     structural, not an
+       ├── P-07-001 → reviewer → verifier → PASSED     evidence-based
+       └── P-08-001 → reviewer → verifier → PASSED     judgment
                      │
                      ▼
             Proposition Review Matrix (5 entries, criticality=critical)
@@ -551,7 +560,7 @@ The executive reader should not need `P-03-004`, `E7`, or `evidence_graph.json` 
 
 ## Validation Status
 
-**Engineering Operational · Autoprompt Integration Complete · Evidence Controller Operational · Real Multi-Agent Execution Proven**
+**Engineering Operational · Autoprompt Integration Complete · Evidence Controller Operational**
 
 **Tests:** 321 passed (78 engine-integration incl. integrity/escalation/acceptance suites + 114 v17 + 66 EPO OPS + 63 renderer)
 
@@ -716,9 +725,9 @@ Individual evaluations may remain evidence-incomplete — that is the framework 
 | Dimension | Status |
 |-----------|--------|
 | Engineering | Operational |
-| Autoprompt Integration | Complete (REAL dispatch proven, no fallback, no recursion) |
-| Epistemic Controller | Operational (E0-E9, 5/5 review matrix, blind verification) |
-| Real Multi-Agent Execution | Proven (9 DAG worker lanes + 3 review/verification lanes = 12 active personas; 25 installed Ap personas; 5/5 propositions reviewed) |
+| Autoprompt Integration | Complete (deterministic in-process dispatch, no recursion) |
+| Epistemic Controller | Operational (E0-E9; review matrix provides **coverage** — see E7/E8 caveat below) |
+| Multi-Agent Execution | Single-process dispatch of labeled worker functions ("personas" are routing labels, not distinct agent instances); no external agent runtime is invoked |
 | Validation Corpus | Expanding |
 | Overall Product | Research / Decision-Support Platform (not a finished commercial due-diligence product) |
 | Evaluation Status | May be `COMPLETE`, `COMPLETED_WITH_EVIDENCE_DEBT`, `INSUFFICIENT`, `BLOCKED`, or `PARTIAL` — `COMPLETED_WITH_EVIDENCE_DEBT` is success with debt, not failure |
@@ -727,12 +736,12 @@ Individual evaluations may remain evidence-incomplete — that is the framework 
 
 | Layer | Status |
 |-------|--------|
-| Autoprompt integration | **Operational** |
-| Real multi-agent execution | **Proven** (9 DAG lanes, `spawn-all-then-collect`, max 6, `all_lanes_real=true`) |
+| Autoprompt integration | **Operational** (in-process deterministic workers; "REAL_AUTOPROMPT" denotes the integrated path vs. legacy fallback — not an external multi-agent runtime) |
+| Real multi-agent execution | **Not implemented as separate agents** — one process runs labeled worker functions sequentially/threaded |
 | Evidence controller | **Operational** |
 | E0-E9 | **Operational** |
-| Independent review | **5/5 proven** (`proposition-review-matrix.json`, `E7 PASSED`) |
-| Blind verification | **5/5 proven** (`proposition-review-matrix.json`, `E8 PASSED`, `is_blind=true`) |
+| Independent review (E7) | **Coverage proven, judgment NOT computed.** Every proposition receives a review record (`proposition-review-matrix.json`, 5/5 coverage), but the verdict is a constant at the call site — no code path evaluates evidence content and could return FAILED on its merits |
+| Blind verification (E8) | **Coverage proven, judgment NOT computed.** Same limitation as E7: `is_blind=true` records are bookkeeping around a hardcoded PASS; no independent re-derivation exists yet |
 | Claim mapping | **Deterministic** (`claim-mapping.json` regardless of retrieval method) |
 | 321 tests | **Passing** (78 tests/ + 114 tests_v17 + 66 EPO OPS + 63 renderer) |
 | US8527057 real run | **Proven** (`REAL_AUTOPROMPT/FULL_CONTROLLER/INDEPENDENT/BLIND_FRESH`, 7 external sources) |

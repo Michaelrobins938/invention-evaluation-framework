@@ -684,8 +684,13 @@ def emit_companion_files(cfg: dict, run_dir: Path):
     w("research-log-8530-revised.md", "# Research Log\n\n" + "\n\n".join(
         f"## {q['question']}\n\n" + _md_table(
             ["Field", "Value"],
-            [[k.capitalize(), q[k]] for k in ("query", "venue", "date", "scope",
-             "result_count", "reviewed", "included", "excluded", "selected", "limitations")])
+            [[{"query": "Exact search string", "venue": "Website / database / official-domain search used",
+               "date": "Search date", "scope": "Filters or scope",
+               "result_count": "Result count", "reviewed": "Records reviewed",
+               "included": "Inclusion criteria", "excluded": "Exclusion criteria",
+               "selected": "Selected evidence", "limitations": "Limitations"}[k], q[k]]
+             for k in ("query", "venue", "date", "scope",
+                       "result_count", "reviewed", "included", "excluded", "selected", "limitations")])
         for q in search_log))
     w("competitor-table-8530-revised.md", "# Competitive Landscape\n\n" + _md_table(
         ["Organization", "Parent group", "HQ", "Capability", "Note"],

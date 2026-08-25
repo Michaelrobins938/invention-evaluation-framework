@@ -20,6 +20,7 @@ Every framework, renderer, content-source, and process change made for this run,
 | 14 | Market-size presentation: definition boundary + grade per figure; segments never summed; paywalled summaries capped at summary-verified | Content governance | Spec CORRECT MARKET-SIZE INTERPRETATION (applied to truncated tail of spec) |
 | 15 | Prior runs preserved; source files read-only with SHA-256 hashes recorded in manifest | Preservation | Spec PRESERVATION REQUIREMENTS |
 | 16 | Word COM finalization script (fields+TOC update → save → PDF export) with graceful no-Word fallback note file | Tooling | Spec field-update requirement without overwriting prior report |
+| 17 | `validate_acceptance.py` — executable acceptance contract: ~30 machine-enforced FAIL-if checks covering all 10 spec domains, run after Word finalize; run accepted only on zero failures; report persisted as `acceptance-report-8530-market-only-run4.json` | QA / governance | Researcher prose converted to executable contract; the run directory is evidence of framework compliance, not a prettier report |
 
 ## Verification log (external facts)
 

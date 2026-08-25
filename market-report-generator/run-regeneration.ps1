@@ -71,7 +71,15 @@ Write-Host "== Finalize in Word (fields + TOC + PDF export), if Word available =
 & powershell -ExecutionPolicy Bypass -File (Join-Path $Root "market-report-generator\finalize-word-fields.ps1") `
     -RunDir $runDir
 
+Write-Host "== Executable acceptance contract =="
+& $pythonCmd (Join-Path $Root "market-report-generator\validate_acceptance.py") `
+    --run-dir $runDir `
+    --language-rules (Join-Path $Root "market-report-generator\content\language-rules.json")
+if ($LASTEXITCODE -ne 0) {
+    throw "ACCEPTANCE REJECTED: the generated run fails the research-team specification. See acceptance-report-8530-market-only-run4.json for itemized failures."
+}
+
 Write-Host ""
-Write-Host "RUN 4 COMPLETE. Outputs in:" 
+Write-Host "RUN 4 COMPLETE — ACCEPTED. Outputs in:" 
 Write-Host ("  " + $runDir)
 Write-Host "Visual QA: open visual-qa-checklist-8530-run4.md and inspect every rendered page."

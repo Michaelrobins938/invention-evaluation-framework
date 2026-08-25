@@ -37,7 +37,7 @@ jobs:
         run: python -m pytest tests -q
 
       - name: Run v17 engine suites
-        run: python -m pytest Test-report-results/tests_v17 -q
+        run: python -m pytest tests_v17 -q
 
       - name: Run renderer suites
         run: python -m pytest report-renderer/tests -q

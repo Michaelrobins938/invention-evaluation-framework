@@ -194,7 +194,7 @@ result = run_with_autoprompt(
 ```bash
 python3 -m pytest engine_v17/epo_ops/tests -q               # 66 EPO OPS
 python3 -m pytest tests -q                                   # 38 integration/failure
-python3 -m pytest Test-report-results/tests_v17 -q           # 114 v17 engine
+python3 -m pytest tests_v17 -q           # 114 v17 engine
 python3 -m pytest report-renderer/tests -q                   # 63 renderer
 bash verify.sh  # includes semantic scan note: see docs/ARCHITECTURE.md#validation
 ```
@@ -592,7 +592,7 @@ invention-evaluation-framework/
 ├── setup.sh                            one-click installer: deps + agent skill install
 ├── setup.ps1                           Windows installer mirror
 ├── requirements.txt                    Python dependencies
-├── IEF_EXECUTION_CONTRACT.md          execution contract (mission lifecycle, DAG, E0-E9, status)
+├── docs/IEF_EXECUTION_CONTRACT.md       execution contract (mission lifecycle, DAG, E0-E9, status)
 ├── schemas/
 │   ├── evaluation-mission.schema.json
 │   ├── skill-contract.schema.json
@@ -612,29 +612,37 @@ invention-evaluation-framework/
 │   └── orchestrator_autoprompt.py     REAL dispatch (spawn-all-then-collect, E7/E8 5/5, provenance 4-tuple)
 ├── skills/
 │   ├── SKILL-Orchestrator.md          domain-policy router (Autoprompt is execution, IEF is policy)
+│   ├── skill-00-run-evaluation/       one-command runner skill (installed by setup)
 │   ├── skill-02-gather-invention-submission/
 │   ├── skill-03-analyze-technology-fundamentals/  … up to skill-10-render-report
-│   ├── DIGEST.md · GLOSSARY.md · INDEX.md · PIPELINE_STATE.md
-│   └── superpowers/                   sdd/ harness tasks
+│   └── DIGEST.md · GLOSSARY.md · INDEX.md · PIPELINE_STATE.md
+├── market-report-generator/           GenIP-spec client report pipeline
+│   ├── generate_market_report.py      markdown → native Word (DOCX)
+│   ├── validate_acceptance.py         executable acceptance contract (~30 checks)
+│   ├── run-regeneration.ps1           Windows one-command regeneration
+│   ├── finalize-word-fields.ps1       Word COM: TOC/fields + PDF export
+│   └── content/                       verified partners/events/sources data
 ├── benchmarks/harness.py              A/B/C harness (14 metrics, 4-mode provenance)
-├── tests/
+├── tests/                             engine integration + failure modes + acceptance suites
 │   ├── test_real_dispatch.py          11 real-dispatch tests (P1-P4)
-│   ├── test_autoprompt_integration.py 11 integration tests
-│   └── test_failure_modes.py          15 failure-mode tests
+│   ├── test_failure_modes.py          15 failure-mode tests
+│   ├── test_report_integrity.py       E9 hardening (19 cases)
+│   ├── test_escalation_ladder.py      anti-quit enforcement (9 cases)
+│   └── test_market_acceptance.py      GenIP contract mutation tests (12 cases)
+├── tests_v17/                         v1.7 engine suite (114 tests)
+├── examples/tesla-us433700/           sample run: submission, prompt, reports
 ├── report-renderer/
 │   ├── render_report.py · contract.py · visual_qa.py · template.html
-│   └── tests/
-├── evaluations/
-│   ├── us8527057/                     US 8,527,057 (validation case, 9 lanes, 5/5 reviews)
-│   ├── 7149534/ · 7153242/ · 8905955/  additional cases
-│   └── us8527057-v17(Complete-pass)/  legacy fixture
+│   └── tests/                         renderer suite (63 tests)
+├── evaluations/                       per-invention runs & fixtures (see evaluations/README.md)
 ├── docs/
 │   ├── ARCHITECTURE.md                detailed execution model
+│   ├── IEF_EXECUTION_CONTRACT.md      execution contract (mission lifecycle, DAG, E0-E9, status)
 │   ├── INTEGRATION-AUTOPROMPT.md      Phase 1-3 integration report
+│   ├── history/                       dated handoffs & v1.4–v1.6 fixture reports
 │   └── GLOSSARY.md                    terminology (Autoprompt, E0-E9, REAL_AUTOPROMPT, etc.)
-├── CHANGELOG.md                       Phase 3 Hardening entry
-├── verify.sh                          install verifier (pre-existing semantic scan note see P5)
-├── .gitignore                         .ief-runs/, PROMPTS.txt, ROADMAP.md, GATELOG.md, .autoprompt/
+├── CHANGELOG.md                       release history
+├── verify.sh                          install verifier
 └── Assets/invention-evaluation-cover.png
 ```
 

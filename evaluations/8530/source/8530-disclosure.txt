@@ -1,0 +1,1 @@
+Invention disclosure 8530: adaptive energy harvesting controller for IoT devices using thermoelectric harvesting transducers.

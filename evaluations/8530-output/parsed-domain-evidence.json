@@ -1,0 +1,356 @@
+{
+  "patent": {
+    "patent_id": "8530",
+    "title": "",
+    "family_members": [],
+    "status": [],
+    "backward_references": [],
+    "forward_references": [],
+    "claims": []
+  },
+  "literature": [
+    {
+      "authors": [],
+      "title": "",
+      "venue": "",
+      "date": "",
+      "doi_or_report_number": "10.1107/s2059798317013742/gm5053sup5.wmv",
+      "url": "https://doi.org/10.1107/s2059798317013742/gm5053sup5.wmv",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "authors",
+        "title",
+        "venue",
+        "date",
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Du",
+        "Lee"
+      ],
+      "title": "A high-efficiency auto-reconfigurable SITIDO boost/buck regulator with input power conditioning for energy-harvesting applications",
+      "venue": "2012 IEEE 55th International Midwest Symposium on Circuits and Systems (MWSCAS)",
+      "date": "2012",
+      "doi_or_report_number": "10.1109/mwscas.2012.6292214",
+      "url": "https://doi.org/10.1109/mwscas.2012.6292214",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [],
+      "title": "manual input",
+      "venue": "SpringerReference",
+      "date": "",
+      "doi_or_report_number": "10.1007/springerreference_18437",
+      "url": "https://doi.org/10.1007/springerreference_18437",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "authors",
+        "date",
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [
+        "Vamsi",
+        "Priya",
+        "Dutta",
+        "Singh"
+      ],
+      "title": "A 1V, \u221226dBm sensitive auto configurable mixed converter mode RF energy harvesting with wide input range",
+      "venue": "2016 IEEE International Symposium on Circuits and Systems (ISCAS)",
+      "date": "2016",
+      "doi_or_report_number": "10.1109/iscas.2016.7538854",
+      "url": "https://doi.org/10.1109/iscas.2016.7538854",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    },
+    {
+      "authors": [],
+      "title": "manual-input register",
+      "venue": "SpringerReference",
+      "date": "",
+      "doi_or_report_number": "10.1007/springerreference_18438",
+      "url": "https://doi.org/10.1007/springerreference_18438",
+      "experimental_system": "",
+      "technology": "",
+      "application": "",
+      "demonstrated_result": "",
+      "relevance": "",
+      "missing_fields": [
+        "authors",
+        "date",
+        "experimental_system",
+        "technology",
+        "application",
+        "demonstrated_result",
+        "relevance"
+      ]
+    }
+  ],
+  "market": {
+    "proxy_type": "population",
+    "observations": [
+      {
+        "date": "2025",
+        "value": 8215424893
+      },
+      {
+        "date": "2024",
+        "value": 8140897523
+      },
+      {
+        "date": "2023",
+        "value": 8062923417
+      },
+      {
+        "date": "2022",
+        "value": 7988550201
+      },
+      {
+        "date": "2021",
+        "value": 7919567995
+      },
+      {
+        "date": "2020",
+        "value": 7853863139
+      },
+      {
+        "date": "2019",
+        "value": 7777162476
+      },
+      {
+        "date": "2018",
+        "value": 7696159728
+      },
+      {
+        "date": "2017",
+        "value": 7613788655
+      },
+      {
+        "date": "2016",
+        "value": 7528221579
+      },
+      {
+        "date": "2015",
+        "value": 7441084771
+      },
+      {
+        "date": "2014",
+        "value": 7353532223
+      },
+      {
+        "date": "2013",
+        "value": 7265404737
+      },
+      {
+        "date": "2012",
+        "value": 7176482165
+      },
+      {
+        "date": "2011",
+        "value": 7086704141
+      },
+      {
+        "date": "2010",
+        "value": 7000860073
+      },
+      {
+        "date": "2009",
+        "value": 6916168196
+      },
+      {
+        "date": "2008",
+        "value": 6830080867
+      },
+      {
+        "date": "2007",
+        "value": 6744049498
+      },
+      {
+        "date": "2006",
+        "value": 6659536021
+      },
+      {
+        "date": "2005",
+        "value": 6575410029
+      },
+      {
+        "date": "2004",
+        "value": 6492354627
+      },
+      {
+        "date": "2003",
+        "value": 6409352386
+      },
+      {
+        "date": "2002",
+        "value": 6327171255
+      },
+      {
+        "date": "2001",
+        "value": 6244739668
+      },
+      {
+        "date": "2000",
+        "value": 6161528496
+      },
+      {
+        "date": "1999",
+        "value": 6078069822
+      },
+      {
+        "date": "1998",
+        "value": 5993730786
+      },
+      {
+        "date": "1997",
+        "value": 5908180322
+      },
+      {
+        "date": "1996",
+        "value": 5822327903
+      },
+      {
+        "date": "1995",
+        "value": 5736205135
+      },
+      {
+        "date": "1994",
+        "value": 5650534421
+      },
+      {
+        "date": "1993",
+        "value": 5564459142
+      },
+      {
+        "date": "1992",
+        "value": 5476822930
+      },
+      {
+        "date": "1991",
+        "value": 5388203305
+      },
+      {
+        "date": "1990",
+        "value": 5298962018
+      },
+      {
+        "date": "1989",
+        "value": 5207378374
+      },
+      {
+        "date": "1988",
+        "value": 5116898810
+      },
+      {
+        "date": "1987",
+        "value": 5026770385
+      },
+      {
+        "date": "1986",
+        "value": 4937459951
+      },
+      {
+        "date": "1985",
+        "value": 4850494238
+      },
+      {
+        "date": "1984",
+        "value": 4765813206
+      },
+      {
+        "date": "1983",
+        "value": 4682734714
+      },
+      {
+        "date": "1982",
+        "value": 4599385851
+      },
+      {
+        "date": "1981",
+        "value": 4516792587
+      },
+      {
+        "date": "1980",
+        "value": 4437473406
+      },
+      {
+        "date": "1979",
+        "value": 4359930896
+      },
+      {
+        "date": "1978",
+        "value": 4283309396
+      },
+      {
+        "date": "1977",
+        "value": 4208840894
+      },
+      {
+        "date": "1976",
+        "value": 4135644231
+      }
+    ],
+    "market_sizing_admissible": false,
+    "reason": "population proxy is not a reconstructable market-size proposition"
+  },
+  "partners": [],
+  "epo_ops_citations": {
+    "patent_number": "8530",
+    "patcit": [],
+    "nplcit": [],
+    "retrieval_metadata": {
+      "patent_number": "8530",
+      "source": "epo_ops",
+      "http_status": 404,
+      "cached": false,
+      "error": "HTTP Error 404: Not Found",
+      "patcit_count": 0,
+      "nplcit_count": 0
+    }
+  },
+  "epo_ops_npl": {
+    "xp_resolutions": [],
+    "xp_numbers_found": [],
+    "metadata_completeness": {}
+  }
+}

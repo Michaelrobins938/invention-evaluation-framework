@@ -1,0 +1,46 @@
+[
+  {
+    "proposition_id": "P-05-001",
+    "schema_id": "prior_art_disclosure",
+    "state": "WORK QUEUE",
+    "source_identity": "8530",
+    "errors": [
+      "direct_proposition_support",
+      "temporal_relevance"
+    ],
+    "basis": "Evidence Sufficiency Gate incomplete"
+  },
+  {
+    "proposition_id": "P-06-001",
+    "schema_id": "literature_disclosure",
+    "state": "WORK QUEUE",
+    "source_identity": "Crossref query",
+    "errors": [
+      "direct_proposition_support",
+      "temporal_relevance"
+    ],
+    "basis": "Evidence Sufficiency Gate incomplete"
+  },
+  {
+    "proposition_id": "P-07-001",
+    "schema_id": "market_sizing",
+    "state": "WORK QUEUE",
+    "source_identity": "World Bank API",
+    "errors": [
+      "direct_proposition_support",
+      "temporal_relevance"
+    ],
+    "basis": "Evidence Sufficiency Gate incomplete"
+  },
+  {
+    "proposition_id": "P-08-001",
+    "schema_id": "partner_fit",
+    "state": "WORK QUEUE",
+    "source_identity": "Google Patents search",
+    "errors": [
+      "direct_proposition_support",
+      "temporal_relevance"
+    ],
+    "basis": "Evidence Sufficiency Gate incomplete"
+  }
+]

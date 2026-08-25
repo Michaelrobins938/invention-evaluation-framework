@@ -1,0 +1,65 @@
+{
+  "evaluation_id": "8530",
+  "target": "/tmp/opencode/inv-8530/8530-disclosure.txt",
+  "target_type": "patent",
+  "mission": "Evaluate invention 8530 end-to-end through the IEF evidence-constrained pipeline",
+  "scope": "full-pipeline",
+  "framework_version": "v1.7",
+  "execution_version": "autoprompt-1.0.3-opencode",
+  "evidence_policy": {
+    "schema_ref": "schemas/evidence-contract.schema.json",
+    "corroboration_required": true,
+    "minimum_independent_sources": 2,
+    "temporal_policy": "pre_filing"
+  },
+  "required_domains": [
+    "gather-submission",
+    "analyze-technology",
+    "patent-landscape",
+    "novelty-search",
+    "literature-search",
+    "market-opportunity",
+    "identify-partners",
+    "compile-report",
+    "render-report"
+  ],
+  "output_contract": {
+    "evaluation_dir": "evaluations/8530-output",
+    "required_artifacts": [
+      "report.md",
+      "report.html",
+      "report.pdf",
+      "run-manifest.json",
+      "execution-ledger.json",
+      "evidence-graph.json",
+      "proposition-ledger.json"
+    ]
+  },
+  "success_criteria": [
+    {
+      "criterion": "execution_completion",
+      "threshold": "COMPLETED or COMPLETED_WITH_EVIDENCE_DEBT"
+    },
+    {
+      "criterion": "evidence_coverage",
+      "threshold": "all coverage gates dispositioned"
+    },
+    {
+      "criterion": "overclaim_rate",
+      "threshold": "0 - no unsupported inference promoted"
+    }
+  ],
+  "dependencies": [],
+  "constraints": {},
+  "temporal_scope": {},
+  "required_verification": {
+    "independent_review": true,
+    "fresh_verification": true,
+    "arbitration": true
+  },
+  "escalation_rules": {},
+  "execution_budget": {},
+  "run_id": "RUN-8530-20260825191914",
+  "mission_hash": "fa23cab4e0e5588744a6ab6d8aab4491a98d41693ac9b1cfacc2bd8f5cafcb9c",
+  "mission_bytes": 80
+}

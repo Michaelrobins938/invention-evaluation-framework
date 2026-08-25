@@ -1,5 +1,21 @@
 # Changelog
 
+## Repository Restructure & One-Command Delivery — 2026-08-25
+
+**Layout professionalized; zero behavior changes.**
+
+- `Test-report-results/` dissolved: `tests_v17/` (engine suite) and `examples/`
+  (tesla-us433700) are now top-level; loose v1.4–v1.6 fixture reports moved to
+  `docs/history/v16-fixtures/`. CI, README, verify.sh updated.
+- `IEF_EXECUTION_CONTRACT.md` → `docs/`.
+- Removed broken legacy `install.sh` (superseded by `setup.sh` / `setup.ps1`)
+  and an untracked vendored zip reference.
+- Added `evaluations/README.md` index (live runs vs fixtures; do-not-rename note).
+- New since 2026-08-20: one-command delivery (`run.py`, `evaluate`, `setup.sh`,
+  `setup.ps1`, agent skill auto-install), GenIP market-report pipeline with
+  executable acceptance contract (`market-report-generator/`), anti-quit live
+  retrieval ladders, E9 report-integrity hardening. Full regression: 321 passed.
+
 ## Phase 3 Hardening / Autoprompt Integration — 2026-08-20
 
 **Engineering Operational · Autoprompt Integration Complete · Evidence Controller Operational · Real Multi-Agent Execution Proven**

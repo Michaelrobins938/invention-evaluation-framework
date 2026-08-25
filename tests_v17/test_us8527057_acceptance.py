@@ -9,7 +9,7 @@ from engine_v17.orchestrator import run
 
 
 def _evaluation_root():
-    candidates = [Path(__file__).parents[2], Path.cwd()]
+    candidates = [Path(__file__).parents[1], Path.cwd()]
     for candidate in candidates:
         if (candidate / "evaluations" / "us8527057").exists():
             return candidate

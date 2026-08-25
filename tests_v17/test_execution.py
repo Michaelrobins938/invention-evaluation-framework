@@ -15,7 +15,7 @@ from engine_v17.execution import (
 from engine_v17.orchestrator import run_generic
 
 
-PHASE_SKILLS = sorted(Path(__file__).parents[2].glob("skills/skill-*/SKILL.md"))
+PHASE_SKILLS = sorted(Path(__file__).parents[1].glob("skills/skill-*/SKILL.md"))
 
 
 def test_execution_record_proves_an_action_was_run():

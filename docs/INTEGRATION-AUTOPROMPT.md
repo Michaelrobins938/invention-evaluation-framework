@@ -51,7 +51,7 @@ REPORT RENDERER  (report-renderer/render_report.py → HTML + PDF with contract.
 
 ```
 invention-evaluation-framework/
-├── IEF_EXECUTION_CONTRACT.md          # human contract
+├── docs/IEF_EXECUTION_CONTRACT.md     # human contract
 ├── schemas/
 │   ├── evaluation-mission.schema.json # mission contract
 │   ├── skill-contract.schema.json     # skill I/O contract
@@ -176,7 +176,7 @@ Agents may not invent answers. Retry exhaustion → `BLOCKED` avenue → `EXHAUS
 
 ## 12. Run Ledger
 
-Unified ledger (`execution-ledger.json` + `run-manifest.json` + `execution-plan.json` + `evaluation-mission.json` + `review-ledger.json` + `epistemic-gate-report.json` + `combined-status.json`) answers all 14 questions in `IEF_EXECUTION_CONTRACT.md §11`. No contradictory state sources.
+Unified ledger (`execution-ledger.json` + `run-manifest.json` + `execution-plan.json` + `evaluation-mission.json` + `review-ledger.json` + `epistemic-gate-report.json` + `combined-status.json`) answers all 14 questions in `docs/IEF_EXECUTION_CONTRACT.md §11`. No contradictory state sources.
 
 ## 13. Backward Compatibility
 

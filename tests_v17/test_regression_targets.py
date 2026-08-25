@@ -31,7 +31,7 @@ from engine_v17.coverage import gate_by_name, run_coverage_gate
 from engine_v17.execution import ExecutionLedger
 
 EVAL_DIR = (
-    Path(__file__).resolve().parents[2]
+    Path(__file__).resolve().parents[1]
     / "evaluations/us8527057-v17(Complete-pass)"
 )
 

@@ -1,0 +1,18 @@
+{
+  "claim_id": "8530-claim-1",
+  "domains": [
+    {
+      "name": "manufacturing_process",
+      "limitations": []
+    },
+    {
+      "name": "surgical_handling",
+      "limitations": []
+    }
+  ],
+  "relationships": [],
+  "inventive_center_candidates": [
+    "cross-domain spatial integration",
+    "low-profile scleral geometry"
+  ]
+}

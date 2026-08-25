@@ -69,7 +69,7 @@
 | Terminal states | Removed UNRESOLVED as a terminal analytical conclusion; removed INFERRED / NOT OBSERVED / NOT IDENTIFIED / NOT EVALUATED / CONTESTED from active semantics. |
 | Report architecture | Established Findings / Analytical Conclusions (premise maps; no orphan conclusions) / Operational Audit (barrier_type). Executive Summary ⊆ Established Findings + Analytical Conclusions. |
 | verify.sh | Legacy-terminology semantic scan + root/package parity check. |
-| Validation | Tesla US433,700 v1.6 rerun + negative-control test (see Test-report-results/). |
+| Validation | Tesla US433,700 v1.6 rerun + negative-control test (see docs/history/v16-fixtures/). |
 
 ## v1.4 validation run (completed 2026-08-14)
 

@@ -1,0 +1,278 @@
+{
+  "nodes": {
+    "gather-submission": {
+      "phase": "02",
+      "hard_deps": [],
+      "soft_deps": [],
+      "blocks": [
+        "analyze-technology"
+      ]
+    },
+    "compile-report": {
+      "phase": "09",
+      "hard_deps": [
+        "analyze-technology",
+        "novelty-search",
+        "literature-search",
+        "market-opportunity",
+        "identify-partners"
+      ],
+      "soft_deps": [],
+      "blocks": [
+        "render-report"
+      ]
+    },
+    "patent-landscape": {
+      "phase": "04",
+      "hard_deps": [
+        "analyze-technology"
+      ],
+      "soft_deps": [],
+      "blocks": [
+        "novelty-search"
+      ]
+    },
+    "render-report": {
+      "phase": "10",
+      "hard_deps": [
+        "compile-report"
+      ],
+      "soft_deps": [],
+      "blocks": []
+    },
+    "market-opportunity": {
+      "phase": "07",
+      "hard_deps": [
+        "analyze-technology"
+      ],
+      "soft_deps": [
+        "patent-landscape"
+      ],
+      "blocks": [
+        "identify-partners",
+        "compile-report"
+      ]
+    },
+    "novelty-search": {
+      "phase": "05",
+      "hard_deps": [
+        "analyze-technology",
+        "patent-landscape"
+      ],
+      "soft_deps": [],
+      "blocks": [
+        "compile-report"
+      ]
+    },
+    "identify-partners": {
+      "phase": "08",
+      "hard_deps": [
+        "market-opportunity"
+      ],
+      "soft_deps": [],
+      "blocks": [
+        "compile-report"
+      ]
+    },
+    "analyze-technology": {
+      "phase": "03",
+      "hard_deps": [
+        "gather-submission"
+      ],
+      "soft_deps": [],
+      "blocks": [
+        "patent-landscape",
+        "novelty-search",
+        "literature-search",
+        "market-opportunity",
+        "compile-report"
+      ]
+    },
+    "literature-search": {
+      "phase": "06",
+      "hard_deps": [
+        "analyze-technology"
+      ],
+      "soft_deps": [],
+      "blocks": [
+        "compile-report"
+      ]
+    }
+  },
+  "hard_edges": [
+    [
+      "gather-submission",
+      "analyze-technology"
+    ],
+    [
+      "analyze-technology",
+      "patent-landscape"
+    ],
+    [
+      "analyze-technology",
+      "novelty-search"
+    ],
+    [
+      "analyze-technology",
+      "literature-search"
+    ],
+    [
+      "analyze-technology",
+      "market-opportunity"
+    ],
+    [
+      "patent-landscape",
+      "novelty-search"
+    ],
+    [
+      "market-opportunity",
+      "identify-partners"
+    ],
+    [
+      "analyze-technology",
+      "compile-report"
+    ],
+    [
+      "novelty-search",
+      "compile-report"
+    ],
+    [
+      "literature-search",
+      "compile-report"
+    ],
+    [
+      "market-opportunity",
+      "compile-report"
+    ],
+    [
+      "identify-partners",
+      "compile-report"
+    ],
+    [
+      "compile-report",
+      "render-report"
+    ]
+  ],
+  "soft_edges": [
+    [
+      "patent-landscape",
+      "novelty-search"
+    ],
+    [
+      "patent-landscape",
+      "market-opportunity"
+    ]
+  ],
+  "topological_order": [
+    "gather-submission",
+    "analyze-technology",
+    "patent-landscape",
+    "novelty-search",
+    "literature-search",
+    "market-opportunity",
+    "identify-partners",
+    "compile-report",
+    "render-report"
+  ],
+  "launch_groups": [
+    [
+      "gather-submission"
+    ],
+    [
+      "analyze-technology"
+    ],
+    [
+      "patent-landscape",
+      "literature-search",
+      "market-opportunity"
+    ],
+    [
+      "novelty-search",
+      "identify-partners"
+    ],
+    [
+      "compile-report"
+    ],
+    [
+      "render-report"
+    ]
+  ],
+  "required_domains": [
+    "analyze-technology",
+    "compile-report",
+    "gather-submission",
+    "identify-partners",
+    "literature-search",
+    "market-opportunity",
+    "novelty-search",
+    "patent-landscape",
+    "render-report"
+  ],
+  "mission": {
+    "evaluation_id": "8530",
+    "target": "/tmp/opencode/inv-8530/8530-disclosure.txt",
+    "target_type": "patent",
+    "mission": "Evaluate invention 8530 end-to-end through the IEF evidence-constrained pipeline",
+    "scope": "full-pipeline",
+    "framework_version": "v1.7",
+    "execution_version": "autoprompt-1.0.3-opencode",
+    "evidence_policy": {
+      "schema_ref": "schemas/evidence-contract.schema.json",
+      "corroboration_required": true,
+      "minimum_independent_sources": 2,
+      "temporal_policy": "pre_filing"
+    },
+    "required_domains": [
+      "gather-submission",
+      "analyze-technology",
+      "patent-landscape",
+      "novelty-search",
+      "literature-search",
+      "market-opportunity",
+      "identify-partners",
+      "compile-report",
+      "render-report"
+    ],
+    "output_contract": {
+      "evaluation_dir": "evaluations/8530-output",
+      "required_artifacts": [
+        "report.md",
+        "report.html",
+        "report.pdf",
+        "run-manifest.json",
+        "execution-ledger.json",
+        "evidence-graph.json",
+        "proposition-ledger.json"
+      ]
+    },
+    "success_criteria": [
+      {
+        "criterion": "execution_completion",
+        "threshold": "COMPLETED or COMPLETED_WITH_EVIDENCE_DEBT"
+      },
+      {
+        "criterion": "evidence_coverage",
+        "threshold": "all coverage gates dispositioned"
+      },
+      {
+        "criterion": "overclaim_rate",
+        "threshold": "0 - no unsupported inference promoted"
+      }
+    ],
+    "dependencies": [],
+    "constraints": {},
+    "temporal_scope": {},
+    "required_verification": {
+      "independent_review": true,
+      "fresh_verification": true,
+      "arbitration": true
+    },
+    "escalation_rules": {},
+    "execution_budget": {},
+    "run_id": "RUN-8530-20260825191914",
+    "mission_hash": "fa23cab4e0e5588744a6ab6d8aab4491a98d41693ac9b1cfacc2bd8f5cafcb9c",
+    "mission_bytes": 80
+  },
+  "diagram": "\n    INTAKE (02 gather-submission)\n       \u2502\n       \u25bc\n    SOURCE VALIDATION + TECHNOLOGY (03 analyze-technology)\n       \u2502\n       +-------------------+-------------------+\n       |                   |                   |\n       v                   v                   v\n    CLAIMS(05)         TECHNOLOGY(03)      MARKET(07)\n       |                   |                   |\n       v                   v                   v\n    PRIOR ART(05)     LITERATURE(06)    COMPETITION(07)\n       |                   |                   |\n       +-------------------+-------------------+\n                           \u2502\n                           v\n                    EVIDENCE GRAPH\n                           \u2502\n             +-------------+-------------+\n             |             |             |\n             v             v             v\n          NOVELTY(05)  RIGHTS(graph) COMMERCIAL(07)\n             |             |             |\n             +-------------+-------------+\n                           \u2502\n                           v\n                  PROPOSITION AUDIT (09 compile)\n                           \u2502\n                           v\n                INDEPENDENT REVIEW (E7)\n                           \u2502\n                           v\n                 FRESH VERIFICATION (E8)\n                           \u2502\n                           v\n                      ARBITRATION\n                           \u2502\n                           v\n                    DECISION MODEL\n                           \u2502\n                           v\n                     REPORT RENDERER (10)\n",
+  "contract_ref": "IEF_EXECUTION_CONTRACT.md"
+}

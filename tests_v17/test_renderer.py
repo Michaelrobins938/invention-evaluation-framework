@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 def _renderer_module():
-    renderer_dir = Path(__file__).parents[2] / "report-renderer"
+    renderer_dir = Path(__file__).parents[1] / "report-renderer"
     if str(renderer_dir) not in sys.path:
         sys.path.insert(0, str(renderer_dir))
     path = renderer_dir / "render_report.py"

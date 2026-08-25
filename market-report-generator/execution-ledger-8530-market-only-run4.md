@@ -39,7 +39,7 @@ Every framework, renderer, content-source, and process change made for this run,
 ```text
 Framework suites before acceptance contract (commit 70d405f):
   tests/ ....................................... 66
-  Test-report-results/tests_v17 ................ 114
+  tests_v17 ................ 114
   engine_v17/epo_ops/tests ..................... 66
   report-renderer/tests ........................ 63
                                                ----

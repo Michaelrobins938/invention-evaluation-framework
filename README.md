@@ -148,12 +148,30 @@ python3 market-report-generator/generate_market_report.py \
 python3 market-report-generator/validate_acceptance.py --run-dir $RUN
 ```
 
-The pipeline **refuses to ship a non-compliant report**: `validate_acceptance.py`
-enforces ~30 machine-checked requirements (exact section order, zero markdown
-artifacts, native Word headings and TOC field, ≥10 deduplicated partners,
-≥8 graded sources, verified event dates, market-only language boundary) and
-writes `acceptance-report-…json` into the run directory as evidence. A run
-ships only when it reads `accepted: true`.
+**Client-specification acceptance contract**
+
+The GenIP market-only regeneration pipeline implements the client-provided
+report specification as an executable acceptance contract
+([`validate_acceptance.py`](market-report-generator/validate_acceptance.py)).
+The contract validates report structure, native Word semantics, rendering
+requirements, market-only analytical boundaries, partner/entity constraints,
+officially verified event information, source-quality requirements, research
+methodology completeness, and reproducibility artifacts.
+
+The contract is **mutation-tested**: deliberately injected specification
+violations are rejected before a run can be accepted
+([12 negative tests](tests/test_market_acceptance.py)). Acceptance is therefore
+determined from generated artifacts rather than from generator intent, and the
+per-criterion verdict is written into the run directory as
+`acceptance-report-….json`. A run ships only when it reads `accepted: true`.
+
+**Mission profile, not lesser scope.** Market-only is not a weakened general
+evaluation — it is a different analytical boundary. The general IEF pipeline
+establishes patentability, novelty, prior art, and rights; the market-only
+profile prohibits exactly those analyses and enforces that prohibition
+mechanically, so a restricted deliverable cannot silently inherit conclusions
+from the broader pipeline. Both profiles share the same evidence discipline;
+they differ in what they are permitted to claim.
 
 ### What `run.py` does
 
@@ -639,6 +657,7 @@ invention-evaluation-framework/
 │   ├── ARCHITECTURE.md                detailed execution model
 │   ├── IEF_EXECUTION_CONTRACT.md      execution contract (mission lifecycle, DAG, E0-E9, status)
 │   ├── INTEGRATION-AUTOPROMPT.md      Phase 1-3 integration report
+│   ├── ACCEPTANCE-CONTRACT-PATTERN.md how client specs become executable gates
 │   ├── history/                       dated handoffs & v1.4–v1.6 fixture reports
 │   └── GLOSSARY.md                    terminology (Autoprompt, E0-E9, REAL_AUTOPROMPT, etc.)
 ├── CHANGELOG.md                       release history

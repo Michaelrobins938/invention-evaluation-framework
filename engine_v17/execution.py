@@ -128,6 +128,7 @@ class ExecutionLedger:
         outcome: str = "",
         candidate_evidence: bool = False,
         evidence_sufficiency: bool = False,
+        status: AvenueExecutionStatus | None = None,
     ) -> ExecutionRecord:
         now = _now()
         record = ExecutionRecord(
@@ -142,7 +143,7 @@ class ExecutionLedger:
             completed_at=now,
             result_count=result_count,
             result_artifact=result_artifact,
-            status=AvenueExecutionStatus.COMPLETE,
+            status=status if status is not None else AvenueExecutionStatus.COMPLETE,
             outcome=outcome,
             candidate_evidence=candidate_evidence,
             evidence_sufficiency=evidence_sufficiency,

@@ -10,7 +10,7 @@ from typing import Callable
 from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 
-from .execution import ExecutionLedger
+from .execution import AvenueExecutionStatus, ExecutionLedger
 from .evidence_gate import SourceObject, apply_evidence_sufficiency_gate
 from .domain_parsers import (
     parse_crossref_literature,
@@ -94,22 +94,50 @@ def run_live_phase_adapters(
     ledger: ExecutionLedger,
     fetcher: Fetcher = _default_fetcher,
 ) -> dict[str, Path]:
-    """Execute the minimum live phase set and return generated phase artifacts."""
+    """Execute the minimum live phase set and return generated phase artifacts.
+
+    Retrieval failures degrade to BLOCKED avenue records (evidence debt) —
+    a live source being unavailable never aborts the pipeline.
+    """
+    def _safe_fetch(adapter: HttpLiveAdapter, ledger_ref: ExecutionLedger, *, failure_note: str, **kwargs):
+        try:
+            return adapter.fetch(ledger_ref, **kwargs)
+        except Exception as exc:
+            artifact_path: Path = kwargs["artifact_path"]
+            artifact_path.parent.mkdir(parents=True, exist_ok=True)
+            artifact_path.write_text(
+                f"# Retrieval blocked\n\n{failure_note}\n\n"
+                f"Error: {type(exc).__name__}: {str(exc)[:200]}\n",
+                encoding="utf-8",
+            )
+            return ledger_ref.record(
+                phase_id=kwargs["phase_id"],
+                action_type=kwargs["action_type"],
+                source=kwargs["source"],
+                query=kwargs["query"],
+                result_artifact=str(artifact_path),
+                outcome=f"retrieval blocked ({type(exc).__name__}: {str(exc)[:120]}); recorded as evidence debt",
+                candidate_evidence=False,
+                evidence_sufficiency=False,
+                status=AvenueExecutionStatus.BLOCKED,
+            )
+
     adapter = HttpLiveAdapter(fetcher)
     output_dir.mkdir(parents=True, exist_ok=True)
     normalized = patent_id.upper()
     publication_id = normalized if re.search(r"B[0-9A-Z]+$", normalized) else f"{normalized}A"
     patent_url = f"https://patents.google.com/patent/{publication_id}/en"
     patent_raw = output_dir / f"raw-patent-{normalized.lower()}.html"
-    patent_record = adapter.fetch(
-        ledger,
+    patent_record = _safe_fetch(
+        adapter, ledger,
+        failure_note=f"Patent page for {publication_id} could not be retrieved from Google Patents.",
         phase_id="03",
         action_type="patent_search",
         source="Google Patents",
         url=patent_url,
         query=normalized,
         artifact_path=patent_raw,
-        result_count=1,
+        result_count=None,
     )
     patent_metadata = parse_patent_metadata(patent_raw.read_text(encoding="utf-8", errors="ignore"), normalized)
     target_claims = parse_patent_claims(patent_raw.read_text(encoding="utf-8", errors="ignore"))
@@ -183,8 +211,9 @@ def run_live_phase_adapters(
     literature_query = "locomotion assisting exoskeleton ground force sensors"
     literature_url = "https://api.crossref.org/works?query=" + quote_plus(literature_query) + "&rows=5"
     literature_raw = output_dir / "raw-literature-crossref.json"
-    literature_record = adapter.fetch(
-        ledger,
+    literature_record = _safe_fetch(
+        adapter, ledger,
+        failure_note="Crossref literature query could not be retrieved.",
         phase_id="04",
         action_type="literature_search",
         source="Crossref API",
@@ -196,8 +225,9 @@ def run_live_phase_adapters(
 
     market_url = "https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json"
     market_raw = output_dir / "raw-market-worldbank.json"
-    market_record = adapter.fetch(
-        ledger,
+    market_record = _safe_fetch(
+        adapter, ledger,
+        failure_note="World Bank market proxy indicator could not be retrieved.",
         phase_id="06",
         action_type="market_proxy_search",
         source="World Bank API",
@@ -210,8 +240,9 @@ def run_live_phase_adapters(
     partner_query = "exoskeleton locomotion assisting device"
     partner_url = "https://patents.google.com/?q=" + quote_plus(partner_query)
     partner_raw = output_dir / "raw-partner-patent-search.html"
-    partner_record = adapter.fetch(
-        ledger,
+    partner_record = _safe_fetch(
+        adapter, ledger,
+        failure_note="Partner patent search could not be retrieved.",
         phase_id="07",
         action_type="partner_search",
         source="Google Patents search",
@@ -224,8 +255,9 @@ def run_live_phase_adapters(
     troubleshooting_query = "patent claim element mapping evidence sufficiency search guidance"
     troubleshooting_url = "https://patents.google.com/?q=" + quote_plus(troubleshooting_query)
     troubleshooting_raw = output_dir / "raw-recovery-troubleshooting.html"
-    troubleshooting_record = adapter.fetch(
-        ledger,
+    troubleshooting_record = _safe_fetch(
+        adapter, ledger,
+        failure_note="Recovery troubleshooting search could not be retrieved.",
         phase_id="05",
         action_type="recovery_troubleshooting",
         source="Google Patents search guidance route",
@@ -246,8 +278,9 @@ def run_live_phase_adapters(
     for index, (strategy_class, query, base_url) in enumerate(recovery_strategies, start=1):
         url = base_url + (quote_plus(query) if base_url.endswith("=") else "")
         raw_path = output_dir / f"raw-recovery-{index:02d}-{strategy_class}.bin"
-        record = adapter.fetch(
-            ledger,
+        record = _safe_fetch(
+            adapter, ledger,
+            failure_note=f"Recovery strategy {strategy_class} search could not be retrieved.",
             phase_id="05",
             action_type="recovery_search",
             source=base_url.split("/")[2],
@@ -262,7 +295,7 @@ def run_live_phase_adapters(
             "execution_id": record.execution_id,
             "query": query,
             "source": base_url,
-            "status": "EXECUTED",
+            "status": "EXECUTED" if record.status == AvenueExecutionStatus.COMPLETE else "BLOCKED",
             "result_artifact": str(raw_path),
         })
 
@@ -270,8 +303,9 @@ def run_live_phase_adapters(
     for reference_id in patent_metadata.get("backward_references", [])[:3]:
         reference_url = f"https://patents.google.com/patent/{reference_id}/en"
         reference_raw = output_dir / f"raw-prior-art-{reference_id.lower()}.html"
-        reference_execution = adapter.fetch(
-            ledger,
+        reference_execution = _safe_fetch(
+            adapter, ledger,
+            failure_note=f"Prior-art reference {reference_id} could not be retrieved.",
             phase_id="05",
             action_type="prior_art_reference_fetch",
             source="Google Patents",

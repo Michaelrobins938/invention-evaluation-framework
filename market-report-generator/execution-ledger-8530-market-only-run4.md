@@ -32,3 +32,44 @@ Every framework, renderer, content-source, and process change made for this run,
 | IUVA World Congress 2027 | No announcement exists — "date not confirmed" | iuva.org/events | 2026-08-25 |
 | Xylem–Evoqua merger (2023) | Researcher-provided; corporate press URL re-verification pending at delivery access date | xylem.com (to confirm) | pending |
 | Excelitas–Noblelight (2024) | Researcher-provided; corporate newsroom URL re-verification pending at delivery access date | excelitas.com (to confirm) | pending |
+
+## Test-suite provenance (explicit, no double counting)
+
+```text
+Framework suites before acceptance contract (commit 70d405f):
+  tests/ ....................................... 66
+  Test-report-results/tests_v17 ................ 114
+  engine_v17/epo_ops/tests ..................... 66
+  report-renderer/tests ........................ 63
+                                               ----
+                                       subtotal 309
+
+Added by executable acceptance contract (commit f9ec0fe):
+  tests/test_market_acceptance.py .............. 12
+
+Final full regression at f9ec0fe:
+  tests/ 78 · tests_v17 114 · epo_ops 66 · renderer 63
+                                       TOTAL    321 passed
+```
+
+(The previously circulated "270" double-counted the 12 contract tests against
+the `tests/` directory total; pytest deduplicates node IDs.)
+
+## Remaining execution — where final evidence comes from
+
+Passing the 321-test regression proves the acceptance machinery works. It does
+not prove the actual revised 8530 report passes. That proof is produced only by
+executing Run 4 on the delivery machine:
+
+```text
+run-regeneration.ps1
+      ↓ generate_market_report.py        (source PDFs read-only, hashed)
+      ↓ finalize-word-fields.ps1          (Word COM: fields + TOC → save → PDF)
+      ↓ validate_acceptance.py            (executable contract)
+      ↓
+acceptance-report-8530-market-only-run4.json   ← per-criterion ACCEPTED record
+```
+
+The run directory then contains its own evidence chain; the aggregate verdict in
+the acceptance JSON must read `"accepted": true` with every individual criterion
+recorded. No delivery without that file showing zero failures.

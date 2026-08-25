@@ -224,11 +224,18 @@ def render_markdown_block(doc, md_text: str, body_size=Pt(10.5)):
         m_num = re.match(r"^(\d+)\.\s+(.*)$", stripped)
         m_bul = re.match(r"^[-*]\s+(.*)$", stripped)
         m_h3 = re.match(r"^###\s+(.*)$", stripped)
+        m_h2 = re.match(r"^##\s+(.*)$", stripped)
+        m_h1 = re.match(r"^#\s+(?!/)(.+)$", stripped)
 
         if m_h3:
             h = doc.add_heading(level=3)
             h.style = doc.styles["Heading 3"]
             _add_markdown_runs(h, m_h3.group(1), Pt(11))
+            h.paragraph_format.keep_with_next = True
+        elif m_h2 or m_h1:
+            h = doc.add_heading(level=2)
+            h.style = doc.styles["Heading 2"]
+            _add_markdown_runs(h, (m_h2 or m_h1).group(1), Pt(12))
             h.paragraph_format.keep_with_next = True
         elif m_num:
             p = doc.add_paragraph(style="List Number")

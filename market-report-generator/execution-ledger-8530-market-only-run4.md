@@ -21,6 +21,7 @@ Every framework, renderer, content-source, and process change made for this run,
 | 15 | Prior runs preserved; source files read-only with SHA-256 hashes recorded in manifest | Preservation | Spec PRESERVATION REQUIREMENTS |
 | 16 | Word COM finalization script (fields+TOC update → save → PDF export) with graceful no-Word fallback note file | Tooling | Spec field-update requirement without overwriting prior report |
 | 17 | `validate_acceptance.py` — executable acceptance contract: ~30 machine-enforced FAIL-if checks covering all 10 spec domains, run after Word finalize; run accepted only on zero failures; report persisted as `acceptance-report-8530-market-only-run4.json` | QA / governance | Researcher prose converted to executable contract; the run directory is evidence of framework compliance, not a prettier report |
+| 18 | First full end-to-end execution REJECTED by the contract (33/34): preserved Technology Overview uses `##` subheadings which the renderer only handled at `###`, leaking 7 literal markdown headings into the DOCX. Renderer extended (`##`/`#` → native Heading 2); re-run accepted 34/34 | Renderer patch — caught BY the gate | Demonstrates the contract working as designed: generation code itself contained the exact artifact class the researchers rejected, and delivery was blocked until fixed |
 
 ## Verification log (external facts)
 

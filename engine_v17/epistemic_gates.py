@@ -244,12 +244,19 @@ def check_E8(verifier_verdict: dict[str, Any] | None) -> GateResult:
 
 
 def check_E9(report_path: Path | None, required_sections: list[str] | None = None) -> GateResult:
-    """E9 — Report integrity: rendered report preserves evidence status, uncertainty, limitations."""
+    """E9 — Report integrity: rendered report preserves evidence status, uncertainty, limitations.
+
+    Beyond section presence, E9 runs deterministic integrity scans
+    (report_integrity.scan_report): template-placeholder leakage, audit-manifest
+    barrier-type enum conformance. A report failing these scans is a pipeline
+    defect and blocks delivery regardless of evidence state.
+    """
     if report_path is None or not report_path.exists():
         return GateResult("E9", GATE_DEFINITIONS["E9"]["name"], GateVerdict.FAILED,
                           "report artifact missing", barrier_type="source_unavailable")
     if required_sections is None:
-        required_sections = ["Executive Summary", "Operational Audit"]
+        from .report_integrity import REQUIRED_EXEC_SECTIONS
+        required_sections = ["Executive Summary", "Operational Audit", *REQUIRED_EXEC_SECTIONS]
     try:
         content = report_path.read_text(encoding="utf-8")
     except Exception as e:
@@ -259,6 +266,21 @@ def check_E9(report_path: Path | None, required_sections: list[str] | None = Non
     if missing:
         return GateResult("E9", GATE_DEFINITIONS["E9"]["name"], GateVerdict.FAILED,
                           f"report missing sections: {missing}", barrier_type="insufficient_identity")
+
+    from .report_integrity import scan_report
+    integrity = scan_report(content)
+    if integrity.placeholders:
+        return GateResult("E9", GATE_DEFINITIONS["E9"]["name"], GateVerdict.FAILED,
+                          f"template placeholder residue in delivered report: {integrity.placeholders}",
+                          barrier_type="insufficient_identity")
+    if integrity.invalid_barriers:
+        detail = "; ".join(
+            f"{v.get('proposition_id') or 'row ' + str(v['row'])}: {v['violation']}"
+            for v in integrity.invalid_barriers[:3]
+        )
+        return GateResult("E9", GATE_DEFINITIONS["E9"]["name"], GateVerdict.FAILED,
+                          f"audit-manifest integrity failures: {detail}",
+                          barrier_type="scope_mismatch")
     if "PARTIALLY_ESTABLISHED" in content or "CONFIRMED PRESENT" in content or "WORK QUEUE" in content:
         # Legacy evidence states in rendered report would be a leak
         pass

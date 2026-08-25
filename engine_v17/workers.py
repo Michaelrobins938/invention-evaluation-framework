@@ -312,6 +312,14 @@ def _worker_compile(mission: EvaluationMission, ledger: ExecutionLedger, output_
         Proposition("P-08-001", "Partner fit", ResolutionState.ESCALATION_REQUIRED, blockers=["partner_fit_unverified"]),
     ]
 
+    # Pipeline defect, not evidence debt: duplicate proposition IDs break the
+    # ID→evidence link. Fail loudly here rather than delivering a colliding ledger.
+    from .report_integrity import find_duplicate_proposition_ids
+    id_records = [{"proposition_id": p.id, "subject": p.claim if hasattr(p, "claim") else getattr(p, "statement", "")} for p in propositions]
+    dupes = find_duplicate_proposition_ids(id_records)
+    if dupes:
+        raise ValueError(f"proposition ID collision in compiled ledger: {dupes}")
+
     # Compile evidence graph / debt / constraints
     avenue_attempts = _build_avenue_attempts(ledger) if hasattr(ledger, "attempts_by_phase") else {}
     compiled = compile_v17_artifacts(propositions, output_dir, ledger, avenue_attempts=avenue_attempts)
@@ -320,19 +328,29 @@ def _worker_compile(mission: EvaluationMission, ledger: ExecutionLedger, output_
     (output_dir / "claim-graph.json").write_text(_json.dumps(claim.to_dict(), indent=2) + "\n", encoding="utf-8")
     (output_dir / "rights-graph.json").write_text(_json.dumps(rights.to_dict(), indent=2) + "\n", encoding="utf-8")
 
-    # Build report via report_builder (which handles v17 inference controls)
-    report_path = build_report(
-        evaluation_dir if any(evaluation_dir.glob("submission-*.md")) else output_dir,
-        output_dir,
-        rights,
-        {},
-        "Recovery evidence is recorded in the execution and avenue ledgers.",
-        invention_id=mission.evaluation_id,
-        invention_name=mission.evaluation_id,
-        source_urls=[f"https://patents.google.com/patent/{mission.evaluation_id}B2/en"],
-    )
+    # Debt table rows: work state + enum barrier classification + description
+    from .report_builder import barrier_for_blocker
+    debt_rows = [
+        {
+            "proposition_id": p.id,
+            "work_state": p.state.value,
+            "barrier_type": barrier_for_blocker(p.blockers[0]) if p.blockers else "insufficient_search_completion",
+            "description": "; ".join(p.blockers) if p.blockers else "unresolved after completed protocol",
+        }
+        for p in propositions if p.state != ResolutionState.ESTABLISHED
+    ]
+    evidence_rows = [
+        {
+            "dimension": "IP / Novelty",
+            "finding": p.claim if hasattr(p, "claim") else getattr(p, "statement", str(p)),
+            "proposition_id": p.id,
+            "source": "execution ledger",
+        }
+        for p in propositions if p.state == ResolutionState.ESTABLISHED
+    ]
 
     # Scores manifest with authoritative provenance (fixes target_patent / evidence_items)
+    established = [p for p in propositions if p.state == ResolutionState.ESTABLISHED]
     scores = {
         "run_id": mission.run_id,
         "invention_id": mission.evaluation_id,
@@ -357,6 +375,11 @@ def _worker_compile(mission: EvaluationMission, ledger: ExecutionLedger, output_
             } for p in propositions
         ],
         "gauges": {},
+        "dimensions": {
+            "Technology": {"earned": len(established), "maximum": len(propositions)},
+            "IP / Novelty": {"earned": 0, "maximum": 2},
+            "Market": {"earned": 0, "maximum": 1},
+        },
         "disclaimer": "Evidence-constrained evaluation via Autoprompt+IEF. Real evidence only.",
     }
     # Preserve any existing scores gauges if present in evaluation_dir
@@ -372,6 +395,21 @@ def _worker_compile(mission: EvaluationMission, ledger: ExecutionLedger, output_
     (output_dir / "scores-manifest.json").write_text(_json.dumps(scores, indent=2) + "\n", encoding="utf-8")
     # Also write scores-us... for renderer compat
     (output_dir / f"scores-{mission.evaluation_id.lower()}.json").write_text(_json.dumps(scores, indent=2) + "\n", encoding="utf-8")
+
+    # Build report via report_builder with prescribed executive structure
+    report_path = build_report(
+        evaluation_dir if any(evaluation_dir.glob("submission-*.md")) else output_dir,
+        output_dir,
+        rights,
+        {},
+        "Recovery evidence is recorded in the execution and avenue ledgers.",
+        invention_id=mission.evaluation_id,
+        invention_name=mission.evaluation_id,
+        source_urls=[f"https://patents.google.com/patent/{mission.evaluation_id}B2/en"],
+        scores=scores,
+        evidence_rows=evidence_rows,
+        debt_rows=debt_rows,
+    )
 
     rec = ledger.record("08", "compile-report", persona, str(report_path), result_artifact=str(report_path), outcome="compiled via ap-synthesizer; scores provenance fixed", candidate_evidence=True, evidence_sufficiency=False)
     return {"skill_id": "compile-report", "persona": persona, "execution_id": rec.execution_id, "result_artifact": str(report_path), "evidence_refs": [str(report_path), str(output_dir / "scores-manifest.json")], "outcome": rec.outcome}

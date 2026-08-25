@@ -108,7 +108,10 @@ def test_source_only_clean_run_generates_submission_and_delivery(tmp_path):
 
 
 def test_every_phase_skill_declares_the_v17_execution_contract():
-    assert len(PHASE_SKILLS) == 10
+    # skill-00-run-evaluation is the one-command runner entry point, not a
+    # pipeline phase; the ten-phase contract check applies to phases 01–10.
+    phase_skills = [p for p in PHASE_SKILLS if p.parent.name != "skill-00-run-evaluation"]
+    assert len(phase_skills) == 10
     required_markers = (
         "run_id",
         "evaluation_dir",
@@ -118,7 +121,7 @@ def test_every_phase_skill_declares_the_v17_execution_contract():
         "Failure Recovery Contract",
         "artifact",
     )
-    for skill_path in PHASE_SKILLS:
+    for skill_path in phase_skills:
         text = skill_path.read_text(encoding="utf-8").lower()
         missing = [marker for marker in required_markers if marker.lower() not in text]
         assert not missing, f"{skill_path}: missing contract markers {missing}"

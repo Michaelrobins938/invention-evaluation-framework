@@ -26,6 +26,21 @@ Every phase inherits the active `run_id`, canonical `evaluation_dir`, `phase sta
     do not return an unsaved report as if it were a deliverable.
 2. **Run the chronology validator before writing anything.** Cross-check every date in the submission record and upstream outputs: filing date, priority date, disclosure dates, sale-offer dates, grant date, and any "before [date]" phrasing. Every "before X" must be consistent with the actual filing date. Flag and fix any mismatch (e.g., a section saying "before May 26, 1890" when the filing was March 26, 1890). This is a mandatory gate, not a style preference.
 3. Write a 1–2 page executive summary **constrained to Established Findings + Analytical Conclusions** (Executive Summary ⊆ Established Findings + Analytical Conclusions). It may reference the Operational Audit ("Several evidentiary gaps remain and are documented in the Operational Audit") but never convert audit content into factual prose. Label it as a derived executive summary.
+3a. **Executive-summary substructure is prescribed — do not improvise section names or contents.** Use exactly:
+   - **1.1 Evaluation Overview** — gauge/graphic plus metadata; every pointer the graphic makes ("evidence documented in…") must resolve to a section that actually contains that content.
+   - **1.2 Bottom Line** — the recommendation and its confidence.
+   - **1.3 Rating Methodology** — mandatory contents: (a) the rating scale, (b) per-component scoring criteria, (c) component weights, (d) score→rating thresholds, (e) a worked example showing how totals map to labels. If two dimensions show identical raw points but different ratings, the differing weights must be stated explicitly — never leave the reader to reverse-engineer the mapping.
+   - **1.4 Key Evidence Supporting the Ratings** — plain-language established findings (with proposition_id and source) backing each rating.
+   Unresolved propositions NEVER appear inside sections 1.x or between them. Evidence gaps, debt tables, and barrier classifications belong exclusively in the appendix "Evidence Gaps and Audit Manifest."
+3b. **Proposition Identifier Legend is mandatory** (appendix or end of executive summary). Explain the numbering scheme at first use: `P-<phase>-<seq>` propositions (phase numbers match pipeline phases), letter suffixes (`P-05-008a`) for derived sub-propositions, `A-*` avenue records, `R<n>` reviewed references, `C<n>` claim groupings, `C0–C4` mechanism distance, `D0–D4` design-choice distance. This is internal audit vocabulary — the legend makes it navigable, but client-facing prose must lead with plain language and use IDs as references, not as the primary vocabulary.
+3c. **Proposition IDs are globally unique across the entire report.** One ID maps to exactly one subject. Reusing an ID for two subjects (e.g., market sizing and a landscape statistics item both called `P-07-001`) is a compilation failure — assign a fresh ID and cross-reference instead.
+3d. **Audit-table columns are fixed:** `| Proposition ID | Work state | Barrier type | Description |`. Barrier type carries only enum values (`source_unavailable`, `insufficient_identity`, `insufficient_search_completion`, `insufficient_corroboration`, `insufficient_temporal_match`, `unresolved_conflict`, `scope_mismatch`, `insufficient_technical_demonstration`). Free-text descriptions belong in the Description column — never in the Barrier type column.
+3e. **No template residue may reach delivery.** Any unfilled placeholder (`[RELEVANT POC WILL BE LINKED HERE]`, `[TODO…]`) fails the report. Scan before delivering; remove or fill every bracketed placeholder.
+3f. **Source-identity hygiene.** A source identity names an external database/publisher/document with a locator (e.g., "EPO OPS, publication US8527057B2 biblio"). Internal process descriptions ("Verification rounds 1–5", "internal review pass 2") are not sources and must never appear in a source column or citation list.
+3g. **Market-definition reconciliation is shown, not asserted.** When figures combine different market definitions (e.g., ART services vs ART products vs IVF cycles), include an explicit reconciliation table: definition | figure | source | how it was combined or why it cannot be. Writing "reconciled" without the table is prohibited.
+3h. **Geographic presentation uses comparable categories.** Do not mix rows of different kinds (countries, political/economic blocs, national programs) in one table as if commensurable — separate them or state the basis on which they are compared.
+3i. **Bounded emptiness language.** Claims like "the niche is empty" overreach the evidence. Required form: "no filings were identified within the bounded search universe (databases X, Y; date range; classification Z)". State the boundary wherever absence is claimed.
+3j. **Formal-conclusion language discipline.** Terms like "NOT ANTICIPATED" carry legal weight; use them only inside clearly-labeled preliminary analytical context, each occurrence within reach of the not-legal-advice disclaimer. FTO-adjacent phrasing triggers the explicit "this is not an FTO opinion" statement in the same section.
 4. Assemble the body in standard order: Executive Summary → Technology Analysis → Landscape Analysis → IP/Novelty Analysis → Market Analysis → Opportunity Assessment → Potential Partners → Appendices.
 5. Include all tables and figures generated upstream rather than re-summarizing them in prose.
 6. **Mandatory: Established Findings section.** Only rows that passed the Evidence Sufficiency Gate (CONFIRMED PRESENT / CONFIRMED ABSENT), each rendered from its finding object with full provenance (proposition_id, source_identity, locator, absence_basis where applicable).
@@ -42,6 +57,16 @@ Every phase inherits the active `run_id`, canonical `evaluation_dir`, `phase sta
     and rendered HTML/PDF. Verify each path exists and has non-zero size.
 
 ## Quality checklist (all must pass before delivery)
+- [ ] Executive-summary substructure is exactly 1.1 Evaluation Overview / 1.2 Bottom Line / 1.3 Rating Methodology / 1.4 Key Evidence Supporting the Ratings — no improvised section names.
+- [ ] Every pointer made by the 1.1 graphic resolves to a section that actually contains the promised content.
+- [ ] 1.3 discloses scale, criteria, weights, and thresholds; identical totals under equal weights received identical ratings; any divergence is explained by stated weights.
+- [ ] Unresolved propositions appear ONLY in the Evidence Gaps and Audit Manifest appendix — never in sections 1.x or between them.
+- [ ] Proposition Identifier Legend present; every proposition ID unique across the whole report (no ID bound to two subjects).
+- [ ] Audit tables use fixed columns with enum barrier types only; descriptions in the Description column.
+- [ ] No template placeholders (`[ALL-CAPS …]`) anywhere in the deliverable — scanned, not assumed.
+- [ ] Every source identity is an external database/publisher/document with locator; no internal process labels cited as sources.
+- [ ] Combined market figures carry a reconciliation table; geographic tables compare like categories only.
+- [ ] Absence claims state their bounded search universe; no unbounded emptiness language ("the niche is empty").
 - [ ] Every quantitative claim is sourced — or the proposition is excluded from factual findings and recorded in the Operational Audit. No unsourced revenue or CAGR figures.
 - [ ] Chronology validator passed: all dates consistent, no "before [wrong date]" phrasing.
 - [ ] Every legal-adjacent statement (patentability, FTO-adjacent, regulatory) carries a "not legal advice" disclaimer.

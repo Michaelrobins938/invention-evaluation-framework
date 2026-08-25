@@ -2,15 +2,83 @@
 
 > **Evidence-governed multi-agent intelligence for evaluating inventions, patents, technology, intellectual property, commercialization potential, and market opportunity.**
 
+[![CI](https://github.com/Michaelrobins938/invention-evaluation-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/Michaelrobins938/invention-evaluation-framework/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.11%20%7C%203.13-blue)
+![Tests](https://img.shields.io/badge/tests-281%20passing-brightgreen)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Framework](https://img.shields.io/badge/framework-Invention%20Evaluation-blue)](#)
 [![Evidence](https://img.shields.io/badge/evidence-constrained-green)](#)
 [![Autoprompt](https://img.shields.io/badge/execution-Autoprompt%201.0.3-orange)](#)
-[![Tests](https://img.shields.io/badge/tests-214%20passing-brightgreen)](#)
-
-**Repository:** [Michaelrobins938/invention-evaluation-framework](https://github.com/Michaelrobins938/invention-evaluation-framework)
-**Status:** Engineering Operational · Autoprompt Integration Complete · Validation Corpus Expanding
 
 ![Invention Evaluation Framework Cover](Assets/invention-evaluation-cover.png)
+
+Most AI evaluation pipelines produce confident conclusions from unverifiable reasoning.
+The Invention Evaluation Framework takes the opposite stance: **an invention assessment may
+only state what its gathered evidence actually supports**. A multi-agent engine decomposes an
+invention into propositions, dispatches research workers against live patent and literature
+sources (EPO OPS, Crossref), classifies every artifact as external or derived evidence, and
+routes each conclusion through independent review and blind fresh verification before anything
+reaches the reader.
+
+## See It Work (30 seconds)
+
+Real artifacts from a complete evaluation of US8527057B2 — every number in the report traces
+to a logged execution:
+
+| Artifact | What it shows |
+|----------|---------------|
+| [Rendered report (PDF, 29 pages)](evaluations/us8527057-v17%28Complete-pass%29/report-us8527057-v17.pdf) | Consumer-facing deliverable: recommendation, confidence, limitations |
+| [Execution ledger](evaluations/us8527057-v17%28Complete-pass%29/execution-ledger.json) | Every live retrieval executed, timestamped, with result counts |
+| [Report source (Markdown)](evaluations/us8527057-v17%28Complete-pass%29/report-us8527057-v17.md) | Same report, auditable text form |
+
+Full artifact sets for additional inventions (including deliberately failed runs) live in [`evaluations/`](evaluations/).
+
+## Quick Start
+
+```bash
+# 1. Clone
+git clone https://github.com/Michaelrobins938/invention-evaluation-framework
+cd invention-evaluation-framework
+
+# 2. Install Autoprompt (external execution OS) and wire the IEF profile
+#    In-repo IEF-side config: autoprompt/ief.json, schemas/  → see autoprompt/README.md
+#    Installed skill + 25 worker personas live under ~/.config/opencode/
+
+# 3. Install Python dependencies
+pip install pytest jsonschema Pillow pyyaml
+# Optional for PDF rendering: chromium + poppler-utils
+
+# 4. Run tests (281 total)
+python3 -m pytest engine_v17/epo_ops/tests -q               # 66 EPO OPS
+python3 -m pytest tests -q                                   # 38 integration/failure
+python3 -m pytest Test-report-results/tests_v17 -q           # 114 v17 engine
+python3 -m pytest report-renderer/tests -q                   # 63 renderer
+bash verify.sh  # includes semantic scan note: see docs/ARCHITECTURE.md#validation
+
+# 5. Run an evaluation (REAL Autoprompt path)
+PYTHONPATH=. python3 -c "
+from pathlib import Path
+from engine_v17.orchestrator_autoprompt import run_with_autoprompt
+run_with_autoprompt(
+  'US8527057','evaluations/us8527057/source/US8527057.pdf',
+  Path('evaluations/us8527057-output'), Path('evaluations/us8527057'),
+  hermetic=True, execution_mode='REAL_AUTOPROMPT',
+  epistemic_mode='FULL_CONTROLLER', review_mode='INDEPENDENT', verification_mode='BLIND_FRESH')
+"
+
+# 6. Inspect artifacts
+ls evaluations/us8527057-output/
+# evaluation-mission.json  execution-plan.json  run-manifest.json  execution-ledger.json
+# proposition-ledger.json  evidence-graph.json  claim-graph.json  rights-graph.json  claim-mapping.json
+# epistemic-gate-report.json  proposition-review-matrix.json  review-ledger.json  combined-status.json
+# scores-manifest.json  report-*.md  report-*.html  report-*.pdf
+
+# 7. Benchmark A/B/C
+PYTHONPATH=. python3 benchmarks/harness.py --evaluation-id US8527057 --evaluation-dir evaluations/us8527057 --output-base /tmp/bench
+cat /tmp/bench/benchmark-report.md
+```
+
+---
 
 ---
 
@@ -337,7 +405,7 @@ The executive reader should not need `P-03-004`, `E7`, or `evidence_graph.json` 
 
 **Engineering Operational · Autoprompt Integration Complete · Evidence Controller Operational · Real Multi-Agent Execution Proven**
 
-**Tests:** 214 passed
+**Tests:** 281 passed (66 EPO OPS + 38 integration/failure + 114 v17 engine + 63 renderer)
 
 | Suite | Count | What it proves |
 |-------|-------|----------------|
@@ -434,54 +502,6 @@ invention-evaluation-framework/
 └── Assets/invention-evaluation-cover.png
 ```
 
----
-
-## Quick Start
-
-```bash
-# 1. Clone
-git clone https://github.com/Michaelrobins938/invention-evaluation-framework
-cd invention-evaluation-framework
-
-# 2. Install Autoprompt (execution OS) — opencode provider
-bash /tmp/autoprompt_extract/autoprompt-skill-main/scripts/install/install.sh opencode
-# → ~/.config/opencode/skills/autoprompt/SKILL.md (v1.0.3, 25 personas)
-# → ~/.config/opencode/agents/ap-*.md
-# → ~/.config/opencode/autoprompt.opencode.json
-
-# 3. Install Python deps
-pip install -r requirements.txt  # or: pip install pyyaml jsonschema
-# Optional: chromium (PDF), poppler-utils (pdftotext for TOC page numbers)
-
-# 4. Run tests
-python3 -m pytest tests/test_real_dispatch.py -v          # real dispatch (P1-P4)
-python3 -m pytest tests/test_autoprompt_integration.py tests/test_failure_modes.py -v
-python3 -m pytest Test-report-results/tests_v17 -q          # 113 existing
-python3 -m pytest report-renderer/tests -q                  # 63 renderer
-bash verify.sh  # includes semantic scan note: see docs/ARCHITECTURE.md#validation
-
-# 5. Run an evaluation (REAL Autoprompt path)
-PYTHONPATH=. python3 -c "
-from pathlib import Path
-from engine_v17.orchestrator_autoprompt import run_with_autoprompt
-run_with_autoprompt(
-  'US8527057','evaluations/us8527057/source/US8527057.pdf',
-  Path('evaluations/us8527057-output'), Path('evaluations/us8527057'),
-  hermetic=True, execution_mode='REAL_AUTOPROMPT',
-  epistemic_mode='FULL_CONTROLLER', review_mode='INDEPENDENT', verification_mode='BLIND_FRESH')
-"
-
-# 6. Inspect artifacts
-ls evaluations/us8527057-output/
-# evaluation-mission.json  execution-plan.json  run-manifest.json  execution-ledger.json
-# proposition-ledger.json  evidence-graph.json  claim-graph.json  rights-graph.json  claim-mapping.json
-# epistemic-gate-report.json  proposition-review-matrix.json  review-ledger.json  combined-status.json
-# scores-manifest.json  report-*.md  report-*.html  report-*.pdf
-
-# 7. Benchmark A/B/C
-PYTHONPATH=. python3 benchmarks/harness.py --evaluation-id US8527057 --evaluation-dir evaluations/us8527057 --output-base /tmp/bench
-cat /tmp/bench/benchmark-report.md
-```
 
 ---
 
@@ -549,7 +569,7 @@ Individual evaluations may remain evidence-incomplete — that is the framework 
 | Independent review | **5/5 proven** (`proposition-review-matrix.json`, `E7 PASSED`) |
 | Blind verification | **5/5 proven** (`proposition-review-matrix.json`, `E8 PASSED`, `is_blind=true`) |
 | Claim mapping | **Deterministic** (`claim-mapping.json` regardless of retrieval method) |
-| 214 tests | **Passing** (11 real dispatch + 27 integration/failure + 113 IEF + 63 renderer) |
+| 281 tests | **Passing** (66 EPO OPS + 38 integration/failure + 114 v17 engine + 63 renderer) |
 | US8527057 real run | **Proven** (`REAL_AUTOPROMPT/FULL_CONTROLLER/INDEPENDENT/BLIND_FRESH`, 7 external sources) |
 | Benchmark | **Passing** (A 0.88 → B/C 1.00, overclaim 0.20 steady, no regression) |
 | New-run renderer | **Passing** (74K HTML + 509K PDF, target_patent provenance) |
@@ -572,7 +592,7 @@ Shell-exported `EPO_OPS_CLIENT_ID` / `EPO_OPS_CLIENT_SECRET` override `.env`.
 
 ## Roadmap
 
-**Completed:** Autoprompt integration, real worker dispatch, DAG execution (6 groups, max 6), evidence provenance (external vs derived), E0-E9, proposition review matrix (5/5), blind verification, arbitration, deterministic claim mapping, benchmark 4-mode provenance, hermetic adapters, multi-run validation, renderer fixture provenance fix, 214 tests.
+**Completed:** Autoprompt integration, real worker dispatch, DAG execution (6 groups, max 6), evidence provenance (external vs derived), E0-E9, proposition review matrix (5/5), blind verification, arbitration, deterministic claim mapping, benchmark 4-mode provenance, hermetic adapters, multi-run validation, renderer fixture provenance fix, 281 tests.
 
 **Next — Validation Corpus:**
 - Expanded invention corpus (obvious novelty / obvious prior art / ambiguous / sparse / misleading / conflicting / retrieval failure / contamination)

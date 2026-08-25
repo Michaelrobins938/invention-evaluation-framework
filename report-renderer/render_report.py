@@ -419,6 +419,20 @@ def load_scores(path):
 # Main render function
 # ---------------------------------------------------------------------------
 
+# Sections rendered by the template itself (Executive Summary, v1.7
+# Control State, Original Submission). The body loop must NOT re-render
+# them from report.md — that produced duplicated major sections.
+TEMPLATE_RENDERED = {
+    'Executive Summary',
+    'v1.7 Control State',
+    'Original Submission',
+}
+# Sections rendered by the data-frame generator (evidence-constrained).
+# The body loop must NOT re-render them from report.md — that produced
+# duplicated SWOT Analysis and Potential Partners sections.
+DATA_FRAME_RENDERED = {'SWOT Analysis'}
+
+
 def render(report_md, ledger_md, scores, submission_md=None,
            template_path=None, page_map=None, markers=True, v17_artifacts=None,
            ledger=None, ledger_path=None):
@@ -530,18 +544,8 @@ def render(report_md, ledger_md, scores, submission_md=None,
 
     current_area = None
     body_html = []
-    # Sections rendered by the template itself (Executive Summary, v1.7
-    # Control State, Original Submission). The body loop must NOT re-render
-    # them from report.md — that produced duplicated major sections.
-    TEMPLATE_RENDERED = {
-        'Executive Summary',
-        'v1.7 Control State',
-        'Original Submission',
-    }
-    # Sections rendered by the data-frame generator (evidence-constrained).
-    # The body loop must NOT re-render them from report.md — that produced
-    # duplicated SWOT Analysis and Potential Partners sections.
-    DATA_FRAME_RENDERED = {'SWOT Analysis'}
+    # TEMPLATE_RENDERED / DATA_FRAME_RENDERED are module-level so the
+    # semantic verifier can exclude exactly the same sections.
     # The data-frame generator only renders Potential Partners when partner
     # data exists in the scores manifest. When it does not, the body loop
     # must fall back to the report.md section — never drop it silently.

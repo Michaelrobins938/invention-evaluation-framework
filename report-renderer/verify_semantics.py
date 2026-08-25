@@ -46,11 +46,21 @@ def main(target: Path) -> int:
     md = (D / "report-us8527057-v17.md").read_text(encoding="utf-8")
     scores = json.loads(
         (D / "scores-us8527057-v17.json").read_text(encoding="utf-8"))
+
+    # Mirror the production call site (workers.py::_worker_render): omitting
+    # submission_md / v17_artifacts here historically produced false
+    # "renderer dropped semantic nodes" failures for the three sections
+    # sourced from those arguments.
+    submission = (target / "evaluations/us8527057/submission-us8527057.md")
     html = rr.render(
         md,
         (D / "recovery-evidence-us8527057-v17.md").read_text(encoding="utf-8"),
-        scores)
-    errors = account_semantic_nodes(parse_report_ast(md), html)
+        scores,
+        submission_md=submission.read_text(encoding="utf-8") if submission.exists() else None,
+        v17_artifacts=str(D))
+    errors = account_semantic_nodes(
+        parse_report_ast(md), html,
+        skip_titles=rr.TEMPLATE_RENDERED | rr.DATA_FRAME_RENDERED)
     if errors:
         print("  [FAIL] renderer dropped semantic nodes:")
         for e in errors:

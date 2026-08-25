@@ -214,7 +214,7 @@ python3 -m pytest engine_v17/epo_ops/tests -q               # 66 EPO OPS
 python3 -m pytest tests -q                                   # 38 integration/failure
 python3 -m pytest tests_v17 -q           # 114 v17 engine
 python3 -m pytest report-renderer/tests -q                   # 63 renderer
-bash verify.sh  # includes semantic scan note: see docs/ARCHITECTURE.md#validation
+bash verify.sh  # full install + semantic + visual-QA verification
 ```
 
 ### Configure live patent search (optional)
@@ -747,7 +747,7 @@ Individual evaluations may remain evidence-incomplete — that is the framework 
 | US8527057 real run | **Proven** (`REAL_AUTOPROMPT/FULL_CONTROLLER/INDEPENDENT/BLIND_FRESH`, 7 external sources) |
 | Benchmark | **Passing** (A 0.88 → B/C 1.00, overclaim 0.20 steady, no regression) |
 | New-run renderer | **Passing** (74K HTML + 509K PDF, target_patent provenance) |
-| `verify.sh` legacy fixture semantic scan | **Known limitation** — `Executive Summary|v1.7 Control State|Original Submission not emitted (88 nodes)` against legacy fixture/template expectations; first-layer contamination fixed (`target_patent=US8527057B2`), second layer pre-existing and hidden previously by early abort. New integrated runs render successfully. |
+| `verify.sh` semantic scan | **Passing** — verifier now mirrors the production render() call (submission + v17 artifacts) and excludes template-rendered sections from payload accounting (`TEMPLATE_RENDERED` hoisted to module level) |
 | EPO OPS live credentials | **Required for non-hermetic live use** (hermetic `hermetic_fetcher.py` covers testing) |
 
 ### Configure EPO OPS credentials

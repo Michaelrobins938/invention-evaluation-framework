@@ -34,6 +34,8 @@ BARRIER_TYPES: frozenset[str] = frozenset({
 WORK_STATES: frozenset[str] = frozenset({
     "SEARCHING", "ESCALATING", "REQUIRES VERIFICATION",
     "ESCALATION_REQUIRED", "SEARCH_EXHAUSTED", "EXHAUSTED", "BLOCKED", "WORK QUEUE",
+    # models.RecoveryState members (the canonical work-state axis):
+    "NONE_REQUIRED", "SEARCH_PENDING", "UNAVAILABLE_BY_CONSTRAINT",
 })
 
 REQUIRED_EXEC_SECTIONS: tuple[str, ...] = (
@@ -157,24 +159,45 @@ def scan_report(text: str, require_exec_sections: bool = True) -> IntegrityRepor
             s for s in REQUIRED_EXEC_SECTIONS if s not in text
         ]
 
-    # Extract audit-manifest tables from the rendered text and validate rows:
-    # table rows like | P-07-001 | SEARCH_EXHAUSTED | insufficient_... | desc |
+    # Extract audit-manifest tables from rendered text — but ONLY tables whose
+    # header declares the fixed manifest schema. Historical/ledger tables with
+    # different schemas (e.g. avenue ledgers keyed by proposition ID) are not
+    # audit manifests and must not be validated against this vocabulary.
+    def _is_separator(row_cells):
+        return bool(row_cells) and all(
+            set(c) <= {"-", ":", " "} and c for c in row_cells
+        )
+
     manifest_rows: list[dict[str, Any]] = []
+    header_cells: list[str] | None = None
+    header_is_manifest = False
     for line in text.splitlines():
         stripped = line.strip()
         if not stripped.startswith("|"):
+            header_cells = None
+            header_is_manifest = False
             continue
         cells = [c.strip() for c in stripped.strip("|").split("|")]
-        if len(cells) < 4:
+        if _is_separator(cells):
             continue
-        first = cells[0]
-        if _PROP_ID_RE.fullmatch(first.split()[0] if first else ""):
-            manifest_rows.append({
-                "proposition_id": first.split()[0],
-                "state": cells[1],
-                "barrier_type": cells[2],
-                "description": cells[3],
-            })
+        lowered = [c.lower() for c in cells]
+        first = (cells[0].split() or [""])[0] if cells else ""
+        if _PROP_ID_RE.fullmatch(first):
+            if header_is_manifest and len(cells) >= 4:
+                manifest_rows.append({
+                    "proposition_id": first,
+                    "state": cells[1],
+                    "barrier_type": cells[2],
+                    "description": cells[3],
+                })
+            continue
+        header_cells = cells
+        header_is_manifest = (
+            any("proposition" in c for c in lowered)
+            and any("work state" in c for c in lowered)
+            and any("barrier type" in c for c in lowered)
+        )
+
     if manifest_rows:
         report.invalid_barriers = validate_debt_manifest(manifest_rows)
     else:

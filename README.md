@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/Michaelrobins938/invention-evaluation-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/Michaelrobins938/invention-evaluation-framework/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.13-blue)
-![Tests](https://img.shields.io/badge/tests-281%20passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-321%20passing-brightgreen)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Framework](https://img.shields.io/badge/framework-Invention%20Evaluation-blue)](#)
 [![Evidence](https://img.shields.io/badge/evidence-constrained-green)](#)
@@ -207,7 +207,7 @@ result = run_with_autoprompt(
 )
 ```
 
-### Run tests (281 total)
+### Run tests (321 total)
 
 ```bash
 python3 -m pytest engine_v17/epo_ops/tests -q               # 66 EPO OPS
@@ -553,7 +553,7 @@ The executive reader should not need `P-03-004`, `E7`, or `evidence_graph.json` 
 
 **Engineering Operational · Autoprompt Integration Complete · Evidence Controller Operational · Real Multi-Agent Execution Proven**
 
-**Tests:** 281 passed (66 EPO OPS + 38 integration/failure + 114 v17 engine + 63 renderer)
+**Tests:** 321 passed (78 engine-integration incl. integrity/escalation/acceptance suites + 114 v17 + 66 EPO OPS + 63 renderer)
 
 | Suite | Count | What it proves |
 |-------|-------|----------------|
@@ -585,6 +585,8 @@ Consistent `INSUFFICIENT` is correct on this evidence-incomplete fixture — the
 | **C** | REAL_AUTOPROMPT | FULL_CONTROLLER | INDEPENDENT | BLIND_FRESH | **1.00** | 0.20 | 0.20 | 0.20 |
 
 `PYTHONPATH=. python3 benchmarks/harness.py --evaluation-id US8527057 --evaluation-dir evaluations/us8527057 --output-base /tmp/bench`
+
+**Note:** the "Unsupported Inference" column is currently a proxy of the Overclaim metric (`benchmarks/harness.py`), not an independent measurement; treat the table as two real signals plus one alias until a dedicated inference parser is wired.
 
 **Interpretation:** Autoprompt increased completion 0.88 → 1.00 on this validation benchmark **without increasing measured unsupported inference or overclaim** (both 0.20 steady, `overclaim gate PASS`). This demonstrates improved execution completeness without epistemic regression on the tested case. Broader validation requires an expanded corpus — do not read as universal quality improvement.
 
@@ -732,7 +734,7 @@ Individual evaluations may remain evidence-incomplete — that is the framework 
 | Independent review | **5/5 proven** (`proposition-review-matrix.json`, `E7 PASSED`) |
 | Blind verification | **5/5 proven** (`proposition-review-matrix.json`, `E8 PASSED`, `is_blind=true`) |
 | Claim mapping | **Deterministic** (`claim-mapping.json` regardless of retrieval method) |
-| 281 tests | **Passing** (66 EPO OPS + 38 integration/failure + 114 v17 engine + 63 renderer) |
+| 321 tests | **Passing** (78 tests/ + 114 tests_v17 + 66 EPO OPS + 63 renderer) |
 | US8527057 real run | **Proven** (`REAL_AUTOPROMPT/FULL_CONTROLLER/INDEPENDENT/BLIND_FRESH`, 7 external sources) |
 | Benchmark | **Passing** (A 0.88 → B/C 1.00, overclaim 0.20 steady, no regression) |
 | New-run renderer | **Passing** (74K HTML + 509K PDF, target_patent provenance) |
@@ -755,7 +757,7 @@ Shell-exported `EPO_OPS_CLIENT_ID` / `EPO_OPS_CLIENT_SECRET` override `.env`.
 
 ## Roadmap
 
-**Completed:** Autoprompt integration, real worker dispatch, DAG execution (6 groups, max 6), evidence provenance (external vs derived), E0-E9, proposition review matrix (5/5), blind verification, arbitration, deterministic claim mapping, benchmark 4-mode provenance, hermetic adapters, multi-run validation, renderer fixture provenance fix, 281 tests.
+**Completed:** Autoprompt integration, real worker dispatch, DAG execution (6 groups, max 6), evidence provenance (external vs derived), E0-E9, proposition review matrix (5/5), blind verification, arbitration, deterministic claim mapping, benchmark 4-mode provenance, hermetic adapters, multi-run validation, renderer fixture provenance fix, 321 tests.
 
 **Next — Validation Corpus:**
 - Expanded invention corpus (obvious novelty / obvious prior art / ambiguous / sparse / misleading / conflicting / retrieval failure / contamination)

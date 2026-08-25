@@ -14,6 +14,7 @@ import json
 import os
 import re
 import subprocess
+import shutil
 import sys
 import tempfile
 from pathlib import Path
@@ -1156,9 +1157,35 @@ def build_dev_timeline_html(data):
             '</div>')
 
 
-def export_pdf(html_path, pdf_path, chromium='chromium'):
+CHROMIUM_CANDIDATES = (
+    'chromium', 'chromium-browser', 'google-chrome', 'google-chrome-stable',
+    'microsoft-edge', 'msedge',
+)
+
+
+def find_chromium(preferred=None):
+    """First available Chromium-family binary, or None with a clear message."""
+    for cand in ([preferred] if preferred else []) + list(CHROMIUM_CANDIDATES):
+        found = shutil.which(cand)
+        if found:
+            return found
+    return None
+
+
+def export_pdf(html_path, pdf_path, chromium=None):
+    """Render HTML to PDF. Raises informative RuntimeError listing what was
+    tried when no Chromium-family browser exists — callers must treat a
+    successful HTML write as already-delivered value (degraded success)."""
+    resolved = find_chromium(chromium)
+    if not resolved:
+        tried = ", ".join(([chromium] if chromium else []) + list(CHROMIUM_CANDIDATES))
+        raise RuntimeError(
+            f"no Chromium-family browser found (tried: {tried}). "
+            "Install chromium or pass --chromium <path>. "
+            "The HTML report remains valid and delivered."
+        )
     cmd = [
-        chromium, '--headless=new', '--disable-gpu', '--no-sandbox',
+        resolved, '--headless=new', '--disable-gpu', '--no-sandbox',
         '--print-to-pdf=' + pdf_path,
         '--no-pdf-header-footer',
         'file://' + os.path.abspath(html_path),
@@ -1227,8 +1254,14 @@ def main():
 
     if args.pdf:
         print('[render-report] exporting PDF ...')
-        export_pdf(out_path, out_path.replace('.html', '.pdf'), args.chromium)
-        print('[render-report] PDF done')
+        try:
+            export_pdf(out_path, out_path.replace('.html', '.pdf'), args.chromium)
+            print('[render-report] PDF done')
+        except Exception as exc:
+            # HTML is already delivered; PDF absence is a disclosed limitation,
+            # never a reason to crash the whole render subprocess non-zero.
+            print(f'[render-report] WARN: PDF export unavailable: {exc}')
+            print('[render-report] delivered: HTML only')
 
 
 if __name__ == '__main__':

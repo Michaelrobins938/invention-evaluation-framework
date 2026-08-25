@@ -225,3 +225,60 @@ def test_build_report_contains_required_sections_and_clean_audit_table():
 def test_barrier_for_blocker_maps_known_blockers():
     assert barrier_for_blocker("claim_level_search_incomplete") == "insufficient_search_completion"
     assert barrier_for_blocker("partner_fit_unverified") == "insufficient_identity"
+
+
+# ---------------------------------------------------------------------------
+# Audit findings: RecoveryState vocabulary must be accepted end-to-end
+# ---------------------------------------------------------------------------
+
+def test_recovery_state_values_accepted_as_work_states():
+    from engine_v17.models import RecoveryState
+    for member in RecoveryState:
+        rows = [{
+            "proposition_id": "P-05-001",
+            "state": member.value,
+            "barrier_type": "insufficient_search_completion",
+            "description": "x",
+        }]
+        assert validate_debt_manifest(rows) == [], member
+
+
+def test_lowercase_resolution_state_still_rejected():
+    # ResolutionState values (lowercase) are the epistemic axis, not the
+    # work-state axis; writing them into work_state is the drift this guards.
+    rows = [{"proposition_id": "P-05-001", "state": "escalation_required",
+             "barrier_type": "insufficient_corroboration", "description": "x"}]
+    assert any("non-enum work_state" in v["violation"] for v in validate_debt_manifest(rows))
+
+
+def test_engine_debt_rows_use_recovery_vocabulary_and_pass_e9_scan(tmp_path):
+    """Integration guard: _worker_compile-style debt rows must survive scan_report."""
+    from engine_v17.models import Proposition, ResolutionState, RecoveryState
+    from engine_v17.report_builder import build_report
+    props = [
+        Proposition("P-02-001", "identity", ResolutionState.ESTABLISHED),
+        Proposition("P-07-001", "market opportunity", ResolutionState.ESCALATION_REQUIRED),
+    ]
+    debt_rows = [{
+        "proposition_id": p.id,
+        "work_state": p.recovery_state.value,
+        "barrier_type": "insufficient_corroboration",
+        "description": "pending",
+    } for p in props if p.state != ResolutionState.ESTABLISHED]
+    path = build_report(tmp_path, tmp_path, rights={"status": {}}, source_counts={},
+                        recovery_text="r", invention_id="VOCAB1", debt_rows=debt_rows)
+    integrity = scan_report(path.read_text(encoding="utf-8"))
+    assert integrity.clean, integrity.summary()
+
+
+def test_e9_passes_hermetic_pipeline_report():
+    """Regression: E9 must not fail on the framework's default open-work outcome."""
+    from pathlib import Path
+    import tempfile
+    from engine_v17.orchestrator_autoprompt import run_with_autoprompt
+    from engine_v17.epistemic_gates import GateVerdict
+    with tempfile.TemporaryDirectory() as tmp:
+        r = run_with_autoprompt("US8527057", "evaluations/us8527057/source/US8527057.pdf",
+                                Path(tmp)/"out", Path("evaluations/us8527057"), hermetic=True)
+        e9 = next(g for g in r["gates"] if g["gate"] == "E9")
+        assert e9["verdict"] == GateVerdict.PASSED.value or e9["verdict"] == "PASSED", e9

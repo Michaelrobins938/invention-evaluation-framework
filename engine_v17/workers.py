@@ -337,12 +337,16 @@ def _worker_compile(mission: EvaluationMission, ledger: ExecutionLedger, output_
     (output_dir / "claim-graph.json").write_text(_json.dumps(claim.to_dict(), indent=2) + "\n", encoding="utf-8")
     (output_dir / "rights-graph.json").write_text(_json.dumps(rights.to_dict(), indent=2) + "\n", encoding="utf-8")
 
-    # Debt table rows: work state + enum barrier classification + description
+    # Debt table rows: work state + enum barrier classification + description.
+    # work_state uses the RecoveryState axis (what can still be done), NOT the
+    # ResolutionState axis (what we know) — report_integrity.WORK_STATES is the
+    # recovery vocabulary. Default SEARCH_PENDING is a legitimate value: open
+    # work on an unfinished evaluation is the framework's normal outcome.
     from .report_builder import barrier_for_blocker
     debt_rows = [
         {
             "proposition_id": p.id,
-            "work_state": p.state.value,
+            "work_state": p.recovery_state.value if getattr(p, "recovery_state", None) else "WORK QUEUE",
             "barrier_type": barrier_for_blocker(p.blockers[0]) if p.blockers else "insufficient_search_completion",
             "description": "; ".join(p.blockers) if p.blockers else "unresolved after completed protocol",
         }
@@ -446,11 +450,19 @@ def _worker_render(mission: EvaluationMission, ledger: ExecutionLedger, output_d
         if extra and extra.get("render_pdf", True):
             cmd.append("--pdf")
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-        if result.returncode == 0 and html_out.exists():
-            rec = ledger.record("09", "render-report", persona, str(html_out), result_artifact=str(html_out), outcome="rendered via ap-scribe (chromium)", candidate_evidence=True, evidence_sufficiency=True)
+        if html_out.exists():
+            # The HTML report is the deliverable; a failed/absent PDF is a
+            # disclosed environment limitation (degraded success), never a
+            # reason to invalidate an artifact that was successfully written.
+            pdf_path = Path(str(html_out).replace('.html', '.pdf'))
+            if result.returncode == 0 and pdf_path.exists():
+                outcome = "rendered via ap-scribe (chromium)"
+            else:
+                outcome = f"rendered via ap-scribe (HTML only; PDF export failed: {result.stderr[:120]})"
+            rec = ledger.record("09", "render-report", persona, str(html_out), result_artifact=str(html_out), outcome=outcome, candidate_evidence=True, evidence_sufficiency=True)
             return {"skill_id": "render-report", "persona": persona, "execution_id": rec.execution_id, "result_artifact": str(html_out), "evidence_refs": [str(html_out)], "outcome": rec.outcome}
         else:
-            rec = ledger.record("09", "render-report", persona, str(src), result_artifact=str(html_out), outcome=f"render attempted via ap-scribe; stderr: {result.stderr[:200]}", candidate_evidence=False, evidence_sufficiency=False)
+            rec = ledger.record("09", "render-report", persona, str(src), result_artifact=str(html_out), outcome=f"render attempted via ap-scribe; no HTML produced; stderr: {result.stderr[:200]}", candidate_evidence=False, evidence_sufficiency=False)
             return {"skill_id": "render-report", "persona": persona, "execution_id": rec.execution_id, "result_artifact": str(src), "evidence_refs": [str(src)], "outcome": rec.outcome}
     except Exception as e:
         rec = ledger.record("09", "render-report", persona, str(src), result_artifact=str(src), outcome=f"render fallback via ap-scribe: {e}", candidate_evidence=False, evidence_sufficiency=False)

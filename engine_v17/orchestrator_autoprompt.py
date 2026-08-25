@@ -97,6 +97,39 @@ def _run_launch_group(
     return results
 
 
+# Retrieval action types that prove a research lane actually attempted work.
+RETRIEVAL_ACTION_TYPES = frozenset({
+    "patent_search", "epo_ops_citation_retrieval", "epo_ops_npl_resolution",
+    "literature_search", "market_proxy_search", "partner_search",
+    "recovery_search", "prior_art_reference_fetch", "recovery_troubleshooting",
+    "claim_mapping", "phase_artifact_ingestion",
+})
+
+# phase_id → research lane label. A lane with zero retrieval records means the
+# pipeline quit without attempting that acquisition channel.
+RESEARCH_LANES: dict[str, str] = {
+    "03": "patent-landscape",
+    "04": "literature-search",
+    "05": "novelty-search",
+    "06": "market-opportunity",
+    "07": "identify-partners",
+}
+
+
+def research_lane_gaps(ledger: ExecutionLedger) -> dict[str, str]:
+    """Detect research lanes that were never attempted (lazy-quit detection).
+
+    A lane has been attempted if it has any ledger record at all — the
+    avenues-within-lanes requirement is enforced by the skill execution
+    contract; this gate catches only entire lanes that quit silently.
+    """
+    counts: dict[str, int] = {phase: 0 for phase in RESEARCH_LANES}
+    for rec in ledger.executions:
+        if rec.phase_id in counts:
+            counts[rec.phase_id] += 1
+    return {phase: lane for phase, lane in RESEARCH_LANES.items() if counts[phase] == 0}
+
+
 def run_with_autoprompt(
     evaluation_id: str,
     target: str,
@@ -382,12 +415,33 @@ def run_with_autoprompt(
     (output_dir / "epistemic-gate-report.json").write_text(json.dumps(gate_summary, indent=2) + "\n", encoding="utf-8")
 
     blocking = gates_blocking_delivery(gates)
+    # Anti-quit enforcement: a research lane that recorded zero retrieval
+    # attempts did not acquire — it quit. Quitting is a pipeline defect, not
+    # evidence debt: delivery status downgrades to PARTIAL and names the lanes.
+    lane_gaps = research_lane_gaps(ledger)
     if blocking:
         combined = CombinedStatus(execution=ExecutionStatus.COMPLETED_WITH_EVIDENCE_DEBT, evidence=EvidenceStatus.INSUFFICIENT, detail=f"{len(blocking)} epistemic gates blocking: {', '.join(b.gate for b in blocking)}")
     else:
         combined = CombinedStatus(execution=ExecutionStatus.COMPLETE, evidence=EvidenceStatus.SUFFICIENT, detail="all epistemic gates passed")
+    if lane_gaps:
+        from .status import ExecutionStatus as _ES
+        combined = CombinedStatus(
+            execution=_ES.PARTIAL,
+            evidence=combined.evidence,
+            detail="research lanes quit without any retrieval attempt: "
+            + ", ".join(f"{phase} ({lane})" for phase, lane in sorted(lane_gaps.items()))
+            + "; unresolved propositions in these lanes are pipeline defects, not evidence debt",
+        )
     (output_dir / "combined-status.json").write_text(json.dumps(combined.to_dict(), indent=2) + "\n", encoding="utf-8")
-    (output_dir / "coverage-report.json").write_text(json.dumps({"gates": gate_summary, "blocking": [b.gate for b in blocking]}, indent=2) + "\n", encoding="utf-8")
+    (output_dir / "coverage-report.json").write_text(json.dumps({
+        "gates": gate_summary,
+        "blocking": [b.gate for b in blocking],
+        "avenue_coverage": {
+            phase: sum(1 for r in ledger.executions if r.phase_id == phase and r.action_type in RETRIEVAL_ACTION_TYPES)
+            for phase in RESEARCH_LANES
+        },
+        "lazy_quit_violations": {phase: lane for phase, lane in sorted(lane_gaps.items())},
+    }, indent=2) + "\n", encoding="utf-8")
 
     # 7. Final manifest with unified ledger + execution provenance
     final_manifest = json.loads((output_dir / "run-manifest.json").read_text(encoding="utf-8"))

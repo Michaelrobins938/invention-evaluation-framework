@@ -193,9 +193,18 @@ def _worker_patent_landscape(mission: EvaluationMission, ledger: ExecutionLedger
         # P3: ensure claim mapping deterministically even on ingestion path
         _ensure_claim_mapping(mission, ledger, output_dir, fetcher)
         return {"skill_id": "patent-landscape", "persona": persona, "execution_id": rec.execution_id, "result_artifact": str(out), "evidence_refs": [str(out)], "outcome": rec.outcome}
-    # Live path via HttpLiveAdapter with hermetic fetcher support
+    # Live path via HttpLiveAdapter with hermetic fetcher support.
+    # Queries derive from THIS invention's submission text — never fixtures.
     from .live_adapters import run_live_phase_adapters
-    artifacts = run_live_phase_adapters(patent_id=mission.evaluation_id, output_dir=output_dir, ledger=ledger, **({"fetcher": fetcher} if fetcher else {}))
+    sub_for_terms = _find_existing(output_dir, "submission-*.md") or _find_existing(evaluation_dir, "submission-*.md")
+    sub_text = sub_for_terms.read_text(encoding="utf-8") if sub_for_terms and sub_for_terms.exists() else None
+    artifacts = run_live_phase_adapters(
+        patent_id=mission.evaluation_id,
+        output_dir=output_dir,
+        ledger=ledger,
+        **({"fetcher": fetcher} if fetcher else {}),
+        **({"submission_text": sub_text} if sub_text else {}),
+    )
     result_path = artifacts.get("patent", next(iter(sorted(output_dir.glob("patent-landscape-*.md"))), None))
     _ensure_claim_mapping(mission, ledger, output_dir, fetcher)
     rec = ledger.executions[-1] if ledger.executions else None

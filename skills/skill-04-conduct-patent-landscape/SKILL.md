@@ -16,6 +16,9 @@ Every phase inherits the active `run_id`, canonical `evaluation_dir`, `phase sta
 - The user wants to know if their specific invention is novel or infringes — use `conduct-novelty-search` instead.
 
 ## Execution
+
+**Continuation rule (anti-quit).** A single failed fetch on one route is one avenue record — never a terminal state. Before any proposition may be marked blocked or exhausted, every distinct acquisition route must be attempted and individually recorded: direct publication lookup → alternate number formats (application/grant/kind codes) → title/keyword search resolution → classification-based search → at least one alternate database. Quitting after the first failure is a pipeline defect, not evidence debt. All queries must be derived from THIS invention's submission; reusing another evaluation's subject matter records motion, not evidence.
+
 1. Select a primary database (e.g., WIPO PatentScope) and at least one secondary source (e.g., Espacenet, Derwent) for cross-validation. Single-source landscaping systematically under-recalls — don't skip the second source.
 2. Build the query from the classification candidates and core terms produced by `analyze-technology-fundamentals`.
 3. **Temporal search calibration.** Determine search window based on invention date and field history, not a fixed 10–15 year window:

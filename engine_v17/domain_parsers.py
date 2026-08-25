@@ -67,7 +67,10 @@ def parse_patent_claims(source: str) -> list[dict[str, Any]]:
 
 
 def parse_crossref_literature(payload: bytes) -> list[dict[str, Any]]:
-    data = json.loads(payload.decode("utf-8"))
+    try:
+        data = json.loads(payload.decode("utf-8"))
+    except (json.JSONDecodeError, AttributeError, UnicodeDecodeError):
+        return []
     items = data.get("message", {}).get("items", [])
     records = []
     required = ("authors", "title", "venue", "date", "doi_or_report_number", "url", "experimental_system", "technology", "application", "demonstrated_result", "relevance")
@@ -95,7 +98,10 @@ def parse_crossref_literature(payload: bytes) -> list[dict[str, Any]]:
 
 
 def parse_market_proxy(payload: bytes) -> dict[str, Any]:
-    data = json.loads(payload.decode("utf-8"))
+    try:
+        data = json.loads(payload.decode("utf-8"))
+    except (json.JSONDecodeError, AttributeError, UnicodeDecodeError):
+        data = []
     rows = data[1] if isinstance(data, list) and len(data) > 1 and isinstance(data[1], list) else data
     observations = []
     for row in rows if isinstance(rows, list) else []:

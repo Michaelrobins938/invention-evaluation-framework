@@ -87,17 +87,46 @@ def _write_phase(path: Path, title: str, record, source_url: str, summary: str) 
     return path
 
 
+_STOPWORDS = frozenset(
+    """a an and are as at be by for from has have in is it its of on or that the
+    this to with system method device apparatus comprising wherein thereof thus
+    invention disclosure background summary claims abstract related art prior""".split()
+)
+
+
+def derive_invention_terms(submission_text: str, limit: int = 6) -> str:
+    """Derive search terms from submission text — frequency-ranked, stopword-free.
+
+    Queries must describe THIS invention. Hardcoded fixture subjects are
+    prohibited: searching the wrong technology records motion, not evidence.
+    """
+    words = re.findall(r"[A-Za-z][A-Za-z\-]{3,}", submission_text or "")
+    counts: dict[str, int] = {}
+    for w in words:
+        lw = w.lower()
+        if lw in _STOPWORDS:
+            continue
+        counts[lw] = counts.get(lw, 0) + 1
+    ranked = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+    return " ".join(w for w, _ in ranked[:limit])
+
+
 def run_live_phase_adapters(
     *,
     patent_id: str,
     output_dir: Path,
     ledger: ExecutionLedger,
     fetcher: Fetcher = _default_fetcher,
+    submission_text: str | None = None,
 ) -> dict[str, Path]:
     """Execute the minimum live phase set and return generated phase artifacts.
 
     Retrieval failures degrade to BLOCKED avenue records (evidence debt) —
     a live source being unavailable never aborts the pipeline.
+
+    Patent identity resolution follows a route ladder (direct publication →
+    granted variants → title search); each route is its own ledger record.
+    A source is only BLOCKED after every route has been attempted.
     """
     def _safe_fetch(adapter: HttpLiveAdapter, ledger_ref: ExecutionLedger, *, failure_note: str, **kwargs):
         try:
@@ -128,19 +157,86 @@ def run_live_phase_adapters(
     publication_id = normalized if re.search(r"B[0-9A-Z]+$", normalized) else f"{normalized}A"
     patent_url = f"https://patents.google.com/patent/{publication_id}/en"
     patent_raw = output_dir / f"raw-patent-{normalized.lower()}.html"
-    patent_record = _safe_fetch(
-        adapter, ledger,
-        failure_note=f"Patent page for {publication_id} could not be retrieved from Google Patents.",
-        phase_id="03",
-        action_type="patent_search",
-        source="Google Patents",
-        url=patent_url,
-        query=normalized,
-        artifact_path=patent_raw,
-        result_count=None,
-    )
-    patent_metadata = parse_patent_metadata(patent_raw.read_text(encoding="utf-8", errors="ignore"), normalized)
-    target_claims = parse_patent_claims(patent_raw.read_text(encoding="utf-8", errors="ignore"))
+    # ── Patent identity resolution: route ladder, not single shot ───────────
+    # A source is resolvable only when a route SUCCEEDS; it is BLOCKED only
+    # after every route has been attempted and individually recorded.
+    terms = derive_invention_terms(submission_text or "")
+    routes: list[tuple[str, str]] = [
+        (f"direct publication {publication_id}", patent_url),
+        (f"granted variant {normalized}B2", f"https://patents.google.com/patent/{normalized}B2/en"),
+    ]
+    if terms:
+        routes.append((
+            f"title search ({terms[:60]})",
+            "https://patents.google.com/?q=" + quote_plus(terms) + "&oq=" + quote_plus(terms),
+        ))
+
+    patent_record = None
+    resolved_html: str | None = None
+    for route_name, route_url in routes:
+        route_artifact = output_dir / f"raw-patent-route-{routes.index((route_name, route_url)) + 1}.html"
+        rec = _safe_fetch(
+            adapter, ledger,
+            failure_note=f"Patent resolution route failed: {route_name}.",
+            phase_id="03",
+            action_type="patent_search",
+            source="Google Patents",
+            url=route_url,
+            query=f"{normalized} via {route_name}",
+            artifact_path=route_artifact,
+            result_count=None,
+        )
+        if rec.status == AvenueExecutionStatus.COMPLETE:
+            html = route_artifact.read_text(encoding="utf-8", errors="ignore")
+            if "/patent/" in route_url and "?q=" not in route_url and html.strip():
+                patent_record, resolved_html = rec, html
+                break
+            if "?q=" in route_url:
+                match = re.search(r'href="/patent/([A-Z0-9]+)/en"', html)
+                if match:
+                    hit_id = match.group(1)
+                    hit_url = f"https://patents.google.com/patent/{hit_id}/en"
+                    hit_artifact = output_dir / f"raw-patent-{hit_id.lower()}.html"
+                    hit_rec = _safe_fetch(
+                        adapter, ledger,
+                        failure_note=f"Search-resolved patent {hit_id} could not be retrieved.",
+                        phase_id="03",
+                        action_type="patent_search",
+                        source="Google Patents",
+                        url=hit_url,
+                        query=f"{hit_id} resolved from title search",
+                        artifact_path=hit_artifact,
+                        result_count=None,
+                    )
+                    if hit_rec.status == AvenueExecutionStatus.COMPLETE:
+                        patent_record = hit_rec
+                        resolved_html = hit_artifact.read_text(encoding="utf-8", errors="ignore")
+                        break
+
+    if patent_record is None:
+        debt_note = (
+            f"# Retrieval blocked\n\nPatent identity '{publication_id}' unresolved after "
+            f"{len(routes)} routes: " + "; ".join(name for name, _ in routes) + "\n"
+        )
+        patent_raw.parent.mkdir(parents=True, exist_ok=True)
+        patent_raw.write_text(debt_note, encoding="utf-8")
+        patent_record = ledger.record(
+            phase_id="03",
+            action_type="patent_search",
+            source="Google Patents",
+            query=normalized,
+            result_artifact=str(patent_raw),
+            outcome=f"all {len(routes)} resolution routes blocked; recorded as evidence debt",
+            candidate_evidence=False,
+            evidence_sufficiency=False,
+            status=AvenueExecutionStatus.BLOCKED,
+        )
+        resolved_html = debt_note
+
+    if resolved_html and not patent_raw.exists():
+        patent_raw.write_text(resolved_html, encoding="utf-8")
+    patent_metadata = parse_patent_metadata(resolved_html or "", normalized)
+    target_claims = parse_patent_claims(resolved_html or "")
 
     # ── EPO OPS citation retrieval (primary NPL source) ─────────────────────
     epo_citation_bundle: CitationBundle | None = None
@@ -208,7 +304,7 @@ def run_live_phase_adapters(
             # flow remains the primary patent source.
             pass
 
-    literature_query = "locomotion assisting exoskeleton ground force sensors"
+    literature_query = terms or f"patent {normalized}"
     literature_url = "https://api.crossref.org/works?query=" + quote_plus(literature_query) + "&rows=5"
     literature_raw = output_dir / "raw-literature-crossref.json"
     literature_record = _safe_fetch(
@@ -237,7 +333,7 @@ def run_live_phase_adapters(
         result_count=None,
     )
 
-    partner_query = "exoskeleton locomotion assisting device"
+    partner_query = terms or f"patent {normalized}"
     partner_url = "https://patents.google.com/?q=" + quote_plus(partner_query)
     partner_raw = output_dir / "raw-partner-patent-search.html"
     partner_record = _safe_fetch(
@@ -252,7 +348,7 @@ def run_live_phase_adapters(
         result_count=None,
     )
 
-    troubleshooting_query = "patent claim element mapping evidence sufficiency search guidance"
+    troubleshooting_query = f"{terms} claim element mapping evidence sufficiency".strip() or f"patent {normalized} claim mapping"
     troubleshooting_url = "https://patents.google.com/?q=" + quote_plus(troubleshooting_query)
     troubleshooting_raw = output_dir / "raw-recovery-troubleshooting.html"
     troubleshooting_record = _safe_fetch(
@@ -268,11 +364,11 @@ def run_live_phase_adapters(
     )
 
     recovery_strategies = [
-        ("terminology", "magnetic exoskeleton locomotion ground force control", "https://patents.google.com/?q="),
-        ("classification", "A61F5/00 locomotion exoskeleton", "https://patents.google.com/?q="),
+        ("terminology", terms or f"patent {normalized}", "https://patents.google.com/?q="),
+        ("classification", f"{terms} CPC classification".strip(), "https://patents.google.com/?q="),
         ("citation_lineage", normalized, f"https://patents.google.com/patent/{publication_id}/en"),
-        ("alternate_source", "locomotion assisting exoskeleton", "https://api.crossref.org/works?query="),
-        ("entity_jurisdiction", "ReWalk exoskeleton", "https://patents.google.com/?q="),
+        ("alternate_source", literature_query, "https://api.crossref.org/works?query="),
+        ("entity_jurisdiction", f"{terms} assignee applicant".strip() or f"patent {normalized}", "https://patents.google.com/?q="),
     ]
     recovery_records = []
     for index, (strategy_class, query, base_url) in enumerate(recovery_strategies, start=1):

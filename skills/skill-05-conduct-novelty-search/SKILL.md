@@ -19,6 +19,9 @@ Every phase inherits the active `run_id`, canonical `evaluation_dir`, `phase sta
 
 ## Execution
 
+**Continuation rule (anti-quit).** The same prohibition as the landscape phase applies here: one failed query is one avenue record, not exhaustion. Minimum before any negative claim: 3–5 distinct queries × at least two databases × classification-based search — each recorded with its actual result count. An unresolved proposition with zero avenue records is a pipeline defect and must be escalated, never reported as insufficient evidence.
+
+
 **Governing principle:** Unsupported assertions are errors. Missing evidence is a work queue, not an answer. Every prior-art proposition uses the `prior_art_disclosure` schema from GLOSSARY.md; a finding row does not exist unless every required schema field is populated.
 
 ### 1. Claim construction layer

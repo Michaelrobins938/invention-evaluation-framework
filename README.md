@@ -127,7 +127,7 @@ Optional arguments:
 
 The script scans the folder for PDFs/DOCX/TXT/MD, auto-detects the invention ID, extracts text, creates a submission record, and runs the full pipeline. Without API credentials, patent-search lanes run without live data and report evidence debt — a valid result, never mocked.
 
-## Client-specified market report (GenIP specification)
+## Client-specified market report
 
 For the market-only client deliverable (DOCX + PDF + HTML + MD with an executable acceptance contract), use the regeneration pipeline in [`market-report-generator/`](market-report-generator/):
 

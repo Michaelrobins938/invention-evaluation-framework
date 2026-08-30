@@ -131,6 +131,41 @@ def _methodology_section(scores: dict[str, Any] | None) -> list[str]:
     return lines
 
 
+def _bottom_line(scores: dict[str, Any] | None, debt_rows: list[dict[str, str]] | None) -> list[str]:
+    """Derive the Bottom Line from actual proposition outcomes, not static boilerplate.
+
+    - If all evidenced dimensions are established and no debt remains → positive.
+    - If some dimensions are established but debt remains → partial with work queue.
+    - If nothing is established → not-established (never a hallucinated "looks novel").
+    """
+    dims = (scores or {}).get("dimensions") or {}
+    established = []
+    for name, info in dims.items():
+        earned, maximum = info.get("earned", 0), info.get("maximum", 0)
+        if maximum and earned >= maximum:
+            established.append(name)
+    debt = debt_rows or []
+    if established and not debt:
+        return [
+            f"The evaluation established **{', '.join(established)}** across all scored dimensions.",
+            "No unresolved evidence items remain; the evidence sufficiency gate passed for every proposition. "
+            "Conclusions are evidence-traceable and not legal advice.",
+        ]
+    if established:
+        return [
+            f"The evaluation established **{', '.join(established)}** as evidence-backed, while "
+            f"{len(debt)} proposition(s) remain in the work queue.",
+            "Unresolved evidence items are documented in the Operational Audit (appendix), not in this summary. "
+            "Established findings are evidence-traceable; debt reflects open avenues, not absence.",
+        ]
+    return [
+        "**No proposition reached the evidence sufficiency gate.** The evaluation could not establish "
+        "patentability, novelty, or market with the retrieved evidence.",
+        "Unresolved evidence items are documented in the Operational Audit (appendix). This is evidence "
+        "containment, not a defect — the framework does not assert what it cannot evidence.",
+    ]
+
+
 def build_report(
     evaluation_dir: Path,
     output_dir: Path,
@@ -189,9 +224,7 @@ def build_report(
         "",
         "### 1.2 Bottom Line",
         "",
-        "Anticipation remains **UNRESOLVED — SEARCH-INCOMPLETE**. The bridge state is **PARTIALLY TRAVERSED**. Standalone target-patent licensing is constrained by status; family, surviving-rights, know-how, regulatory, clinical, and historical-technology pathways remain open recovery targets.",
-        "",
-        "Unresolved evidence items are documented in the Operational Audit (appendix), not in this summary.",
+        *_bottom_line(scores, debt_rows),
         "",
         *_methodology_section(scores),
         "### 1.4 Key Evidence Supporting the Ratings",
@@ -216,7 +249,13 @@ def build_report(
     for pattern, title in PHASES:
         if title == "Operational Audit":
             continue
-        lines.extend(["", f"## {section_number}. {title}", "", _embed(_read_first(evaluation_dir, pattern))])
+        # Phase artifacts live in output_dir (live adapters write there); fall back
+        # to evaluation_dir only if output_dir has none. Otherwise sections 2-7
+        # render "No phase artifact was produced" despite live evidence existing.
+        phase_text = _read_first(output_dir, pattern)
+        if phase_text == "_No phase artifact was produced._":
+            phase_text = _read_first(evaluation_dir, pattern)
+        lines.extend(["", f"## {section_number}. {title}", "", _embed(phase_text)])
         section_number += 1
     lines.extend([
         "", f"## {section_number}. Operational Audit", "",

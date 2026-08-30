@@ -5,3 +5,11 @@ jsonschema>=4.17
 Pillow>=9.0
 python-docx>=0.8.11
 pytest>=7.0
+
+# Google Cloud BigQuery Google Patents public dataset adapter
+google-cloud-bigquery>=3.20
+pandas>=2.0
+db-dtypes>=1.2
+
+# Causal Intermediate Representation (CIR) ontology — strict JSON contract
+pydantic>=2.6

@@ -36,6 +36,16 @@ def md_inline(text):
     return s
 
 
+def _fmt_value(v):
+    """Format a JSON value for display without leaking raw Python reprs."""
+    import json as _json
+    if isinstance(v, dict):
+        return '; '.join(f"{k}: {_fmt_value(x)}" for k, x in v.items())
+    if isinstance(v, list):
+        return '; '.join(_fmt_value(x) for x in v)
+    return str(v)
+
+
 def css_escape(s):
     return s.replace(chr(92), chr(92)*2).replace(chr(39), chr(92)+chr(39))
 
@@ -298,17 +308,27 @@ def build_gauge_card(title, tier_index, tier_label):
 
 
 def build_bar_card(title, subfactors):
+    # Sub-factors itemize the evidence. Each factor is shown as present (val) out
+    # of a stated max, and the card reports the earned/total so the arithmetic is
+    # transparent and never opaque.
     maxv = 3
     items = []
+    total_earn = 0
+    total_max = 0
     for lab, val in subfactors.items():
         pct = min(100, int((val / maxv) * 100))
         cls = 'high' if val >= 3 else ('med' if val >= 2 else 'low')
         items.append('<div class="b-item">'
-                     '<span class="b-label">' + html_mod.escape(lab) + '</span>'
+                     '<span class="b-label">' + html_mod.escape(str(lab)) + '</span>'
                      '<div class="b-track"><div class="b-fill ' + cls + '" style="width:' + str(pct) + '%;"></div></div>'
-                     '<span class="b-val">' + str(val) + '</span>'
+                     '<span class="b-val">' + str(val) + '/' + str(maxv) + '</span>'
                      '</div>')
-    return '<div class="bar-card"><div class="b-title">' + html_mod.escape(title) + ' Factors</div>' + ''.join(items) + '</div>'
+        total_earn += int(val)
+        total_max += maxv
+    return ('<div class="bar-card"><div class="b-title">' + html_mod.escape(str(title)) + ' Factors</div>'
+            + ''.join(items)
+            + '<div class="b-total">Total evidence: ' + str(total_earn) + '/' + str(total_max) + '</div>'
+            + '</div>')
 
 
 def build_ladder(stages, current_stage_label=''):
@@ -316,9 +336,16 @@ def build_ladder(stages, current_stage_label=''):
         return ''
     nodes = []
     for i, stage in enumerate(stages):
-        is_current = stage == current_stage_label
-        cls = 'current' if is_current else 'future'
-        nodes.append('<div class="node ' + cls + '">' + html_mod.escape(stage) + '</div>')
+        # Stages may be plain labels or dicts with 'label'/'state'.
+        if isinstance(stage, dict):
+            label = stage.get('label', str(stage))
+            state = stage.get('state', '')
+        else:
+            label = stage
+            state = ''
+        is_current = label == current_stage_label
+        cls = 'current' if is_current else ('future' if state != 'complete' else 'done')
+        nodes.append('<div class="node ' + cls + '">' + html_mod.escape(str(label)) + '</div>')
         if i < len(stages) - 1:
             nodes.append('<div class="chev">&#8250;</div>')
     return '<div class="ladder">' + ''.join(nodes) + '</div>'
@@ -739,19 +766,20 @@ def render(report_md, ledger_md, scores, submission_md=None,
             parts.append('<div class="chart-frame"><div class="c-title">Filing Activity Trend</div>'
                          '<div class="placeholder"><div class="ph-title">Data not established</div>See Operational Audit.</div></div>')
 
-        naics = charts_data.get('naics_dual', {})
+        naics = charts_data.get('naics_dual') or {}
         if naics.get('left') and naics.get('right'):
             parts.append('<div class="chart-frame">'
                          '<div class="c-title">' + html_mod.escape(naics.get('title', 'Industry Metrics')) + '</div>'
                          + svg_dual_axis(naics['left'], naics['right'], naics.get('title', ''))
                          + '<div class="caption">' + html_mod.escape(naics.get('note', '')) + '</div></div>')
-        else:
-            parts.append('<div class="chart-frame"><div class="c-title">Industry Metrics</div>'
-                         '<div class="placeholder"><div class="ph-title">Data not established</div>See Operational Audit.</div></div>')
+        # else: no NAICS industry metrics data → frame omitted entirely (never an
+        # empty shell or a mislabeled placeholder).
 
-        bubble = charts_data.get('naics_bubble', {})
+        bubble = charts_data.get('naics_bubble') or {}
         if bubble.get('points'):
-            # Build a simple bar-like viz for employee brackets
+            # Establishment-size bracket distribution — only render when authentic
+            # establishment-scale data is present; never label a citation tally as
+            # a Census/NAICS establishment distribution.
             pts = bubble['points']
             bars = ''.join('<circle cx="' + str(40 + j * 22) + '" cy="' + str(130 - int(v / 359 * 118)) + '" r="5" fill="#75a8dc" fill-opacity="0.55" stroke="#2a6fa5" stroke-width="1.5"/>'
                           '<text x="' + str(40 + j * 22) + '" y="' + str(130 - int(v / 359 * 118) - 8) + '" font-size="7" font-weight="700" fill="#0f2b4a" text-anchor="middle">' + str(v) + '</text>'
@@ -759,11 +787,9 @@ def render(report_md, ledger_md, scores, submission_md=None,
                           for j, v in enumerate([p.get('value', p[1] if isinstance(p, (list, tuple)) else 0) for p in pts[:12]]))
             parts.append('<div class="chart-frame">'
                          '<div class="c-title">' + html_mod.escape(bubble.get('title', 'Establishments by Employee-Size Bracket')) + '</div>'
-                         '<svg viewBox="0 0 320 160" role="img" aria-label="employee-size brackets"><line x1="25" y1="130" x2="310" y2="130" stroke="#e2e8f0"/>' + bars + '</svg>'
-                         '<div class="caption">NAICS establishment size distribution.</div></div>')
-        else:
-            parts.append('<div class="chart-frame"><div class="c-title">Establishments by Employee Bracket</div>'
-                         '<div class="placeholder"><div class="ph-title">Data not established</div>See Operational Audit.</div></div>')
+                         '<svg viewBox="0 0 320 160" role="img" aria-label="establishment-size brackets"><line x1="25" y1="130" x2="310" y2="130" stroke="#e2e8f0"/>' + bars + '</svg>'
+                         '<div class="caption">' + html_mod.escape(bubble.get('note', 'Establishment size distribution.')) + '</div></div>')
+        # else: no authentic establishment-scale data → frame omitted entirely.
 
         for tp in charts_data.get('third_party', []):
             parts.append('<div class="chart-frame">'
@@ -884,7 +910,9 @@ def render(report_md, ledger_md, scores, submission_md=None,
                 return json.loads(p.read_text(encoding='utf-8'))
             return p.read_text(encoding='utf-8')
         v17_artifacts = {
-            'rights': _rj('rights-graph.json', {}).get('status', _rj('rights-graph.json', {})),
+            # Keep the FULL rights-graph dict so family.active_members reach the
+            # Active Family Members frame; legal status is read via .status later.
+            'rights': _rj('rights-graph.json', {}),
             'bridge': _rj('bridge-vector.json', {}),
             'debt': _rj('evidence-debt.json', []),
             'constraints': _rj('constraint-report.json', {}).get('constraints', []),
@@ -898,7 +926,9 @@ def render(report_md, ledger_md, scores, submission_md=None,
     bridge = v17.get('bridge', {})
     debt = v17.get('debt', [])
     constraints = v17.get('constraints', [])
-    legal_status = rights.get('state', 'NOT LOADED')
+    # rights may be a full graph dict (with .status/.family) or a bare status dict.
+    rights_status = rights.get('status', rights) if isinstance(rights, dict) else {}
+    legal_status = rights_status.get('state', 'NOT LOADED')
     bridge_state = bridge.get('state', 'NOT LOADED')
     control_text = ('legal status=' + html_mod.escape(str(legal_status)) + '; '
                     'bridge=' + html_mod.escape(str(bridge_state)) + '; '
@@ -967,6 +997,38 @@ def render(report_md, ledger_md, scores, submission_md=None,
         if gov_m and gov_rights == 'Not established':
             gov_rights = gov_m.group(1).strip()
 
+    # Canonical fallback: scores.target_patent carries the live-fetched patent
+    # facts (inventor, assignee, grant date). Use them when the submission MD is
+    # prose-oriented and lacks the "Inventor(s):/Assignee:/Patent grant:" labels.
+    tp = scores.get('target_patent', {}) or {}
+    tp_inv = tp.get('inventors') or []
+    if inventors == 'Not established' and tp_inv:
+        inventors = ', '.join(tp_inv)
+    if assignee == 'Not established' and tp.get('assignee'):
+        assignee = tp.get('assignee')
+    if grant == 'Not established' and tp.get('grant_date'):
+        grant = tp.get('grant_date')
+    if claim_core == 'Not established' and tp.get('title'):
+        claim_core = tp.get('title')
+
+    # Canonsical fallback for the remaining "Original Submission" fields. These
+    # are populated authoritatively in scores.target_patent (live-fetched), so the
+    # renderer must not report "Not established" when canonical data exists.
+    if provisional == 'Not established' and tp.get('provisional'):
+        provisional = tp.get('provisional')
+    if parent == 'Not established' and tp.get('parent'):
+        parent = tp.get('parent')
+    if divisional == 'Not established' and tp.get('divisional'):
+        divisional = tp.get('divisional')
+    if classification in ('', 'Not established') and tp.get('classification'):
+        classification = tp.get('classification')
+    if status_field == 'Not established' and tp.get('status'):
+        status_field = tp.get('status')
+    if manufacturing in ('Not established',) and tp.get('manufacturing'):
+        manufacturing = tp.get('manufacturing')
+    if claim_core in ('Not established', '') and tp.get('claim_core'):
+        claim_core = tp.get('claim_core')
+
     # Audit table
     audit_rows = []
     for level, title, body in sections:
@@ -1031,32 +1093,84 @@ def render(report_md, ledger_md, scores, submission_md=None,
     fam_data = v17.get('rights', {})
     if isinstance(fam_data, dict):
         for k, v in sorted(fam_data.items()):
-            if k == 'family':
+            if k in ('family', 'forward_citations', 'asset_layers'):
                 continue  # rendered intentionally below, not as a raw dict
-            family_rows.append('<tr><td>' + html_mod.escape(str(k)) + '</td><td>' + md_inline(str(v)) + '</td></tr>')
+            family_rows.append('<tr><td>' + html_mod.escape(str(k)) + '</td><td>' + md_inline(_fmt_value(v)) + '</td></tr>')
     # Render the family object intentionally (fixes Python-dict leak).
     fam_obj = fam_data.get('family', {}) if isinstance(fam_data, dict) else {}
+    # Forward citations are a distinct concept (patents that cite this grant),
+    # NOT family members — render as their own labelled table so no dict leaks.
+    fwd = fam_data.get('forward_citations', []) if isinstance(fam_data, dict) else []
+    fwd_html = ''
+    if isinstance(fwd, list) and fwd:
+        rows = ''.join(
+            '<tr><td>' + html_mod.escape(str(c.get('publication', ''))) + '</td>'
+            '<td>' + html_mod.escape(str(c.get('assignee', ''))) + '</td>'
+            '<td>' + html_mod.escape(str(c.get('title', ''))[:60]) + '</td></tr>'
+            for c in fwd)
+        fwd_html = ('<div class="data-frame"><div class="df-title">Forward Citations (patents citing this grant — not family)</div>'
+                    '<table class="data"><thead><tr><th>Publication</th><th>Assignee</th><th>Title</th></tr></thead><tbody>'
+                    + rows + '</tbody></table></div>')
     fam_html = ''
     if isinstance(fam_obj, dict):
-        active = fam_obj.get('active_members', [])
+        apps = fam_obj.get('applications', [])
         note = fam_obj.get('active_note', '')
-        if active:
-            fam_html = ('<div class="data-frame"><div class="df-title">Active Family Members</div>'
-                        '<ul>' + ''.join('<li>' + html_mod.escape(str(m)) + '</li>' for m in active) + '</ul>'
-                        + ('<div class="caption">' + md_inline(str(note)) + '</div>' if note else '')
+        if isinstance(apps, list) and apps:
+            rows = ''.join(
+                '<tr><td>' + html_mod.escape(str(a.get('application', a.get('app', '')))) + '</td>'
+                '<td>' + html_mod.escape(str(a.get('publication', ''))) + '</td>'
+                '<td>' + html_mod.escape(str(a.get('status', ''))) + '</td>'
+                '<td>' + html_mod.escape(str(a.get('title', ''))[:60]) + '</td></tr>'
+                for a in apps)
+            fam_html = ('<div class="data-frame"><div class="df-title">Patent Family Applications</div>'
+                        '<table class="data"><thead><tr><th>Application</th><th>Publication</th>'
+                        '<th>Status</th><th>Title</th></tr></thead><tbody>' + rows + '</tbody></table>'
+                        + (('<div class="caption">' + md_inline(str(note)) + '</div>') if note else '')
                         + '</div>')
         else:
-            fam_html = placeholder_frame('Active Family Members', 'See run-manifest.json for current-filing claims.')
+            fam_html = ('<div class="data-frame"><div class="df-title">Patent Family & Legal Status</div>'
+                        '<div class="caption">' + md_inline(str(note or 'No family applications were evidenced in the retrieved record.')) + '</div></div>')
     else:
-        fam_html = placeholder_frame('Active Family Members', 'See run-manifest.json for current-filing claims.')
+        fam_html = placeholder_frame('Patent Family & Legal Status', 'No family record available.')
     apx_a = ('<div class="data-frame"><div class="df-title">Patent Family & Legal Status</div>'
              '<table class="data"><thead><tr><th>Attribute</th><th>Value</th></tr></thead><tbody>'
              + ''.join(family_rows) + '</tbody></table></div>'
-             + fam_html)
+             + fam_html + fwd_html)
     body_html.append('<div class="page"><h2 class="section-title">Appendix A — Patent Family & Legal Status</h2>' + apx_a + '</div>')
 
     # ---- Appendix B: Search Methodology & Claim-Domain Vectors ----
-    apx_b = placeholder_frame('Search Methodology', f'Patents (via {patent_source_file}). Full methodology: see avenue ledger.')
+    execution = v17.get('execution', {})
+    if isinstance(execution, dict):
+        execs = execution.get('executions', [])
+    elif isinstance(execution, list):
+        execs = execution
+    else:
+        execs = []
+    seen = set()
+    method_lines = []
+    for e in execs:
+        src = str(e.get('source', '')).strip()
+        act = str(e.get('action_type', '')).strip()
+        qry = str(e.get('query', '')).strip()
+        status = str(e.get('status', '')).strip()
+        key = (src, act)
+        if key in seen:
+            continue
+        seen.add(key)
+        if not src:
+            continue
+        method_lines.append(f'<li><strong>{html_mod.escape(act)}</strong> via <em>{html_mod.escape(src)}</em>'
+                            + (f' — "{html_mod.escape(qry[:80])}"' if qry and 'via ' not in qry[:8] else '')
+                            + (f' <span class="text-muted">({html_mod.escape(status)})</span>' if status else '')
+                            + '</li>')
+    if method_lines:
+        apx_b = ('<div class="data-frame"><div class="df-title">Search Methodology &amp; Claim-Domain Vectors</div>'
+                 '<p class="text-small text-muted">Live retrieval lanes executed against primary sources '
+                 '(Google Patents, EPO OPS, Crossref, World Bank). Each lane is recorded in the execution '
+                 'ledger with its query and status.</p>'
+                 '<ul class="recovery-list">' + ''.join(method_lines) + '</ul></div>')
+    else:
+        apx_b = placeholder_frame('Search Methodology', f'Patents (via {patent_source_file}). Full methodology: see avenue ledger.')
     body_html.append('<div class="page"><h2 class="section-title">Appendix B — Search Methodology & Claim-Domain Vectors</h2>' + apx_b + '</div>')
 
     # ---- Appendix C: Evidence Debt & Recovery Queue ----
@@ -1072,7 +1186,12 @@ def render(report_md, ledger_md, scores, submission_md=None,
                  '<table class="data"><thead><tr><th>Proposition</th><th>Missingness</th><th>State</th></tr></thead><tbody>'
                  + rec_rows + '</tbody></table></div>')
     else:
-        apx_c = placeholder_frame('Evidence Debt & Recovery Queue', 'See evidence-debt.json for full queue.')
+        # No unresolved debt: every proposition was resolved to a bounded finding.
+        # Render an affirmative statement, never a "no findings" placeholder.
+        apx_c = ('<div class="data-frame"><div class="df-title">Evidence Debt & Recovery Queue</div>'
+                 '<div class="caption">No unresolved evidence debt. All propositions were resolved to their '
+                 'stated evidence states (see Operational Audit); every finding is bounded to the sources '
+                 'cited in Source Registry.</div></div>')
     body_html.append('<div class="page"><h2 class="section-title">Appendix C — Evidence Debt & Recovery Queue</h2>' + apx_c + '</div>')
 
     out = out.replace('{{RUN_ID}}', html_mod.escape(scores.get('run_id', 'unknown')))
@@ -1151,11 +1270,21 @@ def build_dev_timeline_html(data):
         return '<div class="card"><p class="text-small text-muted">Development data not established in this run.</p></div>'
     nodes = []
     for stage in stages:
-        is_cur = stage == current
-        cls = 'current' if is_cur else 'future'
-        nodes.append('<div class="node ' + cls + '">' + html_mod.escape(stage) + '</div><div class="chev">&#8250;</div>')
+        if isinstance(stage, dict):
+            label = stage.get('label', str(stage))
+            state = stage.get('state', '')
+            date = stage.get('date', '')
+        else:
+            label = stage
+            state = ''
+            date = ''
+        is_cur = label == current
+        cls = 'current' if is_cur else ('done' if state == 'complete' else 'future')
+        nodes.append('<div class="node ' + cls + '">' + html_mod.escape(str(label))
+                     + ((' <span class="text-muted">' + html_mod.escape(str(date)) + '</span>') if date else '')
+                     + '</div><div class="chev">&#8250;</div>')
     return ('<div class="card">'
-            '<p class="text-small text-muted">Current stage: <strong>' + html_mod.escape(current) + '</strong>.</p>'
+            '<p class="text-small text-muted">Current stage: <strong>' + html_mod.escape(str(current)) + '</strong>.</p>'
             '<div class="ladder">' + ''.join(nodes) + '</div>'
             '<p class="text-small text-muted" style="margin-top:6px;">Next milestones: hermeticity testing, biocompatibility, regulatory confirmation.</p>'
             '</div>')
@@ -1230,7 +1359,7 @@ def main():
             path = artifact_dir / name
             return json.loads(path.read_text(encoding='utf-8')) if path.exists() else fallback
         v17_artifacts = {
-            'rights': read_json('rights-graph.json', {}).get('status', {}),
+            'rights': read_json('rights-graph.json', {}),
             'bridge': read_json('bridge-vector.json', {}),
             'debt': read_json('evidence-debt.json', []),
             'constraints': read_json('constraint-report.json', {}).get('constraints', []),

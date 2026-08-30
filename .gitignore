@@ -19,6 +19,12 @@ __pycache__/
 *.pem
 *.key
 
+# GCP service-account keys (BigQuery) — never commit
+*.service-account.json
+gcp-key*.json
+service-account*.json
+.config/gcp/
+
 # Large generated / scraped artifacts (may contain embedded API keys)
 evaluations/*/raw-*.html
 evaluations/*/raw-*.bin

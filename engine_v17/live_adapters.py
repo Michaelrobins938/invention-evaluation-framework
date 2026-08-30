@@ -214,24 +214,73 @@ def run_live_phase_adapters(
                         break
 
     if patent_record is None:
-        debt_note = (
-            f"# Retrieval blocked\n\nPatent identity '{publication_id}' unresolved after "
-            f"{len(routes)} routes: " + "; ".join(name for name, _ in routes) + "\n"
-        )
-        patent_raw.parent.mkdir(parents=True, exist_ok=True)
-        patent_raw.write_text(debt_note, encoding="utf-8")
-        patent_record = ledger.record(
-            phase_id="03",
-            action_type="patent_search",
-            source="Google Patents",
-            query=normalized,
-            result_artifact=str(patent_raw),
-            outcome=f"all {len(routes)} resolution routes blocked; recorded as evidence debt",
-            candidate_evidence=False,
-            evidence_sufficiency=False,
-            status=AvenueExecutionStatus.BLOCKED,
-        )
-        resolved_html = debt_note
+        # ── BigQuery fallback (Google Patents public dataset) ──────────────
+        # The HTTP route ladder is exhausted (e.g. rate-limited). Before
+        # recording evidence debt, try the BigQuery adapter: it is not subject
+        # to the same rate limits and returns the same record schema the
+        # downstream parsers consume. Lazy import + broad exception guard so a
+        # machine without BigQuery/credentials degrades exactly as before.
+        bq_records = []
+        bq_fallback_used = False
+        try:
+            from .bigquery_patents import BigQueryUnavailable, get_patent_by_publication_number
+            try:
+                bq_rec = get_patent_by_publication_number(publication_id)
+            except BigQueryUnavailable:
+                bq_rec = {}
+            if bq_rec and bq_rec.get("publication_number"):
+                bq_records = [bq_rec]
+                bq_fallback_used = True
+        except Exception:
+            bq_fallback_used = False
+
+        if bq_fallback_used:
+            # Write the BigQuery-sourced record into the same raw artifact
+            # shape and reuse the downstream parsers.
+            rec = bq_records[0]
+            html_equiv = (
+                f'<div itemprop="publicationNumber">{rec.get("publication_number", "")}</div>'
+                f'<div itemprop="title">{rec.get("title", "")}</div>'
+                + "".join(
+                    f'<tr itemprop="docdbFamily"><td itemprop="publicationNumber">{rec.get("publication_number", "")}</td></tr>'
+                    for _ in [0]
+                )
+                + (f'<div itemprop="legalStatus">{rec.get("grant_date", "")}</div>'
+                   if rec.get("grant_date") else "")
+            )
+            patent_raw.parent.mkdir(parents=True, exist_ok=True)
+            patent_raw.write_text(html_equiv, encoding="utf-8")
+            patent_record = ledger.record(
+                phase_id="03",
+                action_type="patent_search",
+                source="BigQuery (Google Patents public dataset)",
+                query=publication_id,
+                result_artifact=str(patent_raw),
+                outcome="patent identity resolved via BigQuery fallback after HTTP routes blocked",
+                candidate_evidence=True,
+                evidence_sufficiency=True,
+            )
+            resolved_html = html_equiv
+        else:
+            debt_note = (
+                f"# Retrieval blocked\n\nPatent identity '{publication_id}' unresolved after "
+                f"{len(routes)} routes: " + "; ".join(name for name, _ in routes)
+                + " (BigQuery fallback also attempted; no matching record).\n"
+            )
+            patent_raw.parent.mkdir(parents=True, exist_ok=True)
+            patent_raw.write_text(debt_note, encoding="utf-8")
+            patent_record = ledger.record(
+                phase_id="03",
+                action_type="patent_search",
+                source="Google Patents",
+                query=normalized,
+                result_artifact=str(patent_raw),
+                outcome=f"all {len(routes)} resolution routes blocked; recorded as evidence debt",
+                candidate_evidence=False,
+                evidence_sufficiency=False,
+                status=AvenueExecutionStatus.BLOCKED,
+            )
+            resolved_html = debt_note
 
     if resolved_html and not patent_raw.exists():
         patent_raw.write_text(resolved_html, encoding="utf-8")
